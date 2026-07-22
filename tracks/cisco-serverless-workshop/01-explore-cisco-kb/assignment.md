@@ -1,19 +1,21 @@
 ---
 slug: explore-cisco-kb
-id: wef8wuguylzw
+id: zskewhsvvzs2
 type: challenge
 title: Challenge 1 — Explore the Cisco Knowledge Base
 teaser: Navigate Search and Discover on seeded Cisco runbooks.
 notes:
 - type: text
   contents: |
-    **While the lab provisions (~3–4 min)** — Serverless Search + Cisco seed data.
+    **While the lab provisions (~3–4 min)** — use **← →** inside the deck below.
 
-    <iframe src="https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/instruqt.html" width="100%" height="680" frameborder="0"
-      style="border-radius:8px;border:1px solid #2a3140;display:block;min-height:520px;background:#0b0d12">
+    <iframe src="https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/slides.html?embed=1" width="100%" height="720" frameborder="0"
+      style="border-radius:8px;border:1px solid #2a3140;display:block;min-height:560px;background:#0b0d12">
     </iframe>
+
+    Fullscreen: https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/slides.html
 tabs:
-- id: a0uingeubchz
+- id: 6r4wdx24aco4
   title: Elastic Serverless Search
   type: service
   hostname: es3-api

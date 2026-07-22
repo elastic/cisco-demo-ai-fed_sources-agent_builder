@@ -12,7 +12,8 @@ COMBINED = ROOT / "tracks" / "cisco-serverless-workshop"
 DEVELOPER = "peter.simkins@elastic.co"
 PORT = 8080
 TAB_TITLE = "Elastic Serverless Search"
-LOADING_PAGE = "https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/instruqt.html"
+LOADING_PAGE = "https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/slides.html?embed=1"
+SLIDES_PAGE = "https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/slides.html"
 LOADING_NOTE_CHALLENGES = frozenset(
     {"01-explore-cisco-kb", "04-map-data-silos", "07-triage-network-signals"}
 )
@@ -148,11 +149,13 @@ def inject_loading_notes(front: str, dest_ch: str) -> str:
     block = f"""notes:
 - type: text
   contents: |
-    **While the lab provisions (~3–4 min)** — Serverless Search + Cisco seed data.
+    **While the lab provisions (~3–4 min)** — use **← →** inside the deck below.
 
-    <iframe src="{LOADING_PAGE}" width="100%" height="680" frameborder="0"
-      style="border-radius:8px;border:1px solid #2a3140;display:block;min-height:520px;background:#0b0d12">
+    <iframe src="{LOADING_PAGE}" width="100%" height="720" frameborder="0"
+      style="border-radius:8px;border:1px solid #2a3140;display:block;min-height:560px;background:#0b0d12">
     </iframe>
+
+    Fullscreen: {SLIDES_PAGE}
 
 """
     return re.sub(r"(teaser: .+\n)", r"\1" + block, front, count=1)

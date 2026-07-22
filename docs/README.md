@@ -11,22 +11,24 @@ After deploy, the site is live at:
 
 **https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/**
 
-## Instruqt embed
+| Page | Use |
+|------|-----|
+| [slides.html](slides.html) | **8-slide deck** — what/why infographics (← →), facilitator or fullscreen |
+| [slides.html?embed=1](slides.html?embed=1) | **Instruqt iframe** (Notes + nginx `/loading`) |
+| [instruqt.html](instruqt.html) | Compact static loader |
+| [index.html](index.html) | Landing summary |
 
-Use in challenge **notes** (loading carousel) or HTML:
+## Instruqt embed
 
 ```html
 <iframe
-  src="https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/instruqt.html"
+  src="https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/slides.html?embed=1"
   width="100%"
   height="720"
   frameborder="0"
   style="border-radius:8px;border:1px solid #2a3140;display:block;">
 </iframe>
 ```
-
-- **`instruqt.html`** — compact layout for iframe / notes
-- **`index.html`** — full page for facilitators or direct links
 
 The lab VM also iframes this URL from nginx `/loading` during Kibana proxy startup (see `scripts/es3-setup-base.sh`).
 

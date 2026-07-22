@@ -1,11 +1,11 @@
 ---
 slug: cross-source-esql
-id: z12288vytrco
+id: 30wsirqtdmxm
 type: challenge
 title: Challenge 2 — Cross-Source ES|QL
 teaser: Join KB guidance with live Meraki offline events.
 tabs:
-- id: uo5cc2uopehk
+- id: 68mvlsdxirry
   title: Elastic Serverless Search
   type: service
   hostname: es3-api

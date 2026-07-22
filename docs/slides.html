@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cisco × Elastic — Workshop slides</title>
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --panel: #141820;
+      --text: #e8eaed;
+      --muted: #9aa3b2;
+      --elastic: #00bfb3;
+      --cisco: #049fd9;
+      --border: #2a3140;
+      --accent: #6ee7c7;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body.embed .nav-hint { display: none; }
+    body.embed .deck { padding: 0.75rem 1rem 2.5rem; }
+    body.embed h1 { font-size: 1.15rem; }
+    body.embed .slide { min-height: calc(100vh - 3rem); min-height: calc(100dvh - 3rem); padding: 0.5rem 0; }
+
+    .deck { max-width: 960px; margin: 0 auto; padding: 1.25rem 1.25rem 3.5rem; }
+    .slide { display: none; min-height: 70vh; animation: fade 0.35s ease; }
+    .slide.active { display: block; }
+    @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+    .eyebrow { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+    h1 { font-size: clamp(1.25rem, 3.5vw, 1.75rem); font-weight: 650; line-height: 1.25; margin-bottom: 0.75rem; }
+    h2 { font-size: 0.95rem; color: var(--cisco); margin: 1rem 0 0.4rem; font-weight: 600; }
+    p, li { font-size: 0.9rem; color: var(--muted); line-height: 1.55; }
+    ul { margin: 0.5rem 0 0 1.1rem; }
+    li { margin: 0.35rem 0; }
+    strong { color: var(--text); font-weight: 600; }
+    code { font-size: 0.82em; color: var(--elastic); }
+
+    .pill-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0; }
+    .pill { font-size: 0.72rem; padding: 0.25rem 0.55rem; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); }
+    .pill.hot { border-color: var(--cisco); color: var(--cisco); }
+
+    .grid2 { display: grid; gap: 0.75rem; grid-template-columns: 1fr 1fr; margin-top: 0.75rem; }
+    @media (max-width: 640px) { .grid2 { grid-template-columns: 1fr; } }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.85rem 0.95rem;
+    }
+    .card .label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--elastic); margin-bottom: 0.35rem; }
+    .card .what { font-size: 0.88rem; color: var(--text); font-weight: 600; margin-bottom: 0.35rem; }
+    .card .why { font-size: 0.8rem; color: var(--muted); }
+
+    /* Infographic: silos → unified */
+    .flow {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      flex-wrap: wrap; margin: 1rem 0; padding: 1rem;
+      background: var(--panel); border-radius: 12px; border: 1px solid var(--border);
+    }
+    .flow-box {
+      text-align: center; padding: 0.55rem 0.65rem; border-radius: 8px;
+      border: 1px solid var(--border); font-size: 0.72rem; min-width: 72px;
+    }
+    .flow-box small { display: block; color: var(--muted); font-size: 0.62rem; margin-top: 0.2rem; }
+    .flow-arrow { color: var(--cisco); font-size: 1.2rem; }
+
+    .unified {
+      border-color: var(--elastic);
+      background: rgba(0, 191, 179, 0.08);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* MTTR bar chart */
+    .bars { display: flex; align-items: flex-end; gap: 1rem; height: 100px; margin: 1rem 0; padding: 0 0.5rem; }
+    .bar-col { flex: 1; text-align: center; }
+    .bar {
+      width: 100%; border-radius: 6px 6px 0 0;
+      background: linear-gradient(180deg, var(--cisco), #0369a1);
+    }
+    .bar.good { background: linear-gradient(180deg, var(--elastic), #0d9488); height: 35%; }
+    .bar.bad { height: 90%; opacity: 0.85; }
+    .bar-col span { font-size: 0.65rem; color: var(--muted); display: block; margin-top: 0.35rem; }
+
+    .quote {
+      border-left: 3px solid var(--cisco);
+      padding: 0.65rem 0.85rem; margin: 0.75rem 0;
+      background: rgba(4, 159, 217, 0.06); border-radius: 0 8px 8px 0;
+      font-size: 0.88rem; color: var(--text);
+    }
+
+    .controls {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: rgba(11, 13, 18, 0.92); backdrop-filter: blur(8px);
+      border-top: 1px solid var(--border);
+      padding: 0.55rem 1rem; display: flex; align-items: center; justify-content: space-between;
+      z-index: 10;
+    }
+    .dots { display: flex; gap: 6px; flex-wrap: wrap; max-width: 60%; }
+    .dot {
+      width: 8px; height: 8px; border-radius: 50%; border: none; background: var(--border);
+      cursor: pointer; padding: 0;
+    }
+    .dot.active { background: var(--cisco); }
+    .btn {
+      background: transparent; border: 1px solid var(--border); color: var(--text);
+      border-radius: 8px; padding: 0.35rem 0.75rem; font-size: 0.8rem; cursor: pointer;
+    }
+    .btn:hover { border-color: var(--cisco); }
+    .nav-hint { font-size: 0.72rem; color: var(--muted); }
+    .counter { font-size: 0.75rem; color: var(--muted); min-width: 4rem; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="deck" id="deck">
+
+    <section class="slide active" data-slide="0">
+      <p class="eyebrow">Cisco × Elastic · Instruqt</p>
+      <h1>AI Search, Federated Sources &amp; Agent Builder</h1>
+      <p class="pill-row">
+        <span class="pill hot">Serverless Search only</span>
+        <span class="pill">~3 modules</span>
+        <span class="pill">One Cloud project</span>
+      </p>
+      <p style="margin-top:0.75rem">Today you’ll see how Elastic helps Cisco teams <strong>find</strong>, <strong>unify</strong>, and <strong>act</strong> on network knowledge — without standing up Observability or Security SKUs for this motion.</p>
+      <p class="nav-hint" style="margin-top:1rem">Use ← → or dots below while your lab provisions.</p>
+    </section>
+
+    <section class="slide" data-slide="1">
+      <p class="eyebrow">Why this matters</p>
+      <h1>Cisco NOC pain: knowledge in silos</h1>
+      <div class="flow">
+        <div class="flow-box">Meraki<small>Dashboard</small></div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-box">IOS-XE<small>Runbooks</small></div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-box">DNA Center<small>Assurance</small></div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-box">Internal wiki<small>Escalation</small></div>
+      </div>
+      <div class="bars">
+        <div class="bar-col"><div class="bar bad"></div><span>Today: tab hopping · long MTTR</span></div>
+        <div class="bar-col"><div class="bar good"></div><span>Target: one Search · faster resolution</span></div>
+      </div>
+      <p><strong>Why Elastic at Cisco:</strong> meet engineers where they already search — with AI-native retrieval and agents on **one** Search platform.</p>
+    </section>
+
+    <section class="slide" data-slide="2">
+      <p class="eyebrow">Platform choice</p>
+      <h1>One Serverless Search project — advantages</h1>
+      <div class="grid2">
+        <div class="card">
+          <div class="label">Speed to lab</div>
+          <div class="what">~3–4 min startup</div>
+          <div class="why">Single vector Search project + seeded indices — no multi-product provisioning.</div>
+        </div>
+        <div class="card">
+          <div class="label">GTM fit</div>
+          <div class="what">Search-led motion</div>
+          <div class="why">Position consolidation &amp; AI on Search; avoid O11Y/Sec where Cisco isn’t buying.</div>
+        </div>
+        <div class="card">
+          <div class="label">Technical</div>
+          <div class="what">ES|QL everywhere</div>
+          <div class="why">Same query language for KB, connectors, and agent tools — one skill for SEs.</div>
+        </div>
+        <div class="card">
+          <div class="label">Economics</div>
+          <div class="what">Serverless ops</div>
+          <div class="why">Per-learner projects in Instruqt; elastic scale for POVs and workshops.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="3">
+      <p class="eyebrow">Module 1</p>
+      <h1>AI Search — what &amp; why</h1>
+      <div class="card" style="margin-bottom:0.75rem">
+        <div class="label">What</div>
+        <div class="what">Hybrid + semantic search on <code>cisco-network-kb</code></div>
+        <div class="why">Keyword for exact TAC phrases; semantic/vector for “AP keeps going offline” style questions.</div>
+      </div>
+      <h2>Why Cisco buyers care</h2>
+      <ul>
+        <li><strong>MTTR:</strong> Meraki, BGP, DNA runbooks in seconds, not six portals.</li>
+        <li><strong>Scale:</strong> Same pattern for millions of docs via connectors (Module 2).</li>
+        <li><strong>Proof:</strong> Live Search + ES|QL in the first 20 minutes of the demo.</li>
+      </ul>
+      <div class="quote">“Can we search IOS-XE and Meraki docs in one place?” — this module is the answer.</div>
+    </section>
+
+    <section class="slide" data-slide="4">
+      <p class="eyebrow">Module 2</p>
+      <h1>Federated data sources — what &amp; why</h1>
+      <div class="flow">
+        <div class="flow-box">cisco.com KB</div>
+        <div class="flow-box">Internal runbooks</div>
+        <div class="flow-box">Meraki events</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-box unified">One ES|QL story</div>
+      </div>
+      <div class="grid2">
+        <div class="card">
+          <div class="label">What</div>
+          <div class="what">Connectors + multi-index query</div>
+          <div class="why">Leave Meraki/DNA in place; Elastic indexes or federates the query layer.</div>
+        </div>
+        <div class="card">
+          <div class="label">Why</div>
+          <div class="what">Federate, don’t rip-and-replace</div>
+          <div class="why">Displace search appliances · consolidate insight · federate sources (DCOS language).</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="5">
+      <p class="eyebrow">Module 3</p>
+      <h1>Agent Builder — what &amp; why</h1>
+      <div class="card" style="margin-bottom:0.75rem">
+        <div class="label">What</div>
+        <div class="what">Agents + ES|QL on Search indices</div>
+        <div class="why">Triage <code>cisco-network-events</code> + Meraki events; pull KB steps; draft escalation.</div>
+      </div>
+      <h2>Why now</h2>
+      <ul>
+        <li><strong>From search to action:</strong> agents turn retrieval into guided NOC workflows.</li>
+        <li><strong>Grounded:</strong> tools hit the same indices you seeded — no hallucinated runbooks.</li>
+        <li><strong>Still Search:</strong> no Observability SKU required for this Cisco narrative.</li>
+      </ul>
+    </section>
+
+    <section class="slide" data-slide="6">
+      <p class="eyebrow">Executive arc</p>
+      <h1>Three beats in 90 seconds</h1>
+      <div class="flow" style="flex-direction:column; align-items:stretch; gap:0.65rem">
+        <div class="card"><span class="label">1 · Search</span> “Find Meraki offline runbook in &lt;10s”</div>
+        <div class="card"><span class="label">2 · Federate</span> “Offline event + internal escalation + KB — one query”</div>
+        <div class="card"><span class="label">3 · Agent</span> “Copilot summarizes timeline and next steps for Branch 4471”</div>
+      </div>
+      <p style="margin-top:0.85rem">Use this arc in Module 3’s executive close challenge.</p>
+    </section>
+
+    <section class="slide" data-slide="7">
+      <p class="eyebrow">While you wait</p>
+      <h1>Lab provisioning (~3–4 min)</h1>
+      <ul>
+        <li>Create <strong>Serverless Search</strong> (vector) via <code>es3-api</code></li>
+        <li>Proxy Kibana on port <strong>8080</strong></li>
+        <li>Seed: <code>cisco-network-kb</code>, internal runbooks, Meraki events, network events</li>
+      </ul>
+      <p style="margin-top:1rem">When the <strong>Elastic Serverless Search</strong> tab opens, start Module 1 — confirm the KB index in Search or Discover.</p>
+    </section>
+  </div>
+
+  <div class="controls">
+    <button type="button" class="btn" id="prev" aria-label="Previous slide">←</button>
+    <div class="dots" id="dots"></div>
+    <span class="counter" id="counter">1 / 8</span>
+    <button type="button" class="btn" id="next" aria-label="Next slide">→</button>
+  </div>
+
+  <script>
+    (function () {
+      if (new URLSearchParams(location.search).get("embed") === "1") {
+        document.body.classList.add("embed");
+      }
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const dotsEl = document.getElementById("dots");
+      const counter = document.getElementById("counter");
+      let i = 0;
+
+      slides.forEach((_, idx) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "dot" + (idx === 0 ? " active" : "");
+        b.setAttribute("aria-label", "Slide " + (idx + 1));
+        b.addEventListener("click", () => go(idx));
+        dotsEl.appendChild(b);
+      });
+
+      function go(n) {
+        i = (n + slides.length) % slides.length;
+        slides.forEach((s, j) => s.classList.toggle("active", j === i));
+        dotsEl.querySelectorAll(".dot").forEach((d, j) => d.classList.toggle("active", j === i));
+        counter.textContent = (i + 1) + " / " + slides.length;
+      }
+
+      document.getElementById("prev").onclick = () => go(i - 1);
+      document.getElementById("next").onclick = () => go(i + 1);
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") go(i - 1);
+        if (e.key === "ArrowRight") go(i + 1);
+      });
+    })();
+  </script>
+</body>
+</html>
