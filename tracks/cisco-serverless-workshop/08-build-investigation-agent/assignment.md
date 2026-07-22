@@ -1,12 +1,12 @@
 ---
 slug: build-investigation-agent
-id: xg1rzculpj7a
+id: ts8n2xygqurs
 type: challenge
 title: Challenge 8 — Build the NOC investigation agent
 teaser: Wire Agent Builder to your Serverless Search indices — then ask about Branch
   4471.
 tabs:
-- id: 8haizxfnfqjh
+- id: 8inuxse42wdu
   title: Elastic Serverless Search
   type: service
   hostname: es3-api
@@ -54,6 +54,11 @@ You’ve found runbooks, federated indices, and triaged the inject by hand. Now 
 > Branch 4471 reports Meraki offline and BGP flapping on `edge-dfw-01`. Summarize timeline and next steps.
 
 4. Capture **notes or a screenshot** of one successful tool invocation.
+
+## Optional — Splunk O11Y A2A workflow
+
+Open **Workflows** → **Cisco Branch 4471 — Splunk O11Y A2A RCA** (`cisco-branch-4471-splunk-o11y-a2a-rca`).
+It gathers Meraki + BGP ES|QL context, calls a Splunk Observability A2A bridge (set `consts.splunk_o11y_a2a_url`), then synthesizes RCA with Agent Builder. Run it manually with the defaults for this lab.
 
 ## Reference
 

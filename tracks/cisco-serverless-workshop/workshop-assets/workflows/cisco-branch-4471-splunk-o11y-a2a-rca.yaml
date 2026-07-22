@@ -1,0 +1,174 @@
+# Cisco workshop (Elastic Cloud Serverless Search):
+# Branch 4471 incident → Elastic ES|QL context → Splunk Observability A2A → unified RCA
+#
+# Target: Elastic Serverless Search project used by cisco-serverless-workshop.
+# Requires: Workflows + Agent Builder in the project. Splunk O11y evidence via YOUR A2A bridge.
+#
+# Setup:
+#   1. Kibana → Workflows → open cisco-branch-4471-splunk-o11y-a2a-rca (seeded at lab start).
+#   2. Set consts.splunk_o11y_a2a_url (or an HTTP connector) to a reachable A2A gateway.
+#   3. Run manually with site=Branch-4471-Dallas (defaults ready for the lab inject).
+#
+# Note: Splunk Observability has no first-party A2A endpoint — use an org bridge that
+# implements A2A and calls Splunk O11y Cloud APIs (detectors, APM, metrics, Log Observer).
+
+version: "1"
+name: Cisco Branch 4471 — Splunk O11Y A2A RCA
+enabled: true
+description: >
+  Manual workshop workflow: gather Meraki + BGP context from Elastic Serverless Search,
+  call a Splunk Observability A2A investigator, then synthesize a cross-platform RCA
+  with Agent Builder for Branch 4471.
+tags:
+  - cisco
+  - serverless-search
+  - splunk
+  - splunk-o11y
+  - a2a
+  - rca
+  - workshop
+
+triggers:
+  - type: manual
+    inputs:
+      - name: site
+        type: string
+        default: "Branch-4471-Dallas"
+      - name: device_hint
+        type: string
+        default: "4471"
+
+consts:
+  # Replace with your A2A bridge (HTTPS reachable from Elastic Cloud Serverless),
+  # or swap this step to connector-id + path after creating an HTTP connector.
+  splunk_o11y_a2a_url: "https://REPLACE_WITH_YOUR_A2A_GATEWAY.example.com/a2a/splunk-o11y-investigator"
+
+steps:
+  - name: meraki_context
+    type: elasticsearch.esql.query
+    with:
+      format: json
+      query: |
+        FROM cisco-meraki-events
+        | WHERE @timestamp > NOW() - 24 hours
+        | WHERE site LIKE "*{{ inputs.device_hint }}*" OR device_name LIKE "*{{ inputs.device_hint }}*"
+        | SORT @timestamp DESC
+        | KEEP @timestamp, site, device_name, device_serial, event_type, detail
+        | LIMIT 25
+
+  - name: network_context
+    type: elasticsearch.esql.query
+    with:
+      format: json
+      query: |
+        FROM cisco-network-events
+        | WHERE @timestamp > NOW() - 24 hours
+        | WHERE `cisco.site` LIKE "*{{ inputs.device_hint }}*"
+           OR event_type LIKE "bgp*"
+           OR event_type LIKE "dna*"
+        | SORT @timestamp DESC
+        | KEEP @timestamp, `cisco.site`, `host.name`, `cisco.product`, event_type, message
+        | LIMIT 25
+
+  - name: kb_runbooks
+    type: elasticsearch.esql.query
+    with:
+      format: json
+      query: |
+        FROM cisco-network-kb
+        | WHERE MATCH(content, "offline") OR MATCH(content, "BGP neighbor") OR MATCH(title, "BGP")
+        | KEEP title, product, category, content, doc_id
+        | LIMIT 10
+
+  - name: splunk_o11y_a2a_investigate
+    type: http
+    with:
+      url: "{{ consts.splunk_o11y_a2a_url }}"
+      method: POST
+      headers:
+        Content-Type: application/json
+        X-Elastic-Workflow-Id: "{{ workflow.id }}"
+        X-Elastic-Execution-Id: "{{ execution.id }}"
+        X-Elastic-Deployment: "serverless-search"
+        X-Cisco-Workshop: "cisco-serverless-workshop"
+      body:
+        id: "cisco-branch-{{ inputs.device_hint }}-{{ execution.id }}"
+        jsonrpc: "2.0"
+        method: "message/send"
+        params:
+          message:
+            role: user
+            parts:
+              - type: text
+                text: |
+                  Investigate this Cisco branch incident from Elastic Serverless Search
+                  and return Splunk Observability Cloud evidence for correlation.
+
+                  Site: {{ inputs.site }}
+                  Device / branch hint: {{ inputs.device_hint }}
+                  Time window: last 24 hours.
+
+                  Elastic story (lab inject): Meraki AP offline coincides with BGP session
+                  down on the edge router. Determine whether Splunk O11y shows related
+                  detector firings, APM/metrics saturation, or infra symptoms for the same site/entity.
+
+                  Tasks:
+                  1. Find related Splunk Observability detectors/incidents for this site or network edge.
+                  2. Summarize APM/metrics: error rate, latency, throughput, saturation; cite detector IDs.
+                  3. Surface Log Observer patterns that support or contradict the Elastic signals.
+                  4. Include deep links into Splunk Observability UI where possible.
+                  5. Propose likely root cause and next checks (Elastic ES|QL + Splunk SignalFlow/APIs).
+
+                  Meraki events (Elastic ES|QL JSON):
+                  {{ steps.meraki_context.output | json }}
+
+                  Network events (Elastic ES|QL JSON):
+                  {{ steps.network_context.output | json }}
+
+                  KB runbooks (Elastic ES|QL JSON):
+                  {{ steps.kb_runbooks.output | json }}
+
+  - name: unified_rca
+    type: ai.agent
+    agent-id: elastic-ai-agent
+    create-conversation: true
+    with:
+      message: |
+        You are a Cisco NOC engineer performing cross-platform root cause analysis.
+
+        Elastic Serverless Search has Meraki + BGP/DNA events and KB runbooks for
+        {{ inputs.site }}. A Splunk Observability A2A agent response is below
+        (may be empty if the A2A gateway URL is still a placeholder).
+
+        Reconcile both sources; cite evidence; rank hypotheses; recommend immediate
+        mitigations. Prefer starting with BGP/edge if WAN loss would explain Meraki
+        cloud disconnect.
+
+        <meraki_events>
+        {{ steps.meraki_context.output | json }}
+        </meraki_events>
+
+        <network_events>
+        {{ steps.network_context.output | json }}
+        </network_events>
+
+        <kb_runbooks>
+        {{ steps.kb_runbooks.output | json }}
+        </kb_runbooks>
+
+        <splunk_o11y_a2a_response>
+        {{ steps.splunk_o11y_a2a_investigate.output.data | default: steps.splunk_o11y_a2a_investigate.output | json }}
+        </splunk_o11y_a2a_response>
+
+        Output sections: ## Summary, ## Elastic evidence, ## Splunk Observability evidence,
+        ## Likely root cause, ## Recommended actions, ## Runbooks to follow.
+
+  - name: triage_console
+    type: console
+    with:
+      message: |
+        Cisco Branch {{ inputs.site }} — Splunk O11Y A2A RCA complete.
+
+        Meraki hits: {{ steps.meraki_context.output | json }}
+        Network hits: {{ steps.network_context.output | json }}
+        Unified RCA: {{ steps.unified_rca.output.message | default: steps.unified_rca.output | json }}

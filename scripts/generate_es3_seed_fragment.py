@@ -9,10 +9,21 @@ ROOT = Path(__file__).resolve().parent.parent
 SCRIPTS = ROOT / "scripts"
 ASSETS = ROOT / "assets" / "shared"
 DASHBOARDS = ASSETS / "dashboards"
+WORKFLOWS = ASSETS / "workflows"
 
 
 def b64(path: Path) -> str:
     return base64.b64encode(path.read_bytes()).decode("ascii")
+
+
+def embed_dir(files: list[Path], dest_dir: str, marker_prefix: str) -> str:
+    blocks = []
+    for f in files:
+        token = f"{marker_prefix}_{f.stem.upper().replace('-', '_')}"
+        blocks.append(
+            f"base64 -d <<'{token}' > {dest_dir}/{f.name}\n{b64(f)}\n{token}"
+        )
+    return "\n".join(blocks)
 
 
 def main() -> None:
@@ -20,21 +31,16 @@ def main() -> None:
     seed_kb = SCRIPTS / "seed_cisco_kb.py"
     seed_fed = SCRIPTS / "seed_federated_sources.py"
     seed_dash = SCRIPTS / "seed_cisco_dashboards.py"
+    seed_wf = SCRIPTS / "seed_cisco_workflows.py"
     dash_files = sorted(DASHBOARDS.glob("*.json"))
-    for p in (kb, seed_kb, seed_fed, seed_dash):
+    wf_files = sorted(WORKFLOWS.glob("*.yaml")) + sorted(WORKFLOWS.glob("*.yml"))
+    for p in (kb, seed_kb, seed_fed, seed_dash, seed_wf):
         if not p.is_file():
             raise SystemExit(f"missing {p}")
     if not dash_files:
         raise SystemExit(f"no dashboard JSON under {DASHBOARDS}")
-
-    dash_blocks = []
-    for df in dash_files:
-        dash_blocks.append(
-            f"base64 -d <<'CISCO_DASH_{df.stem.upper().replace('-', '_')}' > /tmp/dashboards/{df.name}\n"
-            f"{b64(df)}\n"
-            f"CISCO_DASH_{df.stem.upper().replace('-', '_')}"
-        )
-    dash_embed = "\n".join(dash_blocks)
+    if not wf_files:
+        raise SystemExit(f"no workflow YAML under {WORKFLOWS}")
 
     print(
         f"""# Workshop seed — files embedded (Instruqt runs setup from /tmp without siblings)
@@ -48,7 +54,7 @@ if [ -z "$WORKSHOP_SEED" ]; then
 fi
 
 echo "Materializing Cisco seed assets under /tmp..."
-mkdir -p /tmp/dashboards
+mkdir -p /tmp/dashboards /tmp/workflows
 base64 -d <<'CISCO_KB_JSON' > /tmp/cisco-knowledge-base.json
 {b64(kb)}
 CISCO_KB_JSON
@@ -61,7 +67,11 @@ CISCO_SEED_FED_PY
 base64 -d <<'CISCO_SEED_DASH_PY' > /tmp/seed_cisco_dashboards.py
 {b64(seed_dash)}
 CISCO_SEED_DASH_PY
-{dash_embed}
+base64 -d <<'CISCO_SEED_WF_PY' > /tmp/seed_cisco_workflows.py
+{b64(seed_wf)}
+CISCO_SEED_WF_PY
+{embed_dir(dash_files, "/tmp/dashboards", "CISCO_DASH")}
+{embed_dir(wf_files, "/tmp/workflows", "CISCO_WF")}
 
 export ES_URL="${{ES_URL:-$(jq -r --arg region "${{REGIONS:-aws-us-east-1}}" '.[$region].endpoints.elasticsearch // empty' /tmp/project_results.json)}}"
 export KIBANA_URL="${{KIBANA_URL:-$(jq -r --arg region "${{REGIONS:-aws-us-east-1}}" '.[$region].endpoints.kibana // empty' /tmp/project_results.json)}}"
@@ -74,16 +84,16 @@ export KIBANA_API_KEY="${{KIBANA_API_KEY:-$ES_API_KEY}}"
 SEED="/tmp/$WORKSHOP_SEED"
 if [ ! -f "$SEED" ]; then
   echo "ERROR: seed script not found after embed: $SEED"
-  ls -la /tmp/seed_*.py /tmp/cisco-knowledge-base.json /tmp/dashboards 2>/dev/null || true
+  ls -la /tmp/seed_*.py /tmp/cisco-knowledge-base.json /tmp/dashboards /tmp/workflows 2>/dev/null || true
   exit 1
 fi
 
 echo "Running workshop seed: $WORKSHOP_SEED"
 if python3 "$SEED" > /tmp/workshop-seed.log 2>&1; then
-  tail -20 /tmp/workshop-seed.log || true
+  tail -30 /tmp/workshop-seed.log || true
 else
   echo "ERROR: seed failed — /tmp/workshop-seed.log"
-  tail -60 /tmp/workshop-seed.log || true
+  tail -80 /tmp/workshop-seed.log || true
   exit 1
 fi
 

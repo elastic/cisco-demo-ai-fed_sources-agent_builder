@@ -164,7 +164,16 @@ def main() -> None:
     if dash_src.is_dir():
         for df in dash_src.glob("*.json"):
             write(COMBINED / "workshop-assets" / "dashboards" / df.name, df.read_text(encoding="utf-8"))
-    for name in ("seed_cisco_kb.py", "seed_federated_sources.py", "seed_cisco_dashboards.py"):
+    wf_src = ROOT / "assets" / "shared" / "workflows"
+    if wf_src.is_dir():
+        for wf in list(wf_src.glob("*.yaml")) + list(wf_src.glob("*.yml")):
+            write(COMBINED / "workshop-assets" / "workflows" / wf.name, wf.read_text(encoding="utf-8"))
+    for name in (
+        "seed_cisco_kb.py",
+        "seed_federated_sources.py",
+        "seed_cisco_dashboards.py",
+        "seed_cisco_workflows.py",
+    ):
         src = ROOT / "scripts" / name
         if src.is_file():
             write(COMBINED / "track_scripts" / name, src.read_text(encoding="utf-8"))

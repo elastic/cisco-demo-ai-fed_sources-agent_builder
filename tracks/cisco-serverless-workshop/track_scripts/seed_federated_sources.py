@@ -231,15 +231,15 @@ def main() -> int:
         f"cisco-meraki-events ({len(events)} docs), cisco-network-events ({len(net_events)} docs)"
     )
 
-    # Dashboards (best-effort — indices already seeded)
-    try:
-        import seed_cisco_dashboards  # noqa: WPS433
-
-        rc = seed_cisco_dashboards.main()
-        if rc != 0:
-            print("warn: dashboard seed returned non-zero", file=sys.stderr)
-    except Exception as exc:  # noqa: BLE001
-        print(f"warn: dashboard seed skipped: {exc}", file=sys.stderr)
+    # Dashboards + workflows (best-effort — indices already seeded)
+    for mod_name in ("seed_cisco_dashboards", "seed_cisco_workflows"):
+        try:
+            mod = __import__(mod_name)
+            rc = mod.main()
+            if rc != 0:
+                print(f"warn: {mod_name} returned non-zero", file=sys.stderr)
+        except Exception as exc:  # noqa: BLE001
+            print(f"warn: {mod_name} skipped: {exc}", file=sys.stderr)
 
     return 0
 

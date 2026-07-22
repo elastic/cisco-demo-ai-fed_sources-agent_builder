@@ -57,8 +57,8 @@ def main() -> int:
         print("ERROR: ES_URL and credentials required", file=sys.stderr)
         return 1
 
+    # Serverless rejects index.number_of_shards / number_of_replicas settings.
     mapping = {
-        "settings": {"number_of_shards": 1, "number_of_replicas": 0},
         "mappings": {
             "properties": {
                 "title": {"type": "text"},
@@ -68,6 +68,7 @@ def main() -> int:
                 "keywords": {"type": "keyword"},
                 "resolution_type": {"type": "keyword"},
                 "domain_path": {"type": "keyword"},
+                "doc_id": {"type": "keyword"},
             }
         },
     }

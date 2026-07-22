@@ -1,6 +1,6 @@
 ---
 slug: explore-cisco-kb
-id: zem68uo9iqgw
+id: lmslgnjsb2un
 type: challenge
 title: Challenge 1 — Find the runbook
 teaser: ES|QL plus Elastic AI Assistant — get both Branch 4471 runbooks in one ask.
@@ -15,7 +15,7 @@ notes:
 
     Fullscreen: https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html
 tabs:
-- id: n0djtieax4a6
+- id: wjwdvttlxyer
   title: NOC Dashboard
   type: service
   hostname: es3-api

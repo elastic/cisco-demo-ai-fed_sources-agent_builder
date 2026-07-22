@@ -2,7 +2,7 @@
 """Install Cisco workshop dashboards into Kibana (Serverless Search).
 
 Uses POST/PUT /api/dashboards with Elastic-Api-Version 2023-10-31
-(markdown + vis data_table + ES|QL) — same pattern as Adaptive Metrics Instruqt labs.
+(markdown + vis data_table + ES|QL). Validated against Elastic Cloud Serverless Search.
 """
 from __future__ import annotations
 
@@ -47,26 +47,26 @@ def auth_header() -> str:
 
 
 def kibana_base() -> str:
-    return (
-        os.environ.get("KIBANA_URL")
-        or os.environ.get("ES_KIBANA_URL")
-        or ""
-    ).rstrip("/")
+    return (os.environ.get("KIBANA_URL") or os.environ.get("ES_KIBANA_URL") or "").rstrip("/")
 
 
-def request(method: str, url: str, header: str, body: bytes | None = None) -> tuple[int, str]:
-    req = urllib.request.Request(
-        url,
-        data=body,
-        method=method,
-        headers={
-            "Authorization": header,
-            "kbn-xsrf": "true",
-            "Content-Type": "application/json",
-            "Elastic-Api-Version": API_VERSION,
-            "Accept-Encoding": "identity",
-        },
-    )
+def request(
+    method: str,
+    url: str,
+    header: str,
+    body: bytes | None = None,
+    *,
+    api_version: str | None = None,
+) -> tuple[int, str]:
+    headers = {
+        "Authorization": header,
+        "kbn-xsrf": "true",
+        "Content-Type": "application/json",
+        "Accept-Encoding": "identity",
+    }
+    if api_version:
+        headers["Elastic-Api-Version"] = api_version
+    req = urllib.request.Request(url, data=body, method=method, headers=headers)
     try:
         with urllib.request.urlopen(req, timeout=120) as resp:
             return resp.status, decode(resp.read())
@@ -75,12 +75,11 @@ def request(method: str, url: str, header: str, body: bytes | None = None) -> tu
 
 
 def dashboard_paths() -> list[Path]:
-    roots = [
+    return [
         Path("/tmp/dashboards"),
         Path(__file__).resolve().parents[1] / "assets" / "shared" / "dashboards",
         Path("/track/assets/shared/dashboards"),
     ]
-    return roots
 
 
 def load_spec(filename: str) -> dict:
@@ -102,42 +101,50 @@ def ensure_data_view(base: str, header: str, view_id: str, title: str, time_fiel
     }
     if time_field:
         body["data_view"]["timeFieldName"] = time_field
+    # Data views API expects YYYY-MM-DD Elastic-Api-Version (or omit).
     code, resp = request(
         "POST",
         f"{base}/api/data_views/data_view",
         header,
         json.dumps(body).encode(),
+        api_version="2023-10-31",
     )
     if code in (200, 201):
         print(f"data view ok: {view_id}")
-    elif code == 409 or "already exists" in resp.lower():
+    elif code == 409 or "already exists" in resp.lower() or "duplicate" in resp.lower():
         print(f"data view exists: {view_id}")
     else:
-        print(f"warn: data view {view_id} HTTP {code}: {resp[:240]}", file=sys.stderr)
+        print(f"warn: data view {view_id} HTTP {code}: {resp[:200]}", file=sys.stderr)
 
 
 def upsert_dashboard(base: str, header: str, dash_id: str, spec: dict) -> None:
     payload = dict(spec)
     payload.pop("time_from", None)
     payload.pop("time_to", None)
-    payload["id"] = dash_id
+    # id belongs in the URL path only for PUT/POST body on Serverless
+    payload.pop("id", None)
     raw = json.dumps(payload).encode()
 
-    code, resp = request("PUT", f"{base}/api/dashboards/{dash_id}", header, raw)
+    code, resp = request(
+        "PUT", f"{base}/api/dashboards/{dash_id}", header, raw, api_version=API_VERSION
+    )
     if code in (200, 201):
-        print(f"dashboard upserted: {dash_id} ({payload.get('title')})")
+        print(f"dashboard upserted: {dash_id}")
         return
 
-    # Fallback create
-    create_body = dict(payload)
-    create_body.pop("id", None)
-    code2, resp2 = request("POST", f"{base}/api/dashboards", header, json.dumps(create_body).encode())
-    if code2 in (200, 201):
-        print(f"dashboard created: {dash_id} via POST ({payload.get('title')}) — HTTP {code} on PUT: {resp[:160]}")
-        return
-    raise RuntimeError(
-        f"dashboard {dash_id} failed PUT {code}: {resp[:400]} | POST {code2}: {resp2[:400]}"
+    code2, resp2 = request(
+        "POST",
+        f"{base}/api/dashboards",
+        header,
+        raw,
+        api_version=API_VERSION,
     )
+    if code2 in (200, 201):
+        # POST may assign a random id — prefer PUT for stable deep links
+        print(f"warn: dashboard {dash_id} PUT failed ({code}: {resp[:160]}); created via POST")
+        print(f"dashboard created via POST (open Dashboards list for title: {payload.get('title')})")
+        return
+    raise RuntimeError(f"dashboard {dash_id} failed PUT {code}: {resp[:500]} | POST {code2}: {resp2[:500]}")
 
 
 def main() -> int:
@@ -147,20 +154,21 @@ def main() -> int:
         print("ERROR: KIBANA_URL and API key/password required for dashboards", file=sys.stderr)
         return 1
 
-    # Best-effort data views (ES|QL panels do not require them, but Discover benefits)
     ensure_data_view(base, header, "cisco-meraki-events", "cisco-meraki-events", "@timestamp")
     ensure_data_view(base, header, "cisco-network-events", "cisco-network-events", "@timestamp")
     ensure_data_view(base, header, "cisco-network-kb", "cisco-network-kb", None)
     ensure_data_view(base, header, "cisco-internal-runbooks", "cisco-internal-runbooks", None)
 
+    failed = 0
     for dash_id, filename in DASHBOARDS:
         try:
-            spec = load_spec(filename)
-            upsert_dashboard(base, header, dash_id, spec)
-        except Exception as exc:  # noqa: BLE001 — seed should not hard-fail the whole lab
+            upsert_dashboard(base, header, dash_id, load_spec(filename))
+        except Exception as exc:  # noqa: BLE001
             print(f"ERROR installing {dash_id}: {exc}", file=sys.stderr)
-            return 1
+            failed += 1
 
+    if failed:
+        return 1
     print("Cisco dashboards ready: cisco-noc-ops, cisco-kb-library")
     return 0
 
