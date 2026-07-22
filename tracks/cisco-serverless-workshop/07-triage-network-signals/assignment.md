@@ -1,6 +1,6 @@
 ---
 slug: triage-network-signals
-id: mujxmcvrtugm
+id: ynzeiqkvzwsu
 type: challenge
 title: Challenge 7 — Triage with Agent + A2A Workflow
 teaser: Re-run the inject — Cisco Agent for Elastic signals, Workflow A2A for Splunk
@@ -16,7 +16,7 @@ notes:
 
     Fullscreen: https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html
 tabs:
-- id: w8v7d1hcyguz
+- id: im1jjdxfrfv2
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -32,7 +32,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: xlzogfbnuyox
+- id: px5v9k3ix3fu
   title: A2A Workflow
   type: service
   hostname: es3-api

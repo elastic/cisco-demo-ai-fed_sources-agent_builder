@@ -3,10 +3,9 @@ slug: exec-demo-close
 id: mymdtoqbvr6n
 type: challenge
 title: Challenge 9 — Close the loop with the Cisco Agent
-teaser: 'Agent recap: Find → Federate → Act, with Workflows/A2A called out as the
-  augment path.'
+teaser: "Agent recap: Find → Federate → Act, with Workflows/A2A called out as the augment path."
 tabs:
-- id: tygupops4kz3
+- id: tab-agent-09
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -37,7 +36,7 @@ enhanced_loading: null
 
 You stayed on **Elastic Serverless Search**: created `Cisco NOC Copilot`, mapped silos, correlated events, and ran stubbed Splunk O11Y A2A.
 
-**Time:** ~2–3 minutes with the Agent
+**Time:** ~2–3 minutes with the Agent  
 *Without AI this beat was usually 15–20 minutes.*
 
 ## Your task

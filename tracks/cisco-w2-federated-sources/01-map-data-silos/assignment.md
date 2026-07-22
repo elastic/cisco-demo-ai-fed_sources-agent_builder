@@ -6,7 +6,7 @@ title: Challenge 4 — Map silos the Agent will query
 teaser: Four Search indices = four silos — inventory them, then ask the Cisco Agent
   who owns each.
 tabs:
-- id: nvl9wnlfh1bc
+- id: qmlot0c61rdr
   title: Indices
   type: service
   hostname: es3-api
@@ -22,7 +22,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: tbhn4jvddve9
+- id: dovbypaccjuq
   title: Cisco Agent
   type: service
   hostname: es3-api

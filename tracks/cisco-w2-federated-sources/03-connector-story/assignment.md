@@ -6,11 +6,11 @@ title: Challenge 6 — Plan federation with Agent + Workflows
 teaser: Connectors feed Search; the Cisco Agent + A2A workflow are the query/augment
   layer.
 tabs:
-- id: nxem4dy7xtlg
-  title: Connectors
+- id: qgj49ldurszl
+  title: Cisco Agent
   type: service
   hostname: es3-api
-  path: /app/enterprise_search/content/connectors
+  path: /app/agent_builder
   port: 8080
   custom_request_headers:
   - key: Content-Security-Policy
@@ -22,11 +22,11 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: xfgznemctqvj
-  title: Cisco Agent
+- id: r3qupizb45f9
+  title: Content connectors
   type: service
   hostname: es3-api
-  path: /app/agent_builder
+  path: /app/management/data/search_connectors/connectors
   port: 8080
   custom_request_headers:
   - key: Content-Security-Policy
@@ -45,26 +45,26 @@ enhanced_loading: null
 
 # Plan federation with Agent + Workflows
 
-> **Thesis:** Connectors keep Meraki/ITSM authoritative. `Cisco NOC Copilot` + Workflows/A2A are how you **query and augment** — not replace — those systems.
+> **Thesis:** Content connectors keep Meraki/ITSM authoritative. `Cisco NOC Copilot` + Workflows/A2A are how you **query and augment** — not replace — those systems.
 
 > **Tip:** If Discover, Dashboards, or ES|QL show no data, expand the time picker to **Last 24 hours** (Branch 4471 workshop events are seeded across the day).
 
 ## Background
 
-Lab indices simulate a connector-fed world. Production uses **Elastic connectors** into the same Serverless Search project.
+Lab indices simulate a connector-fed world. Production uses **Elastic content connectors** into the same Serverless Search project.
 
 **Time:** ~3–5 minutes with the Agent
 *Without AI this beat was usually 15–20 minutes.*
 
 ## Your task
 
-### 1 — Tour Connectors (30 seconds)
+### 1 — Tour Content connectors (30 seconds)
 
-Open [button label="Connectors"](tab-0). Skim types (no production connector required).
+Open [button label="Content connectors"](tab-1). Skim available types — no production connector required. If you see **Application not found**, open Kibana global search and type **Content connectors** (path: Stack Management → Content connectors).
 
 ### 2 — Agent writes the federation plan
 
-Open [button label="Cisco Agent"](tab-1) and paste:
+Open [button label="Cisco Agent"](tab-0) (`Cisco NOC Copilot`) and paste:
 
 ```text
 Draft a federation plan for Cisco on Elastic Serverless Search.
