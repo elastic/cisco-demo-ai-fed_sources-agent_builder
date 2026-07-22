@@ -18,131 +18,175 @@
     {
       "id": "cisco-noc-md-hero",
       "type": "markdown",
-      "grid": { "x": 0, "y": 0, "w": 48, "h": 5 },
+      "grid": { "x": 0, "y": 0, "w": 48, "h": 4 },
       "config": {
-        "content": "# Cisco NOC Command Center\n\n**Incident:** Branch **4471** (Dallas) — Meraki AP offline + BGP down on `edge-dfw-01`.\n\nAll panels query your **Elastic Serverless Search** indices. Next: ES|QL + AI Assistant on `cisco-network-kb`. Also try Workflows → **Cisco Branch 4471 — Splunk O11Y A2A RCA**.",
+        "content": "**Incident focus:** Branch **4471** (Dallas) — Meraki AP offline + BGP down on `edge-dfw-01`. Panels use ES|QL against your Serverless Search indices. Next: AI Assistant on `cisco-network-kb`, or Workflows → **Cisco Branch 4471 — Splunk O11Y A2A RCA**.",
         "settings": { "open_links_in_new_tab": true }
       }
     },
     {
       "id": "cisco-noc-kpi-meraki-offline",
       "type": "vis",
-      "grid": { "x": 0, "y": 5, "w": 12, "h": 8 },
+      "grid": { "x": 0, "y": 4, "w": 12, "h": 5 },
       "config": {
-        "hide_title": false,
-        "title": "Meraki offline (24h)",
-        "type": "data_table",
+        "title": "",
+        "type": "metric",
         "data_source": {
           "type": "esql",
-          "query": "FROM cisco-meraki-events\n| WHERE @timestamp > NOW() - 24 hours AND event_type == \"device.offline\"\n| STATS offline = COUNT(*)\n| KEEP offline"
+          "query": "FROM cisco-meraki-events\n| WHERE @timestamp > NOW() - 24 hours AND event_type == \"device.offline\"\n| STATS `Meraki offline (24h)` = COUNT(*)"
         },
-        "sampling": 1,
-        "ignore_global_filters": false,
-        "rows": [{ "column": "offline" }],
-        "styling": { "paging": 10 }
+        "metrics": [{ "type": "primary", "column": "Meraki offline (24h)" }]
       }
     },
     {
       "id": "cisco-noc-kpi-bgp",
       "type": "vis",
-      "grid": { "x": 12, "y": 5, "w": 12, "h": 8 },
+      "grid": { "x": 12, "y": 4, "w": 12, "h": 5 },
       "config": {
-        "hide_title": false,
-        "title": "BGP session down (24h)",
-        "type": "data_table",
+        "title": "",
+        "type": "metric",
         "data_source": {
           "type": "esql",
-          "query": "FROM cisco-network-events\n| WHERE @timestamp > NOW() - 24 hours AND event_type == \"bgp.session_down\"\n| STATS bgp_down = COUNT(*)\n| KEEP bgp_down"
+          "query": "FROM cisco-network-events\n| WHERE @timestamp > NOW() - 24 hours AND event_type == \"bgp.session_down\"\n| STATS `BGP session down (24h)` = COUNT(*)"
         },
-        "sampling": 1,
-        "ignore_global_filters": false,
-        "rows": [{ "column": "bgp_down" }],
-        "styling": { "paging": 10 }
+        "metrics": [{ "type": "primary", "column": "BGP session down (24h)" }]
       }
     },
     {
       "id": "cisco-noc-kpi-4471",
       "type": "vis",
-      "grid": { "x": 24, "y": 5, "w": 12, "h": 8 },
+      "grid": { "x": 24, "y": 4, "w": 12, "h": 5 },
       "config": {
-        "hide_title": false,
-        "title": "Branch 4471 events (24h)",
-        "type": "data_table",
+        "title": "",
+        "type": "metric",
         "data_source": {
           "type": "esql",
-          "query": "FROM cisco-meraki-events, cisco-network-events\n| WHERE @timestamp > NOW() - 24 hours\n| EVAL site_name = COALESCE(site, `cisco.site`)\n| WHERE site_name LIKE \"*4471*\"\n| STATS events_4471 = COUNT(*)\n| KEEP events_4471"
+          "query": "FROM cisco-meraki-events, cisco-network-events\n| WHERE @timestamp > NOW() - 24 hours\n| EVAL site_name = COALESCE(site, `cisco.site`)\n| WHERE site_name LIKE \"*4471*\"\n| STATS `Branch 4471 events (24h)` = COUNT(*)"
         },
-        "sampling": 1,
-        "ignore_global_filters": false,
-        "rows": [{ "column": "events_4471" }],
-        "styling": { "paging": 10 }
+        "metrics": [{ "type": "primary", "column": "Branch 4471 events (24h)" }]
       }
     },
     {
       "id": "cisco-noc-kpi-kb",
       "type": "vis",
-      "grid": { "x": 36, "y": 5, "w": 12, "h": 8 },
+      "grid": { "x": 36, "y": 4, "w": 12, "h": 5 },
       "config": {
-        "hide_title": false,
-        "title": "KB runbooks indexed",
-        "type": "data_table",
+        "title": "",
+        "type": "metric",
         "data_source": {
           "type": "esql",
-          "query": "FROM cisco-network-kb\n| STATS runbooks = COUNT(*)\n| KEEP runbooks"
+          "query": "FROM cisco-network-kb\n| STATS `KB runbooks indexed` = COUNT(*)"
         },
-        "sampling": 1,
-        "ignore_global_filters": false,
-        "rows": [{ "column": "runbooks" }],
-        "styling": { "paging": 10 }
+        "metrics": [{ "type": "primary", "column": "KB runbooks indexed" }]
       }
     },
     {
       "id": "cisco-noc-meraki-timeline",
       "type": "vis",
-      "grid": { "x": 0, "y": 13, "w": 28, "h": 14 },
+      "grid": { "x": 0, "y": 9, "w": 28, "h": 12 },
       "config": {
-        "hide_title": false,
-        "title": "Meraki events over time",
-        "type": "data_table",
-        "data_source": {
-          "type": "esql",
-          "query": "FROM cisco-meraki-events\n| WHERE @timestamp > NOW() - 24 hours\n| STATS count = COUNT(*) BY event_type, bucket = BUCKET(@timestamp, 1 hour)\n| SORT bucket ASC\n| KEEP bucket, event_type, count"
+        "title": "Meraki events over time (by type)",
+        "type": "xy",
+        "axis": {
+          "x": {
+            "scale": "temporal",
+            "domain": { "type": "fit", "rounding": false },
+            "title": { "visible": false }
+          },
+          "y": { "title": { "visible": false } }
         },
-        "sampling": 1,
-        "ignore_global_filters": false,
-        "rows": [
-          { "column": "bucket" },
-          { "column": "event_type" },
-          { "column": "count" }
-        ],
-        "styling": { "paging": 20 }
+        "layers": [
+          {
+            "type": "area_stacked",
+            "data_source": {
+              "type": "esql",
+              "query": "FROM cisco-meraki-events\n| WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart\n| STATS count = COUNT(*) BY event_type, BUCKET(@timestamp, 24, ?_tstart, ?_tend)"
+            },
+            "x": {
+              "column": "BUCKET(@timestamp, 24, ?_tstart, ?_tend)",
+              "label": "@timestamp"
+            },
+            "y": [{ "column": "count" }],
+            "breakdown_by": { "column": "event_type" }
+          }
+        ]
       }
     },
     {
       "id": "cisco-noc-by-site",
       "type": "vis",
-      "grid": { "x": 28, "y": 13, "w": 20, "h": 14 },
+      "grid": { "x": 28, "y": 9, "w": 20, "h": 12 },
       "config": {
-        "hide_title": false,
-        "title": "Events by site",
-        "type": "data_table",
+        "title": "Top sites by event volume",
+        "type": "xy",
+        "axis": {
+          "x": { "title": { "visible": false } },
+          "y": { "title": { "visible": false } }
+        },
+        "layers": [
+          {
+            "type": "bar_horizontal",
+            "data_source": {
+              "type": "esql",
+              "query": "FROM cisco-meraki-events, cisco-network-events\n| WHERE @timestamp > NOW() - 24 hours\n| EVAL site_name = COALESCE(site, `cisco.site`)\n| STATS count = COUNT(*) BY site_name\n| SORT count DESC\n| LIMIT 10"
+            },
+            "x": { "column": "site_name" },
+            "y": [{ "column": "count" }]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cisco-noc-meraki-heatmap",
+      "type": "vis",
+      "grid": { "x": 0, "y": 21, "w": 24, "h": 12 },
+      "config": {
+        "title": "Meraki activity heatmap (hour × event type)",
+        "type": "heatmap",
         "data_source": {
           "type": "esql",
-          "query": "FROM cisco-meraki-events, cisco-network-events\n| WHERE @timestamp > NOW() - 24 hours\n| EVAL site_name = COALESCE(site, `cisco.site`)\n| STATS count = COUNT(*) BY site_name\n| SORT count DESC\n| LIMIT 10"
+          "query": "FROM cisco-meraki-events\n| WHERE @timestamp > NOW() - 24 hours\n| EVAL hour = DATE_EXTRACT(\"hour_of_day\", @timestamp)\n| STATS count = COUNT(*) BY event_type, hour"
         },
-        "sampling": 1,
-        "ignore_global_filters": false,
-        "rows": [
-          { "column": "site_name" },
-          { "column": "count" }
-        ],
-        "styling": { "paging": 10 }
+        "x": { "column": "hour" },
+        "y": { "column": "event_type" },
+        "metric": { "column": "count" }
+      }
+    },
+    {
+      "id": "cisco-noc-net-timeline",
+      "type": "vis",
+      "grid": { "x": 24, "y": 21, "w": 24, "h": 12 },
+      "config": {
+        "title": "Network signals over time",
+        "type": "xy",
+        "axis": {
+          "x": {
+            "scale": "temporal",
+            "domain": { "type": "fit", "rounding": false },
+            "title": { "visible": false }
+          },
+          "y": { "title": { "visible": false } }
+        },
+        "layers": [
+          {
+            "type": "area",
+            "data_source": {
+              "type": "esql",
+              "query": "FROM cisco-network-events\n| WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart\n| STATS count = COUNT(*) BY BUCKET(@timestamp, 24, ?_tstart, ?_tend)"
+            },
+            "x": {
+              "column": "BUCKET(@timestamp, 24, ?_tstart, ?_tend)",
+              "label": "@timestamp"
+            },
+            "y": [{ "column": "count" }]
+          }
+        ]
       }
     },
     {
       "id": "cisco-noc-meraki-table",
       "type": "vis",
-      "grid": { "x": 0, "y": 27, "w": 24, "h": 14 },
+      "grid": { "x": 0, "y": 33, "w": 24, "h": 12 },
       "config": {
         "hide_title": false,
         "title": "Latest Meraki offline",
@@ -165,7 +209,7 @@
     {
       "id": "cisco-noc-net-table",
       "type": "vis",
-      "grid": { "x": 24, "y": 27, "w": 24, "h": 14 },
+      "grid": { "x": 24, "y": 33, "w": 24, "h": 12 },
       "config": {
         "hide_title": false,
         "title": "Latest network signals",
