@@ -471,7 +471,7 @@ SLIDES["agents.html"] = wrap(
   <div class="slide">
     <div class="eyebrow fade-up-1">Module 3</div>
     <h1 class="headline fade-up-2">Agent Builder — <strong>search to action</strong></h1>
-    <p class="sub fade-up-3">Grounded tools on Search indices. No hallucinated runbooks. Still Search-only.</p>
+    <p class="sub fade-up-3">Grounded tools on Search indices. No hallucinated runbooks. Elastic Search Serverless only.</p>
     <div class="header-divider fade-up-3"></div>
     <div class="canvas-wrap fade-up-4"><canvas id="cvAgent"></canvas></div>
   </div>
@@ -812,7 +812,7 @@ NOTES = {
     "hybrid.html": "- Lab checklist. Don't linger on UI — land the talk track.",
     "federated.html": "- Animated converge. Federate don't rip-and-replace.",
     "esql.html": "- Branch 4471 thread into Module 3.",
-    "agents.html": "- Grounded tools. Search-only. Watch the pulse along the pipeline.",
+    "agents.html": "- Grounded tools. Elastic Search Serverless only. Watch the pulse along the pipeline.",
     "noc-story.html": "- 90-second exec close. Practice out loud.",
     "future.html": "- Clear bridge today vs roadmap. Economic punch: don't pay twice for cold.",
     "architecture.html": "- Sources → federation → tiers. Analyst takeaway: one query layer.",
