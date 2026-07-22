@@ -469,8 +469,12 @@ timelimit: {ch["minutes"] * 60}
 
 
 def check_script() -> str:
+    shared = ROOT / "scripts" / "instruqt-check-es3.sh"
+    if shared.is_file():
+        return shared.read_text(encoding="utf-8")
     return """#!/bin/bash
-echo "✓ Continue when you have completed the tasks in Instructions."
+set -euo pipefail
+echo "OK — continue to the next challenge."
 exit 0
 """
 
@@ -504,8 +508,10 @@ def main() -> None:
         for ch in t["challenges"]:
             cdir = base / ch["dir"]
             write(cdir / "assignment.md", assignment(ch))
-            write(cdir / "check-es3-api", check_script())
-            write(cdir / "solve-es3-api", check_script())
+            for name in ("check-es3-api", "solve-es3-api"):
+                path = cdir / name
+                write(path, check_script())
+                path.chmod(0o755)
 
         dl = base / "workshop-assets" / "downloads"
         write(

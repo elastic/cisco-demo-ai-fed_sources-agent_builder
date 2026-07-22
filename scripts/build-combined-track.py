@@ -149,8 +149,13 @@ def main() -> None:
         )
         front = inject_loading_notes(front, dest_ch)
         write(dest / "assignment.md", f"---{front}---\n\n{body}")
+        check_src = ROOT / "scripts" / "instruqt-check-es3.sh"
         for script in ("check-es3-api", "solve-es3-api"):
-            shutil.copy2(src / script, dest / script)
+            if check_src.is_file():
+                shutil.copy2(check_src, dest / script)
+            else:
+                shutil.copy2(src / script, dest / script)
+            (dest / script).chmod(0x755)
 
     kb = ROOT / "assets" / "shared" / "cisco-knowledge-base.json"
     if kb.is_file():
