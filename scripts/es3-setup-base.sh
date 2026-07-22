@@ -270,7 +270,7 @@ cat > /usr/share/nginx/html/loading/index.html <<'HTML_EOF'
         </div>
         <div class="content">
             <div id="dashboard-container" class="iframe-container">
-                <iframe src="https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html?v1=1" allow="fullscreen"></iframe>
+                <iframe src="https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html?v2=1" allow="fullscreen"></iframe>
             </div>
         </div>
     </div>

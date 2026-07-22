@@ -1,6 +1,6 @@
 ---
 slug: triage-network-signals
-id: 5phqqs0hgenv
+id: tinsoaexxlkm
 type: challenge
 title: Challenge 7 — Triage the incident
 teaser: Injected Branch 4471 signals — BGP + Meraki — on Serverless Search only.
@@ -15,7 +15,7 @@ notes:
 
     Fullscreen: https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html
 tabs:
-- id: ldgnkoyu3l5q
+- id: 2er7ypvgiz7h
   title: Elastic Serverless Search
   type: service
   hostname: es3-api

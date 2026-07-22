@@ -1,12 +1,12 @@
 ---
 slug: cross-source-esql
-id: 14mwkbutx2b3
+id: ddxyc16xjky2
 type: challenge
 title: Challenge 5 — Correlate event + runbook
 teaser: Same Serverless project — Meraki offline event meets recovery guidance in
   ES|QL.
 tabs:
-- id: yubmzscnbhtj
+- id: eorxojzxcss5
   title: Elastic Serverless Search
   type: service
   hostname: es3-api

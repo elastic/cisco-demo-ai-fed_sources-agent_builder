@@ -1,12 +1,12 @@
 ---
 slug: connector-story
-id: 7ebhptg611jz
+id: agiazvduwnmf
 type: challenge
 title: Challenge 6 — Plan the federation path
 teaser: Connectors keep Meraki and ITSM authoritative — Serverless Search becomes
   the query layer.
 tabs:
-- id: yf0accztcxuz
+- id: xyumdsbbypaj
   title: Elastic Serverless Search
   type: service
   hostname: es3-api

@@ -1,6 +1,6 @@
 ---
 slug: map-data-silos
-id: jqehajfrot7l
+id: 8bfrrd56ajqr
 type: challenge
 title: Challenge 4 — Map Cisco data silos
 teaser: Four indices, one Serverless Search project — who owns what?
@@ -15,7 +15,7 @@ notes:
 
     Fullscreen: https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html
 tabs:
-- id: deahgufxmvkt
+- id: mfd3umh4z72k
   title: Elastic Serverless Search
   type: service
   hostname: es3-api

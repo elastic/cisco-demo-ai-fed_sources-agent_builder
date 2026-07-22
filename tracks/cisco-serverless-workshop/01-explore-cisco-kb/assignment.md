@@ -1,6 +1,6 @@
 ---
 slug: explore-cisco-kb
-id: lzwxi6zoxlwv
+id: hd3aludlmarz
 type: challenge
 title: Challenge 1 — Find the runbook
 teaser: Branch 4471 is paging — start in Discover on your Serverless Search project.
@@ -15,7 +15,7 @@ notes:
 
     Fullscreen: https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html
 tabs:
-- id: tgq1o9tog8qg
+- id: xsizvsezwtpk
   title: Elastic Serverless Search
   type: service
   hostname: es3-api

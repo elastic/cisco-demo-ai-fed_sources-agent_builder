@@ -1,12 +1,12 @@
 ---
 slug: hybrid-retrieval
-id: jjqtp2sodqgk
+id: 8xrq2qq62txl
 type: challenge
 title: Challenge 2 — Prove hybrid retrieval
 teaser: Keyword catches codes; meaning catches intent — hybrid is what NOC actually
   needs.
 tabs:
-- id: iybw8yuudnwz
+- id: d7atl4jrphtb
   title: Elastic Serverless Search
   type: service
   hostname: es3-api
