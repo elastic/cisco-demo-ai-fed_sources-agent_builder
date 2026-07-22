@@ -1,9 +1,10 @@
 ---
 slug: explore-cisco-kb
-id: hd3aludlmarz
+id: chveui414ead
 type: challenge
 title: Challenge 1 — Find the runbook
-teaser: Branch 4471 is paging — start in Discover on your Serverless Search project.
+teaser: Branch 4471 is paging — paste ES|QL against cisco-network-kb on Serverless
+  Search.
 notes:
 - type: text
   contents: |
@@ -15,11 +16,11 @@ notes:
 
     Fullscreen: https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html
 tabs:
-- id: xsizvsezwtpk
+- id: vh9tnnanmwhl
   title: Elastic Serverless Search
   type: service
   hostname: es3-api
-  path: /app/discover
+  path: /app/elasticsearch/query
   port: 8080
   custom_request_headers:
   - key: Content-Security-Policy
@@ -52,17 +53,35 @@ Your lab is a single **Elastic Serverless Search** project with a seeded Cisco k
 
 ## Your task
 
-1. Wait until **Elastic Serverless Search** finishes provisioning (~3–4 min on first start).
-2. In **Discover**, open **`cisco-network-kb`** (use the data view / index picker if needed).
-3. Run a keyword search: `BGP neighbor idle`
-4. Filter **product: Meraki** and open at least one recovery-oriented doc.
-5. In notes, write one sentence on how unified Search reduces **MTTR** for Cisco ops.
+Paste each query into the **ES|QL** editor and run it.
+
+**BGP runbook**
+
+```esql
+FROM cisco-network-kb
+| WHERE MATCH(content, "BGP neighbor idle")
+   OR MATCH(title, "BGP neighbor")
+| KEEP title, product, category, content
+| LIMIT 10
+```
+
+**Meraki recovery**
+
+```esql
+FROM cisco-network-kb
+| WHERE product == "Meraki" AND MATCH(content, "offline")
+| KEEP title, product, category, content
+| LIMIT 10
+```
+
+1. Confirm the BGP query returns **BGP Neighbor Down — IOS-XE Troubleshooting** (or similar).
+2. Confirm the Meraki query returns **Meraki AP Offline Recovery** and note **two** steps from `content`.
+3. In notes, write one sentence on how unified Search reduces **MTTR** for Cisco ops.
 
 ## Success criteria
 
-- You can see documents in **`cisco-network-kb`**
-- Keyword search returns BGP-related hits
-- Meraki filter shows Meraki docs
+- BGP query returns KB hits from **`cisco-network-kb`**
+- Meraki query returns the offline recovery doc
 - MTTR note is written
 
 ## Verification
