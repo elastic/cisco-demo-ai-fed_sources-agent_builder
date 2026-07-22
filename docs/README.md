@@ -13,7 +13,7 @@ After deploy, the site is live at:
 
 | Page | Use |
 |------|-----|
-| [slides.html](slides.html) | **8-slide deck** — what/why infographics (← →), facilitator or fullscreen |
+| [slides.html](slides.html) | **11-slide deck** — what/why + Serverless federation future (← →), facilitator or fullscreen |
 | [slides.html?embed=1](slides.html?embed=1) | **Instruqt iframe** (Notes + nginx `/loading`) |
 | [instruqt.html](instruqt.html) | Compact static loader |
 | [index.html](index.html) | Landing summary |
