@@ -5,7 +5,7 @@ type: challenge
 title: Challenge 3 — Agent drafts the peer story
 teaser: Cisco NOC Copilot writes the Slack/email update — Find + A2A proof included.
 tabs:
-- id: 9k5kswx87ukp
+- id: q04qqfyndnna
   title: Cisco Agent
   type: service
   hostname: es3-api

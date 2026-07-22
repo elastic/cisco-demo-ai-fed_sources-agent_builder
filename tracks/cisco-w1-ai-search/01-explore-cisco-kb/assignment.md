@@ -5,7 +5,7 @@ type: challenge
 title: Challenge 1 — Create the Cisco Agent & find the runbook
 teaser: Stand up Cisco NOC Copilot in Agent Builder — then ask Branch 4471.
 tabs:
-- id: 27zusvxisocv
+- id: hsnypddwmabj
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -21,7 +21,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: mhqcuvovi1qj
+- id: r8ytabjgpw3p
   title: NOC Dashboard
   type: service
   hostname: es3-api

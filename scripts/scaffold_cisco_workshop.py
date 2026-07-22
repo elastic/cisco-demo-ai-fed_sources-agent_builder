@@ -473,8 +473,7 @@ def check_script() -> str:
     if shared.is_file():
         return shared.read_text(encoding="utf-8")
     return """#!/bin/bash
-set -euo pipefail
-echo "OK — continue to the next challenge."
+echo "OK - continue to the next challenge."
 exit 0
 """
 

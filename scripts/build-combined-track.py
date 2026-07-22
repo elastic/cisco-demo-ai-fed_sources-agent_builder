@@ -114,7 +114,10 @@ def inject_loading_notes(front: str, dest_ch: str) -> str:
     Fullscreen: {SLIDES_PAGE}
 
 """
-    return re.sub(r"(teaser: .+\n)", r"\1" + block, front, count=1)
+    # Insert before tabs: (not after first teaser line — teasers may wrap).
+    if re.search(r"^tabs:\s*$", front, flags=re.MULTILINE):
+        return re.sub(r"^tabs:\s*$", block + "tabs:", front, count=1, flags=re.MULTILINE)
+    return front.rstrip() + "\n" + block
 
 
 def main() -> None:
@@ -150,12 +153,18 @@ def main() -> None:
         front = inject_loading_notes(front, dest_ch)
         write(dest / "assignment.md", f"---{front}---\n\n{body}")
         check_src = ROOT / "scripts" / "instruqt-check-es3.sh"
+        check_body = (
+            check_src.read_text(encoding="utf-8")
+            if check_src.is_file()
+            else "#!/bin/bash\necho OK\nexit 0\n"
+        )
+        if not check_body.startswith("#!/"):
+            check_body = "#!/bin/bash\n" + check_body
         for script in ("check-es3-api", "solve-es3-api"):
-            if check_src.is_file():
-                shutil.copy2(check_src, dest / script)
-            else:
-                shutil.copy2(src / script, dest / script)
-            (dest / script).chmod(0o755)
+            target = dest / script
+            # Write (don't copy2) so we never inherit macOS xattrs; force +x.
+            target.write_text(check_body.replace("\r\n", "\n"), encoding="utf-8")
+            target.chmod(0o755)
 
     kb = ROOT / "assets" / "shared" / "cisco-knowledge-base.json"
     if kb.is_file():
