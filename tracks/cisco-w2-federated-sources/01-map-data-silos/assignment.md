@@ -6,7 +6,7 @@ title: Challenge 4 — Map silos the Agent will query
 teaser: Four Search indices = four silos — inventory them, then ask the Cisco Agent
   who owns each.
 tabs:
-- id: vb4dcbefopst
+- id: ukgaqufayocx
   title: Indices
   type: service
   hostname: es3-api
@@ -22,7 +22,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: abvjgxjry7bx
+- id: hr7yrvlaw6w9
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -69,7 +69,7 @@ Open [button label="Indices"](tab-0). Confirm all **four** indices exist.
 
 ### 2 — Spot-check Meraki fields
 
-Open Discover on `cisco-meraki-events` (or ask the agent which fields matter). Note `event_type`, `device_name`, `site`.
+Open Discover on `cisco-meraki-events` (or ask the agent which fields matter). Set time to **Last 24 hours** if the table is empty. Note `event_type`, `device_name`, `site`.
 
 ### 3 — Ask the Agent to map ownership
 

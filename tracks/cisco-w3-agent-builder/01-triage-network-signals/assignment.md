@@ -6,7 +6,7 @@ title: Challenge 7 — Triage with Agent + A2A Workflow
 teaser: Re-run the inject — Cisco Agent for Elastic signals, Workflow A2A for Splunk
   O11Y.
 tabs:
-- id: f040f470iohh
+- id: tekunhyeyrxy
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -22,7 +22,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: 63b4utpx6wft
+- id: kiwydyltz2cq
   title: A2A Workflow
   type: service
   hostname: es3-api
@@ -46,6 +46,8 @@ enhanced_loading: null
 # Triage with Agent + A2A Workflow
 
 > **Thesis:** Live triage = `Cisco NOC Copilot` on Elastic indices **plus** Workflow A2A for Splunk O11Y — same Branch 4471 inject, two automation surfaces.
+
+> **Tip:** If Discover, Dashboards, or ES|QL show no data, expand the time picker to **Last 24 hours** (Branch 4471 workshop events are seeded across the day).
 
 ## Background
 

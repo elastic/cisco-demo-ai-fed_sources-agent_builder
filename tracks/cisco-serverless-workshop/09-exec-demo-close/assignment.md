@@ -1,12 +1,12 @@
 ---
 slug: exec-demo-close
-id: vwsgnhxereis
+id: hjwatcfnabka
 type: challenge
 title: Challenge 9 — Close the loop with the Cisco Agent
 teaser: 'Agent recap: Find → Federate → Act, with Workflows/A2A called out as the
   augment path.'
 tabs:
-- id: zfbucxrzadue
+- id: ueyhge9zn0wv
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -32,6 +32,8 @@ enhanced_loading: null
 # Close the loop with the Cisco Agent
 
 > **Thesis:** Same Serverless Search project the whole way — Agent Builder for Elastic action, Workflows/A2A for peer-platform augment.
+
+> **Tip:** If Discover, Dashboards, or ES|QL show no data, expand the time picker to **Last 24 hours** (Branch 4471 workshop events are seeded across the day).
 
 ## Background
 

@@ -22,6 +22,12 @@ AGENT = "Cisco NOC Copilot"
 WF = "Cisco Branch 4471 — Splunk O11Y A2A RCA"
 WF_ID = "cisco-branch-4471-splunk-o11y-a2a-rca"
 
+# Discover / Dashboards / ES|QL default to a short window; seed data spans the day.
+TIME_TIP = (
+    "> **Tip:** If Discover, Dashboards, or ES|QL show no data, expand the time picker "
+    "to **Last 24 hours** (Branch 4471 workshop events are seeded across the day).\n"
+)
+
 
 def tab(title: str, path: str, tab_id: str) -> str:
     return f"""- id: {tab_id}
@@ -62,9 +68,19 @@ def read_id(path: Path) -> str | None:
     return m.group(1).strip() if m else None
 
 
+def with_time_tip(body: str) -> str:
+    body = body.lstrip()
+    if "Last 24 hours" in body:
+        return body
+    if "## Background" in body:
+        return body.replace("## Background", f"{TIME_TIP}\n## Background", 1)
+    return f"{TIME_TIP}\n{body}"
+
+
 def write_assignment(path: Path, fm: str, body: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(f"---\n{fm}---\n\n{body.lstrip()}\n", encoding="utf-8")
+    body = with_time_tip(body)
+    path.write_text(f"---\n{fm}---\n\n{body}\n", encoding="utf-8")
     print("wrote", path.relative_to(ROOT))
 
 
@@ -97,7 +113,7 @@ Seeded for you: **Cisco NOC Command Center** dashboard + `cisco-network-kb`.
 
 ### 1 — Orient (30 seconds)
 
-Open [button label="NOC Dashboard"](tab-1). Confirm **Branch-4471-Dallas** appears in Meraki offline and/or network panels.
+Open [button label="NOC Dashboard"](tab-1). Confirm **Branch-4471-Dallas** appears in Meraki offline and/or network panels. If panels are empty, set time to **Last 24 hours**.
 
 ### 2 — Select **{AGENT}**
 
@@ -287,7 +303,7 @@ Open [button label="Indices"](tab-0). Confirm all **four** indices exist.
 
 ### 2 — Spot-check Meraki fields
 
-Open Discover on `cisco-meraki-events` (or ask the agent which fields matter). Note `event_type`, `device_name`, `site`.
+Open Discover on `cisco-meraki-events` (or ask the agent which fields matter). Set time to **Last 24 hours** if the table is empty. Note `event_type`, `device_name`, `site`.
 
 ### 3 — Ask the Agent to map ownership
 
@@ -348,7 +364,7 @@ Return a short incident card: when / where / runbook title / first two steps.
 
 ### 2 — Verify with ES|QL (optional but recommended)
 
-On [button label="ES|QL"](tab-1), skim that the agent used the right indices (or paste the Meraki offline query yourself):
+On [button label="ES|QL"](tab-1), skim that the agent used the right indices (or paste the Meraki offline query yourself). If you get **0 results**, set the time picker to **Last 24 hours**, then re-run:
 
 ```esql
 FROM cisco-meraki-events

@@ -1,12 +1,12 @@
 ---
 slug: cross-source-esql
-id: gkewbcstyxlk
+id: 8arqgwgdj0ux
 type: challenge
 title: Challenge 5 — Correlate event + runbook with the Agent
 teaser: Cisco NOC Copilot joins Meraki offline events with KB recovery — federation
   in one ask.
 tabs:
-- id: hoojubmzcle7
+- id: a9edye63igml
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -22,7 +22,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: zuajjaijlivk
+- id: huxgw66pqq4d
   title: ES|QL
   type: service
   hostname: es3-api
@@ -72,7 +72,7 @@ Return a short incident card: when / where / runbook title / first two steps.
 
 ### 2 — Verify with ES|QL (optional but recommended)
 
-On [button label="ES|QL"](tab-1), skim that the agent used the right indices (or paste the Meraki offline query yourself):
+On [button label="ES|QL"](tab-1), skim that the agent used the right indices (or paste the Meraki offline query yourself). If you get **0 results**, set the time picker to **Last 24 hours**, then re-run:
 
 ```esql
 FROM cisco-meraki-events

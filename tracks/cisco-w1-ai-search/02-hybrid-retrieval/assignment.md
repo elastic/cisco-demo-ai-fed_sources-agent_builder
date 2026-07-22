@@ -6,7 +6,7 @@ title: Challenge 2 — Augment with Splunk O11Y A2A (Workflow)
 teaser: Workflow gathers Elastic context; stubbed A2A adds Splunk O11Y evidence for
   Branch 4471.
 tabs:
-- id: 1zlybglwbpxt
+- id: qb59ijg8dzzs
   title: A2A Workflow
   type: service
   hostname: es3-api
@@ -22,7 +22,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: rkp6slg41bli
+- id: cgvqdx5xelyi
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -46,6 +46,8 @@ enhanced_loading: null
 # Augment with Splunk O11Y A2A (Workflow)
 
 > **Thesis:** Agent Builder answers from Elastic. **Workflows + A2A** augment that answer with peer-platform evidence (Splunk Observability) — without rip-and-replace.
+
+> **Tip:** If Discover, Dashboards, or ES|QL show no data, expand the time picker to **Last 24 hours** (Branch 4471 workshop events are seeded across the day).
 
 ## Background
 

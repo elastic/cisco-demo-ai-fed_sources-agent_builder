@@ -1,11 +1,11 @@
 ---
 slug: customer-talk-track
-id: fy0bgoycacfb
+id: tmonhqjjcbkq
 type: challenge
 title: Challenge 3 — Agent drafts the peer story
 teaser: Cisco NOC Copilot writes the Slack/email update — Find + A2A proof included.
 tabs:
-- id: qrp55bytlcdj
+- id: uxcyrich6nku
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -31,6 +31,8 @@ enhanced_loading: null
 # Agent drafts the peer story
 
 > **Thesis:** The Cisco Agent already saw Elastic + A2A proof — let it write the peer update. You review once and send.
+
+> **Tip:** If Discover, Dashboards, or ES|QL show no data, expand the time picker to **Last 24 hours** (Branch 4471 workshop events are seeded across the day).
 
 ## Background
 

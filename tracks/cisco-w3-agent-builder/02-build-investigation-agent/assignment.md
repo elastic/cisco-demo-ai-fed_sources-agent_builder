@@ -6,7 +6,7 @@ title: Challenge 8 — Harden Cisco NOC Copilot
 teaser: Tighten tools, retest Branch 4471, and make A2A workflow part of the agent
   story.
 tabs:
-- id: imtovxqvngsv
+- id: xqrohxzhpgdg
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -22,7 +22,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: benbgumjyvw7
+- id: wlin1fcmnunr
   title: A2A Workflow
   type: service
   hostname: es3-api
@@ -46,6 +46,8 @@ enhanced_loading: null
 # Harden Cisco NOC Copilot
 
 > **Thesis:** Challenge 1 created the agent. Now harden it: tools, prompts, and an explicit link to the A2A workflow for Splunk augmentation.
+
+> **Tip:** If Discover, Dashboards, or ES|QL show no data, expand the time picker to **Last 24 hours** (Branch 4471 workshop events are seeded across the day).
 
 ## Background
 

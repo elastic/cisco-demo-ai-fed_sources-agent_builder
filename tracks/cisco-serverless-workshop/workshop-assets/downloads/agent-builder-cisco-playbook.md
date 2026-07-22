@@ -38,6 +38,10 @@ Production: swap the workflow stub for `http` POST to your A2A bridge (`consts.s
 3. *Correlate Elastic Meraki/BGP with Splunk O11Y A2A stub (WAN_EDGE_BGP_SESSION_DOWN). WAN/BGP first?*
 4. *Draft a P2 escalation note for transport on edge-dfw-01.*
 
+## Time picker
+
+If Discover, Dashboards, or ES|QL look empty, set time to **Last 24 hours**. Branch 4471 seed events span the day.
+
 ## Demo guardrails
 
 - Read-only tools in shared org labs

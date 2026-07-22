@@ -1,6 +1,6 @@
 ---
 slug: explore-cisco-kb
-id: 4kra6kf0klra
+id: woffi7invchq
 type: challenge
 title: Challenge 1 — Create the Cisco Agent & find the runbook
 teaser: Stand up Cisco NOC Copilot in Agent Builder — then ask Branch 4471.
@@ -15,7 +15,7 @@ notes:
 
     Fullscreen: https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html
 tabs:
-- id: h0nyywu6wdef
+- id: 1oskppwd21w0
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -31,7 +31,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: njffeoyug6gx
+- id: 6si23huwbgid
   title: NOC Dashboard
   type: service
   hostname: es3-api
@@ -71,7 +71,7 @@ Seeded for you: **Cisco NOC Command Center** dashboard + `cisco-network-kb`.
 
 ### 1 — Orient (30 seconds)
 
-Open [button label="NOC Dashboard"](tab-1). Confirm **Branch-4471-Dallas** appears in Meraki offline and/or network panels.
+Open [button label="NOC Dashboard"](tab-1). Confirm **Branch-4471-Dallas** appears in Meraki offline and/or network panels. If panels are empty, set time to **Last 24 hours**.
 
 ### 2 — Select **Cisco NOC Copilot**
 

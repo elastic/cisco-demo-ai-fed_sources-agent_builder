@@ -6,7 +6,7 @@ title: Challenge 6 — Plan federation with Agent + Workflows
 teaser: Connectors feed Search; the Cisco Agent + A2A workflow are the query/augment
   layer.
 tabs:
-- id: migiekhxzvz1
+- id: 4skriwvtgnof
   title: Connectors
   type: service
   hostname: es3-api
@@ -22,7 +22,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: nrylezclgnkz
+- id: 6zpjukyc2hgt
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -46,6 +46,8 @@ enhanced_loading: null
 # Plan federation with Agent + Workflows
 
 > **Thesis:** Connectors keep Meraki/ITSM authoritative. `Cisco NOC Copilot` + Workflows/A2A are how you **query and augment** — not replace — those systems.
+
+> **Tip:** If Discover, Dashboards, or ES|QL show no data, expand the time picker to **Last 24 hours** (Branch 4471 workshop events are seeded across the day).
 
 ## Background
 
