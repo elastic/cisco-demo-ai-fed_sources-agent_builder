@@ -1,12 +1,12 @@
 ---
 slug: exec-demo-close
-id: gdf9wofdrxub
+id: i1zo8y97fw6c
 type: challenge
 title: Challenge 9 — Close the loop with the Cisco Agent
 teaser: 'Agent recap: Find → Federate → Act, with Workflows/A2A called out as the
   augment path.'
 tabs:
-- id: nlfbth7fmyug
+- id: kdvwg0zeoixa
   title: Cisco Agent
   type: service
   hostname: es3-api

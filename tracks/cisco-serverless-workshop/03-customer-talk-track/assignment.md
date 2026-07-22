@@ -1,11 +1,11 @@
 ---
 slug: customer-talk-track
-id: ptbbbucht3zc
+id: ujfkgssnypn5
 type: challenge
 title: Challenge 3 — Agent drafts the peer story
 teaser: Cisco NOC Copilot writes the Slack/email update — Find + A2A proof included.
 tabs:
-- id: 7rfv0xik8ul4
+- id: p9elj1djagvl
   title: Cisco Agent
   type: service
   hostname: es3-api

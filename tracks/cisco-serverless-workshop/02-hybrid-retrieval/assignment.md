@@ -1,12 +1,12 @@
 ---
 slug: hybrid-retrieval
-id: yw4cpmnbjcsr
+id: yrmy73nfyrus
 type: challenge
 title: Challenge 2 — Augment with Splunk O11Y A2A (Workflow)
 teaser: Workflow gathers Elastic context; stubbed A2A adds Splunk O11Y evidence for
   Branch 4471.
 tabs:
-- id: hil9ttypa9d5
+- id: ud9myrysrt1s
   title: A2A Workflow
   type: service
   hostname: es3-api
@@ -22,7 +22,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: xdnuxlykjqqf
+- id: qkclar9ctfy0
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -68,7 +68,7 @@ Open [button label="A2A Workflow"](tab-0) → **Cisco Branch 4471 — Splunk O11
 
 ### 2 — Feed A2A into the Cisco Agent
 
-Open [button label="Cisco Agent"](tab-1) (`Cisco NOC Copilot`) and paste:
+Open [button label="Cisco Agent"](tab-1) → agent dropdown → select **`Cisco NOC Copilot`** (seeded at lab start; create via **+ New agent** if missing). Paste:
 
 ```text
 I ran workflow cisco-branch-4471-splunk-o11y-a2a-rca. Using Elastic indices plus this Splunk O11Y A2A stub summary, produce a short RCA:

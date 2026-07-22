@@ -3,9 +3,10 @@ slug: map-data-silos
 id: n3olmdtkd0e1
 type: challenge
 title: Challenge 4 — Map silos the Agent will query
-teaser: "Four Search indices = four silos — inventory them, then ask the Cisco Agent who owns each."
+teaser: Four Search indices = four silos — inventory them, then ask the Cisco Agent
+  who owns each.
 tabs:
-- id: tab-idx-04
+- id: 8dalrampkx2q
   title: Indices
   type: service
   hostname: es3-api
@@ -21,7 +22,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: tab-agent-04
+- id: jnvrnhfcjoex
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -57,7 +58,7 @@ Branch 4471 needs more than a KB. Setup seeded four indices in **one** Serverles
 | `cisco-meraki-events` | Meraki connector sync | NetOps |
 | `cisco-network-events` | BGP / DNA-style signals | Network eng |
 
-**Time:** ~5 minutes with the Agent  
+**Time:** ~5 minutes with the Agent
 *Without AI this beat was usually 15–20 minutes.*
 
 ## Your task

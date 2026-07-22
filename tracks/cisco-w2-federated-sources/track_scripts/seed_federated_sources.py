@@ -231,8 +231,8 @@ def main() -> int:
         f"cisco-meraki-events ({len(events)} docs), cisco-network-events ({len(net_events)} docs)"
     )
 
-    # Dashboards + workflows (best-effort — indices already seeded)
-    for mod_name in ("seed_cisco_dashboards", "seed_cisco_workflows"):
+    # Dashboards + workflows + Cisco NOC Copilot agent (best-effort — indices already seeded)
+    for mod_name in ("seed_cisco_dashboards", "seed_cisco_workflows", "seed_cisco_agent"):
         try:
             mod = __import__(mod_name)
             rc = mod.main()

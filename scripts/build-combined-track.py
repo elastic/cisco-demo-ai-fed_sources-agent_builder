@@ -173,6 +173,7 @@ def main() -> None:
         "seed_federated_sources.py",
         "seed_cisco_dashboards.py",
         "seed_cisco_workflows.py",
+        "seed_cisco_agent.py",
     ):
         src = ROOT / "scripts" / name
         if src.is_file():

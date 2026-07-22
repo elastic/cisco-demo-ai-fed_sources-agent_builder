@@ -3,9 +3,10 @@ slug: hybrid-retrieval
 id: ivke7lyuske8
 type: challenge
 title: Challenge 2 — Augment with Splunk O11Y A2A (Workflow)
-teaser: "Workflow gathers Elastic context; stubbed A2A adds Splunk O11Y evidence for Branch 4471."
+teaser: Workflow gathers Elastic context; stubbed A2A adds Splunk O11Y evidence for
+  Branch 4471.
 tabs:
-- id: tab-wf-02
+- id: 4eqrzfs2emdy
   title: A2A Workflow
   type: service
   hostname: es3-api
@@ -21,7 +22,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: tab-agent-02
+- id: tqtszvb2aajr
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -50,7 +51,7 @@ enhanced_loading: null
 
 Meraki/BGP live in **Elastic Serverless Search**. Detectors/APM often live in **Splunk Observability**. Lab workflow **`cisco-branch-4471-splunk-o11y-a2a-rca`** stubs an A2A investigator response so you can see the pattern end-to-end.
 
-**Time:** ~10 minutes with Workflows + Agent  
+**Time:** ~10 minutes with Workflows + Agent
 *Without AI/A2A automation this beat was usually 30–40 minutes.*
 
 ## Your task
@@ -65,7 +66,7 @@ Open [button label="A2A Workflow"](tab-0) → **Cisco Branch 4471 — Splunk O11
 
 ### 2 — Feed A2A into the Cisco Agent
 
-Open [button label="Cisco Agent"](tab-1) (`Cisco NOC Copilot`) and paste:
+Open [button label="Cisco Agent"](tab-1) → agent dropdown → select **`Cisco NOC Copilot`** (seeded at lab start; create via **+ New agent** if missing). Paste:
 
 ```text
 I ran workflow cisco-branch-4471-splunk-o11y-a2a-rca. Using Elastic indices plus this Splunk O11Y A2A stub summary, produce a short RCA:

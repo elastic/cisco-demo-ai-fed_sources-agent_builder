@@ -1,6 +1,6 @@
 ---
 slug: map-data-silos
-id: xeixcoefnp89
+id: unmvdjpfsoyl
 type: challenge
 title: Challenge 4 — Map silos the Agent will query
 teaser: Four Search indices = four silos — inventory them, then ask the Cisco Agent
@@ -16,7 +16,7 @@ notes:
 
     Fullscreen: https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html
 tabs:
-- id: xeyoh5p6jb33
+- id: wyf2gqt7yyde
   title: Indices
   type: service
   hostname: es3-api
@@ -32,7 +32,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: iec0h9uatbyp
+- id: xsfzhvpkay0u
   title: Cisco Agent
   type: service
   hostname: es3-api

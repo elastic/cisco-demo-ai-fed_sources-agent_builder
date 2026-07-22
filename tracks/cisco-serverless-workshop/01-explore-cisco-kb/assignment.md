@@ -1,6 +1,6 @@
 ---
 slug: explore-cisco-kb
-id: ey2owbohgpys
+id: cpkjclcnit5n
 type: challenge
 title: Challenge 1 — Create the Cisco Agent & find the runbook
 teaser: Stand up Cisco NOC Copilot in Agent Builder — then ask Branch 4471.
@@ -15,7 +15,7 @@ notes:
 
     Fullscreen: https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html
 tabs:
-- id: axovfwktzopu
+- id: gzlsis57scfg
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -31,7 +31,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: w1wvgi3afbt8
+- id: jiwlfvhoxqq5
   title: NOC Dashboard
   type: service
   hostname: es3-api
@@ -73,21 +73,23 @@ Seeded for you: **Cisco NOC Command Center** dashboard + `cisco-network-kb`.
 
 Open [button label="NOC Dashboard"](tab-1). Confirm **Branch-4471-Dallas** appears in Meraki offline and/or network panels.
 
-### 2 — Create **Cisco NOC Copilot**
+### 2 — Select **Cisco NOC Copilot**
 
-Open [button label="Cisco Agent"](tab-0) → **Agent Builder** → create a **new agent**:
+Open [button label="Cisco Agent"](tab-0) → **Agent Builder**.
+
+Setup seeds **`Cisco NOC Copilot`** (`cisco-noc-copilot`). Open the agent dropdown → select **Cisco NOC Copilot** (not only *Elastic AI Agent*).
+
+If it is missing, click **+ New agent** and create:
 
 | | |
 |--|--|
 | **Name** | `Cisco NOC Copilot` |
 | **Goal** | Investigate Cisco Branch 4471: correlate Meraki + BGP signals with KB runbooks; draft next steps |
-| **Tools** | ES\|QL (or index search) over `cisco-network-kb`, `cisco-meraki-events`, `cisco-network-events` (add `cisco-internal-runbooks` if offered) |
-
-Save the agent. You will reuse it for the rest of the workshop.
+| **Tools** | ES\|QL / search over `cisco-network-kb`, `cisco-meraki-events`, `cisco-network-events` |
 
 ### 3 — Ask the agent for runbooks
 
-In the agent chat, paste:
+With **Cisco NOC Copilot** selected, paste:
 
 ```text
 Branch 4471 — Meraki AP offline, edge BGP looking ugly. Where's the recovery runbook?

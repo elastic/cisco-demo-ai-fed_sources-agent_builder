@@ -32,9 +32,10 @@ def main() -> None:
     seed_fed = SCRIPTS / "seed_federated_sources.py"
     seed_dash = SCRIPTS / "seed_cisco_dashboards.py"
     seed_wf = SCRIPTS / "seed_cisco_workflows.py"
+    seed_agent = SCRIPTS / "seed_cisco_agent.py"
     dash_files = sorted(DASHBOARDS.glob("*.json"))
     wf_files = sorted(WORKFLOWS.glob("*.yaml")) + sorted(WORKFLOWS.glob("*.yml"))
-    for p in (kb, seed_kb, seed_fed, seed_dash, seed_wf):
+    for p in (kb, seed_kb, seed_fed, seed_dash, seed_wf, seed_agent):
         if not p.is_file():
             raise SystemExit(f"missing {p}")
     if not dash_files:
@@ -70,6 +71,9 @@ CISCO_SEED_DASH_PY
 base64 -d <<'CISCO_SEED_WF_PY' > /tmp/seed_cisco_workflows.py
 {b64(seed_wf)}
 CISCO_SEED_WF_PY
+base64 -d <<'CISCO_SEED_AGENT_PY' > /tmp/seed_cisco_agent.py
+{b64(seed_agent)}
+CISCO_SEED_AGENT_PY
 {embed_dir(dash_files, "/tmp/dashboards", "CISCO_DASH")}
 {embed_dir(wf_files, "/tmp/workflows", "CISCO_WF")}
 
