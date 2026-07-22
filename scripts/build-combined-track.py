@@ -22,7 +22,7 @@ LOADING_NOTE_CHALLENGES = frozenset(
 # (source track, source challenge dir, dest challenge dir, deep link path)
 CHALLENGES = [
     ("cisco-w1-ai-search", "01-explore-cisco-kb", "01-explore-cisco-kb", "/app/discover"),
-    ("cisco-w1-ai-search", "02-hybrid-retrieval", "02-hybrid-retrieval", "/app/elasticsearch/query"),
+    ("cisco-w1-ai-search", "02-hybrid-retrieval", "02-hybrid-retrieval", "/app/discover"),
     ("cisco-w1-ai-search", "03-customer-talk-track", "03-customer-talk-track", "/app/discover"),
     (
         "cisco-w2-federated-sources",

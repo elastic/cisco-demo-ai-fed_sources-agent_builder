@@ -9,7 +9,7 @@ tabs:
   title: Elastic Serverless Search
   type: service
   hostname: es3-api
-  path: /app/elasticsearch/query
+  path: /app/discover
   port: 8080
   custom_request_headers:
   - key: Content-Security-Policy
@@ -32,13 +32,15 @@ enhanced_loading: null
 
 ## Background
 
-Engineers don't page with perfect keywords. They say *"AP keeps going offline"* or paste a neighbor IP. Same **Serverless Search** project — better query shapes.
+Engineers don't page with perfect keywords. They say *"AP keeps going offline"* or paste a neighbor IP. Same **Serverless Search** project — prove keyword ES|QL, then ask the **AI Assistant** in natural language.
 
 **Time:** ~25–35 minutes
 
-## Sample ES|QL
+## Your task
 
-Run in the **ES|QL / Query** UI:
+### 1 — Keyword path (ES|QL)
+
+In Discover, open the **ES|QL** editor (or Query) and run:
 
 ```esql
 FROM cisco-network-kb
@@ -48,21 +50,28 @@ FROM cisco-network-kb
 | LIMIT 10
 ```
 
-Then try a natural-language style search in **Discover** (or Search UI if available):
+Find **Meraki AP Offline Recovery** and note **two** troubleshooting steps from the content.
 
-> Meraki access point offline cloud connectivity
+### 2 — Intent path (AI Assistant)
 
-## Your task
+Open the **AI Assistant** / **Elastic AI Agent** chat panel (right side in Discover).
 
-1. Run the ES|QL query (or an equivalent Discover query).
-2. Find the **Meraki AP Offline Recovery** document and note **two** troubleshooting steps.
-3. Optional: try any **semantic / AI** search controls shown in your Serverless project.
-4. In notes, write 2–3 bullets comparing **keyword** vs **natural-language** result quality for this incident.
+Paste this prompt (no perfect keywords required):
+
+```text
+Meraki access point offline cloud connectivity — what runbook should I follow, and what are the first two recovery steps?
+```
+
+Wait for tool calls. Compare how the Assistant surfaces the same guidance versus the keyword ES|QL hit list.
+
+### 3 — Capture the hybrid takeaway
+
+In notes, write 2–3 bullets comparing **keyword ES|QL** vs **AI Assistant** result quality for this incident (precision of titles/IDs vs. speed to actionable steps).
 
 ## Success criteria
 
-- ES|QL (or Discover) returns Meraki offline guidance
-- Two recovery steps are captured
+- ES|QL returns Meraki offline guidance
+- AI Assistant returns recovery steps grounded in `cisco-network-kb`
 - Comparison bullets are written
 
 ## Verification
