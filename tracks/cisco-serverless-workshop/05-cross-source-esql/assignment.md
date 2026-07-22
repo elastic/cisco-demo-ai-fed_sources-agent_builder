@@ -1,12 +1,12 @@
 ---
 slug: cross-source-esql
-id: 8arqgwgdj0ux
+id: cb05ucpepe2p
 type: challenge
 title: Challenge 5 — Correlate event + runbook with the Agent
 teaser: Cisco NOC Copilot joins Meraki offline events with KB recovery — federation
   in one ask.
 tabs:
-- id: a9edye63igml
+- id: dmsswdoudg7f
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -22,7 +22,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: huxgw66pqq4d
+- id: rc2lidil310r
   title: ES|QL
   type: service
   hostname: es3-api

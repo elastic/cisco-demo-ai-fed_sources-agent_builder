@@ -395,34 +395,34 @@ Click **Check** when the success criteria are met.
         "timelimit": 480,
         "tabs": "\n".join(
             [
+                tab("Cisco Agent", "/app/agent_builder", "tab-agent-06"),
                 tab(
-                    "Connectors",
-                    "/app/enterprise_search/content/connectors",
+                    "Content connectors",
+                    "/app/management/data/search_connectors/connectors",
                     "tab-conn-06",
                 ),
-                tab("Cisco Agent", "/app/agent_builder", "tab-agent-06"),
             ]
         ),
         "body": f"""# Plan federation with Agent + Workflows
 
-> **Thesis:** Connectors keep Meraki/ITSM authoritative. `{AGENT}` + Workflows/A2A are how you **query and augment** — not replace — those systems.
+> **Thesis:** Content connectors keep Meraki/ITSM authoritative. `{AGENT}` + Workflows/A2A are how you **query and augment** — not replace — those systems.
 
 ## Background
 
-Lab indices simulate a connector-fed world. Production uses **Elastic connectors** into the same Serverless Search project.
+Lab indices simulate a connector-fed world. Production uses **Elastic content connectors** into the same Serverless Search project.
 
 **Time:** ~3–5 minutes with the Agent  
 *Without AI this beat was usually 15–20 minutes.*
 
 ## Your task
 
-### 1 — Tour Connectors (30 seconds)
+### 1 — Tour Content connectors (30 seconds)
 
-Open [button label="Connectors"](tab-0). Skim types (no production connector required).
+Open [button label="Content connectors"](tab-1). Skim available types — no production connector required. If you see **Application not found**, open Kibana global search and type **Content connectors** (path: Stack Management → Content connectors).
 
 ### 2 — Agent writes the federation plan
 
-Open [button label="Cisco Agent"](tab-1) and paste:
+Open [button label="Cisco Agent"](tab-0) (`{AGENT}`) and paste:
 
 ```text
 Draft a federation plan for Cisco on Elastic Serverless Search.

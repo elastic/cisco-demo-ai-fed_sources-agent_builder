@@ -6,7 +6,7 @@ title: Challenge 7 — Triage with Agent + A2A Workflow
 teaser: Re-run the inject — Cisco Agent for Elastic signals, Workflow A2A for Splunk
   O11Y.
 tabs:
-- id: tekunhyeyrxy
+- id: jx5hjbzvgxxs
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -22,7 +22,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: kiwydyltz2cq
+- id: advwtngfbq57
   title: A2A Workflow
   type: service
   hostname: es3-api

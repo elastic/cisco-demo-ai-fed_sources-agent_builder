@@ -6,7 +6,7 @@ title: Challenge 9 — Close the loop with the Cisco Agent
 teaser: 'Agent recap: Find → Federate → Act, with Workflows/A2A called out as the
   augment path.'
 tabs:
-- id: zkmnauasslsm
+- id: tygupops4kz3
   title: Cisco Agent
   type: service
   hostname: es3-api

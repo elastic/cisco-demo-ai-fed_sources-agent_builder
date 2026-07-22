@@ -40,7 +40,7 @@ CHALLENGES = [
         "cisco-w2-federated-sources",
         "03-connector-story",
         "06-connector-story",
-        "/app/enterprise_search/content/connectors",
+        "/app/agent_builder",
     ),
     (
         "cisco-w3-agent-builder",

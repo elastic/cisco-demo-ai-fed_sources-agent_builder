@@ -6,7 +6,7 @@ title: Challenge 2 — Augment with Splunk O11Y A2A (Workflow)
 teaser: Workflow gathers Elastic context; stubbed A2A adds Splunk O11Y evidence for
   Branch 4471.
 tabs:
-- id: qb59ijg8dzzs
+- id: 74g78dho5ha4
   title: A2A Workflow
   type: service
   hostname: es3-api
@@ -22,7 +22,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: cgvqdx5xelyi
+- id: knqwytd0natr
   title: Cisco Agent
   type: service
   hostname: es3-api
