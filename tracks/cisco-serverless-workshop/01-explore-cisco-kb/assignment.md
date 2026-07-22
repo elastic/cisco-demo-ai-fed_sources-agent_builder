@@ -1,6 +1,6 @@
 ---
 slug: explore-cisco-kb
-id: lmslgnjsb2un
+id: ahjwwyfgsdz1
 type: challenge
 title: Challenge 1 — Find the runbook
 teaser: ES|QL plus Elastic AI Assistant — get both Branch 4471 runbooks in one ask.
@@ -15,7 +15,7 @@ notes:
 
     Fullscreen: https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html
 tabs:
-- id: wjwdvttlxyer
+- id: iuqmzofboxdw
   title: NOC Dashboard
   type: service
   hostname: es3-api
@@ -32,7 +32,7 @@ tabs:
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
 difficulty: intermediate
-timelimit: 1500
+timelimit: 600
 enhanced_loading: null
 ---
 
@@ -51,7 +51,8 @@ Setup seeded:
 - **Cisco NOC Command Center** — [button label="NOC Dashboard"](tab-1)
 - **Cisco Knowledge Base Library** (`cisco-kb-library`) — Dashboards list if you want the catalog
 
-**Time:** ~15–20 minutes
+**Time:** ~5 minutes with AI Assistant
+*Without AI this beat was usually 15–20 minutes — paste prompts, don’t retype the story.*
 
 ## Your task
 

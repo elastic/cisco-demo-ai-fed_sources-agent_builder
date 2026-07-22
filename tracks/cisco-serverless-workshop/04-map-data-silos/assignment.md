@@ -1,6 +1,6 @@
 ---
 slug: map-data-silos
-id: zfsahpkjkndc
+id: yjw9xwhdfyes
 type: challenge
 title: Challenge 4 — Map Cisco data silos
 teaser: Four indices, one Serverless Search project — who owns what?
@@ -15,7 +15,7 @@ notes:
 
     Fullscreen: https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html
 tabs:
-- id: rrrsxq5bgsco
+- id: q67wcj9qcnwv
   title: Elastic Serverless Search
   type: service
   hostname: es3-api
@@ -32,7 +32,7 @@ tabs:
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
 difficulty: intermediate
-timelimit: 1200
+timelimit: 600
 enhanced_loading: null
 ---
 
@@ -46,7 +46,8 @@ enhanced_loading: null
 
 Branch 4471 still needs more than a KB hit. Real Cisco environments split truth across **Meraki Dashboard events**, **internal Confluence runbooks**, and **public KB** — three (or more) silos. This lab seeds all four into **one Elastic Serverless Search** project.
 
-**Time:** ~15–20 minutes
+**Time:** ~5 minutes with AI Assistant
+*Without AI this beat was usually 15–20 minutes — paste prompts, don’t retype the story.*
 
 ## Seeded indices (lab)
 

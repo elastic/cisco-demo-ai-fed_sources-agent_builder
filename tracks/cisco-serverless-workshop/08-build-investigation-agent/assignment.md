@@ -1,12 +1,12 @@
 ---
 slug: build-investigation-agent
-id: gyebeza3rkxx
+id: 0dpen6pdhzzf
 type: challenge
 title: Challenge 8 — Build the NOC investigation agent
 teaser: Wire Agent Builder to your Serverless Search indices — then ask about Branch
   4471.
 tabs:
-- id: a1webiqejm77
+- id: 8qkf1k7ofdmt
   title: Elastic Serverless Search
   type: service
   hostname: es3-api
@@ -23,7 +23,7 @@ tabs:
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
 difficulty: intermediate
-timelimit: 2100
+timelimit: 900
 enhanced_loading: null
 ---
 
@@ -35,7 +35,8 @@ enhanced_loading: null
 
 You’ve found runbooks, federated indices, and triaged the inject by hand. Now give a **Serverless Search–backed** agent the same tools.
 
-**Time:** ~25–35 minutes
+**Time:** ~10–15 minutes with AI Assistant
+*Without AI this beat was usually 25–35 minutes — paste prompts, don’t retype the story.*
 
 ## Suggested agent charter
 
@@ -55,9 +56,10 @@ You’ve found runbooks, federated indices, and triaged the inject by hand. Now 
 
 4. Capture **notes or a screenshot** of one successful tool invocation.
 
-## Optional — Re-run Splunk O11Y A2A
+## Optional — Splunk O11Y A2A workflow
 
-If you skipped Challenge 2, open **Workflows** → **Cisco Branch 4471 — Splunk O11Y A2A RCA** and run the stubbed A2A flow (Elastic ES|QL context + fake Splunk O11Y investigator response). Challenge 2 already covered the correlation story.
+Open **Workflows** → **Cisco Branch 4471 — Splunk O11Y A2A RCA** (`cisco-branch-4471-splunk-o11y-a2a-rca`).
+It gathers Meraki + BGP ES|QL context, calls a Splunk Observability A2A bridge (set `consts.splunk_o11y_a2a_url`), then synthesizes RCA with Agent Builder. Run it manually with the defaults for this lab.
 
 ## Reference
 

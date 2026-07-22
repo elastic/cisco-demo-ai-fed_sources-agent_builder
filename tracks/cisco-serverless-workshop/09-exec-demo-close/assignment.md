@@ -1,15 +1,15 @@
 ---
 slug: exec-demo-close
-id: eeniznsw5jui
+id: mvwr8oqe8mmo
 type: challenge
 title: Challenge 9 — Close the loop & next steps
 teaser: Find → Federate → Act on one Serverless Search project — what ships next?
 tabs:
-- id: himogqyvuhyx
+- id: lcwckrxcburj
   title: Elastic Serverless Search
   type: service
   hostname: es3-api
-  path: /app/agent_builder
+  path: /app/discover
   port: 8080
   custom_request_headers:
   - key: Content-Security-Policy
@@ -22,7 +22,7 @@ tabs:
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
 difficulty: intermediate
-timelimit: 1200
+timelimit: 300
 enhanced_loading: null
 ---
 
@@ -34,24 +34,31 @@ enhanced_loading: null
 
 You stayed on **Elastic Serverless Search** the whole workshop — easy to upgrade later (more indices, connectors, agents) without changing platform.
 
-**Time:** ~15–20 minutes
-
-## Three-beat recap
-
-1. **Find** — Meraki / BGP runbooks in seconds (hybrid beats keyword alone)
-2. **Federate** — events + internal runbooks + KB in one ES|QL story
-3. **Act** — Agent Builder triage on the same Serverless Search indices
+**Time:** ~2–3 minutes with AI Assistant
+*Without AI this beat was usually 15–20 minutes — paste prompts, don’t retype the story.*
 
 ## Your task
 
-1. Write a **90-second** recap script hitting all three beats (bullets only) — for showing your team.
-2. Note **one concrete outcome** from today (faster runbook lookup, cross-index ES|QL, or agent tool).
-3. List **one next experiment** still on Serverless Search: index an internal wiki, try a connector POC, or extend Agent Builder tools.
+Open **AI Assistant** and paste:
+
+```text
+Write a close-out I can send my team after the Cisco Elastic Serverless Search workshop (Branch 4471 story).
+
+Include:
+1. 90-second Find → Federate → Act recap (spoken bullets)
+2. One concrete outcome from today
+3. One next experiment still on Serverless Search (wiki index, connector POC, or Agent Builder tools)
+4. One sentence on how AI Assistant compressed the workshop (manual talk tracks / RCA writing → paste-and-run)
+
+Mention stubbed Splunk O11Y A2A only as lab evidence, not production telemetry.
+```
+
+Copy the write-up into notes.
 
 ## Success criteria
 
-- Recap script covers Find → Federate → Act
-- One outcome + one next experiment written
+- AI Assistant returns Find → Federate → Act recap
+- One outcome + one next experiment included
 
 ## Verification
 

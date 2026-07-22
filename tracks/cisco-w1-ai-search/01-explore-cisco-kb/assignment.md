@@ -38,7 +38,7 @@ tabs:
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
 difficulty: intermediate
-timelimit: 1500
+timelimit: 600
 enhanced_loading: null
 ---
 
@@ -55,7 +55,8 @@ Setup seeded:
 - **Cisco NOC Command Center** — [button label="NOC Dashboard"](tab-1)
 - **Cisco Knowledge Base Library** (`cisco-kb-library`) — Dashboards list if you want the catalog
 
-**Time:** ~15–20 minutes
+**Time:** ~5 minutes with AI Assistant  
+*Without AI this beat was usually 15–20 minutes — paste prompts, don’t retype the story.*
 
 ## Your task
 

@@ -11,7 +11,9 @@ description: |
   Continuous story — Branch 4471: Meraki offline + BGP flap.
   Modules: **Find** (AI Search) → **Federate** (indices + ES|QL) → **Act** (Agent Builder).
 
-  **Duration:** ~4.5 hours (3 × ~90 min) — skipping enabled.
+  **Duration with AI Assistant:** ~60–90 minutes hands-on (plus ~5 min provision).
+  **Without AI (legacy pace):** ~3.5–4.5 hours of manual talk tracks, notes, and RCA writing.
+  Skipping enabled.
 
   **Prerequisites:** `ESS_CLOUD_API_KEY`; optional `LLM_PROXY_PROD` for Agent Builder LLM.
 icon: https://www.elastic.co/favicon.ico
@@ -28,7 +30,7 @@ developers:
 show_timer: true
 skipping_enabled: true
 idle_timeout: 300
-timelimit: 16200
+timelimit: 7200
 lab_config:
   extend_ttl: 600
   sidebar_enabled: true
@@ -40,5 +42,5 @@ lab_config:
   hideStopButton: false
   default_layout: AssignmentRight
   default_layout_sidebar_size: 40
-checksum: "8574194293073195854"
+checksum: "11872532996084959896"
 enhanced_loading: false

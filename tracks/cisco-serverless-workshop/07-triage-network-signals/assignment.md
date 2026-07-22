@@ -1,6 +1,6 @@
 ---
 slug: triage-network-signals
-id: gsorh7xoqhx1
+id: jybzdr6uetiw
 type: challenge
 title: Challenge 7 — Triage the incident
 teaser: Injected Branch 4471 signals — BGP + Meraki — on Serverless Search only.
@@ -15,7 +15,7 @@ notes:
 
     Fullscreen: https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html
 tabs:
-- id: yzdshuixv0cv
+- id: hmccyufspsxu
   title: Elastic Serverless Search
   type: service
   hostname: es3-api
@@ -32,7 +32,7 @@ tabs:
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
 difficulty: intermediate
-timelimit: 1200
+timelimit: 600
 enhanced_loading: null
 ---
 
@@ -48,7 +48,8 @@ enhanced_loading: null
 
 This is the end-to-end inject: events were seeded into your Serverless Search project at lab start. No Observability or Security projects required.
 
-**Time:** ~15–20 minutes
+**Time:** ~5 minutes with AI Assistant
+*Without AI this beat was usually 15–20 minutes — paste prompts, don’t retype the story.*
 
 ## ES|QL — BGP signal
 

@@ -1,12 +1,12 @@
 ---
 slug: cross-source-esql
-id: fmqqhhcmiipu
+id: uk8fm8hmepbk
 type: challenge
 title: Challenge 5 — Correlate event + runbook
 teaser: Same Serverless project — Meraki offline event meets recovery guidance in
   ES|QL.
 tabs:
-- id: ymm0uottxyap
+- id: 9oi991mqx5i2
   title: Elastic Serverless Search
   type: service
   hostname: es3-api
@@ -23,7 +23,7 @@ tabs:
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
 difficulty: intermediate
-timelimit: 2100
+timelimit: 600
 enhanced_loading: null
 ---
 
@@ -37,7 +37,8 @@ enhanced_loading: null
 
 **Scenario:** Meraki AP **MR-AP-4471** went offline. Find the **event** and the **recovery runbook** without leaving your Serverless Search project.
 
-**Time:** ~25–35 minutes
+**Time:** ~5–8 minutes with AI Assistant
+*Without AI this beat was usually 25–35 minutes — paste prompts, don’t retype the story.*
 
 ## Query 1 — Events
 

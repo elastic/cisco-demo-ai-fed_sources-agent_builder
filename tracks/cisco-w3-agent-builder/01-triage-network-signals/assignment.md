@@ -22,7 +22,7 @@ tabs:
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
 difficulty: intermediate
-timelimit: 1200
+timelimit: 600
 enhanced_loading: null
 ---
 
@@ -36,7 +36,8 @@ enhanced_loading: null
 
 This is the end-to-end inject: events were seeded into your Serverless Search project at lab start. No Observability or Security projects required.
 
-**Time:** ~15–20 minutes
+**Time:** ~5 minutes with AI Assistant  
+*Without AI this beat was usually 15–20 minutes — paste prompts, don’t retype the story.*
 
 ## ES|QL — BGP signal
 

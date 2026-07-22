@@ -22,7 +22,7 @@ tabs:
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
 difficulty: intermediate
-timelimit: 1200
+timelimit: 480
 enhanced_loading: null
 ---
 
@@ -34,7 +34,8 @@ Lab indices simulate a connector-fed world. In production, **Elastic connectors*
 
 > **Preview (Module 3):** Agent Builder will orchestrate tools over these indices. It may look unfinished until you build the agent — that is intentional.
 
-**Time:** ~15–20 minutes
+**Time:** ~3–5 minutes with AI Assistant  
+*Without AI this beat was usually 15–20 minutes — paste prompts, don’t retype the story.*
 
 ## Why federation (not rip-and-replace)
 
@@ -44,14 +45,31 @@ Lab indices simulate a connector-fed world. In production, **Elastic connectors*
 
 ## Your task
 
-1. Browse **Connectors** in Kibana (UI tour — no production connector required in this lab).
-2. Pick **two** connector types relevant to Cisco environments (e.g. ServiceNow, SharePoint, MongoDB, GitHub).
-3. Write **3 bullets**: what stays in existing Cisco/cloud systems vs. what gets indexed for search.
-4. Note **one** Agent Builder tool you would expose later (e.g. “search Meraki offline events + KB”).
+### 1 — Tour Connectors (30 seconds)
+
+Open **Connectors** and skim available types (no production connector required).
+
+### 2 — Let AI Assistant write the plan
+
+Open **AI Assistant** (Discover or global chat) and paste:
+
+```text
+Draft a short federation plan for Cisco on Elastic Serverless Search.
+
+Context: lab already seeded cisco-meraki-events, cisco-network-kb, cisco-internal-runbooks, cisco-network-events. Production would use Elastic connectors — not rip-and-replace Meraki/DNA/ITSM.
+
+Output:
+1. Two connector types relevant to Cisco (with one-line why each)
+2. Three bullets: what stays authoritative in Cisco/cloud vs what gets indexed into Serverless Search
+3. One Agent Builder tool to expose later (name + which indices)
+Keep it under 150 words.
+```
+
+Copy the answer into notes.
 
 ## Success criteria
 
-- Two connector types chosen
+- Two connector types chosen (via Assistant output)
 - Federation bullets written
 - One future agent tool named
 

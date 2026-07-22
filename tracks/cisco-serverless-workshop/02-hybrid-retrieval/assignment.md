@@ -23,7 +23,7 @@ tabs:
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
 difficulty: intermediate
-timelimit: 2400
+timelimit: 900
 enhanced_loading: null
 ---
 
@@ -39,7 +39,8 @@ NOC reality: Meraki + BGP show up in **Elastic Serverless Search**, while detect
 
 This lab seeds workflow **`cisco-branch-4471-splunk-o11y-a2a-rca`** with a **stubbed** Splunk O11Y A2A response (no external gateway required) so you can see the correlation pattern end-to-end.
 
-**Time:** ~30–40 minutes
+**Time:** ~10 minutes with AI Assistant
+*Without AI this beat was usually 30–40 minutes — paste prompts, don’t retype the story.*
 
 ## Your task
 

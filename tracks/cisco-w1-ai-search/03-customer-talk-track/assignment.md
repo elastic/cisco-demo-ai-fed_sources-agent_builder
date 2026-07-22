@@ -22,7 +22,7 @@ tabs:
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
 difficulty: intermediate
-timelimit: 900
+timelimit: 300
 enhanced_loading: null
 ---
 
@@ -34,7 +34,8 @@ enhanced_loading: null
 
 You've proved **Find** on one **Elastic Serverless Search** project: keyword ES|QL, AI-assisted runbooks, and stubbed Splunk O11Y A2A correlation. Now package that for a peer or skip-level — let the Assistant do the writing.
 
-**Time:** ~10–15 minutes
+**Time:** ~1–2 minutes with AI Assistant  
+*Without AI this beat was usually **15–20 minutes** of hand-written talk track. Now: paste one prompt → full peer write-up in about a minute.*
 
 ## Your task
 

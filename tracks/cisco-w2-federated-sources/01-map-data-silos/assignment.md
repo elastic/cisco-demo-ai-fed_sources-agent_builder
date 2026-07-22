@@ -22,7 +22,7 @@ tabs:
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
 difficulty: intermediate
-timelimit: 1200
+timelimit: 600
 enhanced_loading: null
 ---
 
@@ -34,7 +34,8 @@ enhanced_loading: null
 
 Branch 4471 still needs more than a KB hit. Real Cisco environments split truth across **Meraki Dashboard events**, **internal Confluence runbooks**, and **public KB** — three (or more) silos. This lab seeds all four into **one Elastic Serverless Search** project.
 
-**Time:** ~15–20 minutes
+**Time:** ~5 minutes with AI Assistant  
+*Without AI this beat was usually 15–20 minutes — paste prompts, don’t retype the story.*
 
 ## Seeded indices (lab)
 
