@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cisco × Elastic — Workshop slides</title>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta name="deck-version" content="11-slides-2026-07-22" />
+  <title>Cisco × Elastic — Workshop slides (11)</title>
   <style>
     :root {
       --bg: #0b0d12;
@@ -160,6 +162,7 @@
     .btn:hover { border-color: var(--cisco); }
     .nav-hint { font-size: 0.72rem; color: var(--muted); }
     .counter { font-size: 0.75rem; color: var(--muted); min-width: 4rem; text-align: center; }
+    .deck-ver { font-size: 0.65rem; color: var(--muted); opacity: 0.85; }
   </style>
 </head>
 <body>
@@ -174,7 +177,7 @@
         <span class="pill">One Cloud project</span>
       </p>
       <p style="margin-top:0.75rem">Today you’ll see how Elastic helps Cisco teams <strong>find</strong>, <strong>unify</strong>, and <strong>act</strong> on network knowledge — without standing up Observability or Security SKUs for this motion.</p>
-      <p class="nav-hint" style="margin-top:1rem">Use ← → or dots below while your lab provisions.</p>
+      <p class="nav-hint" style="margin-top:1rem">Use ← → or dots below while your lab provisions. <strong>Slides 8–11</strong> cover the Serverless + federated blob <em>future</em> — try <a href="?slide=8" style="color:#049fd9">?slide=8</a>.</p>
     </section>
 
     <section class="slide" data-slide="1">
@@ -374,6 +377,7 @@
     <button type="button" class="btn" id="prev" aria-label="Previous slide">←</button>
     <div class="dots" id="dots"></div>
     <span class="counter" id="counter">1 / 11</span>
+    <span class="deck-ver" title="Deck version">v11</span>
     <button type="button" class="btn" id="next" aria-label="Next slide">→</button>
   </div>
 
@@ -409,6 +413,12 @@
         if (e.key === "ArrowLeft") go(i - 1);
         if (e.key === "ArrowRight") go(i + 1);
       });
+
+      const params = new URLSearchParams(location.search);
+      const fromParam = params.get("slide");
+      const fromHash = location.hash.match(/^#(\d+)$/);
+      const start = fromParam ? parseInt(fromParam, 10) : fromHash ? parseInt(fromHash[1], 10) : 0;
+      if (start >= 1 && start <= slides.length) go(start - 1);
     })();
   </script>
 </body>

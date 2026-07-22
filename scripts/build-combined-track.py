@@ -12,8 +12,9 @@ COMBINED = ROOT / "tracks" / "cisco-serverless-workshop"
 DEVELOPER = "peter.simkins@elastic.co"
 PORT = 8080
 TAB_TITLE = "Elastic Serverless Search"
-LOADING_PAGE = "https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/slides.html?embed=1"
-SLIDES_PAGE = "https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/slides.html"
+DECK_CACHE_BUST = "v11"
+LOADING_PAGE = f"https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/slides.html?embed=1&{DECK_CACHE_BUST}=1"
+SLIDES_PAGE = f"https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/slides.html?{DECK_CACHE_BUST}=1"
 LOADING_NOTE_CHALLENGES = frozenset(
     {"01-explore-cisco-kb", "04-map-data-silos", "07-triage-network-signals"}
 )

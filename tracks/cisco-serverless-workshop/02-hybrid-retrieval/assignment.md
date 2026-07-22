@@ -1,12 +1,10 @@
 ---
 slug: hybrid-retrieval
-id: fszyml7oi1ox
 type: challenge
 title: Challenge 2 — Hybrid & Semantic Retrieval
 teaser: Compare keyword vs semantic-style queries on runbooks.
 tabs:
-- id: 1rntxs7p3q1n
-  title: Elastic Serverless Search
+- title: Elastic Serverless Search
   type: service
   hostname: es3-api
   path: /app/elasticsearch/query
