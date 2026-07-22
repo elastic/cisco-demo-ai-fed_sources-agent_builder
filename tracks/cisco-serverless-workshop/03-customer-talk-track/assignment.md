@@ -1,11 +1,11 @@
 ---
 slug: customer-talk-track
-id: pbrinzbtiit1
+id: gwjvjzrgtyoy
 type: challenge
 title: Challenge 3 — Customer Talk Track
 teaser: 60-second Elastic Serverless Search story for Cisco.
 tabs:
-- id: roubthdynvlw
+- id: yrzxmx47dshj
   title: Elastic Serverless Search
   type: service
   hostname: es3-api

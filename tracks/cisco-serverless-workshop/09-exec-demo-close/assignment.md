@@ -1,11 +1,11 @@
 ---
 slug: exec-demo-close
-id: rxsppal7weux
+id: ayncpyvbzuzx
 type: challenge
 title: Challenge 3 — Executive Demo Close
 teaser: W1→W2→W3 arc for Cisco leadership.
 tabs:
-- id: 94lygnn2kaei
+- id: b1hxqomsgq2p
   title: Elastic Serverless Search
   type: service
   hostname: es3-api

@@ -275,17 +275,24 @@ secrets:
     subprocess.run(["/bin/bash", str(ROOT / "scripts" / "build-track-setups.sh")], check=True, cwd=ROOT)
     # build-track-setups only covers legacy tracks; wire combined track setup explicitly
     base = ROOT / "scripts" / "es3-setup-base.sh"
-    seed = ROOT / "scripts" / "es3-setup-seed.sh"
     cleanup = ROOT / "scripts" / "es3-cleanup.sh"
     out = COMBINED / "track_scripts" / "setup-es3-api"
+    seed_frag = subprocess.check_output(
+        ["python3", str(ROOT / "scripts" / "generate_es3_seed_fragment.py")],
+        cwd=ROOT,
+        text=True,
+    )
     with out.open("w", encoding="utf-8") as f:
         f.write("#!/bin/bash\n")
         f.write(base.read_text(encoding="utf-8")[len("#!/bin/bash\n") :])
         f.write("\n")
-        f.write(seed.read_text(encoding="utf-8")[len("#!/usr/bin/env bash\n") :])
+        f.write(seed_frag)
     out.chmod(0o755)
     shutil.copy2(cleanup, COMBINED / "track_scripts" / "cleanup-es3-api")
     (COMBINED / "track_scripts" / "cleanup-es3-api").chmod(0o755)
+    # Convenience copies (runtime uses embedded base64 → /tmp)
+    shutil.copy2(ROOT / "scripts" / "seed_federated_sources.py", COMBINED / "track_scripts" / "seed_federated_sources.py")
+    shutil.copy2(ROOT / "scripts" / "seed_cisco_kb.py", COMBINED / "track_scripts" / "seed_cisco_kb.py")
 
     print(f"Built combined track at {COMBINED} ({len(CHALLENGES)} challenges, Search only)")
 
