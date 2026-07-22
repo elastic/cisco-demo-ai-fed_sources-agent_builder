@@ -107,7 +107,7 @@ steps:
           "parts": [
             {
               "type": "text",
-              "text": "Stubbed Splunk Observability investigation for Branch-4471-Dallas (last 24h).\n\nDetectors: WAN_EDGE_BGP_SESSION_DOWN (critical) fired on edge-dfw-01; MERAKI_AP_CLOUD_DISCONNECT (major) correlated within 4 minutes.\nAPM/metrics: wan.edge.dfw latency p95 ~420ms (baseline ~35ms); interface saturation ~91% on TenGigE0/0/1 toward ISP-A.\nLog Observer: repeated 'BGP neighbor 203.0.113.1 Idle' and Meraki Dashboard 'AP went offline' for MR-AP-4471.\nHypothesis: WAN/BGP failure on edge-dfw-01 caused Meraki cloud disconnect at the branch (not a local AP hardware fault).\nNext checks: confirm ISP circuit, review BGP timers/flaps, validate Meraki WAN uplink once BGP recovers."
+              "text": "Here's what Splunk Observability correlated for Branch-4471-Dallas:\n\n## Splunk O11Y Correlated Issues\n\n> Data is from the A2A workshop stub (mode=workshop_demo) — directionally corroborating, not live production telemetry.\n\n### Detectors Fired\n- WAN_EDGE_BGP_SESSION_DOWN — Critical — entity edge-dfw-01 — fired ~18 min ago\n- MERAKI_AP_CLOUD_DISCONNECT — Major — entity MR-AP-4471 — fired ~14 min ago (~4 min after BGP)\n\n### Key Metrics\n- WAN latency p95: 420 ms (baseline ~35 ms — ~12x above normal)\n- Uplink saturation on TenGigE0/0/1 toward ISP-A: 91%\n- BGP session state: Idle (neighbor 203.0.113.1)\n\n### Log Observer Patterns\n- BGP neighbor 203.0.113.1 Idle / Active (repeated)\n- Meraki Dashboard: AP MR-AP-4471 went offline\n- DNA Center: site Branch-4471 reachability degraded\n\n### Splunk's Hypothesis\nWAN/BGP failure on edge-dfw-01 caused Meraki cloud disconnect at the branch — not a local AP hardware fault.\n\nBottom line: Both platforms point to ISP-A circuit congestion/failure on edge-dfw-01 as the root cause. The AP is physically healthy — do not RMA until WAN recovers."
             }
           ],
           "artifacts": [
@@ -171,15 +171,18 @@ steps:
     create-conversation: true
     with:
       message: |
-        You are a Cisco NOC engineer performing cross-platform root cause analysis.
+        You are a Cisco NOC engineer. Produce a crisp cross-platform RCA for {{ inputs.site }}.
 
-        Elastic Serverless Search has Meraki + BGP/DNA events and KB runbooks for
-        {{ inputs.site }}. A Splunk Observability A2A agent response is below
-        (workshop stub — shaped like a real A2A jsonrpc result).
+        Lead with the Splunk O11Y A2A narrative (use the stub text in
+        steps.splunk_o11y_a2a_investigate — it is already workshop-ready). Then
+        briefly reconcile Elastic Meraki/BGP timestamps and KB runbooks.
 
-        Reconcile both sources; cite evidence; rank hypotheses; recommend immediate
-        mitigations. Prefer starting with BGP/edge if WAN loss would explain Meraki
-        cloud disconnect. Call out that Splunk evidence is from the A2A stub when relevant.
+        Must include:
+        - A clear stub disclaimer (mode=workshop_demo)
+        - Detectors table/list (WAN_EDGE_BGP_SESSION_DOWN + MERAKI_AP_CLOUD_DISCONNECT)
+        - Key metrics (latency p95, uplink saturation, BGP Idle)
+        - Splunk hypothesis: WAN/BGP on edge-dfw-01 caused Meraki cloud disconnect — do not RMA the AP first
+        - One sentence tying Elastic event timing to the ~4 minute gap
 
         <meraki_events>
         {{ steps.meraki_context.output | json }}
@@ -197,8 +200,12 @@ steps:
         {{ steps.splunk_o11y_a2a_investigate.output | json }}
         </splunk_o11y_a2a_response>
 
-        Output sections: ## Summary, ## Elastic evidence, ## Splunk Observability evidence,
-        ## Likely root cause, ## Recommended actions, ## Runbooks to follow.
+        Preferred shape:
+        ## Splunk O11Y Correlated Issues
+        ## Elastic evidence (timing)
+        ## Likely root cause
+        ## Recommended actions
+        ## Runbooks to follow
 
   - name: triage_console
     type: console

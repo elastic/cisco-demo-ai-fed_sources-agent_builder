@@ -1,28 +1,12 @@
 ---
 slug: hybrid-retrieval
-id: kriakav00yld
+id: itzjto8qa6gg
 type: challenge
 title: Challenge 2 — Hybrid retrieval + Splunk O11Y A2A
 teaser: Keyword and AI find the runbook — A2A brings Splunk O11Y evidence into the
   same Branch 4471 story.
 tabs:
-- id: ugajiiyeecxu
-  title: Discover + AI
-  type: service
-  hostname: es3-api
-  path: /app/discover
-  port: 8080
-  custom_request_headers:
-  - key: Content-Security-Policy
-    value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
-      style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
-      ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-  custom_response_headers:
-  - key: Content-Security-Policy
-    value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
-      style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
-      ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: eib8uzvxelaq
+- id: zxvudjy0mygh
   title: A2A Workflow
   type: service
   hostname: es3-api
@@ -113,7 +97,7 @@ Open [button label="A2A Workflow"](tab-1) → **Cisco Branch 4471 — Splunk O11
 
 1. Skim the YAML: ES|QL gathers Meraki + BGP + KB, then a **`data.parseJson` stub** returns a fake Splunk O11Y A2A investigator payload (detectors, latency, log patterns).
 2. **Run** the workflow with defaults (`site=Branch-4471-Dallas`, `device_hint=4471`).
-3. In the execution output, find the stub evidence (e.g. `WAN_EDGE_BGP_SESSION_DOWN`, Meraki cloud disconnect) and note how it lines up with your Elastic events from step 3.
+3. In the execution output (stub step and/or `unified_rca`), you should see correlated Splunk O11Y evidence like **`WAN_EDGE_BGP_SESSION_DOWN`** on `edge-dfw-01`, **`MERAKI_AP_CLOUD_DISCONNECT`** on `MR-AP-4471`, ~12× WAN latency, and the hypothesis: **WAN/BGP first — do not RMA the AP**.
 
 > Production swap: replace the stub step with an `http` POST to `consts.splunk_o11y_a2a_url` when you have a real A2A bridge.
 
