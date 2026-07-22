@@ -2,14 +2,30 @@
 slug: triage-network-signals
 id: zmj9ciywdm8k
 type: challenge
-title: Challenge 1 — Triage the incident
-teaser: Injected Branch 4471 signals — BGP + Meraki — on Serverless Search only.
+title: Challenge 7 — Triage with Agent + A2A Workflow
+teaser: Re-run the inject: Cisco Agent for Elastic signals, Workflow A2A for Splunk O11Y.
 tabs:
-- id: dsfxfxk9e9yy
-  title: Elastic Serverless Search
+- id: tab-agent-07
+  title: Cisco Agent
   type: service
   hostname: es3-api
-  path: /app/elasticsearch/query
+  path: /app/agent_builder
+  port: 8080
+  custom_request_headers:
+  - key: Content-Security-Policy
+    value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
+      style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
+      ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
+  custom_response_headers:
+  - key: Content-Security-Policy
+    value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
+      style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
+      ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
+- id: tab-wf-07
+  title: A2A Workflow
+  type: service
+  hostname: es3-api
+  path: /app/workflows
   port: 8080
   custom_request_headers:
   - key: Content-Security-Policy
@@ -26,51 +42,46 @@ timelimit: 600
 enhanced_loading: null
 ---
 
-# Triage the incident
+# Triage with Agent + A2A Workflow
 
-> **Thesis:** Before you build an agent, prove you can triage the same signals the agent will see — on **Elastic Serverless Search**.
+> **Thesis:** Live triage = `Cisco NOC Copilot` on Elastic indices **plus** Workflow A2A for Splunk O11Y — same Branch 4471 inject, two automation surfaces.
 
 ## Background
 
-**Pager:** *"BGP session down on edge router + Meraki AP offline at Branch 4471."*
+Pager: *"BGP session down on edge router + Meraki AP offline at Branch 4471."*
 
-This is the end-to-end inject: events were seeded into your Serverless Search project at lab start. No Observability or Security projects required.
-
-**Time:** ~5 minutes with AI Assistant  
-*Without AI this beat was usually 15–20 minutes — paste prompts, don’t retype the story.*
-
-## ES|QL — BGP signal
-
-```esql
-FROM cisco-network-events
-| WHERE event_type == "bgp.session_down"
-| KEEP @timestamp, host.name, cisco.site, message
-| SORT @timestamp DESC
-| LIMIT 5
-```
-
-## ES|QL — Meraki offline
-
-```esql
-FROM cisco-meraki-events
-| WHERE event_type == "device.offline" AND device_name LIKE "*4471*"
-| KEEP @timestamp, device_name, site, detail
-| SORT @timestamp DESC
-| LIMIT 5
-```
+**Time:** ~5 minutes with Agent + Workflow  
+*Without AI this beat was usually 15–20 minutes.*
 
 ## Your task
 
-1. Run both queries in **ES|QL**.
-2. Note **site** and **hostname/device** for the Branch 4471 scenario.
-3. Open **Agent Builder** in the nav — list **two** tools/skills you would wire to these indices (you build them next).
+### 1 — Agent triage (Elastic)
+
+Open [button label="Cisco Agent"](tab-0) and paste:
+
+```text
+Triage Branch 4471 now.
+1) BGP session_down from cisco-network-events (host, site, message)
+2) Meraki device.offline for *4471* from cisco-meraki-events
+3) One KB runbook title to open next
+Return a 5-line pager update.
+```
+
+### 2 — A2A augment (Splunk stub)
+
+Open [button label="A2A Workflow"](tab-1) → **Cisco Branch 4471 — Splunk O11Y A2A RCA** → **Run** (defaults). Confirm stub detectors still align with the Agent's Elastic timeline (BGP before / with Meraki cloud disconnect).
+
+### 3 — One decision
+
+In notes: *Primary action = transport/ISP on edge-dfw-01; AP RMA is secondary.*
 
 ## Success criteria
 
-- Both queries return events
-- Site + device notes captured
-- Two agent tool ideas listed
+- Agent returns BGP + Meraki triage card
+- A2A workflow run shows matching stub Splunk evidence
+- Decision note written
 
 ## Verification
 
-Click **Check** when both queries return events.
+Click **Check** when the success criteria are met.
+

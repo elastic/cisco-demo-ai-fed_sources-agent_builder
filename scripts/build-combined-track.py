@@ -21,9 +21,9 @@ LOADING_NOTE_CHALLENGES = frozenset(
 
 # (source track, source challenge dir, dest challenge dir, deep link path)
 CHALLENGES = [
-    ("cisco-w1-ai-search", "01-explore-cisco-kb", "01-explore-cisco-kb", "/app/discover"),
-    ("cisco-w1-ai-search", "02-hybrid-retrieval", "02-hybrid-retrieval", "/app/discover"),
-    ("cisco-w1-ai-search", "03-customer-talk-track", "03-customer-talk-track", "/app/discover"),
+    ("cisco-w1-ai-search", "01-explore-cisco-kb", "01-explore-cisco-kb", "/app/agent_builder"),
+    ("cisco-w1-ai-search", "02-hybrid-retrieval", "02-hybrid-retrieval", "/app/workflows"),
+    ("cisco-w1-ai-search", "03-customer-talk-track", "03-customer-talk-track", "/app/agent_builder"),
     (
         "cisco-w2-federated-sources",
         "01-map-data-silos",
@@ -34,7 +34,7 @@ CHALLENGES = [
         "cisco-w2-federated-sources",
         "02-cross-source-esql",
         "05-cross-source-esql",
-        "/app/elasticsearch/query",
+        "/app/agent_builder",
     ),
     (
         "cisco-w2-federated-sources",
@@ -46,7 +46,7 @@ CHALLENGES = [
         "cisco-w3-agent-builder",
         "01-triage-network-signals",
         "07-triage-network-signals",
-        "/app/elasticsearch/query",
+        "/app/agent_builder",
     ),
     (
         "cisco-w3-agent-builder",
@@ -75,15 +75,15 @@ MODULE_BY_DEST = {
 }
 
 TITLE_BY_DEST = {
-    "01-explore-cisco-kb": "Challenge 1 — Find the runbook",
-    "02-hybrid-retrieval": "Challenge 2 — Hybrid retrieval + Splunk O11Y A2A",
-    "03-customer-talk-track": "Challenge 3 — Share the story with your peers",
-    "04-map-data-silos": "Challenge 4 — Map Cisco data silos",
-    "05-cross-source-esql": "Challenge 5 — Correlate event + runbook",
-    "06-connector-story": "Challenge 6 — Plan the federation path",
-    "07-triage-network-signals": "Challenge 7 — Triage the incident",
-    "08-build-investigation-agent": "Challenge 8 — Build the NOC investigation agent",
-    "09-exec-demo-close": "Challenge 9 — Close the loop & next steps",
+    "01-explore-cisco-kb": "Challenge 1 — Create the Cisco Agent & find the runbook",
+    "02-hybrid-retrieval": "Challenge 2 — Augment with Splunk O11Y A2A (Workflow)",
+    "03-customer-talk-track": "Challenge 3 — Agent drafts the peer story",
+    "04-map-data-silos": "Challenge 4 — Map silos the Agent will query",
+    "05-cross-source-esql": "Challenge 5 — Correlate event + runbook with the Agent",
+    "06-connector-story": "Challenge 6 — Plan federation with Agent + Workflows",
+    "07-triage-network-signals": "Challenge 7 — Triage with Agent + A2A Workflow",
+    "08-build-investigation-agent": "Challenge 8 — Harden Cisco NOC Copilot",
+    "09-exec-demo-close": "Challenge 9 — Close the loop with the Cisco Agent",
 }
 
 
@@ -189,17 +189,18 @@ def main() -> None:
         COMBINED / "track.yml",
         f"""slug: cisco-serverless-workshop
 title: Cisco — Elastic Serverless Search Workshop
-teaser: Find → Federate → Act on one Elastic Serverless Search project — Cisco NOC incident story.
+teaser: Find → Federate → Act with Agent Builder, Workflows, and Splunk O11Y A2A on one Serverless Search project.
 description: |
   Workshop for **Cisco** network, NOC, and platform engineers exploring
   **Elastic Serverless Search**. Each learner gets **one** Search project (Search-only —
   no Observability or Security projects).
 
   Continuous story — Branch 4471: Meraki offline + BGP flap.
-  Modules: **Find** (AI Search) → **Federate** (indices + ES|QL) → **Act** (Agent Builder).
+  Build **Cisco NOC Copilot** (Agent Builder), augment with **Workflows + stubbed Splunk O11Y A2A**,
+  then federate indices and harden the agent — Find → Federate → Act.
 
-  **Duration with AI Assistant:** ~60–90 minutes hands-on (plus ~5 min provision).
-  **Without AI (legacy pace):** ~3.5–4.5 hours of manual talk tracks, notes, and RCA writing.
+  **Duration with Agent Builder / Workflows / A2A:** ~60–90 minutes hands-on (plus ~5 min provision).
+  **Without AI automation (legacy pace):** ~3.5–4.5 hours of manual talk tracks, notes, and RCA writing.
   Skipping enabled.
 
   **Prerequisites:** `ESS_CLOUD_API_KEY`; optional `LLM_PROXY_PROD` for Agent Builder LLM.

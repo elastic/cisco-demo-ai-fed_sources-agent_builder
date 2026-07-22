@@ -1,16 +1,28 @@
 ---
 slug: build-investigation-agent
-id: 0dpen6pdhzzf
 type: challenge
-title: Challenge 8 — Build the NOC investigation agent
-teaser: Wire Agent Builder to your Serverless Search indices — then ask about Branch
-  4471.
+title: Challenge 8 — Harden Cisco NOC Copilot
+teaser: Tighten tools, retest Branch 4471, and make A2A workflow part of the agent story.
 tabs:
-- id: 8qkf1k7ofdmt
-  title: Elastic Serverless Search
+- title: Cisco Agent
   type: service
   hostname: es3-api
   path: /app/agent_builder
+  port: 8080
+  custom_request_headers:
+  - key: Content-Security-Policy
+    value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
+      style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
+      ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
+  custom_response_headers:
+  - key: Content-Security-Policy
+    value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
+      style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
+      ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
+  title: A2A Workflow
+  type: service
+  hostname: es3-api
+  path: /app/workflows
   port: 8080
   custom_request_headers:
   - key: Content-Security-Policy
@@ -29,47 +41,61 @@ enhanced_loading: null
 
 > **Module 3 — Act** · one **Elastic Serverless Search** project
 
-# Build the NOC investigation agent
+# Harden Cisco NOC Copilot
+
+> **Thesis:** Challenge 1 created the agent. Now harden it: tools, prompts, and an explicit link to the A2A workflow for Splunk augmentation.
 
 ## Background
 
-You’ve found runbooks, federated indices, and triaged the inject by hand. Now give a **Serverless Search–backed** agent the same tools.
-
-**Time:** ~10–15 minutes with AI Assistant
-*Without AI this beat was usually 25–35 minutes — paste prompts, don’t retype the story.*
-
-## Suggested agent charter
+Charter check for `Cisco NOC Copilot`:
 
 | | |
 |--|--|
-| **Name** | Cisco NOC Copilot |
-| **Goal** | Given an alert summary, correlate Search indices (BGP + Meraki) with KB runbooks, suggest steps, draft an escalation note |
-| **Data** | `cisco-network-events`, `cisco-meraki-events`, `cisco-network-kb` (+ optional internal runbooks) |
+| **Goal** | Correlate Meraki + BGP + KB; call for A2A/Splunk evidence when peer-platform confirmation is needed |
+| **Data** | `cisco-network-events`, `cisco-meraki-events`, `cisco-network-kb`, `cisco-internal-runbooks` |
+| **Augment** | Workflow `cisco-branch-4471-splunk-o11y-a2a-rca` (stubbed Splunk O11Y A2A in lab) |
+
+**Time:** ~10–15 minutes with Agent Builder  
+*Without AI this beat was usually 25–35 minutes.*
 
 ## Your task
 
-1. Open **Agent Builder** → create or explore a **new agent** (use lab-safe read-only tools where prompted).
-2. Add capabilities that reference **ES|QL** over `cisco-network-events`, `cisco-meraki-events`, and `cisco-network-kb`.
-3. Test with:
+### 1 — Harden tools
 
-> Branch 4471 reports Meraki offline and BGP flapping on `edge-dfw-01`. Summarize timeline and next steps.
+Open [button label="Cisco Agent"](tab-0). Ensure ES\|QL (or search) tools cover all four indices. Add a short instruction in the agent instructions/prompt:
 
-4. Capture **notes or a screenshot** of one successful tool invocation.
+```text
+When Branch 4471 or Meraki+BGP incidents appear, summarize Elastic evidence first.
+Then tell the analyst to run workflow cisco-branch-4471-splunk-o11y-a2a-rca for Splunk O11Y A2A augmentation (lab = stub).
+Never invent live Splunk telemetry.
+```
 
-## Optional — Splunk O11Y A2A workflow
+### 2 — End-to-end test prompt
 
-Open **Workflows** → **Cisco Branch 4471 — Splunk O11Y A2A RCA** (`cisco-branch-4471-splunk-o11y-a2a-rca`).
-It gathers Meraki + BGP ES|QL context, calls a Splunk Observability A2A bridge (set `consts.splunk_o11y_a2a_url`), then synthesizes RCA with Agent Builder. Run it manually with the defaults for this lab.
+```text
+Branch 4471 reports Meraki offline and BGP flapping on edge-dfw-01.
+1) Summarize Elastic timeline + KB next steps (tool calls required)
+2) Tell me exactly what the Splunk O11Y A2A workflow should add
+3) Draft a P2 escalation note for transport
+```
+
+Capture notes or a screenshot of one successful tool invocation.
+
+### 3 — Optional: re-run A2A workflow
+
+[button label="A2A Workflow"](tab-1) → Run once if you want a fresh stub payload for the escalation note.
 
 ## Reference
 
-Workshop assets include **`agent-builder-cisco-playbook.md`** for tool ideas.
+Workshop assets: **`agent-builder-cisco-playbook.md`**.
 
 ## Success criteria
 
-- Agent exists with Search-backed capabilities
-- Test prompt returns actionable steps grounded in lab indices
+- `Cisco NOC Copilot` has multi-index tools + A2A workflow guidance in instructions
+- Test prompt returns actionable steps with tool use
+- Escalation note drafted
 
 ## Verification
 
 Click **Check** after a test prompt returns actionable steps.
+

@@ -1,13 +1,25 @@
 ---
 slug: cross-source-esql
-id: uk8fm8hmepbk
 type: challenge
-title: Challenge 5 — Correlate event + runbook
-teaser: Same Serverless project — Meraki offline event meets recovery guidance in
-  ES|QL.
+title: Challenge 5 — Correlate event + runbook with the Agent
+teaser: Cisco NOC Copilot joins Meraki offline events with KB recovery — federation in one ask.
 tabs:
-- id: 9oi991mqx5i2
-  title: Elastic Serverless Search
+- title: Cisco Agent
+  type: service
+  hostname: es3-api
+  path: /app/agent_builder
+  port: 8080
+  custom_request_headers:
+  - key: Content-Security-Policy
+    value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
+      style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
+      ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
+  custom_response_headers:
+  - key: Content-Security-Policy
+    value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
+      style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
+      ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
+  title: ES|QL
   type: service
   hostname: es3-api
   path: /app/elasticsearch/query
@@ -29,18 +41,34 @@ enhanced_loading: null
 
 > **Module 2 — Federate** · one **Elastic Serverless Search** project
 
-# Correlate event + runbook
+# Correlate event + runbook with the Agent
 
-> **Thesis:** Cross-index ES|QL on Serverless Search turns “we have data somewhere” into “here’s the event and the next step.”
+> **Thesis:** Cross-index correlation is the Agent's job. You verify once with ES\|QL; the Agent does the join narrative.
 
 ## Background
 
-**Scenario:** Meraki AP **MR-AP-4471** went offline. Find the **event** and the **recovery runbook** without leaving your Serverless Search project.
+**Scenario:** Meraki AP **MR-AP-4471** went offline. Find the **event** and the **recovery runbook** in the same Serverless Search project — then let `Cisco NOC Copilot` explain the link.
 
-**Time:** ~5–8 minutes with AI Assistant
-*Without AI this beat was usually 25–35 minutes — paste prompts, don’t retype the story.*
+**Time:** ~5–8 minutes with the Agent  
+*Without AI this beat was usually 25–35 minutes.*
 
-## Query 1 — Events
+## Your task
+
+### 1 — Agent correlation (primary)
+
+Open [button label="Cisco Agent"](tab-0) and paste:
+
+```text
+MR-AP-4471 went offline. Using ES|QL:
+1) Find the latest device.offline event in cisco-meraki-events (timestamp, site, detail)
+2) Find the matching Meraki offline runbook in cisco-network-kb
+3) Optionally note an escalation owner from cisco-internal-runbooks
+Return a short incident card: when / where / runbook title / first two steps.
+```
+
+### 2 — Verify with ES|QL (optional but recommended)
+
+On [button label="ES|QL"](tab-1), skim that the agent used the right indices (or paste the Meraki offline query yourself):
 
 ```esql
 FROM cisco-meraki-events
@@ -50,35 +78,16 @@ FROM cisco-meraki-events
 | LIMIT 5
 ```
 
-## Query 2 — Runbook
+### 3 — A2A reminder
 
-```esql
-FROM cisco-network-kb
-| WHERE product == "Meraki" AND MATCH(content, "offline")
-| KEEP title, product, category
-| LIMIT 5
-```
-
-## Optional — Internal escalation
-
-```esql
-FROM cisco-internal-runbooks
-| WHERE MATCH(content, "escalation")
-| KEEP title, team, severity
-| LIMIT 5
-```
-
-## Your task
-
-1. Run Query 1 and Query 2; capture **timestamp + site** for the offline event.
-2. Paste **one** runbook title that applies to recovery.
-3. Optional: run the internal runbooks query and note an escalation owner.
+In notes: *Next we already augment this Elastic card with Splunk O11Y via workflow `cisco-branch-4471-splunk-o11y-a2a-rca` (Challenge 2 / 7).*
 
 ## Success criteria
 
-- Offline event located for Branch / device 4471
-- Matching Meraki runbook title recorded
+- Agent returns timestamp + site + Meraki runbook title
+- First recovery steps captured
 
 ## Verification
 
-Click **Check** when both primary queries succeed.
+Click **Check** when the success criteria are met.
+

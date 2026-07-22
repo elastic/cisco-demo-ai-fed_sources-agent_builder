@@ -2,14 +2,14 @@
 slug: explore-cisco-kb
 id: x4ssyoighgs4
 type: challenge
-title: Challenge 1 — Find the runbook
-teaser: ES|QL plus Elastic AI Assistant — get both Branch 4471 runbooks in one ask.
+title: Challenge 1 — Create the Cisco Agent & find the runbook
+teaser: Stand up Cisco NOC Copilot in Agent Builder — then ask Branch 4471.
 tabs:
-- id: yfkxkvh8vl0j
-  title: ES|QL + AI Assistant
+- id: tab-agent-01
+  title: Cisco Agent
   type: service
   hostname: es3-api
-  path: /app/discover
+  path: /app/agent_builder
   port: 8080
   custom_request_headers:
   - key: Content-Security-Policy
@@ -21,7 +21,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: cisco-noc-dash-tab
+- id: tab-dash-01
   title: NOC Dashboard
   type: service
   hostname: es3-api
@@ -42,69 +42,55 @@ timelimit: 600
 enhanced_loading: null
 ---
 
-# Find the runbook
+# Create the Cisco Agent & find the runbook
 
-> **Thesis:** On **Elastic Serverless Search**, keyword ES|QL finds the docs — the **AI Assistant** turns them into a NOC-ready action plan.
+> **Thesis:** Don't start in raw Discover. Create a **Cisco Agent** in Agent Builder that queries Serverless Search — then use it for every later challenge.
 
 ## Background
 
-NOC chat lights up: *"Branch 4471 — Meraki AP offline, edge BGP looking ugly. Where's the recovery runbook?"*
+NOC chat: *"Branch 4471 — Meraki AP offline, edge BGP looking ugly. Where's the recovery runbook?"*
 
-Setup seeded:
+Seeded for you: **Cisco NOC Command Center** dashboard + `cisco-network-kb`.
 
-- **Cisco NOC Command Center** — [button label="NOC Dashboard"](tab-1)
-- **Cisco Knowledge Base Library** (`cisco-kb-library`) — Dashboards list if you want the catalog
-
-**Time:** ~5 minutes with AI Assistant  
-*Without AI this beat was usually 15–20 minutes — paste prompts, don’t retype the story.*
+**Time:** ~5 minutes with Agent Builder  
+*Without AI/agent tooling this beat was usually 15–20 minutes.*
 
 ## Your task
 
-### 1 — Orient on the dashboard
+### 1 — Orient (30 seconds)
 
-Open [button label="NOC Dashboard"](tab-1) and confirm **Branch-4471-Dallas** appears in Meraki offline and/or network signal panels.
+Open [button label="NOC Dashboard"](tab-1). Confirm **Branch-4471-Dallas** appears in Meraki offline and/or network panels.
 
-### 2 — Prove it with ES|QL
+### 2 — Create **Cisco NOC Copilot**
 
-Back on [button label="ES|QL + AI Assistant"](tab-0), paste:
+Open [button label="Cisco Agent"](tab-0) → **Agent Builder** → create a **new agent**:
 
-```esql
-FROM cisco-network-kb
-| WHERE MATCH(content, "BGP neighbor idle")
-   OR MATCH(title, "BGP neighbor")
-| KEEP title, product, category, content
-| LIMIT 10
-```
+| | |
+|--|--|
+| **Name** | `Cisco NOC Copilot` |
+| **Goal** | Investigate Cisco Branch 4471: correlate Meraki + BGP signals with KB runbooks; draft next steps |
+| **Tools** | ES\|QL (or index search) over `cisco-network-kb`, `cisco-meraki-events`, `cisco-network-events` (add `cisco-internal-runbooks` if offered) |
 
-Then:
+Save the agent. You will reuse it for the rest of the workshop.
 
-```esql
-FROM cisco-network-kb
-| WHERE product == "Meraki" AND MATCH(content, "offline")
-| KEEP title, product, category, content
-| LIMIT 10
-```
+### 3 — Ask the agent for runbooks
 
-Confirm you get **BGP Neighbor Down — IOS-XE Troubleshooting** and **Meraki AP Offline Recovery**.
-
-### 3 — Ask the Elastic AI Assistant
-
-Open the **AI Assistant** / **Elastic AI Agent** chat panel (right side in Discover).
-
-Paste this prompt:
+In the agent chat, paste:
 
 ```text
 Branch 4471 — Meraki AP offline, edge BGP looking ugly. Where's the recovery runbook?
+Use cisco-network-kb. Return both Meraki offline and BGP neighbor guidance with numbered first steps.
 ```
 
-Wait for tool calls to finish. You should get **both** runbooks with numbered steps, plus guidance on which problem to fix first (BGP vs Meraki).
+Confirm tool calls hit Search indices and you get **Meraki AP Offline Recovery** + **BGP Neighbor Down — IOS-XE Troubleshooting** (or equivalent titles).
 
 ## Success criteria
 
+- `Cisco NOC Copilot` exists with Search-backed tools
+- Agent returns Meraki + BGP recovery steps grounded in `cisco-network-kb`
 - NOC dashboard shows Branch 4471 signals
-- Both ES|QL queries return the expected KB docs
-- AI Assistant returns Meraki + BGP recovery steps grounded in `cisco-network-kb`
 
 ## Verification
 
 Click **Check** when the success criteria are met.
+
