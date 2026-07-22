@@ -1,0 +1,14 @@
+{
+  "name": "cisco-search-ai-presentation",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "serve": "fslides serve",
+    "export": "node build-player.js",
+    "build": "node build-player.js",
+    "pdf": "fslides pdf"
+  },
+  "devDependencies": {
+    "fslides": "^0.2.2"
+  }
+}

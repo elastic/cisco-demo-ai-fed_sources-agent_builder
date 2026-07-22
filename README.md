@@ -22,7 +22,7 @@ Each learner gets **one** vector-optimized **Serverless Search** project (Kibana
 
 Startup ~**3–4 min** (single project + federated seed). Track time limit **4.5 h**; skipping enabled.
 
-**While-you-wait:** [Workshop slides](https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/slides.html) (11 slides — what/why + Serverless federation future) embedded in module-start Instruqt notes + VM `/loading`.
+**While-you-wait / facilitator deck:** [fslides briefing](https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html) (Metrics Analyst–style — AI Search, Federated Sources, Agent Builder, blob roadmap). Source: `docs/presentation/`. Compact fallback: [slides.html](https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/slides.html).
 
 ## Workflow
 

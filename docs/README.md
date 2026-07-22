@@ -13,8 +13,9 @@ After deploy, the site is live at:
 
 | Page | Use |
 |------|-----|
-| [slides.html](slides.html) | **11-slide deck** — what/why + Serverless federation future (← →), facilitator or fullscreen |
-| [slides.html?embed=1](slides.html?embed=1) | **Instruqt iframe** (Notes + nginx `/loading`) |
+| [presentation/cisco-search-ai.html](presentation/cisco-search-ai.html) | **Primary briefing** — fslides player (Metrics Analyst–style), 16 slides |
+| [presentation/](presentation/) | Source slides + `fslides` build (`README.md` there) |
+| [slides.html](slides.html) | Compact wait deck (fallback) |
 | [instruqt.html](instruqt.html) | Compact static loader |
 | [index.html](index.html) | Landing summary |
 
@@ -22,7 +23,7 @@ After deploy, the site is live at:
 
 ```html
 <iframe
-  src="https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/slides.html?embed=1"
+  src="https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html"
   width="100%"
   height="720"
   frameborder="0"
@@ -35,6 +36,10 @@ The lab VM also iframes this URL from nginx `/loading` during Kibana proxy start
 ## Local preview
 
 ```bash
+# Full fslides deck (recommended)
+cd docs/presentation && npm install && npm run serve
+
+# Or static Pages tree
 python3 -m http.server 8765 --directory docs
-# open http://localhost:8765/instruqt.html
+# open http://localhost:8765/presentation/cisco-search-ai.html
 ```

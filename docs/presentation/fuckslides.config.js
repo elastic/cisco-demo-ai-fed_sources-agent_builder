@@ -1,0 +1,48 @@
+module.exports = {
+  name: 'cisco-search-ai',
+  title: 'Elastic Search — AI, Federated Sources & Agent Builder',
+  slidesDir: '.',
+  port: 3015,
+
+  slides: [
+    'cover.html',
+    'agenda.html',
+    'pain.html',
+    'serverless.html',
+    'ai-search.html',
+    'hybrid.html',
+    'federated.html',
+    'esql.html',
+    'agents.html',
+    'noc-story.html',
+    'future.html',
+    'architecture.html',
+    'outcomes.html',
+    'lab.html',
+    'close.html',
+    'thank-you.html',
+  ],
+
+  labels: [
+    'Cover',
+    'Agenda',
+    'NOC Pain',
+    'Serverless Search',
+    'AI Search',
+    'Hybrid Retrieval',
+    'Federated Sources',
+    'ES|QL',
+    'Agent Builder',
+    'NOC Story',
+    'Future · Blobs',
+    'Architecture',
+    'Outcomes',
+    'Lab Setup',
+    'Takeaways',
+    'Thank You',
+  ],
+
+  disabled: [
+    ,
+  ],
+};

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Search — what & why</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { width: 100%; height: 100%; overflow: hidden; background: #22242C; }
+body {
+  width: 1280px; height: 720px; overflow: hidden; position: absolute;
+  font-family: 'Inter', -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased; background: #22242C;
+  display: flex; flex-direction: column; color: #fff;
+}
+body::before {
+  content: ''; position: fixed; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 28px 28px; pointer-events: none; z-index: 0;
+}
+.accent-bar {
+  position: fixed; top: 0; left: 0; width: 4px; height: 100%;
+  background: #00BFB3; z-index: 20;
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.f1 { opacity: 0; animation: fade-up 0.5s ease forwards 0.10s; }
+.f2 { opacity: 0; animation: fade-up 0.5s ease forwards 0.22s; }
+.f3 { opacity: 0; animation: fade-up 0.5s ease forwards 0.34s; }
+.f4 { opacity: 0; animation: fade-up 0.5s ease forwards 0.50s; }
+.f5 { opacity: 0; animation: fade-up 0.5s ease forwards 0.66s; }
+.f6 { opacity: 0; animation: fade-up 0.5s ease forwards 0.82s; }
+.f7 { opacity: 0; animation: fade-up 0.5s ease forwards 1.00s; }
+.slide {
+  position: relative; z-index: 10; flex: 1; min-height: 0;
+  display: flex; flex-direction: column; padding: 28px 52px 20px;
+}
+.eyebrow {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: #00BFB3; margin-bottom: 8px;
+}
+.headline {
+  font-size: 2.05rem; font-weight: 300; letter-spacing: -0.025em;
+  line-height: 1.12; color: #fff; margin-bottom: 6px;
+}
+.headline strong { font-weight: 800; color: #00BFB3; }
+.sub { font-size: 0.86rem; color: rgba(255,255,255,0.45); max-width: 820px; }
+.divider { height: 1px; background: rgba(255,255,255,0.07); margin: 14px 0 18px; }
+.footer {
+  margin-top: auto; padding-top: 12px;
+  display: flex; align-items: center; gap: 12px;
+  font-size: 0.68rem; color: rgba(255,255,255,0.28);
+}
+.footer .tag { color: #049FD9; font-weight: 600; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; flex: 1; min-height: 0; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; flex: 1; min-height: 0; }
+.card {
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px; padding: 18px 20px;
+}
+.card .label {
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: #00BFB3; margin-bottom: 8px;
+}
+.card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+.card p { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.5; }
+.card ul { margin: 8px 0 0 1.1rem; font-size: 0.8rem; color: rgba(255,255,255,0.55); line-height: 1.55; }
+.card li { margin: 4px 0; }
+.card li strong { color: #fff; font-weight: 600; }
+.pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 0; }
+.pill {
+  font-size: 0.68rem; padding: 5px 12px; border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.55);
+}
+.pill.hot { border-color: rgba(0,191,179,0.55); color: #00BFB3; }
+.pill.future { border-color: rgba(167,139,250,0.55); color: #c4b5fd; }
+.quote {
+  border-left: 3px solid #049FD9; padding: 12px 16px;
+  background: rgba(4,159,217,0.07); border-radius: 0 10px 10px 0;
+  font-size: 0.92rem; color: rgba(255,255,255,0.85); line-height: 1.45;
+}
+.mono { font-family: 'JetBrains Mono', ui-monospace, monospace; color: #00BFB3; font-size: 0.85em; }
+
+
+  </style>
+</head>
+<body>
+  <div class="accent-bar"></div>
+
+  <div class="slide">
+    <div class="eyebrow f1">Module 1</div>
+    <h1 class="headline f2">AI Search — <strong>what &amp; why</strong></h1>
+    <p class="sub f2">Hybrid + semantic search on <span class="mono">cisco-network-kb</span> — Meraki, BGP, DNA runbooks in seconds.</p>
+    <div class="divider"></div>
+    <div class="grid2">
+      <div class="card f3">
+        <div class="label">What</div>
+        <h3>Keyword + vector</h3>
+        <ul>
+          <li><strong>BM25</strong> for exact TAC phrases and error codes</li>
+          <li><strong>Semantic / ELSER</strong> for “AP keeps going offline”</li>
+          <li><strong>RRF merge</strong> for one ranked result set</li>
+        </ul>
+      </div>
+      <div class="card f4">
+        <div class="label">Why buyers care</div>
+        <h3>Shorter MTTR</h3>
+        <ul>
+          <li><strong>One surface</strong> instead of six portals</li>
+          <li><strong>Scale</strong> via connectors (Module 2)</li>
+          <li><strong>Proof</strong> live Search + ES|QL in the first 20 minutes</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote f5" style="margin-top:16px">“Can we search IOS-XE and Meraki docs in one place?” — this module is the answer.</div>
+  <div class="footer">
+    <span class="tag">Module 1 · AI Search</span>
+    <span>·</span>
+    <span>The Search AI Company</span>
+  </div>
+  </div>
+
+</body>
+</html>
