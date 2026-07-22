@@ -13,7 +13,7 @@
   "future.html": "- Clear bridge today vs roadmap. Economic punch: don't pay twice for cold.",
   "architecture.html": "- Sources \u2192 federation \u2192 tiers. Takeaway: one query layer.",
   "outcomes.html": "- Unified / admin / TCO / bridge.",
-  "lab.html": "- Orient: es3-api, 8080, four seed indices.",
+  "lab.html": "- Orient: Serverless Search project + four seed indices. No infra talk.",
   "close.html": "- Five takeaways on screen for Q&A.",
   "thank-you.html": "- Point to Instruqt manage URL."
 }
