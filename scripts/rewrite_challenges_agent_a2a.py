@@ -435,7 +435,7 @@ Click **Check** when the success criteria are met.
     "07": {
         "slug": "triage-network-signals",
         "title": "Challenge 7 — Triage with Agent + A2A Workflow",
-        "teaser": "Re-run the inject: Cisco Agent for Elastic signals, Workflow A2A for Splunk O11Y.",
+        "teaser": "Re-run the inject — Cisco Agent for Elastic signals, Workflow A2A for Splunk O11Y.",
         "timelimit": 600,
         "tabs": "\n".join(
             [

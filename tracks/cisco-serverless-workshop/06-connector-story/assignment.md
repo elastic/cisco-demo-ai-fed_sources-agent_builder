@@ -19,7 +19,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-  title: Cisco Agent
+- title: Cisco Agent
   type: service
   hostname: es3-api
   path: /app/agent_builder

@@ -88,9 +88,9 @@ TITLE_BY_DEST = {
 
 
 def strip_instruqt_ids(text: str) -> str:
+    # Drop challenge-level id only. Tab `- id:` lines must become `- title:` so the list item remains.
     text = re.sub(r"^id: .+\n", "", text, flags=re.MULTILINE)
-    text = re.sub(r"^- id: .+\n", "", text, flags=re.MULTILINE)
-    text = re.sub(r"^tabs:\n  title:", "tabs:\n- title:", text, flags=re.MULTILINE)
+    text = re.sub(r"^- id: .+\n  title:", "- title:", text, flags=re.MULTILINE)
     return text
 
 
