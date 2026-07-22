@@ -39,6 +39,56 @@
     .pill-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0; }
     .pill { font-size: 0.72rem; padding: 0.25rem 0.55rem; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); }
     .pill.hot { border-color: var(--cisco); color: var(--cisco); }
+    .pill.future { border-color: #a78bfa; color: #c4b5fd; background: rgba(167, 139, 250, 0.08); }
+
+    .arch {
+      display: grid;
+      gap: 0.5rem;
+      margin: 0.75rem 0;
+    }
+    .arch-row {
+      display: grid;
+      gap: 0.45rem;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: 720px) { .arch-row { grid-template-columns: 1fr; } }
+    .arch-cell {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.55rem 0.65rem;
+      font-size: 0.72rem;
+    }
+    .arch-cell strong { display: block; font-size: 0.78rem; color: var(--text); margin-bottom: 0.2rem; }
+    .arch-cell em { font-style: normal; color: var(--muted); font-size: 0.65rem; }
+    .arch-hub {
+      text-align: center;
+      padding: 0.65rem;
+      border-radius: 10px;
+      border: 1px dashed #a78bfa;
+      background: rgba(167, 139, 250, 0.06);
+      font-size: 0.78rem;
+      color: #ddd6fe;
+    }
+    .arch-hub small { display: block; color: var(--muted); font-size: 0.65rem; margin-top: 0.25rem; }
+    .tier-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.55rem;
+      margin-top: 0.55rem;
+    }
+    @media (max-width: 640px) { .tier-split { grid-template-columns: 1fr; } }
+    .tier {
+      border-radius: 10px;
+      padding: 0.6rem 0.7rem;
+      font-size: 0.75rem;
+      border: 1px solid var(--border);
+    }
+    .tier.hot-tier { border-color: var(--elastic); background: rgba(0, 191, 179, 0.06); }
+    .tier.cold-tier { border-color: #7c3aed; background: rgba(124, 58, 237, 0.08); }
+    .tier .t-label { font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; margin-bottom: 0.25rem; }
+    .tier.hot-tier .t-label { color: var(--elastic); }
+    .tier.cold-tier .t-label { color: #a78bfa; }
 
     .grid2 { display: grid; gap: 0.75rem; grid-template-columns: 1fr 1fr; margin-top: 0.75rem; }
     @media (max-width: 640px) { .grid2 { grid-template-columns: 1fr; } }
@@ -143,7 +193,7 @@
         <div class="bar-col"><div class="bar bad"></div><span>Today: tab hopping · long MTTR</span></div>
         <div class="bar-col"><div class="bar good"></div><span>Target: one Search · faster resolution</span></div>
       </div>
-      <p><strong>Why Elastic at Cisco:</strong> meet engineers where they already search — with AI-native retrieval and agents on **one** Search platform.</p>
+      <p><strong>Why Elastic at Cisco:</strong> meet engineers where they already search — with AI-native retrieval and agents on <strong>one</strong> Search platform.</p>
     </section>
 
     <section class="slide" data-slide="2">
@@ -242,6 +292,73 @@
     </section>
 
     <section class="slide" data-slide="7">
+      <p class="eyebrow">Search · future</p>
+      <h1>Serverless Search &amp; federated blob sources</h1>
+      <p class="pill-row">
+        <span class="pill future">Enterprise Search roadmap</span>
+        <span class="pill">S3 · GCS · Azure</span>
+        <span class="pill">One Serverless project</span>
+      </p>
+      <p style="margin-top:0.65rem">Today’s lab uses <strong>managed indices + connectors</strong> in one Serverless Search project. The roadmap extends that same project to <strong>federated object storage</strong> — query archives in place without sizing a second cluster on cold data.</p>
+      <div class="quote">Register inexpensive blob prefixes as federated data sources; keep hot corpus on managed Search; one ES|QL story across both.</div>
+      <p><strong>Why it matters at Cisco:</strong> years of JSON/Parquet exports, support archives, and compliance buckets become searchable without re-copying everything into a sized frozen tier.</p>
+    </section>
+
+    <section class="slide" data-slide="8">
+      <p class="eyebrow">Architecture (future)</p>
+      <h1>Sources → Serverless project → tiers</h1>
+      <div class="arch">
+        <div class="arch-row">
+          <div class="arch-cell"><strong>Managed Search indices</strong><em>Product docs · runbooks · sub-second UX</em></div>
+          <div class="arch-cell"><strong>Content connectors</strong><em>SharePoint · web · API sync · incremental ingest</em></div>
+          <div class="arch-cell"><strong>Blob archives</strong><em>S3 / GCS / Azure · JSON &amp; Parquet · federated read</em></div>
+        </div>
+        <div class="arch-hub">
+          Serverless Search project + federation layer
+          <small>Elastic-operated · no search cluster sizing · schema-on-read · bucket prefix mapping · tier-to-blob export</small>
+        </div>
+        <div class="tier-split">
+          <div class="tier hot-tier">
+            <div class="t-label">Managed search tier</div>
+            Lexical + semantic (ELSER) · autocomplete · interactive ms–s class search
+          </div>
+          <div class="tier cold-tier">
+            <div class="t-label">Federated object tier</div>
+            Query blob in place · long-retention corpora · archive economics (cents/GB-month)
+          </div>
+        </div>
+      </div>
+      <p style="margin-top:0.5rem;font-size:0.82rem">Tooling: Enterprise Search UI · ES|QL · semantic rerank · connectors &amp; APIs — same surface as today’s workshop.</p>
+    </section>
+
+    <section class="slide" data-slide="9">
+      <p class="eyebrow">Outcomes</p>
+      <h1>Unified search &amp; simpler admin</h1>
+      <div class="grid2">
+        <div class="card">
+          <div class="label">Unified search</div>
+          <div class="what">One query, many tiers</div>
+          <div class="why">Span managed indices <em>and</em> federated blob prefixes in a single ES|QL or Search request — NOC sees KB, events, and cold archive together.</div>
+        </div>
+        <div class="card">
+          <div class="label">Easy administration</div>
+          <div class="what">Register sources in UI</div>
+          <div class="why">No shard math on cold storage; federate instead of standing up archive clusters on top of blob.</div>
+        </div>
+        <div class="card">
+          <div class="label">Economics</div>
+          <div class="what">Lower TCO vs sized clusters</div>
+          <div class="why">Avoid paying twice for frozen/archive — blob economics for retention, Serverless for hot + AI.</div>
+        </div>
+        <div class="card">
+          <div class="label">Bridge to today</div>
+          <div class="what">This lab = hot tier + federated <em>indices</em></div>
+          <div class="why">Modules 2–3 preview the unified query story; blob federation is the next hop on the same Serverless Search project.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="10">
       <p class="eyebrow">While you wait</p>
       <h1>Lab provisioning (~3–4 min)</h1>
       <ul>
@@ -256,7 +373,7 @@
   <div class="controls">
     <button type="button" class="btn" id="prev" aria-label="Previous slide">←</button>
     <div class="dots" id="dots"></div>
-    <span class="counter" id="counter">1 / 8</span>
+    <span class="counter" id="counter">1 / 11</span>
     <button type="button" class="btn" id="next" aria-label="Next slide">→</button>
   </div>
 
