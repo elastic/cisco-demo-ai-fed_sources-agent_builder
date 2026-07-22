@@ -227,10 +227,13 @@ developers:
 - {DEVELOPER}
 show_timer: true
 skipping_enabled: true
-idle_timeout: 600
+# Idle 5m → stop sandbox → cleanup deletes Serverless project
+idle_timeout: 300
+# Max lab wall-clock (~4.5h workshop); cleanup also runs at timelimit
 timelimit: 16200
 lab_config:
-  extend_ttl: 1800
+  # Short extend window so abandoned sessions do not linger
+  extend_ttl: 600
   sidebar_enabled: true
   feedback_recap_enabled: true
   feedback_tab_enabled: false
@@ -273,7 +276,7 @@ secrets:
     # build-track-setups only covers legacy tracks; wire combined track setup explicitly
     base = ROOT / "scripts" / "es3-setup-base.sh"
     seed = ROOT / "scripts" / "es3-setup-seed.sh"
-    cleanup = ROOT / "tracks" / "cisco-w1-ai-search" / "track_scripts" / "cleanup-es3-api"
+    cleanup = ROOT / "scripts" / "es3-cleanup.sh"
     out = COMBINED / "track_scripts" / "setup-es3-api"
     with out.open("w", encoding="utf-8") as f:
         f.write("#!/bin/bash\n")

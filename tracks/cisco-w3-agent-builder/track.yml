@@ -1,5 +1,5 @@
 slug: cisco-w3-agent-builder
-id: 8wpb43gmycov
+id: aympse2rvngg
 title: Cisco W3 — Agent Builder for Cisco
 teaser: Agent Builder on Serverless Search — ES|QL triage and NOC agents.
 description: |
@@ -18,10 +18,10 @@ developers:
 - peter.simkins@elastic.co
 show_timer: true
 skipping_enabled: true
-idle_timeout: 600
+idle_timeout: 300
 timelimit: 5400
 lab_config:
-  extend_ttl: 900
+  extend_ttl: 600
   sidebar_enabled: true
   feedback_recap_enabled: true
   feedback_tab_enabled: false
@@ -31,5 +31,5 @@ lab_config:
   hideStopButton: false
   default_layout: AssignmentRight
   default_layout_sidebar_size: 40
-checksum: "2616655430741479778"
+checksum: "16932027845218392984"
 enhanced_loading: false

@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 BASE="$ROOT/scripts/es3-setup-base.sh"
 SEED="$ROOT/scripts/es3-setup-seed.sh"
-CLEANUP_SRC="$ROOT/../metric-enablement-series/tracks/metrics-w3-agentic-roi/track_scripts/cleanup-es3-api"
+CLEANUP_SRC="$ROOT/scripts/es3-cleanup.sh"
 
 for track in cisco-w1-ai-search cisco-w2-federated-sources cisco-w3-agent-builder; do
   out="$ROOT/tracks/$track/track_scripts/setup-es3-api"

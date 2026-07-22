@@ -141,6 +141,9 @@ agent variable set ES_URL `jq -r --arg region "$REGIONS" '.[$region].endpoints.e
 agent variable set ES_USERNAME `jq -r --arg region "$REGIONS" '.[$region].credentials.username'  /tmp/project_results.json`
 agent variable set ES_PASSWORD `jq -r --arg region "$REGIONS" '.[$region].credentials.password' /tmp/project_results.json`
 agent variable set ES_DEPLOYMENT_ID `jq -r --arg region "$REGIONS" '.[$region].id' /tmp/project_results.json`
+# Persist for cleanup-es3-api (idle stop / TTL / Stop button)
+agent variable set ES_PROJECT_TYPE "${PROJECT_TYPE:-elasticsearch}"
+agent variable set ES_REGIONS "${REGIONS:-aws-us-east-1}"
 
 BASE64=$(echo -n "admin:${ELASTICSEARCH_PASSWORD}" | base64)
 KIBANA_URL_WITHOUT_PROTOCOL=$(echo $KIBANA_URL | sed -e 's#http[s]\?://##g')

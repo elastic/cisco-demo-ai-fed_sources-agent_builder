@@ -1,11 +1,11 @@
 ---
 slug: connector-story
-id: akqfhy9kowqc
+id: lhaymoqdpfpf
 type: challenge
 title: Challenge 3 — Connectors & Consolidation Story
 teaser: Position Elastic connectors vs. rip-and-replace.
 tabs:
-- id: ok9ftqhhyai8
+- id: ovuqqvoyw5x4
   title: Elastic Serverless Search
   type: service
   hostname: es3-api

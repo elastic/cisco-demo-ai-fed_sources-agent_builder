@@ -1,11 +1,11 @@
 ---
 slug: map-data-silos
-id: fobkv3ouflfy
+id: n3olmdtkd0e1
 type: challenge
 title: Challenge 1 — Map Cisco Data Silos
 teaser: Inventory federated indices and their business owner.
 tabs:
-- id: worprnk5cxui
+- id: hejyfxmigq1e
   title: Elastic Serverless
   type: service
   hostname: es3-api

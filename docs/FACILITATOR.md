@@ -15,6 +15,18 @@ Secrets: **`ESS_CLOUD_API_KEY`** (required), **`LLM_PROXY_PROD`** (optional, Mod
 
 **Startup:** ~3–4 minutes before opening the Search tab.
 
+## Lifecycle (Serverless project spin-down)
+
+| Trigger | Behavior |
+|---------|----------|
+| Setup | Creates **one** Search Serverless project; stores `ES_DEPLOYMENT_ID` + `ES_PROJECT_TYPE` |
+| Cleanup (`cleanup-es3-api`) | Deletes that project via Cloud API |
+| Idle | **5 minutes** (`idle_timeout: 300`) → sandbox stops → cleanup runs |
+| Extend | At most **10 minutes** (`extend_ttl: 600`) |
+| Track limit | **~4.5 h** wall clock (`timelimit: 16200`); cleanup on expiry / Stop |
+
+Tell learners: leave the tab idle >5 minutes and the lab (and Cloud project) tear down. Hit **Stop** when finished so cleanup runs immediately.
+
 ## Combined vs legacy tracks
 
 | Track | Use when |

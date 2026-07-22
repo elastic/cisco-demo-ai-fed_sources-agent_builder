@@ -1,11 +1,11 @@
 ---
 slug: triage-network-signals
-id: ubtycyfwm7tm
+id: zmj9ciywdm8k
 type: challenge
 title: Challenge 1 — Triage Network Signals
 teaser: ES|QL triage on Search indices — BGP and Meraki signals.
 tabs:
-- id: nbrtnagypu9y
+- id: dsfxfxk9e9yy
   title: Elastic Serverless Search
   type: service
   hostname: es3-api

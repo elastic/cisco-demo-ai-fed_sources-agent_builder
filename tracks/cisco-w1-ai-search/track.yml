@@ -1,5 +1,5 @@
 slug: cisco-w1-ai-search
-id: lw9vzqzhwmao
+id: awuuygdlkr8v
 title: Cisco W1 — AI Search on Serverless
 teaser: Semantic + hybrid search over Cisco network runbooks on Elastic Serverless
   Search.
@@ -20,10 +20,10 @@ developers:
 - peter.simkins@elastic.co
 show_timer: true
 skipping_enabled: true
-idle_timeout: 600
+idle_timeout: 300
 timelimit: 5400
 lab_config:
-  extend_ttl: 900
+  extend_ttl: 600
   sidebar_enabled: true
   feedback_recap_enabled: true
   feedback_tab_enabled: false
@@ -33,5 +33,5 @@ lab_config:
   hideStopButton: false
   default_layout: AssignmentRight
   default_layout_sidebar_size: 40
-checksum: "1021594235207536861"
+checksum: "6180426557400725059"
 enhanced_loading: false

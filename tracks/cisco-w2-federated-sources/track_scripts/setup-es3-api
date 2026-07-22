@@ -81,7 +81,12 @@ case "$PROJECT_TYPE" in
         --wait-for-ready
         ;;
     "elasticsearch")
+      # Cloud API enum is general_purpose|vector; es3-api.py CLI historically
+      # accepted "vectors". Prefer general_purpose (works for hybrid/ELSER labs).
       OPTIMIZED_FOR="${OPTIMIZED_FOR:-general_purpose}"
+      case "$OPTIMIZED_FOR" in
+        vector|vectors) OPTIMIZED_FOR="general_purpose" ;;
+      esac
       echo "Optimized for: $OPTIMIZED_FOR"
       python3 bin/es3-api.py \
         --operation create \
@@ -136,6 +141,9 @@ agent variable set ES_URL `jq -r --arg region "$REGIONS" '.[$region].endpoints.e
 agent variable set ES_USERNAME `jq -r --arg region "$REGIONS" '.[$region].credentials.username'  /tmp/project_results.json`
 agent variable set ES_PASSWORD `jq -r --arg region "$REGIONS" '.[$region].credentials.password' /tmp/project_results.json`
 agent variable set ES_DEPLOYMENT_ID `jq -r --arg region "$REGIONS" '.[$region].id' /tmp/project_results.json`
+# Persist for cleanup-es3-api (idle stop / TTL / Stop button)
+agent variable set ES_PROJECT_TYPE "${PROJECT_TYPE:-elasticsearch}"
+agent variable set ES_REGIONS "${REGIONS:-aws-us-east-1}"
 
 BASE64=$(echo -n "admin:${ELASTICSEARCH_PASSWORD}" | base64)
 KIBANA_URL_WITHOUT_PROTOCOL=$(echo $KIBANA_URL | sed -e 's#http[s]\?://##g')

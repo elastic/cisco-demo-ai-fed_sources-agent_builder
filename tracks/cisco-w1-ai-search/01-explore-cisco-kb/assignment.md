@@ -1,11 +1,11 @@
 ---
 slug: explore-cisco-kb
-id: ewxzjpdnweuu
+id: x4ssyoighgs4
 type: challenge
 title: Challenge 1 — Explore the Cisco Knowledge Base
 teaser: Navigate Search and Discover on seeded Cisco runbooks.
 tabs:
-- id: cja7sibzacwr
+- id: yfkxkvh8vl0j
   title: Elastic Serverless
   type: service
   hostname: es3-api

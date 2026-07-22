@@ -1,5 +1,5 @@
 slug: cisco-w2-federated-sources
-id: nlryj5287mnk
+id: h0lybayf7l7k
 title: Cisco W2 — Federated Data Sources
 teaser: Unify Meraki-style events, internal runbooks, and KB in one ES|QL view.
 description: |
@@ -19,10 +19,10 @@ developers:
 - peter.simkins@elastic.co
 show_timer: true
 skipping_enabled: true
-idle_timeout: 600
+idle_timeout: 300
 timelimit: 5400
 lab_config:
-  extend_ttl: 900
+  extend_ttl: 600
   sidebar_enabled: true
   feedback_recap_enabled: true
   feedback_tab_enabled: false
@@ -32,5 +32,5 @@ lab_config:
   hideStopButton: false
   default_layout: AssignmentRight
   default_layout_sidebar_size: 40
-checksum: "4397779454485677433"
+checksum: "8600170474737691967"
 enhanced_loading: false
