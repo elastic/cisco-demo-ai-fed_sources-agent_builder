@@ -15,7 +15,7 @@ After deploy, the site is live at:
 |------|-----|
 | [presentation/cisco-search-ai.html](presentation/cisco-search-ai.html) | **Primary briefing** — fslides player (Metrics Analyst–style), 16 slides |
 | [presentation/](presentation/) | Source slides + `fslides` build (`README.md` there) |
-| [slides.html](slides.html) | Compact wait deck (fallback) |
+| [slides.html](slides.html) | **Canonical URL** — redirects to `presentation/cisco-search-ai.html` |
 | [instruqt.html](instruqt.html) | Compact static loader |
 | [index.html](index.html) | Landing summary |
 
