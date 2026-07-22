@@ -155,7 +155,7 @@ def main() -> None:
                 shutil.copy2(check_src, dest / script)
             else:
                 shutil.copy2(src / script, dest / script)
-            (dest / script).chmod(0x755)
+            (dest / script).chmod(0o755)
 
     kb = ROOT / "assets" / "shared" / "cisco-knowledge-base.json"
     if kb.is_file():
