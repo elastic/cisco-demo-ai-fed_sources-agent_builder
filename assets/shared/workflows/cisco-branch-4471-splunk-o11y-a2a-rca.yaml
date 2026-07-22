@@ -1,24 +1,21 @@
 # Cisco workshop (Elastic Cloud Serverless Search):
-# Branch 4471 incident → Elastic ES|QL context → Splunk Observability A2A → unified RCA
+# Branch 4471 incident → Elastic ES|QL context → Splunk Observability A2A (stubbed) → unified RCA
 #
-# Target: Elastic Serverless Search project used by cisco-serverless-workshop.
-# Requires: Workflows + Agent Builder in the project. Splunk O11y evidence via YOUR A2A bridge.
+# Lab default: the A2A step returns a FAKE Splunk O11Y investigator response so the
+# workflow runs end-to-end without an external gateway. Swap the stub step for a real
+# `http` POST to consts.splunk_o11y_a2a_url when you have a bridge.
 #
 # Setup:
 #   1. Kibana → Workflows → open cisco-branch-4471-splunk-o11y-a2a-rca (seeded at lab start).
-#   2. Set consts.splunk_o11y_a2a_url (or an HTTP connector) to a reachable A2A gateway.
-#   3. Run manually with site=Branch-4471-Dallas (defaults ready for the lab inject).
-#
-# Note: Splunk Observability has no first-party A2A endpoint — use an org bridge that
-# implements A2A and calls Splunk O11y Cloud APIs (detectors, APM, metrics, Log Observer).
+#   2. Run manually with site=Branch-4471-Dallas (defaults ready for the lab inject).
 
 version: "1"
 name: Cisco Branch 4471 — Splunk O11Y A2A RCA
 enabled: true
 description: >
   Manual workshop workflow: gather Meraki + BGP context from Elastic Serverless Search,
-  call a Splunk Observability A2A investigator, then synthesize a cross-platform RCA
-  with Agent Builder for Branch 4471.
+  inject a stubbed Splunk Observability A2A investigator response (demo), then synthesize
+  a cross-platform RCA with Agent Builder for Branch 4471.
 tags:
   - cisco
   - serverless-search
@@ -27,6 +24,7 @@ tags:
   - a2a
   - rca
   - workshop
+  - stub
 
 triggers:
   - type: manual
@@ -39,9 +37,9 @@ triggers:
         default: "4471"
 
 consts:
-  # Replace with your A2A bridge (HTTPS reachable from Elastic Cloud Serverless),
-  # or swap this step to connector-id + path after creating an HTTP connector.
+  # Production: replace the stub step with an http POST to this URL.
   splunk_o11y_a2a_url: "https://REPLACE_WITH_YOUR_A2A_GATEWAY.example.com/a2a/splunk-o11y-investigator"
+  a2a_mode: "stub"
 
 steps:
   - name: meraki_context
@@ -80,53 +78,92 @@ steps:
         | KEEP title, product, category, content, doc_id
         | LIMIT 10
 
-  - name: splunk_o11y_a2a_investigate
-    type: http
+  # Demo: log the A2A request shape that would be sent to a real gateway.
+  - name: a2a_request_preview
+    type: console
     with:
-      url: "{{ consts.splunk_o11y_a2a_url }}"
-      method: POST
-      headers:
-        Content-Type: application/json
-        X-Elastic-Workflow-Id: "{{ workflow.id }}"
-        X-Elastic-Execution-Id: "{{ execution.id }}"
-        X-Elastic-Deployment: "serverless-search"
-        X-Cisco-Workshop: "cisco-serverless-workshop"
-      body:
-        id: "cisco-branch-{{ inputs.device_hint }}-{{ execution.id }}"
-        jsonrpc: "2.0"
-        method: "message/send"
-        params:
-          message:
-            role: user
-            parts:
-              - type: text
-                text: |
-                  Investigate this Cisco branch incident from Elastic Serverless Search
-                  and return Splunk Observability Cloud evidence for correlation.
+      message: |
+        [A2A STUB] Would POST jsonrpc message/send → {{ consts.splunk_o11y_a2a_url }}
+        Site={{ inputs.site }} device_hint={{ inputs.device_hint }} mode={{ consts.a2a_mode }}
+        Meraki rows available for the A2A agent; network + KB context attached in real call.
 
-                  Site: {{ inputs.site }}
-                  Device / branch hint: {{ inputs.device_hint }}
-                  Time window: last 24 hours.
-
-                  Elastic story (lab inject): Meraki AP offline coincides with BGP session
-                  down on the edge router. Determine whether Splunk O11y shows related
-                  detector firings, APM/metrics saturation, or infra symptoms for the same site/entity.
-
-                  Tasks:
-                  1. Find related Splunk Observability detectors/incidents for this site or network edge.
-                  2. Summarize APM/metrics: error rate, latency, throughput, saturation; cite detector IDs.
-                  3. Surface Log Observer patterns that support or contradict the Elastic signals.
-                  4. Include deep links into Splunk Observability UI where possible.
-                  5. Propose likely root cause and next checks (Elastic ES|QL + Splunk SignalFlow/APIs).
-
-                  Meraki events (Elastic ES|QL JSON):
-                  {{ steps.meraki_context.output | json }}
-
-                  Network events (Elastic ES|QL JSON):
-                  {{ steps.network_context.output | json }}
-
-                  KB runbooks (Elastic ES|QL JSON):
-                  {{ steps.kb_runbooks.output | json }}
+  # Workshop stub: fake Splunk Observability A2A investigator response (JSON-RPC 2.0 / A2A-shaped).
+  # To go live: delete this step and restore an `http` POST to consts.splunk_o11y_a2a_url.
+  - name: splunk_o11y_a2a_investigate
+    type: data.parseJson
+    source: |
+      {
+        "jsonrpc": "2.0",
+        "id": "cisco-branch-4471-a2a-stub",
+        "result": {
+          "role": "agent",
+          "kind": "message",
+          "metadata": {
+            "source": "splunk-o11y-a2a-stub",
+            "mode": "workshop_demo",
+            "agent": "splunk-o11y-investigator",
+            "site": "Branch-4471-Dallas"
+          },
+          "parts": [
+            {
+              "type": "text",
+              "text": "Stubbed Splunk Observability investigation for Branch-4471-Dallas (last 24h).\n\nDetectors: WAN_EDGE_BGP_SESSION_DOWN (critical) fired on edge-dfw-01; MERAKI_AP_CLOUD_DISCONNECT (major) correlated within 4 minutes.\nAPM/metrics: wan.edge.dfw latency p95 ~420ms (baseline ~35ms); interface saturation ~91% on TenGigE0/0/1 toward ISP-A.\nLog Observer: repeated 'BGP neighbor 203.0.113.1 Idle' and Meraki Dashboard 'AP went offline' for MR-AP-4471.\nHypothesis: WAN/BGP failure on edge-dfw-01 caused Meraki cloud disconnect at the branch (not a local AP hardware fault).\nNext checks: confirm ISP circuit, review BGP timers/flaps, validate Meraki WAN uplink once BGP recovers."
+            }
+          ],
+          "artifacts": [
+            {
+              "name": "splunk_o11y_evidence",
+              "description": "Synthetic detector + metric evidence for the Cisco workshop A2A demo",
+              "parts": [
+                {
+                  "type": "data",
+                  "data": {
+                    "detectors": [
+                      {
+                        "id": "det-wan-edge-bgp-4471",
+                        "name": "WAN_EDGE_BGP_SESSION_DOWN",
+                        "severity": "Critical",
+                        "entity": "edge-dfw-01",
+                        "site": "Branch-4471-Dallas",
+                        "fired_at": "relative:-18m",
+                        "deep_link": "https://app.us1.signalfx.com/#/detector/det-wan-edge-bgp-4471"
+                      },
+                      {
+                        "id": "det-meraki-ap-cloud-4471",
+                        "name": "MERAKI_AP_CLOUD_DISCONNECT",
+                        "severity": "Major",
+                        "entity": "MR-AP-4471",
+                        "site": "Branch-4471-Dallas",
+                        "fired_at": "relative:-14m",
+                        "deep_link": "https://app.us1.signalfx.com/#/detector/det-meraki-ap-cloud-4471"
+                      }
+                    ],
+                    "metrics": {
+                      "wan_edge_latency_p95_ms": 420,
+                      "wan_edge_latency_baseline_ms": 35,
+                      "uplink_saturation_pct": 91,
+                      "bgp_session_state": "Idle"
+                    },
+                    "log_patterns": [
+                      "BGP neighbor 203.0.113.1 Idle / Active",
+                      "Meraki Dashboard: AP MR-AP-4471 went offline",
+                      "DNA Center: site Branch-4471 reachability degraded"
+                    ],
+                    "likely_root_cause": "BGP session failure on edge-dfw-01 (ISP-A path) precipitating Meraki cloud disconnect",
+                    "recommended_actions": [
+                      "Engage transport/ISP for circuit toward 203.0.113.1",
+                      "Check BGP flap history and interface errors on TenGigE0/0/1",
+                      "After BGP recovers, confirm Meraki AP returns online; avoid RMA until WAN is healthy",
+                      "Cross-check Elastic cisco-network-kb runbooks for BGP neighbor idle + Meraki offline"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    with: {}
 
   - name: unified_rca
     type: ai.agent
@@ -138,11 +175,11 @@ steps:
 
         Elastic Serverless Search has Meraki + BGP/DNA events and KB runbooks for
         {{ inputs.site }}. A Splunk Observability A2A agent response is below
-        (may be empty if the A2A gateway URL is still a placeholder).
+        (workshop stub — shaped like a real A2A jsonrpc result).
 
         Reconcile both sources; cite evidence; rank hypotheses; recommend immediate
         mitigations. Prefer starting with BGP/edge if WAN loss would explain Meraki
-        cloud disconnect.
+        cloud disconnect. Call out that Splunk evidence is from the A2A stub when relevant.
 
         <meraki_events>
         {{ steps.meraki_context.output | json }}
@@ -157,7 +194,7 @@ steps:
         </kb_runbooks>
 
         <splunk_o11y_a2a_response>
-        {{ steps.splunk_o11y_a2a_investigate.output.data | default: steps.splunk_o11y_a2a_investigate.output | json }}
+        {{ steps.splunk_o11y_a2a_investigate.output | json }}
         </splunk_o11y_a2a_response>
 
         Output sections: ## Summary, ## Elastic evidence, ## Splunk Observability evidence,
@@ -167,8 +204,9 @@ steps:
     type: console
     with:
       message: |
-        Cisco Branch {{ inputs.site }} — Splunk O11Y A2A RCA complete.
+        Cisco Branch {{ inputs.site }} — Splunk O11Y A2A RCA complete (mode={{ consts.a2a_mode }}).
 
-        Meraki hits: {{ steps.meraki_context.output | json }}
-        Network hits: {{ steps.network_context.output | json }}
+        Stub A2A result summary:
+        {{ steps.splunk_o11y_a2a_investigate.output.result.parts[0].text | default: "see step output" }}
+
         Unified RCA: {{ steps.unified_rca.output.message | default: steps.unified_rca.output | json }}
