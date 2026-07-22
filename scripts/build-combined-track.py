@@ -76,7 +76,7 @@ MODULE_BY_DEST = {
 
 TITLE_BY_DEST = {
     "01-explore-cisco-kb": "Challenge 1 — Find the runbook",
-    "02-hybrid-retrieval": "Challenge 2 — Prove hybrid retrieval",
+    "02-hybrid-retrieval": "Challenge 2 — Hybrid retrieval + Splunk O11Y A2A",
     "03-customer-talk-track": "Challenge 3 — Share the story with your peers",
     "04-map-data-silos": "Challenge 4 — Map Cisco data silos",
     "05-cross-source-esql": "Challenge 5 — Correlate event + runbook",
