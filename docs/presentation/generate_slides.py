@@ -75,7 +75,7 @@ SLIDES["cover.html"] = wrap(
   <div class="content">
     <div class="c-eyebrow fade-up-1">Cisco × Elastic · Search briefing</div>
     <h1 class="c-title fade-up-2"><strong>AI Search.</strong><br><em>Federated Sources.</em><br><strong>Agent Builder.</strong></h1>
-    <p class="c-sub fade-up-3">One Serverless Search project. Hybrid retrieval, unified Cisco knowledge, grounded agents for the NOC — without Observability or Security SKUs.</p>
+    <p class="c-sub fade-up-3">One Elastic Search Serverless project. Hybrid retrieval, unified Cisco knowledge, grounded agents for the NOC — without Observability or Security.</p>
     <div class="pill-row fade-up-4">
       <span class="pill hot">Serverless Search</span>
       <span class="pill">ES|QL</span>
@@ -112,7 +112,7 @@ SLIDES["agenda.html"] = wrap(
   <div class="slide">
     <div class="eyebrow fade-up-1">Today</div>
     <h1 class="headline fade-up-2">Three beats. <strong>One Search project.</strong></h1>
-    <p class="sub fade-up-3">Same indices end-to-end — Search consolidation GTM for Cisco, not a multi-SKU sell.</p>
+    <p class="sub fade-up-3">Same indices end-to-end — Search consolidation on Elastic Search Serverless for Cisco.</p>
     <div class="header-divider fade-up-3"></div>
     <div class="flow">
       <div class="card fade-up-4">
@@ -132,7 +132,7 @@ SLIDES["agenda.html"] = wrap(
       <div class="card fade-up-6">
         <span class="num">MODULE 03</span>
         <h3>Agent Builder</h3>
-        <p>ES|QL triage + agents grounded in the same indices. Cisco NOC story. Search-only.</p>
+        <p>ES|QL triage + agents grounded in the same indices. Cisco NOC story on Elastic Search Serverless.</p>
         <span class="mono">tools → indices</span>
       </div>
     </div>
@@ -247,11 +247,11 @@ SLIDES["serverless.html"] = wrap(
   <div class="slide">
     <div class="eyebrow fade-up-1">Platform choice</div>
     <h1 class="headline fade-up-2">One <strong>Serverless Search</strong> project — advantages</h1>
-    <p class="sub fade-up-3">Search-led motion for Cisco. No Observability or Security provisioning for this workshop.</p>
+    <p class="sub fade-up-3">Search-led motion for Cisco on Elastic Search Serverless. No Observability or Security for this workshop.</p>
     <div class="header-divider fade-up-3"></div>
     <div class="grid2">
       <div class="card fade-up-4"><div class="label">Speed</div><h3>~3–4 min to ready</h3><p>Single vector Search project + seeded Cisco indices — no multi-product wait.</p></div>
-      <div class="card fade-up-4"><div class="label">GTM</div><h3>Search consolidation</h3><p>Position AI on Search; avoid O11Y/Sec where Cisco isn’t buying those SKUs.</p></div>
+      <div class="card fade-up-4"><div class="label">GTM</div><h3>Search consolidation</h3><p>Position AI on Elastic Search Serverless — stay out of Observability and Security for this motion.</p></div>
       <div class="card fade-up-5"><div class="label">Skill</div><h3>ES|QL everywhere</h3><p>KB, connectors, and agent tools — one query language for SEs and agents.</p></div>
       <div class="card fade-up-5"><div class="label">Economics</div><h3>Serverless ops</h3><p>Per-learner Cloud projects in Instruqt; elastic scale for POVs.</p></div>
     </div>
@@ -756,7 +756,7 @@ SLIDES["close.html"] = wrap(
     <div class="take">
       <div class="card fade-up-4"><div class="icon">1</div><div><h3>Hybrid AI Search</h3><p>Keyword + semantic on Cisco KB — MTTR, not portal hopping.</p></div></div>
       <div class="card fade-up-4"><div class="icon">2</div><div><h3>Federate sources</h3><p>Connectors + multi-index ES|QL without rip-and-replace.</p></div></div>
-      <div class="card fade-up-5"><div class="icon">3</div><div><h3>Agents on Search</h3><p>Grounded tools — NOC action, Search SKU only.</p></div></div>
+      <div class="card fade-up-5"><div class="icon">3</div><div><h3>Agents on Search</h3><p>Grounded tools — NOC action on Elastic Search Serverless only.</p></div></div>
       <div class="card fade-up-5"><div class="icon">4</div><div><h3>Serverless economics</h3><p>One Cloud project, workshop-ready in minutes.</p></div></div>
       <div class="card fade-up-6"><div class="icon">5</div><div><h3>Roadmap: blob federation</h3><p>Same project → query S3/GCS/Azure archives in place.</p></div></div>
     </div>
