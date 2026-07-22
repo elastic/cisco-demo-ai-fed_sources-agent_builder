@@ -1,0 +1,18 @@
+---
+description: Push Instruqt after track or assignment changes
+alwaysApply: true
+---
+
+# Instruqt push (required)
+
+When you change anything under `tracks/` that affects a lab (e.g. `assignment.md`, `track.yml`, `config.yml`, `track_scripts/*`, challenge checks), **push to Instruqt before you finish the task** — do not wait for the user to ask.
+
+From the track directory:
+
+```bash
+cd tracks/<track-slug> && instruqt track push --force
+```
+
+If you edited multiple tracks, push each one. Tell the user the manage URL and remind them to **start a new session** to pick up instruction changes.
+
+After changing `scripts/es3-setup-base.sh`, run `./scripts/build-track-setups.sh` before pushing.

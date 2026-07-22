@@ -1,0 +1,34 @@
+slug: cisco-w3-agent-builder
+title: Cisco W3 — Agent Builder for Cisco
+teaser: Agentic investigation over Cisco network logs on Serverless Observability.
+description: |
+  Workshop 3 of 3. Per-learner **Serverless Observability** (complete tier) with
+  seeded **`logs-cisco.network`** documents. Build an **Agent Builder** investigation
+  story for BGP/Meraki-style incidents. ~90 minutes.
+icon: https://www.elastic.co/favicon.ico
+tags:
+- cisco
+- agent-builder
+- observability
+- serverless
+- aiops
+- cisco-workshop-series
+owner: elastic
+developers:
+- peter.simkins@elastic.co
+show_timer: true
+skipping_enabled: true
+idle_timeout: 600
+timelimit: 5400
+lab_config:
+  extend_ttl: 900
+  sidebar_enabled: true
+  feedback_recap_enabled: true
+  feedback_tab_enabled: false
+  loadingMessages: true
+  theme:
+    name: modern-dark
+  hideStopButton: false
+  default_layout: AssignmentRight
+  default_layout_sidebar_size: 40
+enhanced_loading: false

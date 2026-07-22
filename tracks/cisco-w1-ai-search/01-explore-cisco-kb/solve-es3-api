@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "✓ Continue when you have completed the tasks in Instructions."
+exit 0
