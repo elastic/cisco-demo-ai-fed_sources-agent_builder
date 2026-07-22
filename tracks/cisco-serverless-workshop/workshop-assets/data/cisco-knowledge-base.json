@@ -1,0 +1,150 @@
+{
+  "taxonomy": [
+    {
+      "id": "routing",
+      "name": "Routing & Switching",
+      "children": [
+        { "id": "bgp", "name": "BGP" },
+        { "id": "ospf", "name": "OSPF" },
+        { "id": "stp", "name": "Spanning Tree" }
+      ]
+    },
+    {
+      "id": "wireless",
+      "name": "Wireless & Meraki",
+      "children": [
+        { "id": "wifi", "name": "Wi-Fi Troubleshooting" },
+        { "id": "vpn", "name": "Site-to-Site VPN" }
+      ]
+    },
+    {
+      "id": "security",
+      "name": "Security",
+      "children": [
+        { "id": "firewall", "name": "Secure Firewall" },
+        { "id": "snort", "name": "Snort / IPS" },
+        { "id": "talos", "name": "Talos Threat Intel" }
+      ]
+    },
+    {
+      "id": "automation",
+      "name": "Automation",
+      "children": [
+        { "id": "dna", "name": "DNA Center" },
+        { "id": "sdwan", "name": "SD-WAN" }
+      ]
+    }
+  ],
+  "documents": [
+    {
+      "doc_id": "bgp_neighbor_down",
+      "title": "BGP Neighbor Down — IOS-XE Troubleshooting",
+      "product": "IOS-XE",
+      "category": "Routing",
+      "domain_path": ["Routing & Switching", "BGP"],
+      "content": "When a BGP neighbor transitions to Idle or Active state, verify TCP connectivity on port 179, check AS number mismatch, and validate prefix-lists. Use 'show bgp summary' and 'show bgp neighbors' for state diagnosis. Common causes include ACL blocking, MD5 password mismatch, and hold-timer expiration.",
+      "keywords": ["bgp", "neighbor", "idle", "active", "as number", "hold timer", "ios-xe"],
+      "resolution_type": "runbook",
+      "compliance_context": null
+    },
+    {
+      "doc_id": "meraki_ap_offline",
+      "title": "Meraki AP Offline Recovery",
+      "product": "Meraki",
+      "category": "Wireless",
+      "domain_path": ["Wireless & Meraki", "Wi-Fi Troubleshooting"],
+      "content": "When a Meraki AP shows offline in Dashboard, verify uplink connectivity, PoE budget, and cloud reachability. Check switch port status, VLAN assignment, and DNS resolution to *.meraki.com. APs cache config locally and will reconnect automatically once cloud connectivity is restored.",
+      "keywords": ["meraki", "access point", "offline", "wifi", "dashboard", "poe"],
+      "resolution_type": "automated_guide",
+      "compliance_context": null
+    },
+    {
+      "doc_id": "interface_flap_stp",
+      "title": "Interface Flap — STP Root Guard",
+      "product": "IOS-XE",
+      "category": "Switching",
+      "domain_path": ["Routing & Switching", "Spanning Tree"],
+      "content": "Repeated interface flaps often indicate STP topology changes or BPDU guard violations. Enable root guard on access ports, verify STP priority on distribution switches, and check for unidirectional link failures. Use 'show spanning-tree detail' and 'show interfaces counters errors'.",
+      "keywords": ["interface flap", "stp", "spanning tree", "root guard", "bpdu", "switching"],
+      "resolution_type": "runbook",
+      "compliance_context": null
+    },
+    {
+      "doc_id": "snort_signature_tuning",
+      "title": "Snort Signature Tuning — Secure Firewall",
+      "product": "Secure Firewall",
+      "category": "Security",
+      "domain_path": ["Security", "Snort / IPS"],
+      "content": "Tune Snort rules to reduce false positives by adjusting threshold counts, suppressing noisy SID ranges, and correlating with Talos intelligence feeds. Use Firepower Management Center to analyze event frequency and create custom suppressions for known-good traffic patterns.",
+      "keywords": ["snort", "ips", "signature", "false positive", "talos", "firepower"],
+      "resolution_type": "compliance_routing",
+      "compliance_context": "PCI-DSS 11.4 — intrusion detection tuning requires documented exception process"
+    },
+    {
+      "doc_id": "dna_assurance_health",
+      "title": "DNA Center Assurance — Device Health Score",
+      "product": "DNA Center",
+      "category": "Automation",
+      "domain_path": ["Automation", "DNA Center"],
+      "content": "DNA Center Assurance computes device health from telemetry including CPU, memory, interface errors, and client experience. Scores below 7 trigger proactive alerts. Use the 360 view to drill into root cause — common issues include outdated IOS-XE images, PoE overload, and RF interference on adjacent APs.",
+      "keywords": ["dna center", "assurance", "health score", "telemetry", "proactive"],
+      "resolution_type": "information",
+      "compliance_context": null
+    },
+    {
+      "doc_id": "sdwan_tunnel_down",
+      "title": "SD-WAN Tunnel Down — vManage Recovery",
+      "product": "IOS-XE",
+      "category": "SD-WAN",
+      "domain_path": ["Automation", "SD-WAN"],
+      "content": "When SD-WAN tunnels show down in vManage, verify IKE/IPsec parameters, certificate validity, and OMP route advertisements. Check TLOC extensions, color preferences, and hub-spoke topology. Use 'show sdwan control connections' and 'show sdwan omp routes' on edge devices.",
+      "keywords": ["sd-wan", "tunnel", "vmanage", "ipsec", "omp", "tloc"],
+      "resolution_type": "runbook",
+      "compliance_context": null
+    },
+    {
+      "doc_id": "webex_qos_config",
+      "title": "Webex QoS Configuration Guide",
+      "product": "Webex",
+      "category": "Collaboration",
+      "domain_path": ["Collaboration"],
+      "content": "Configure DSCP EF (46) for Webex voice and AF41 (34) for video on access and WAN edge. Enable LLQ on WAN interfaces, trust DSCP on access ports, and verify with 'show policy-map interface'. Cisco-recommended bandwidth: 100 kbps per voice call, 1.5 Mbps per HD video stream.",
+      "keywords": ["webex", "qos", "dscp", "llq", "voice", "video", "collaboration"],
+      "resolution_type": "information",
+      "compliance_context": null
+    },
+    {
+      "doc_id": "thousandeyes_bgp_monitor",
+      "title": "ThousandEyes BGP Route Monitoring",
+      "product": "ThousandEyes",
+      "category": "Monitoring",
+      "domain_path": ["Monitoring"],
+      "content": "Deploy ThousandEyes BGP monitors to detect prefix hijacks, route leaks, and upstream AS path changes. Configure alerts for unexpected AS path length, origin AS changes, and RPKI validation failures. Integrate with DNA Center for automated ticket creation on critical path changes.",
+      "keywords": ["thousandeyes", "bgp", "monitoring", "route leak", "rpki", "hijack"],
+      "resolution_type": "information",
+      "compliance_context": null
+    },
+    {
+      "doc_id": "talos_threat_intel",
+      "title": "Talos Threat Intelligence Integration",
+      "product": "Secure Firewall",
+      "category": "Security",
+      "domain_path": ["Security", "Talos Threat Intel"],
+      "content": "Talos provides real-time threat feeds for Secure Firewall, Umbrella, and Secure Endpoint. Enable AMP and Threat Grid for file reputation. Correlate Talos IOCs with network telemetry in Elastic Security for unified threat hunting across Cisco and third-party data sources.",
+      "keywords": ["talos", "threat intel", "ioc", "amp", "threat grid", "umbrella"],
+      "resolution_type": "compliance_routing",
+      "compliance_context": "NIST CSF — threat intelligence integration for continuous monitoring"
+    },
+    {
+      "doc_id": "ios_xe_upgrade_swim",
+      "title": "IOS-XE Image Upgrade via DNA Center SWIM",
+      "product": "DNA Center",
+      "category": "Automation",
+      "domain_path": ["Automation", "DNA Center"],
+      "content": "Use Software Image Management (SWIM) in DNA Center for golden image distribution. Create compliance policies, schedule maintenance windows, and enable rollback on failure. Pre-checks include disk space, boot variable, and compatibility matrix for target IOS-XE version.",
+      "keywords": ["ios-xe", "upgrade", "swim", "golden image", "dna center", "firmware"],
+      "resolution_type": "automated_guide",
+      "compliance_context": null
+    }
+  ]
+}

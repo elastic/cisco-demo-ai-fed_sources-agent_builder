@@ -1,0 +1,17 @@
+version: "3"
+virtualmachines:
+- name: es3-api
+  image: elastic/es3-api-v2
+  shell: /bin/bash
+  environment:
+    REGIONS: aws-us-east-1
+    DUAL_PROJECT: "true"
+  memory: 8192
+  cpus: 2
+  allow_external_ingress:
+  - http
+  - https
+  - high-ports
+secrets:
+- name: ESS_CLOUD_API_KEY
+- name: LLM_PROXY_PROD

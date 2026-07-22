@@ -5,19 +5,18 @@
 
 ## Environment
 
-All three workshops use a single **`es3-api`** virtual machine (`elastic/es3-api-v2`) that:
+**Recommended:** single track **`cisco-serverless-workshop`** — dual Serverless projects on one `es3-api` VM:
 
-1. Creates a **per-learner Serverless project** via Cloud API (`ESS_CLOUD_API_KEY`)
-2. Proxies Kibana on **port 8080**
-3. Runs a **Python seed** (`WORKSHOP_SEED` in `config.yml`)
+| Port | Project | Modules |
+|------|---------|---------|
+| **8080** | Serverless Search (vector) | AI Search + Federated |
+| **8090** | Serverless Observability (complete) | Agent Builder |
 
-| Workshop | Project type | Seed script |
-|----------|--------------|-------------|
-| W1 AI Search | `elasticsearch` / `vector` | `seed_cisco_kb.py` |
-| W2 Federated | `elasticsearch` / `general_purpose` | `seed_federated_sources.py` |
-| W3 Agent Builder | `observability` / `complete` | `seed_cisco_observability.py` |
+Legacy single-project tracks (`cisco-w1-*`, `cisco-w2-*`, `cisco-w3-*`) use one project each.
 
-**Startup:** allow **3–4 minutes** before learners open the Serverless tab.
+All variants use **`ESS_CLOUD_API_KEY`**. Optional **`LLM_PROXY_PROD`** for Agent Builder LLM (Module 3).
+
+**Startup:** allow **5–6 minutes** on combined track (two projects + seeds).
 
 ## Timing template
 

@@ -3,72 +3,28 @@ audience: Cisco-facing AEs, SEs, and partner sellers
 customer: Cisco
 platform: Elastic Cloud Serverless
 
+# Primary delivery: one Instruqt track (dual Serverless Search + Observability).
 workshops:
-  - id: w1-ai-search
+  - id: combined
     order: 1
-    slug: cisco-w1-ai-search
-    status: draft
-    title: "Workshop 1: AI Search on Serverless"
-    theme: Serverless Search — Cisco KB, hybrid + semantic retrieval
-    duration_minutes: 90
-    project:
-      type: elasticsearch
-      optimized_for: vector
-    outcomes:
-      - Navigate Search/Discover on cisco-network-kb
-      - Run ES|QL and natural-language queries on runbooks
-      - Deliver 60-second Serverless Search talk track
-    challenges:
-      - slug: explore-cisco-kb
-        minutes: 20
-      - slug: hybrid-retrieval
-        minutes: 35
-      - slug: customer-talk-track
-        minutes: 20
+    slug: cisco-serverless-workshop
+    status: live
+    title: "Cisco — AI Search, Federated Sources & Agent Builder"
+    theme: Single lab — Search :8080 + Observability :8090, 9 challenges
+    duration_minutes: 270
+    modules:
+      - name: AI Search
+        challenges: [explore-cisco-kb, hybrid-retrieval, customer-talk-track]
+      - name: Federated Data Sources
+        challenges: [map-data-silos, cross-source-esql, connector-story]
+      - name: Agent Builder
+        challenges: [triage-network-signals, build-investigation-agent, exec-demo-close]
 
-  - id: w2-federated
-    order: 2
-    slug: cisco-w2-federated-sources
-    status: draft
-    title: "Workshop 2: Federated Data Sources"
-    theme: Multi-index federated query — KB, internal runbooks, Meraki connector events
-    duration_minutes: 90
-    project:
-      type: elasticsearch
-      optimized_for: general_purpose
-    outcomes:
-      - Map siloed Cisco data to Elastic indices
-      - Cross-source ES|QL for incident + runbook
-      - Connectors federated consolidation story
-    challenges:
-      - slug: map-data-silos
-        minutes: 20
-      - slug: cross-source-esql
-        minutes: 35
-      - slug: connector-story
-        minutes: 20
-
-  - id: w3-agent-builder
-    order: 3
-    slug: cisco-w3-agent-builder
-    status: draft
-    title: "Workshop 3: Agent Builder for Cisco"
-    theme: Serverless Observability — agentic triage on logs-cisco.network
-    duration_minutes: 90
-    project:
-      type: observability
-      product_tier: complete
-    outcomes:
-      - Triage BGP/Meraki signals in Discover
-      - Configure Agent Builder for NOC workflow
-      - Close W1→W2→W3 executive demo arc
-    challenges:
-      - slug: triage-network-signals
-        minutes: 20
-      - slug: build-investigation-agent
-        minutes: 35
-      - slug: exec-demo-close
-        minutes: 20
+# Optional: legacy per-module tracks (same content split for partial enablement).
+legacy_tracks:
+  - cisco-w1-ai-search
+  - cisco-w2-federated-sources
+  - cisco-w3-agent-builder
 
 companion_demo_repo: https://github.com/poulsbopete/cisco-elastic-search-ai
 instruqt_filter_tag: cisco-workshop-series

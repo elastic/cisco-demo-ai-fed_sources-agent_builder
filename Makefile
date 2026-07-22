@@ -1,4 +1,7 @@
-.PHONY: scaffold setups push-all list
+.PHONY: scaffold setups combined push-all list
+
+combined:
+	python3 scripts/build-combined-track.py
 
 scaffold:
 	python3 scripts/scaffold_cisco_workshop.py
@@ -9,6 +12,9 @@ setups:
 
 list:
 	@ls -1 tracks/
+
+push-combined: combined
+	cd tracks/cisco-serverless-workshop && instruqt track push --force
 
 push-all: setups
 	@for t in tracks/cisco-w*; do \
