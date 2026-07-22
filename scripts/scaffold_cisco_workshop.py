@@ -41,27 +41,39 @@ TRACKS = [
             {
                 "dir": "01-explore-cisco-kb",
                 "slug": "explore-cisco-kb",
-                "title": "Challenge 1 — Explore the Cisco Knowledge Base",
-                "teaser": "Navigate Search and Discover on seeded Cisco runbooks.",
-                "path": "/app/discover",
+                "title": "Challenge 1 — Find the runbook",
+                "teaser": "Paste ES|QL against cisco-network-kb on Serverless Search.",
+                "path": "/app/elasticsearch/query",
                 "minutes": 20,
-                "body": """# Explore the Cisco knowledge base
-
-**Story:** A Cisco NOC lead asks: *"Can we search Meraki, IOS-XE, and DNA Center docs in one place?"*
+                "body": """# Find the runbook
 
 **Time:** ~15–20 minutes
 
-## Tasks
+## Your task
 
-1. Wait for **Elastic Serverless** to finish loading (~3–4 min on first start).
-2. In **Discover**, open data view / index **`cisco-network-kb`** (use the index picker if needed).
-3. Run a **keyword** search: `BGP neighbor idle`
-4. Open **Discover** → index **`cisco-network-kb`** and filter **product: Meraki**.
-5. In notes, write one sentence on how this maps to **reducing MTTR** for Cisco ops teams.
+Paste each query into the **ES|QL** editor and run it.
+
+```esql
+FROM cisco-network-kb
+| WHERE MATCH(content, "BGP neighbor idle")
+   OR MATCH(title, "BGP neighbor")
+| KEEP title, product, category, content
+| LIMIT 10
+```
+
+```esql
+FROM cisco-network-kb
+| WHERE product == "Meraki" AND MATCH(content, "offline")
+| KEEP title, product, category, content
+| LIMIT 10
+```
+
+1. Confirm BGP + Meraki runbook hits.
+2. Note two Meraki recovery steps; write one MTTR sentence.
 
 ## Verification
 
-Click **Check** when you have run at least **two** searches and viewed **Meraki** documents in Discover.
+Click **Check** when both queries return KB docs.
 """,
             },
             {
