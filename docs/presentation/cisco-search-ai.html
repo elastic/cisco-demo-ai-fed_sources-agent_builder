@@ -413,28 +413,29 @@
     #editor-save-msg.show { opacity: 1; }
   </style>
 <script>
-window.FUCKSLIDES_SLIDES   = ["cover.html","agenda.html","pain.html","serverless.html","ai-search.html","hybrid.html","federated.html","esql.html","agents.html","noc-story.html","future.html","architecture.html","outcomes.html","lab.html","close.html","thank-you.html"];
-window.FUCKSLIDES_LABELS   = ["Cover","Agenda","NOC Pain","Serverless Search","AI Search","Hybrid Retrieval","Federated Sources","ES|QL","Agent Builder","NOC Story","Future · Blobs","Architecture","Outcomes","Lab Setup","Takeaways","Thank You"];
+window.FUCKSLIDES_SLIDES   = ["cover.html","agenda.html","pain.html","serverless.html","ai-search.html","foundations.html","hybrid.html","federated.html","esql.html","agents.html","noc-story.html","future.html","architecture.html","outcomes.html","lab.html","close.html","thank-you.html"];
+window.FUCKSLIDES_LABELS   = ["Cover","Agenda","NOC Pain","Serverless Search","AI Search","Foundations","Lab Proof","Federated Sources","ES|QL","Agent Builder","NOC Story","Future · Blobs","Architecture","Outcomes","Lab Setup","Takeaways","Thank You"];
 window.FUCKSLIDES_NAME     = "cisco-search-ai";
 window.FUCKSLIDES_TITLE    = "Elastic Search — AI, Federated Sources & Agent Builder";
 window.FUCKSLIDES_DISABLED = [null];
 window.FUCKSLIDES_NOTES    = {
-  "cover.html": "- Welcome \u2014 Search-led Cisco workshop: AI Search, Federated Sources, Agent Builder.\n- One Serverless Search project only \u2014 no O11Y/Security for this motion.\n- Lab ready in ~3\u20134 minutes while we walk the deck.",
-  "agenda.html": "- Three modules, same indices end-to-end.\n- Module 1 proves hybrid retrieval; 2 federates; 3 acts with agents.\n- Keep the GTM frame: Search consolidation, not a multi-SKU sell.",
-  "pain.html": "- Pain is swivel-chair: Meraki \u2192 IOS-XE \u2192 DNA \u2192 wiki.\n- Elastic meets engineers where they search.\n- Target: one Search surface, shorter MTTR.",
-  "serverless.html": "- Why Serverless Search: speed, GTM fit, ES|QL skill reuse, workshop economics.\n- Explicitly call out no Observability/Security requirement.",
-  "ai-search.html": "- Hybrid is the product story: BM25 + semantic + RRF.\n- Buyer quote: one place for IOS-XE and Meraki docs.",
-  "hybrid.html": "- Walk the diagram left to right. Pause on RRF merge.\n- Index name cisco-network-kb is what they will verify in the lab.",
-  "federated.html": "- Federate don't rip-and-replace \u2014 DCOS language.\n- Sources stay; Elastic is the unified query layer.",
-  "esql.html": "- Same ES|QL for humans and agent tools.\n- Branch 4471 is the recurring story thread into Module 3.",
-  "agents.html": "- Grounded tools on Search indices \u2014 no hallucinated runbooks.\n- Still Search-only; no Observability SKU.",
-  "noc-story.html": "- 90-second exec close: Search \u2192 Federate \u2192 Agent.\n- Practice this out loud before Module 3.",
-  "future.html": "- Clear bridge: today = managed + federated indices; roadmap = blob prefixes.\n- Economic punch: don't pay twice for cold/archive.",
-  "architecture.html": "- Sources \u2192 federation layer \u2192 hot/cold tiers.\n- Same tooling surface as the workshop (ES|QL, Enterprise Search, agents).",
-  "outcomes.html": "- Unified search, easy admin, TCO, bridge to lab.\n- Leave analysts with 'one query across tiers'.",
-  "lab.html": "- Orient learners: es3-api, port 8080, four seed indices.\n- When Kibana opens, start Module 1.",
-  "close.html": "- Five takeaways \u2014 leave these on screen for questions.",
-  "thank-you.html": "- Point to Instruqt manage URL and Pages deck for follow-up."
+  "cover.html": "- Search-led Cisco workshop. One Serverless Search project \u2014 no O11Y/Sec.\n- Lab ready ~3\u20134 min while we walk the deck.",
+  "agenda.html": "- Three modules, same indices. Find \u2192 unify \u2192 act.\n- Keep GTM: Search consolidation.",
+  "pain.html": "- Swivel-chair pain. Point at the MTTR bars as they animate.\n- Target: one Search surface.",
+  "serverless.html": "- Four advantages. Explicitly: no Observability/Security required.",
+  "ai-search.html": "- Hybrid product story. Buyer quote lands the module.",
+  "foundations.html": "- THIS is the peer to O11Y's 'what are metrics' slide.\n- Walk KEYWORD \u2192 SEMANTIC \u2192 HYBRID. Pause on RRF fuse.\n- Bottom line: hybrid wins the deal; prove on cisco-network-kb.",
+  "hybrid.html": "- Lab checklist. Don't linger on UI \u2014 land the talk track.",
+  "federated.html": "- Animated converge. Federate don't rip-and-replace.",
+  "esql.html": "- Branch 4471 thread into Module 3.",
+  "agents.html": "- Grounded tools. Search-only. Watch the pulse along the pipeline.",
+  "noc-story.html": "- 90-second exec close. Practice out loud.",
+  "future.html": "- Clear bridge today vs roadmap. Economic punch: don't pay twice for cold.",
+  "architecture.html": "- Sources \u2192 federation \u2192 tiers. Analyst takeaway: one query layer.",
+  "outcomes.html": "- Unified / admin / TCO / bridge.",
+  "lab.html": "- Orient: es3-api, 8080, four seed indices.",
+  "close.html": "- Five takeaways on screen for Q&A.",
+  "thank-you.html": "- Point to Instruqt manage URL."
 }
 ;
 window.FUCKSLIDES_RECORDINGS = {};

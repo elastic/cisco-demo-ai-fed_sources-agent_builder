@@ -2,6 +2,8 @@
 
 Same stack as the [Metrics Analyst briefing](https://elastic.github.io/observability-team/collaterals/metrics-analysts-presentation/metrics-analyst.html): **1280×720 HTML slides** + **fslides player** (filmstrip, speaker notes, laser, timer, `#slide` deep links).
 
+**Peer to O11Y “what are metrics”:** [`foundations.html`](foundations.html) — Keyword / Semantic / Hybrid with live canvas (badge rows, glow charts, bottom punchline, Elastic mark).
+
 ## Live URL (GitHub Pages)
 
 https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html

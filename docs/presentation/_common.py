@@ -1,0 +1,119 @@
+"""Shared shell for Metrics Analyst–quality 1280×720 slides."""
+from __future__ import annotations
+from typing import Optional
+
+ELASTIC_LOGO = r'''<div style="position:fixed; right:22px; bottom:12px; z-index:100; opacity:0.85; pointer-events:none;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 687.5 235.6" style="height:18px;width:auto;display:block"><path d="M236.6 123.5a46.54 46.54 0 0 0-30.8-43.9A67 67 0 0 0 140.2 0 66.72 66.72 0 0 0 86 27.7a35.5 35.5 0 0 0-57.2 28.1A36.77 36.77 0 0 0 31 68.2a46.75 46.75 0 0 0-.1 88 66.66 66.66 0 0 0 119.6 51.6 35 35 0 0 0 21.7 7.6 35.51 35.51 0 0 0 35.5-35.5 36.77 36.77 0 0 0-2.2-12.4 47.08 47.08 0 0 0 31.1-44" fill="#fff"/><path d="M93 101.5l51.8 23.6L197 79.3a54.71 54.71 0 0 0 1.1-11.5 58.35 58.35 0 0 0-106.5-33l-8.7 45.1L93 101.5z" fill="#fed10a"/><path d="M39.4 156.3a56.62 56.62 0 0 0-1.1 11.7 58.58 58.58 0 0 0 107 32.9l8.6-44.9-11.5-22-52-23.7z" fill="#24bbb1"/><path d="M39.1 66.7l35.5 8.4 7.8-40.3a28 28 0 0 0-43.3 31.9" fill="#ef5098"/><path d="M36 75.2a39.1 39.1 0 0 0-1.7 73.7l49.8-45L75 84.4z" fill="#17a8e0"/><path d="M154.3 200.9a28 28 0 0 0 43.2-31.9l-35.4-8.3z" fill="#93c83e"/><path d="M161.5 151.4l39 9.1a39.1 39.1 0 0 0 1.7-73.7l-51 44.7z" fill="#0779a1"/><path fill="rgba(255,255,255,0.7)" d="M330.8 165.5l4.7-.5.3 9.6a240.62 240.62 0 0 1-31.8 2.6q-17.55 0-24.9-10.2c-4.9-6.8-7.3-17.4-7.3-31.7q0-42.9 34.1-42.9c11 0 19.2 3.1 24.6 9.2s8.1 15.8 8.1 28.9l-.7 9.3h-53.8c0 9 1.6 15.7 4.9 20s8.9 6.5 17 6.5a230 230 0 0 0 24.8-.8zm-4.4-35.3c0-10-1.6-17.1-4.8-21.2s-8.4-6.2-15.6-6.2-12.7 2.2-16.3 6.5-5.5 11.3-5.6 20.9h42.3zm29.2 45.5v-117h12.2v117h-12.2zm89.3-56.9v40.1c0 4.1 10.1 4.9 10.1 4.9l-.6 10.8c-8.6 0-15.7.7-20-3.4a71.68 71.68 0 0 1-29.3 6.1c-7.5 0-13.2-2.1-17.1-6.4s-5.9-10.3-5.9-18.3 2-13.8 6-17.5 10.3-6.1 18.9-6.9l25.6-2.4v-7c0-5.5-1.2-9.5-3.6-11.9s-5.7-3.6-9.8-3.6h-32.1V92.5h31.3c9.2 0 15.9 2.1 20.1 6.4s6.4 10.9 6.4 19.9zM394.7 152c0 10 4.1 15 12.4 15a65.27 65.27 0 0 0 21.8-3.7l3.7-1.3v-26.9l-24.1 2.3c-4.9.4-8.4 1.8-10.6 4.2s-3.2 5.9-3.2 10.4zm97.9-48.6c-11.8 0-17.8 4.1-17.8 12.4 0 3.8 1.4 6.5 4.1 8.1s8.9 3.2 18.6 4.9 16.5 4 20.5 7.1 6 8.7 6 17.1-2.7 14.5-8.1 18.4-13.2 5.9-23.6 5.9c-6.7 0-29.2-2.5-29.2-2.5l.7-10.6c12.9 1.2 22.3 2.2 28.6 2.2s11.1-1 14.4-3 5-5.4 5-10.1-1.4-7.9-4.2-9.6-9-3.3-18.6-4.8-16.4-3.7-20.4-6.7-6-8.4-6-16.3 2.8-13.8 8.4-17.6 12.6-5.7 20.9-5.7c6.6 0 29.6 1.7 29.6 1.7V105c-12.1-.7-22-1.6-28.9-1.6zm90.4 1.4h-25.9v39c0 9.3.7 15.5 2 18.4s4.6 4.4 9.7 4.4l14.5-1 .8 10.1a111.1 111.1 0 0 1-16.6 1.8c-8.5 0-14.3-2.1-17.6-6.2s-4.9-12-4.9-23.6v-42.9h-11.6V94.2H545v-25h12.1v24.9H583v10.7zm17-29.1V61.6h12.2v14.2zm0 100V94.2h12.2v81.5H600zm65.2-83.2c3.6 0 9.7.7 18.3 2l3.9.5-.5 9.9a187.31 187.31 0 0 0-19.2-1.5c-9.2 0-15.5 2.2-18.8 6.6s-5 12.6-5 24.5 1.5 20.2 4.6 24.9 9.5 7 19.3 7l19.2-1.5.5 10.1c-10.1 1.5-17.7 2.3-22.7 2.3-12.7 0-21.5-3.3-26.3-9.8s-7.3-17.5-7.3-33 2.6-26.4 7.8-32.6 14-9.4 26.2-9.4z"/></svg></div>'''
+
+SCALE_FIT = r'''
+<script>
+(function scaleToFit() {
+  if (window !== window.top) return;
+  const W = 1280, H = 720;
+  function fit() {
+    const scale = Math.min(window.innerWidth / W, window.innerHeight / H);
+    document.body.style.transform = 'scale(' + scale + ')';
+    document.body.style.transformOrigin = '0 0';
+    document.body.style.left = Math.round((window.innerWidth  - W * scale) / 2) + 'px';
+    document.body.style.top  = Math.round((window.innerHeight - H * scale) / 2) + 'px';
+  }
+  fit();
+  window.addEventListener('resize', fit);
+})();
+</script>
+'''
+
+SHELL_CSS = r'''
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { width: 100%; height: 100%; overflow: hidden; background: #22242C; }
+body {
+  width: 1280px; height: 720px; overflow: hidden; position: absolute;
+  font-family: 'Inter', -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased; background: #22242C;
+  display: flex; flex-direction: column; color: #fff;
+}
+body::before {
+  content: ''; position: fixed; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 28px 28px; pointer-events: none; z-index: 0;
+}
+.accent-bar {
+  position: fixed; top: 0; left: 0; width: 4px; height: 100%;
+  background: #00BFB3; z-index: 20;
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up-1  { opacity: 0; animation: fade-up 0.5s ease forwards 0.10s; }
+.fade-up-2  { opacity: 0; animation: fade-up 0.5s ease forwards 0.22s; }
+.fade-up-3  { opacity: 0; animation: fade-up 0.5s ease forwards 0.34s; }
+.fade-up-4  { opacity: 0; animation: fade-up 0.5s ease forwards 0.46s; }
+.fade-up-5  { opacity: 0; animation: fade-up 0.5s ease forwards 0.58s; }
+.fade-up-6  { opacity: 0; animation: fade-up 0.5s ease forwards 0.70s; }
+.fade-up-7  { opacity: 0; animation: fade-up 0.5s ease forwards 0.82s; }
+.fade-up-8  { opacity: 0; animation: fade-up 0.5s ease forwards 0.94s; }
+.fade-up-9  { opacity: 0; animation: fade-up 0.5s ease forwards 1.06s; }
+.slide {
+  position: relative; z-index: 10; flex: 1; min-height: 0;
+  display: flex; flex-direction: column; padding: 28px 52px 0;
+}
+.eyebrow {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: #00BFB3; margin-bottom: 7px;
+}
+.headline {
+  font-size: 2.1rem; font-weight: 300; letter-spacing: -0.025em;
+  line-height: 1.1; color: #fff; margin-bottom: 5px;
+}
+.headline strong { font-weight: 700; color: #00BFB3; }
+.sub { font-size: 0.82rem; color: rgba(255,255,255,0.44); max-width: 900px; }
+.header-divider {
+  height: 1px; background: rgba(255,255,255,0.07); margin: 14px 0;
+}
+.bottom-strip {
+  position: relative; z-index: 10; text-align: center;
+  background: rgba(255,255,255,0.025);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 7px 52px 10px;
+}
+.bottom-strip p {
+  font-size: 0.76rem; font-weight: 300; font-style: italic;
+  color: rgba(255,255,255,0.38); letter-spacing: 0.01em;
+}
+.bottom-strip strong {
+  font-family: 'JetBrains Mono', monospace; font-weight: 700;
+  font-style: normal; color: #00BFB3; font-size: 0.72rem;
+}
+'''
+
+
+def wrap(title: str, extra_css: str, body: str, scripts: str = "", bottom: Optional[str] = None) -> str:
+    bottom_html = ""
+    if bottom:
+        bottom_html = f'''
+  <div class="bottom-strip fade-up-9">
+    <p>{bottom}</p>
+  </div>'''
+    return f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+{SHELL_CSS}
+{extra_css}
+  </style>
+</head>
+<body>
+  <div class="accent-bar"></div>
+{body}
+{bottom_html}
+{SCALE_FIT}
+{scripts}
+{ELASTIC_LOGO}
+</body>
+</html>
+'''

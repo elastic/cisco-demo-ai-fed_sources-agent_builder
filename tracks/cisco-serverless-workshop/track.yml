@@ -1,6 +1,8 @@
 slug: cisco-serverless-workshop
+id: k4ocxuiibv9l
 title: Cisco — AI Search, Federated Sources & Agent Builder
-teaser: One Serverless Search project — AI Search, federated indices, and Agent Builder for Cisco.
+teaser: One Serverless Search project — AI Search, federated indices, and Agent Builder
+  for Cisco.
 description: |
   Combined Cisco workshop for Elastic sellers and SEs. Provisions **one** per-learner
   **Elastic Serverless Search** project (vector-optimized) on port **8080**.
@@ -14,11 +16,11 @@ description: |
 icon: https://www.elastic.co/favicon.ico
 tags:
 - cisco
-- search
 - federated
-- agent-builder
+- search
 - serverless
 - cisco-workshop-series
+- agent-builder
 owner: elastic
 developers:
 - peter.simkins@elastic.co
@@ -37,5 +39,5 @@ lab_config:
   hideStopButton: false
   default_layout: AssignmentRight
   default_layout_sidebar_size: 40
-# false = show challenge notes (iframe) while sandbox loads — see docs/instruqt.html
+checksum: "8711078486967250922"
 enhanced_loading: false
