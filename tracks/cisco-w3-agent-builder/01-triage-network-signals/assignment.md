@@ -1,10 +1,12 @@
 ---
 slug: triage-network-signals
+id: zbkbtyqzlwbq
 type: challenge
 title: Challenge 1 — Triage Network Signals
 teaser: Discover BGP and Meraki signals in Observability.
 tabs:
-- title: Elastic Serverless
+- id: ikqpcg2bzcec
+  title: Elastic Serverless
   type: service
   hostname: es3-api
   path: /app/discover
@@ -21,6 +23,7 @@ tabs:
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
 difficulty: intermediate
 timelimit: 1200
+enhanced_loading: null
 ---
 
 # Triage network signals

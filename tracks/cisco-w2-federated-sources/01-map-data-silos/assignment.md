@@ -1,10 +1,12 @@
 ---
 slug: map-data-silos
+id: fobkv3ouflfy
 type: challenge
 title: Challenge 1 — Map Cisco Data Silos
 teaser: Inventory federated indices and their business owner.
 tabs:
-- title: Elastic Serverless
+- id: worprnk5cxui
+  title: Elastic Serverless
   type: service
   hostname: es3-api
   path: /app/management/data/index_management/indices
@@ -21,6 +23,7 @@ tabs:
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
 difficulty: intermediate
 timelimit: 1200
+enhanced_loading: null
 ---
 
 # Map data silos

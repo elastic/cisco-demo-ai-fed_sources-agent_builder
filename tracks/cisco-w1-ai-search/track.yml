@@ -1,6 +1,8 @@
 slug: cisco-w1-ai-search
+id: lw9vzqzhwmao
 title: Cisco W1 — AI Search on Serverless
-teaser: Semantic + hybrid search over Cisco network runbooks on Elastic Serverless Search.
+teaser: Semantic + hybrid search over Cisco network runbooks on Elastic Serverless
+  Search.
 description: |
   Workshop 1 of 3 for Cisco sellers and SEs. Per-learner **Elastic Serverless Search**
   (vector-optimized) with a pre-seeded Cisco knowledge base. Explore Search, Discover, and
@@ -31,4 +33,5 @@ lab_config:
   hideStopButton: false
   default_layout: AssignmentRight
   default_layout_sidebar_size: 40
+checksum: "1021594235207536861"
 enhanced_loading: false

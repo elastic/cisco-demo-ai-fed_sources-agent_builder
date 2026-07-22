@@ -1,10 +1,12 @@
 ---
 slug: exec-demo-close
+id: joojvtikxray
 type: challenge
 title: Challenge 3 — Executive Demo Close
 teaser: W1→W2→W3 arc for Cisco leadership.
 tabs:
-- title: Elastic Serverless
+- id: pft5s8qlrfpp
+  title: Elastic Serverless
   type: service
   hostname: es3-api
   path: /app/agent_builder
@@ -21,6 +23,7 @@ tabs:
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
 difficulty: intermediate
 timelimit: 1200
+enhanced_loading: null
 ---
 
 # Executive demo close
@@ -29,8 +32,8 @@ timelimit: 1200
 
 ## Three-beat arc
 
-1. **W1 AI Search** — find Meraki/BGP runbooks in seconds  
-2. **W2 Federated** — Meraki events + internal runbooks + KB in one ES|QL story  
+1. **W1 AI Search** — find Meraki/BGP runbooks in seconds
+2. **W2 Federated** — Meraki events + internal runbooks + KB in one ES|QL story
 3. **W3 Agent Builder** — autonomous triage on **`logs-cisco.network`**
 
 ## Tasks

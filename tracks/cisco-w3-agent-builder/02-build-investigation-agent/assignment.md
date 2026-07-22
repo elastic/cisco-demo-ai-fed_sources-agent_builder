@@ -1,10 +1,12 @@
 ---
 slug: build-investigation-agent
+id: qfltmwdse48m
 type: challenge
 title: Challenge 2 — Build an Investigation Agent
 teaser: Configure Agent Builder for Cisco NOC workflow.
 tabs:
-- title: Elastic Serverless
+- id: kuaglcxsbnhc
+  title: Elastic Serverless
   type: service
   hostname: es3-api
   path: /app/agent_builder
@@ -21,6 +23,7 @@ tabs:
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
 difficulty: intermediate
 timelimit: 2100
+enhanced_loading: null
 ---
 
 # Build an investigation agent
@@ -29,7 +32,7 @@ timelimit: 2100
 
 ## Suggested agent charter
 
-**Name:** Cisco NOC Copilot  
+**Name:** Cisco NOC Copilot
 **Goal:** Given an alert summary, pull correlated logs (BGP + Meraki), suggest runbook steps, draft escalation note.
 
 ## Tasks

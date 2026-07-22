@@ -1,10 +1,12 @@
 ---
 slug: hybrid-retrieval
+id: n8imoidozxww
 type: challenge
 title: Challenge 2 — Hybrid & Semantic Retrieval
 teaser: Compare keyword vs semantic-style queries on runbooks.
 tabs:
-- title: Elastic Serverless
+- id: xfmvz2mgbfx3
+  title: Elastic Serverless
   type: service
   hostname: es3-api
   path: /app/elasticsearch/query
@@ -21,6 +23,7 @@ tabs:
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
 difficulty: intermediate
 timelimit: 2100
+enhanced_loading: null
 ---
 
 # Hybrid retrieval lab

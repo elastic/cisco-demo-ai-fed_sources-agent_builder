@@ -1,10 +1,12 @@
 ---
 slug: explore-cisco-kb
+id: ewxzjpdnweuu
 type: challenge
 title: Challenge 1 — Explore the Cisco Knowledge Base
 teaser: Navigate Search and Discover on seeded Cisco runbooks.
 tabs:
-- title: Elastic Serverless
+- id: cja7sibzacwr
+  title: Elastic Serverless
   type: service
   hostname: es3-api
   path: /app/search
@@ -21,6 +23,7 @@ tabs:
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
 difficulty: intermediate
 timelimit: 1200
+enhanced_loading: null
 ---
 
 # Explore the Cisco knowledge base

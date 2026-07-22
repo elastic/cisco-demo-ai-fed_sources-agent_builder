@@ -1,4 +1,5 @@
 slug: cisco-w2-federated-sources
+id: nlryj5287mnk
 title: Cisco W2 — Federated Data Sources
 teaser: Unify Meraki-style events, internal runbooks, and KB in one ES|QL view.
 description: |
@@ -8,8 +9,8 @@ description: |
 icon: https://www.elastic.co/favicon.ico
 tags:
 - cisco
-- federated
 - connectors
+- federated
 - search
 - serverless
 - cisco-workshop-series
@@ -31,4 +32,5 @@ lab_config:
   hideStopButton: false
   default_layout: AssignmentRight
   default_layout_sidebar_size: 40
+checksum: "4397779454485677433"
 enhanced_loading: false

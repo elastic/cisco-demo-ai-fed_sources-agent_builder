@@ -1,4 +1,5 @@
 slug: cisco-w3-agent-builder
+id: 8wpb43gmycov
 title: Cisco W3 — Agent Builder for Cisco
 teaser: Agentic investigation over Cisco network logs on Serverless Observability.
 description: |
@@ -8,11 +9,11 @@ description: |
 icon: https://www.elastic.co/favicon.ico
 tags:
 - cisco
-- agent-builder
-- observability
-- serverless
 - aiops
+- serverless
 - cisco-workshop-series
+- observability
+- agent-builder
 owner: elastic
 developers:
 - peter.simkins@elastic.co
@@ -31,4 +32,5 @@ lab_config:
   hideStopButton: false
   default_layout: AssignmentRight
   default_layout_sidebar_size: 40
+checksum: "17700722356862308266"
 enhanced_loading: false

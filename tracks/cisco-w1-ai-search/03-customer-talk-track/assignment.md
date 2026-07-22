@@ -1,10 +1,12 @@
 ---
 slug: customer-talk-track
+id: f0qnpubuvrod
 type: challenge
 title: Challenge 3 — Customer Talk Track
 teaser: 60-second Elastic Serverless Search story for Cisco.
 tabs:
-- title: Elastic Serverless
+- id: oe7xp79999bs
+  title: Elastic Serverless
   type: service
   hostname: es3-api
   path: /app/search
@@ -21,6 +23,7 @@ tabs:
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
 difficulty: intermediate
 timelimit: 1200
+enhanced_loading: null
 ---
 
 # Customer talk track

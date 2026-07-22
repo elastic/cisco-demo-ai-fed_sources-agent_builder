@@ -1,10 +1,12 @@
 ---
 slug: connector-story
+id: rxpoaobc3prh
 type: challenge
 title: Challenge 3 — Connectors & Consolidation Story
 teaser: Position Elastic connectors vs. rip-and-replace.
 tabs:
-- title: Elastic Serverless
+- id: beagcb8lqvz0
+  title: Elastic Serverless
   type: service
   hostname: es3-api
   path: /app/enterprise_search/content/connectors
@@ -21,6 +23,7 @@ tabs:
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
 difficulty: intermediate
 timelimit: 1200
+enhanced_loading: null
 ---
 
 # Connectors talk track
