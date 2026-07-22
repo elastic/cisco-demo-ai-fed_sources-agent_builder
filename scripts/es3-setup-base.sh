@@ -262,7 +262,7 @@ cat > /usr/share/nginx/html/loading/index.html <<'HTML_EOF'
         </div>
         <div class="content">
             <div id="dashboard-container" class="iframe-container">
-                <iframe src="https://clusterburger-metrics.vercel.app/" allow="microphone; camera"></iframe>
+                <iframe src="https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/instruqt.html" allow="fullscreen"></iframe>
             </div>
         </div>
     </div>

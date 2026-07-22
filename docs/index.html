@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cisco × Elastic Serverless Search Workshop</title>
+  <meta name="description" content="While your lab provisions — AI Search, Federated Sources, Agent Builder on Serverless Search." />
+  <link rel="icon" href="https://www.elastic.co/favicon.ico" />
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --panel: #141820;
+      --text: #e8eaed;
+      --muted: #9aa3b2;
+      --elastic: #00bfb3;
+      --cisco: #049fd9;
+      --border: #2a3140;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+    .wrap { max-width: 920px; margin: 0 auto; padding: 2rem 1.25rem 3rem; }
+    header { margin-bottom: 1.75rem; }
+    .eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    h1 { font-size: clamp(1.35rem, 3vw, 1.85rem); font-weight: 650; }
+    .sub { color: var(--muted); margin-top: 0.5rem; max-width: 42rem; }
+    .bar {
+      margin: 1.5rem 0;
+      height: 4px;
+      border-radius: 999px;
+      background: var(--border);
+      overflow: hidden;
+    }
+    .bar > span {
+      display: block;
+      height: 100%;
+      width: 35%;
+      background: linear-gradient(90deg, var(--cisco), var(--elastic));
+      border-radius: inherit;
+      animation: slide 2.2s ease-in-out infinite;
+    }
+    @keyframes slide {
+      0% { transform: translateX(-100%); width: 30%; }
+      50% { width: 55%; }
+      100% { transform: translateX(320%); width: 30%; }
+    }
+    .grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem 1.15rem;
+    }
+    .card h2 { font-size: 0.95rem; margin-bottom: 0.35rem; }
+    .card p { font-size: 0.875rem; color: var(--muted); }
+    .card .num {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--cisco);
+      margin-bottom: 0.4rem;
+    }
+    .status {
+      margin-top: 1.5rem;
+      padding: 1rem 1.15rem;
+      border-radius: 12px;
+      border: 1px dashed var(--border);
+      background: rgba(4, 159, 217, 0.06);
+    }
+    .status h3 { font-size: 0.9rem; margin-bottom: 0.5rem; }
+    .status ul { margin-left: 1.1rem; color: var(--muted); font-size: 0.875rem; }
+    .status li { margin: 0.25rem 0; }
+    footer {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    a { color: var(--elastic); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <p class="eyebrow">Instruqt · Cisco workshop</p>
+      <h1>AI Search, Federated Sources &amp; Agent Builder</h1>
+      <p class="sub">One <strong>Elastic Serverless Search</strong> project — no Observability or Security required. Typical first startup: <strong>3–4 minutes</strong>.</p>
+    </header>
+    <div class="bar" aria-hidden="true"><span></span></div>
+    <div class="grid">
+      <article class="card">
+        <span class="num">MODULE 1</span>
+        <h2>AI Search</h2>
+        <p>Explore <code>cisco-network-kb</code>, hybrid retrieval, and ES|QL on Cisco runbooks.</p>
+      </article>
+      <article class="card">
+        <span class="num">MODULE 2</span>
+        <h2>Federated data sources</h2>
+        <p>Query KB, internal runbooks, Meraki connector events, and network signals together.</p>
+      </article>
+      <article class="card">
+        <span class="num">MODULE 3</span>
+        <h2>Agent Builder</h2>
+        <p>ES|QL triage plus agents grounded in the same Search indices — Cisco NOC story.</p>
+      </article>
+    </div>
+    <section class="status">
+      <h3>What’s running while you wait</h3>
+      <ul>
+        <li>Creating your Serverless Search project (<code>es3-api</code>)</li>
+        <li>Starting Kibana proxy on port <strong>8080</strong></li>
+        <li>Seeding Cisco KB, federated indices, and sample network events</li>
+      </ul>
+    </section>
+    <footer>
+      <p>Embed URL for Instruqt notes: <a href="instruqt.html">instruqt.html</a> · Repo: <a href="https://github.com/elastic/cisco-demo-ai-fed_sources-agent_builder">cisco-demo-ai-fed_sources-agent_builder</a></p>
+    </footer>
+  </div>
+</body>
+</html>

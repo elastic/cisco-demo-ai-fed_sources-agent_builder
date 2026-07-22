@@ -22,7 +22,7 @@ Each learner gets **one** vector-optimized **Serverless Search** project (Kibana
 
 Startup ~**3–4 min** (single project + federated seed). Track time limit **4.5 h**; skipping enabled.
 
-Legacy split tracks (`cisco-w1-*`, `cisco-w2-*`, `cisco-w3-*`) remain optional; all use Search-only config.
+**While-you-wait:** [GitHub Pages](https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/instruqt.html) — iframe in module-start challenges + VM `/loading` during Kibana proxy.
 
 ## Workflow
 

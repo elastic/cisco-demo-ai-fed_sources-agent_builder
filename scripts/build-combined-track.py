@@ -12,6 +12,10 @@ COMBINED = ROOT / "tracks" / "cisco-serverless-workshop"
 DEVELOPER = "peter.simkins@elastic.co"
 PORT = 8080
 TAB_TITLE = "Elastic Serverless Search"
+LOADING_PAGE = "https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/instruqt.html"
+LOADING_NOTE_CHALLENGES = frozenset(
+    {"01-explore-cisco-kb", "04-map-data-silos", "07-triage-network-signals"}
+)
 
 # (source track, source challenge dir, dest challenge dir, deep link path)
 CHALLENGES = [
@@ -138,6 +142,22 @@ def write(path: Path, content: str) -> None:
     path.write_text(content, encoding="utf-8")
 
 
+def inject_loading_notes(front: str, dest_ch: str) -> str:
+    if dest_ch not in LOADING_NOTE_CHALLENGES or "notes:" in front:
+        return front
+    block = f"""notes:
+- type: text
+  contents: |
+    **While the lab provisions (~3–4 min)** — Serverless Search + Cisco seed data.
+
+    <iframe src="{LOADING_PAGE}" width="100%" height="680" frameborder="0"
+      style="border-radius:8px;border:1px solid #2a3140;display:block;min-height:520px;background:#0b0d12">
+    </iframe>
+
+"""
+    return re.sub(r"(teaser: .+\n)", r"\1" + block, front, count=1)
+
+
 def main() -> None:
     if COMBINED.exists():
         shutil.rmtree(COMBINED)
@@ -155,6 +175,7 @@ def main() -> None:
         front = re.sub(r"^  port: \d+", f"  port: {PORT}", front, flags=re.MULTILINE)
         front = re.sub(r"^  path: .+", f"  path: {kibana_path}", front, flags=re.MULTILINE)
         front = re.sub(r"^- title: Elastic Serverless.*", f"- title: {TAB_TITLE}", front, flags=re.MULTILINE)
+        front = inject_loading_notes(front, dest_ch)
         write(dest / "assignment.md", f"---{front}---\n\n{body}")
         for script in ("check-es3-api", "solve-es3-api"):
             shutil.copy2(src / script, dest / script)
@@ -215,6 +236,7 @@ lab_config:
   hideStopButton: false
   default_layout: AssignmentRight
   default_layout_sidebar_size: 40
+# false = show challenge notes (iframe) while sandbox loads — see docs/instruqt.html
 enhanced_loading: false
 """,
     )

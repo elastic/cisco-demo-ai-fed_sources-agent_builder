@@ -1,11 +1,19 @@
 ---
 slug: map-data-silos
-id: rbxysyvajdld
+id: n3fdfm5ttk96
 type: challenge
 title: Challenge 1 — Map Cisco Data Silos
 teaser: Inventory federated indices and their business owner.
+notes:
+- type: text
+  contents: |
+    **While the lab provisions (~3–4 min)** — Serverless Search + Cisco seed data.
+
+    <iframe src="https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/instruqt.html" width="100%" height="680" frameborder="0"
+      style="border-radius:8px;border:1px solid #2a3140;display:block;min-height:520px;background:#0b0d12">
+    </iframe>
 tabs:
-- id: eiq1xiymq56h
+- id: urxrmxfbmr0o
   title: Elastic Serverless Search
   type: service
   hostname: es3-api
