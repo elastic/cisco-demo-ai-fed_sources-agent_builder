@@ -1,6 +1,6 @@
 ---
 slug: explore-cisco-kb
-id: 60vejxsxcumb
+id: qebvehjwqxib
 type: challenge
 title: Challenge 1 — Explore the Cisco Knowledge Base
 teaser: Navigate Search and Discover on seeded Cisco runbooks.
@@ -15,7 +15,7 @@ notes:
 
     Fullscreen: https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html
 tabs:
-- id: fjicbakgrdrf
+- id: jdfj3rw4od0h
   title: Elastic Serverless Search
   type: service
   hostname: es3-api

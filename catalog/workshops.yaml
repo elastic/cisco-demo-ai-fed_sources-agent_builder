@@ -13,7 +13,7 @@ workshops:
     duration_minutes: 270
     project:
       type: elasticsearch
-      optimized_for: vector
+      optimized_for: vectors
     constraints:
       - No Observability or Security projects in this motion
     modules:

@@ -5,7 +5,7 @@ virtualmachines:
   shell: /bin/bash
   environment:
     PROJECT_TYPE: elasticsearch
-    OPTIMIZED_FOR: vector
+    OPTIMIZED_FOR: vectors
     REGIONS: aws-us-east-1
     WORKSHOP_SEED: seed_cisco_kb.py
   memory: 4096
