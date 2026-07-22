@@ -1,26 +1,29 @@
 series: cisco-workshop-series
 audience: Cisco-facing AEs, SEs, and partner sellers
 customer: Cisco
-platform: Elastic Cloud Serverless
+platform: Elastic Cloud Serverless Search only
 
-# Primary delivery: one Instruqt track (dual Serverless Search + Observability).
 workshops:
   - id: combined
     order: 1
     slug: cisco-serverless-workshop
     status: live
     title: "Cisco — AI Search, Federated Sources & Agent Builder"
-    theme: Single lab — Search :8080 + Observability :8090, 9 challenges
+    theme: Single Serverless Search project — 9 challenges, 3 modules
     duration_minutes: 270
+    project:
+      type: elasticsearch
+      optimized_for: vector
+    constraints:
+      - No Observability or Security projects in this motion
     modules:
       - name: AI Search
         challenges: [explore-cisco-kb, hybrid-retrieval, customer-talk-track]
       - name: Federated Data Sources
         challenges: [map-data-silos, cross-source-esql, connector-story]
-      - name: Agent Builder
+      - name: Agent Builder on Search
         challenges: [triage-network-signals, build-investigation-agent, exec-demo-close]
 
-# Optional: legacy per-module tracks (same content split for partial enablement).
 legacy_tracks:
   - cisco-w1-ai-search
   - cisco-w2-federated-sources

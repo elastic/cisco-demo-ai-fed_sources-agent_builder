@@ -1,12 +1,12 @@
 ---
 slug: connector-story
-id: dbxs6iwzhb4y
+id: aub9xjroldzn
 type: challenge
 title: Challenge 3 — Connectors & Consolidation Story
 teaser: Position Elastic connectors vs. rip-and-replace.
 tabs:
-- id: dsqvw8dqcb4t
-  title: Elastic Serverless (Search)
+- id: a6yzoivhyopz
+  title: Elastic Serverless Search
   type: service
   hostname: es3-api
   path: /app/enterprise_search/content/connectors
@@ -26,7 +26,7 @@ timelimit: 1200
 enhanced_loading: null
 ---
 
-> **Module 2 — Federated Data Sources** (Serverless tab port **8080**)
+> **Module 2 — Federated Data Sources** · one **Serverless Search** project
 
 # Connectors talk track
 

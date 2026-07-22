@@ -1,47 +1,31 @@
 # Facilitator guide — Cisco Serverless workshops
 
 **Audience:** Cisco-facing AEs, SEs, partners  
-**Duration:** ~90 minutes per workshop (75 min hands-on + 15 min Q&A)
+**Duration:** ~90 minutes per module (~4.5 h full track)
 
-## Environment
+## Environment (Search only)
 
-**Recommended:** single track **`cisco-serverless-workshop`** — dual Serverless projects on one `es3-api` VM:
+**Do not position Observability or Security** in this Cisco motion. All labs use **one Serverless Search** project per learner:
 
-| Port | Project | Modules |
-|------|---------|---------|
-| **8080** | Serverless Search (vector) | AI Search + Federated |
-| **8090** | Serverless Observability (complete) | Agent Builder |
+- VM: **`es3-api`** (`elastic/es3-api-v2`)
+- Kibana proxy: port **8080**
+- Seed: **`seed_federated_sources.py`** → `cisco-network-kb`, `cisco-internal-runbooks`, `cisco-meraki-events`, `cisco-network-events`
 
-Legacy single-project tracks (`cisco-w1-*`, `cisco-w2-*`, `cisco-w3-*`) use one project each.
+Secrets: **`ESS_CLOUD_API_KEY`** (required), **`LLM_PROXY_PROD`** (optional, Module 3 Agent Builder).
 
-All variants use **`ESS_CLOUD_API_KEY`**. Optional **`LLM_PROXY_PROD`** for Agent Builder LLM (Module 3).
+**Startup:** ~3–4 minutes before opening the Search tab.
 
-**Startup:** allow **5–6 minutes** on combined track (two projects + seeds).
+## Combined vs legacy tracks
 
-## Timing template
+| Track | Use when |
+|-------|----------|
+| `cisco-serverless-workshop` | Default — full story in one lab |
+| `cisco-w1-ai-search` / `w2` / `w3` | Module-only enablement |
 
-| Segment | Minutes |
-|---------|---------|
-| Intro + arc | 5 |
-| Challenge 1 | 15–20 |
-| Challenge 2 | 25–35 |
-| Challenge 3 | 15–20 |
-| Q&A | 15 |
-
-Track time limit: **90 minutes** (`timelimit: 5400`).
-
-## Instruqt push
-
-After content changes:
+## Push after edits
 
 ```bash
-cd tracks/<slug> && instruqt track push --force
+cd tracks/cisco-serverless-workshop && instruqt track push --force
 ```
 
-Tell learners to **start a new session** to pick up instruction updates.
-
-## Troubleshooting
-
-- **Missing API key:** confirm `ESS_CLOUD_API_KEY` in track sandbox secrets.
-- **Empty indices:** check `/tmp/workshop-seed.log` on `es3-api` during setup.
-- **Agent Builder LLM errors:** verify `LLM_PROXY_PROD` for Workshop 3.
+Learners need a **new session** after instruction updates.

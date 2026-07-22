@@ -33,12 +33,12 @@ enhanced_loading: null
 ## Suggested agent charter
 
 **Name:** Cisco NOC Copilot
-**Goal:** Given an alert summary, pull correlated logs (BGP + Meraki), suggest runbook steps, draft escalation note.
+**Goal:** Given an alert summary, correlate Search indices (BGP + Meraki) with KB runbooks, suggest steps, draft escalation note.
 
 ## Tasks
 
 1. Open **Agent Builder** → create or explore a **new agent** (use lab-safe read-only tools where prompted).
-2. Add capabilities that reference **logs** and **ES|QL** (or Observability AI Assistant if bundled).
+2. Add capabilities that reference **ES|QL** over `cisco-network-events`, `cisco-meraki-events`, and `cisco-network-kb`.
 3. Test with prompt:
 
 > Branch 4471 reports Meraki offline and BGP flapping on `edge-dfw-01`. Summarize timeline and next steps.

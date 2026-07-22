@@ -1,16 +1,16 @@
 ---
 slug: triage-network-signals
-id: xh3flrzwkg81
+id: f4jpiyajwduc
 type: challenge
 title: Challenge 1 — Triage Network Signals
-teaser: Discover BGP and Meraki signals in Observability.
+teaser: ES|QL triage on Search indices — BGP and Meraki signals.
 tabs:
-- id: zxxf3omy4ays
-  title: Elastic Serverless (Observability)
+- id: m0tqmjzhvcwr
+  title: Elastic Serverless Search
   type: service
   hostname: es3-api
-  path: /app/discover
-  port: 8090
+  path: /app/elasticsearch/query
+  port: 8080
   custom_request_headers:
   - key: Content-Security-Policy
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
@@ -26,7 +26,7 @@ timelimit: 1200
 enhanced_loading: null
 ---
 
-> **Module 3 — Agent Builder** (Serverless tab port **8090**)
+> **Module 3 — Agent Builder (Search)** · one **Serverless Search** project
 
 # Triage network signals
 
@@ -34,14 +34,34 @@ enhanced_loading: null
 
 **Time:** ~15–20 minutes
 
+All data lives in your **Serverless Search** project (no Observability / Security required).
+
+## ES|QL — BGP signal
+
+```esql
+FROM cisco-network-events
+| WHERE event_type == "bgp.session_down"
+| KEEP @timestamp, host.name, cisco.site, message
+| SORT @timestamp DESC
+| LIMIT 5
+```
+
+## ES|QL — Meraki offline (connector index)
+
+```esql
+FROM cisco-meraki-events
+| WHERE event_type == "device.offline" AND device_name LIKE "*4471*"
+| KEEP @timestamp, device_name, site, detail
+| SORT @timestamp DESC
+| LIMIT 5
+```
+
 ## Tasks
 
-1. Open **Discover** → data view **`logs-cisco.network-*`** (or index **`logs-cisco.network-default`**).
-2. Filter **`event.category: network`** or search `BGP` and `Meraki`.
-3. Identify **one** `bgp.session_down` and **one** `meraki.device.offline` event; note hostname/site.
-4. Skim **Agent Builder** in the menu — what tools/skills would you expose to a NOC agent?
+1. Run both queries in **ES|QL**.
+2. Note **site** and **hostname/device** for the Branch 4471 scenario.
+3. Open **Agent Builder** in the nav — list 2 tools/skills you would wire to these indices.
 
 ## Verification
 
-Click **Check** when you have found both event types.
-
+Click **Check** when both queries return events.

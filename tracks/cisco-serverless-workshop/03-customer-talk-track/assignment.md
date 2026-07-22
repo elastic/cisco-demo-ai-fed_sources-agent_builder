@@ -1,12 +1,12 @@
 ---
 slug: customer-talk-track
-id: ufcdvrst0km4
+id: ybvxphkcqiqe
 type: challenge
 title: Challenge 3 — Customer Talk Track
 teaser: 60-second Elastic Serverless Search story for Cisco.
 tabs:
-- id: 7agvxhegspgc
-  title: Elastic Serverless (Search)
+- id: blcfycgfylpo
+  title: Elastic Serverless Search
   type: service
   hostname: es3-api
   path: /app/search
@@ -26,7 +26,7 @@ timelimit: 1200
 enhanced_loading: null
 ---
 
-> **Module 1 — AI Search** (Serverless tab port **8080**)
+> **Module 1 — AI Search** · one **Serverless Search** project
 
 # Customer talk track
 

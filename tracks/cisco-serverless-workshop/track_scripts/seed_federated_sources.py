@@ -126,7 +126,52 @@ def main() -> int:
         elines.append(json.dumps(ev))
     bulk(es_url, header, elines)
 
-    print("Federated indices ready: cisco-network-kb, cisco-internal-runbooks, cisco-meraki-events")
+    ensure_index(
+        es_url,
+        header,
+        "cisco-network-events",
+        {
+            "mappings": {
+                "properties": {
+                    "@timestamp": {"type": "date"},
+                    "message": {"type": "text"},
+                    "event_type": {"type": "keyword"},
+                    "host.name": {"type": "keyword"},
+                    "cisco.product": {"type": "keyword"},
+                    "cisco.site": {"type": "keyword"},
+                }
+            }
+        },
+    )
+
+    net_events = [
+        {
+            "@timestamp": (now - timedelta(minutes=8)).isoformat(),
+            "message": "BGP neighbor 10.0.0.1 changed state from Established to Idle",
+            "event_type": "bgp.session_down",
+            "host.name": "edge-dfw-01",
+            "cisco.product": "IOS-XE",
+            "cisco.site": "Branch-4471-Dallas",
+        },
+        {
+            "@timestamp": (now - timedelta(minutes=30)).isoformat(),
+            "message": "DNA Assurance health score dropped to 6.2 on switch dist-dfw-02",
+            "event_type": "dna.assurance.alert",
+            "host.name": "dist-dfw-02",
+            "cisco.product": "DNA Center",
+            "cisco.site": "Branch-4471-Dallas",
+        },
+    ]
+    nlines: list[str] = []
+    for i, ev in enumerate(net_events):
+        nlines.append(json.dumps({"index": {"_index": "cisco-network-events", "_id": f"net-{i}"}}))
+        nlines.append(json.dumps(ev))
+    bulk(es_url, header, nlines)
+
+    print(
+        "Search workshop indices ready: cisco-network-kb, cisco-internal-runbooks, "
+        "cisco-meraki-events, cisco-network-events"
+    )
     return 0
 
 

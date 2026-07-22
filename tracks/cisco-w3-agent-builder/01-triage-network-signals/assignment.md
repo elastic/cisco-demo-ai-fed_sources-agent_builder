@@ -1,15 +1,15 @@
 ---
 slug: triage-network-signals
-id: zbkbtyqzlwbq
+id: ubtycyfwm7tm
 type: challenge
 title: Challenge 1 — Triage Network Signals
-teaser: Discover BGP and Meraki signals in Observability.
+teaser: ES|QL triage on Search indices — BGP and Meraki signals.
 tabs:
-- id: ikqpcg2bzcec
-  title: Elastic Serverless
+- id: nbrtnagypu9y
+  title: Elastic Serverless Search
   type: service
   hostname: es3-api
-  path: /app/discover
+  path: /app/elasticsearch/query
   port: 8080
   custom_request_headers:
   - key: Content-Security-Policy
@@ -32,14 +32,14 @@ enhanced_loading: null
 
 **Time:** ~15–20 minutes
 
+Use **Serverless Search** only — indices were seeded at track start.
+
 ## Tasks
 
-1. Open **Discover** → data view **`logs-cisco.network-*`** (or index **`logs-cisco.network-default`**).
-2. Filter **`event.category: network`** or search `BGP` and `Meraki`.
-3. Identify **one** `bgp.session_down` and **one** `meraki.device.offline` event; note hostname/site.
-4. Skim **Agent Builder** in the menu — what tools/skills would you expose to a NOC agent?
+1. Run ES|QL on **`cisco-network-events`** for `bgp.session_down`.
+2. Run ES|QL on **`cisco-meraki-events`** for `device.offline` at Branch 4471.
+3. Skim **Agent Builder** — what Search-backed tools would you expose to a NOC agent?
 
 ## Verification
 
-Click **Check** when you have found both event types.
-
+Click **Check** when both queries return events.

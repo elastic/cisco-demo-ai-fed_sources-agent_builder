@@ -1,13 +1,16 @@
 slug: cisco-serverless-workshop
 id: k4ocxuiibv9l
 title: Cisco — AI Search, Federated Sources & Agent Builder
-teaser: One lab — Serverless Search + Observability for Cisco NOC demos (3 modules,
-  9 challenges).
+teaser: One Serverless Search project — AI Search, federated indices, and Agent Builder
+  for Cisco.
 description: |
-  Combined Cisco workshop for Elastic sellers and SEs. Provisions **two** Serverless projects per learner:
-  **Search** (8080) for AI Search and Federated Sources modules, **Observability** (8090) for Agent Builder.
+  Combined Cisco workshop for Elastic sellers and SEs. Provisions **one** per-learner
+  **Elastic Serverless Search** project (vector-optimized) on port **8080**.
 
-  **Duration:** ~4.5 hours total (3 × ~90 min modules) — skipping enabled for partial runs.
+  Modules: AI Search → Federated Data Sources → Agent Builder (Search-native ES|QL + agents).
+  No Observability or Security projects required.
+
+  **Duration:** ~4.5 hours (3 × ~90 min) — skipping enabled.
 
   **Prerequisites:** `ESS_CLOUD_API_KEY`; optional `LLM_PROXY_PROD` for Agent Builder LLM.
 icon: https://www.elastic.co/favicon.ico
@@ -36,5 +39,5 @@ lab_config:
   hideStopButton: false
   default_layout: AssignmentRight
   default_layout_sidebar_size: 40
-checksum: "1157491190779015821"
+checksum: "6724192658802302577"
 enhanced_loading: false

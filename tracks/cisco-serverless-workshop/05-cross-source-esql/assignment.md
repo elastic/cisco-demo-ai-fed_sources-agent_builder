@@ -1,12 +1,12 @@
 ---
 slug: cross-source-esql
-id: toyd6op0u6tf
+id: c061wrpybn4c
 type: challenge
 title: Challenge 2 — Cross-Source ES|QL
 teaser: Join KB guidance with live Meraki offline events.
 tabs:
-- id: 5mdwxpqwlcnd
-  title: Elastic Serverless (Search)
+- id: 1dmkewx72at2
+  title: Elastic Serverless Search
   type: service
   hostname: es3-api
   path: /app/elasticsearch/query
@@ -26,7 +26,7 @@ timelimit: 2100
 enhanced_loading: null
 ---
 
-> **Module 2 — Federated Data Sources** (Serverless tab port **8080**)
+> **Module 2 — Federated Data Sources** · one **Serverless Search** project
 
 # Cross-source ES|QL
 

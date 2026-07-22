@@ -1,16 +1,16 @@
 ---
 slug: build-investigation-agent
-id: 1jsum0hqxo4w
+id: yv5tyxo28xor
 type: challenge
 title: Challenge 2 — Build an Investigation Agent
 teaser: Configure Agent Builder for Cisco NOC workflow.
 tabs:
-- id: afc4k5gdfkxa
-  title: Elastic Serverless (Observability)
+- id: hcmxyyevz8xe
+  title: Elastic Serverless Search
   type: service
   hostname: es3-api
   path: /app/agent_builder
-  port: 8090
+  port: 8080
   custom_request_headers:
   - key: Content-Security-Policy
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
@@ -26,7 +26,7 @@ timelimit: 2100
 enhanced_loading: null
 ---
 
-> **Module 3 — Agent Builder** (Serverless tab port **8090**)
+> **Module 3 — Agent Builder (Search)** · one **Serverless Search** project
 
 # Build an investigation agent
 
@@ -35,12 +35,12 @@ enhanced_loading: null
 ## Suggested agent charter
 
 **Name:** Cisco NOC Copilot
-**Goal:** Given an alert summary, pull correlated logs (BGP + Meraki), suggest runbook steps, draft escalation note.
+**Goal:** Given an alert summary, correlate Search indices (BGP + Meraki) with KB runbooks, suggest steps, draft escalation note.
 
 ## Tasks
 
 1. Open **Agent Builder** → create or explore a **new agent** (use lab-safe read-only tools where prompted).
-2. Add capabilities that reference **logs** and **ES|QL** (or Observability AI Assistant if bundled).
+2. Add capabilities that reference **ES|QL** over `cisco-network-events`, `cisco-meraki-events`, and `cisco-network-kb`.
 3. Test with prompt:
 
 > Branch 4471 reports Meraki offline and BGP flapping on `edge-dfw-01`. Summarize timeline and next steps.

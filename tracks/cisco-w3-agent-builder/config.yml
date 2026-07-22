@@ -4,10 +4,10 @@ virtualmachines:
   image: elastic/es3-api-v2
   shell: /bin/bash
   environment:
-    PROJECT_TYPE: observability
-    PRODUCT_TIER: complete
+    PROJECT_TYPE: elasticsearch
+    OPTIMIZED_FOR: vector
     REGIONS: aws-us-east-1
-    WORKSHOP_SEED: seed_cisco_observability.py
+    WORKSHOP_SEED: seed_federated_sources.py
   memory: 4096
   cpus: 1
   allow_external_ingress:

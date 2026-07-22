@@ -1,12 +1,12 @@
 ---
 slug: map-data-silos
-id: rto0wqaan1zw
+id: rbxysyvajdld
 type: challenge
 title: Challenge 1 — Map Cisco Data Silos
 teaser: Inventory federated indices and their business owner.
 tabs:
-- id: deqclsowumek
-  title: Elastic Serverless (Search)
+- id: eiq1xiymq56h
+  title: Elastic Serverless Search
   type: service
   hostname: es3-api
   path: /app/management/data/index_management/indices
@@ -26,7 +26,7 @@ timelimit: 1200
 enhanced_loading: null
 ---
 
-> **Module 2 — Federated Data Sources** (Serverless tab port **8080**)
+> **Module 2 — Federated Data Sources** · one **Serverless Search** project
 
 # Map data silos
 
@@ -41,14 +41,15 @@ enhanced_loading: null
 | `cisco-network-kb` | Public KB / docs | TAC / GSE |
 | `cisco-internal-runbooks` | Internal wiki | NOC lead |
 | `cisco-meraki-events` | Connector sync (Meraki) | NetOps |
+| `cisco-network-events` | Network telemetry (BGP/DNA-style) | NOC / automation |
 
 ## Tasks
 
-1. Open **Index Management** and confirm all **three** indices exist.
+1. Open **Index Management** and confirm all **four** indices exist.
 2. Open **Discover** on **`cisco-meraki-events`** — note fields `source`, `device_serial`, `event_type`.
 3. In notes, map each index to a **real** Cisco system your customer uses.
 
 ## Verification
 
-Click **Check** when you have documented all three indices.
+Click **Check** when you have documented all four indices.
 

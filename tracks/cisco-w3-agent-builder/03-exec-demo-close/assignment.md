@@ -34,7 +34,7 @@ enhanced_loading: null
 
 1. **W1 AI Search** — find Meraki/BGP runbooks in seconds
 2. **W2 Federated** — Meraki events + internal runbooks + KB in one ES|QL story
-3. **W3 Agent Builder** — autonomous triage on **`logs-cisco.network`**
+3. **W3 Agent Builder** — agentic triage on Search (`cisco-network-events` + federated indices)
 
 ## Tasks
 

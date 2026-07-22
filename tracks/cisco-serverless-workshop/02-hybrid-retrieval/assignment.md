@@ -1,12 +1,12 @@
 ---
 slug: hybrid-retrieval
-id: wnl4h9jfqzzx
+id: j24sdm491frh
 type: challenge
 title: Challenge 2 — Hybrid & Semantic Retrieval
 teaser: Compare keyword vs semantic-style queries on runbooks.
 tabs:
-- id: z3tyhql6g35n
-  title: Elastic Serverless (Search)
+- id: sbz9v0o5waa4
+  title: Elastic Serverless Search
   type: service
   hostname: es3-api
   path: /app/elasticsearch/query
@@ -26,7 +26,7 @@ timelimit: 2100
 enhanced_loading: null
 ---
 
-> **Module 1 — AI Search** (Serverless tab port **8080**)
+> **Module 1 — AI Search** · one **Serverless Search** project
 
 # Hybrid retrieval lab
 

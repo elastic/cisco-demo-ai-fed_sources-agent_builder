@@ -1,16 +1,16 @@
 ---
 slug: exec-demo-close
-id: h4mrxo3qaate
+id: hjk3rw0nlp1y
 type: challenge
 title: Challenge 3 — Executive Demo Close
 teaser: W1→W2→W3 arc for Cisco leadership.
 tabs:
-- id: j1cw869jayf3
-  title: Elastic Serverless (Observability)
+- id: skjmvldulpop
+  title: Elastic Serverless Search
   type: service
   hostname: es3-api
   path: /app/agent_builder
-  port: 8090
+  port: 8080
   custom_request_headers:
   - key: Content-Security-Policy
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
@@ -26,7 +26,7 @@ timelimit: 1200
 enhanced_loading: null
 ---
 
-> **Module 3 — Agent Builder** (Serverless tab port **8090**)
+> **Module 3 — Agent Builder (Search)** · one **Serverless Search** project
 
 # Executive demo close
 
@@ -36,7 +36,7 @@ enhanced_loading: null
 
 1. **W1 AI Search** — find Meraki/BGP runbooks in seconds
 2. **W2 Federated** — Meraki events + internal runbooks + KB in one ES|QL story
-3. **W3 Agent Builder** — autonomous triage on **`logs-cisco.network`**
+3. **W3 Agent Builder** — agentic triage on Search (`cisco-network-events` + federated indices)
 
 ## Tasks
 

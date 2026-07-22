@@ -1,12 +1,12 @@
 ---
 slug: explore-cisco-kb
-id: 8icicynoafyj
+id: dpxaqmsw7qnx
 type: challenge
 title: Challenge 1 — Explore the Cisco Knowledge Base
 teaser: Navigate Search and Discover on seeded Cisco runbooks.
 tabs:
-- id: 6xonp41nrz4g
-  title: Elastic Serverless (Search)
+- id: sxlhwsatwlkn
+  title: Elastic Serverless Search
   type: service
   hostname: es3-api
   path: /app/search
@@ -26,7 +26,7 @@ timelimit: 1200
 enhanced_loading: null
 ---
 
-> **Module 1 — AI Search** (Serverless tab port **8080**)
+> **Module 1 — AI Search** · one **Serverless Search** project
 
 # Explore the Cisco knowledge base
 
