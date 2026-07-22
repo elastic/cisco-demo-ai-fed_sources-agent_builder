@@ -1,9 +1,9 @@
 ---
 slug: explore-cisco-kb
-id: vece86m0z4wb
+id: zem68uo9iqgw
 type: challenge
 title: Challenge 1 — Find the runbook
-teaser: Open the seeded NOC dashboard, then paste ES|QL to pull the recovery runbook.
+teaser: ES|QL plus Elastic AI Assistant — get both Branch 4471 runbooks in one ask.
 notes:
 - type: text
   contents: |
@@ -15,8 +15,8 @@ notes:
 
     Fullscreen: https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html
 tabs:
-- id: gibaflgjrdxh
-  title: Elastic Serverless Search
+- id: n0djtieax4a6
+  title: NOC Dashboard
   type: service
   hostname: es3-api
   path: /app/dashboards#/view/cisco-noc-ops
@@ -32,7 +32,7 @@ tabs:
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
 difficulty: intermediate
-timelimit: 1200
+timelimit: 1500
 enhanced_loading: null
 ---
 
@@ -40,23 +40,28 @@ enhanced_loading: null
 
 # Find the runbook
 
-> **Thesis:** On **Elastic Serverless Search**, one project can hold Meraki, IOS-XE, and DNA-style guidance — if you can find it fast enough.
+> **Thesis:** On **Elastic Serverless Search**, keyword ES|QL finds the docs — the **AI Assistant** turns them into a NOC-ready action plan.
 
 ## Background
 
 NOC chat lights up: *"Branch 4471 — Meraki AP offline, edge BGP looking ugly. Where's the recovery runbook?"*
 
-Your lab is a single **Elastic Serverless Search** project. Setup seeded two dashboards:
+Setup seeded:
 
-- **Cisco NOC Command Center** (`cisco-noc-ops`) — this tab
-- **Cisco Knowledge Base Library** (`cisco-kb-library`) — open from Dashboards if you want the catalog view
+- **Cisco NOC Command Center** — [button label="NOC Dashboard"](tab-1)
+- **Cisco Knowledge Base Library** (`cisco-kb-library`) — Dashboards list if you want the catalog
 
 **Time:** ~15–20 minutes
 
 ## Your task
 
-1. On the **Cisco NOC Command Center** dashboard, confirm **Branch-4471-Dallas** appears in the Meraki offline and/or network signal panels.
-2. Open **ES|QL** (Query / Discover) and paste:
+### 1 — Orient on the dashboard
+
+Open [button label="NOC Dashboard"](tab-1) and confirm **Branch-4471-Dallas** appears in Meraki offline and/or network signal panels.
+
+### 2 — Prove it with ES|QL
+
+Back on [button label="ES|QL + AI Assistant"](tab-0), paste:
 
 ```esql
 FROM cisco-network-kb
@@ -66,7 +71,7 @@ FROM cisco-network-kb
 | LIMIT 10
 ```
 
-3. Paste the Meraki recovery query and note **two** remediation steps from the `content` field:
+Then:
 
 ```esql
 FROM cisco-network-kb
@@ -75,11 +80,25 @@ FROM cisco-network-kb
 | LIMIT 10
 ```
 
+Confirm you get **BGP Neighbor Down — IOS-XE Troubleshooting** and **Meraki AP Offline Recovery**.
+
+### 3 — Ask the Elastic AI Assistant
+
+Open the **AI Assistant** / **Elastic AI Agent** chat panel (right side in Discover).
+
+Paste this prompt:
+
+```text
+Branch 4471 — Meraki AP offline, edge BGP looking ugly. Where's the recovery runbook?
+```
+
+Wait for tool calls to finish. You should get **both** runbooks with numbered steps, plus guidance on which problem to fix first (BGP vs Meraki).
+
 ## Success criteria
 
 - NOC dashboard shows Branch 4471 signals
-- BGP query returns a KB hit
-- Meraki query returns **Meraki AP Offline Recovery** with two steps identified
+- Both ES|QL queries return the expected KB docs
+- AI Assistant returns Meraki + BGP recovery steps grounded in `cisco-network-kb`
 
 ## Verification
 
