@@ -3,7 +3,7 @@ slug: map-data-silos
 id: n3olmdtkd0e1
 type: challenge
 title: Challenge 4 — Map silos the Agent will query
-teaser: Four Search indices = four silos — inventory them, then ask the Cisco Agent who owns each.
+teaser: "Four Search indices = four silos — inventory them, then ask the Cisco Agent who owns each."
 tabs:
 - id: tab-idx-04
   title: Indices

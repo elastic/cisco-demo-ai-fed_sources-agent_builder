@@ -1,8 +1,10 @@
 ---
 slug: triage-network-signals
+id: rycktzfgslt1
 type: challenge
 title: Challenge 7 — Triage with Agent + A2A Workflow
-teaser: Re-run the inject — Cisco Agent for Elastic signals, Workflow A2A for Splunk O11Y.
+teaser: Re-run the inject — Cisco Agent for Elastic signals, Workflow A2A for Splunk
+  O11Y.
 notes:
 - type: text
   contents: |
@@ -13,9 +15,9 @@ notes:
     </iframe>
 
     Fullscreen: https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html
-
 tabs:
-- title: Cisco Agent
+- id: 3chjtvpqrw9u
+  title: Cisco Agent
   type: service
   hostname: es3-api
   path: /app/agent_builder
@@ -30,7 +32,8 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- title: A2A Workflow
+- id: d3vcfi8tyd7s
+  title: A2A Workflow
   type: service
   hostname: es3-api
   path: /app/workflows
@@ -60,7 +63,7 @@ enhanced_loading: null
 
 Pager: *"BGP session down on edge router + Meraki AP offline at Branch 4471."*
 
-**Time:** ~5 minutes with Agent + Workflow  
+**Time:** ~5 minutes with Agent + Workflow
 *Without AI this beat was usually 15–20 minutes.*
 
 ## Your task

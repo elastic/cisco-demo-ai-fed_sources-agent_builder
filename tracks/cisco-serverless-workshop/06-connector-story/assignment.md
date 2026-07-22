@@ -1,10 +1,13 @@
 ---
 slug: connector-story
+id: mzqlo48cv1po
 type: challenge
 title: Challenge 6 — Plan federation with Agent + Workflows
-teaser: Connectors feed Search; the Cisco Agent + A2A workflow are the query/augment layer.
+teaser: Connectors feed Search; the Cisco Agent + A2A workflow are the query/augment
+  layer.
 tabs:
-- title: Connectors
+- id: beo45xgor9i9
+  title: Connectors
   type: service
   hostname: es3-api
   path: /app/enterprise_search/content/connectors
@@ -19,7 +22,8 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- title: Cisco Agent
+- id: mmstddb2paet
+  title: Cisco Agent
   type: service
   hostname: es3-api
   path: /app/agent_builder
@@ -49,7 +53,7 @@ enhanced_loading: null
 
 Lab indices simulate a connector-fed world. Production uses **Elastic connectors** into the same Serverless Search project.
 
-**Time:** ~3–5 minutes with the Agent  
+**Time:** ~3–5 minutes with the Agent
 *Without AI this beat was usually 15–20 minutes.*
 
 ## Your task

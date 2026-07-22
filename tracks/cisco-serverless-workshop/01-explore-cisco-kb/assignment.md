@@ -1,5 +1,6 @@
 ---
 slug: explore-cisco-kb
+id: ey2owbohgpys
 type: challenge
 title: Challenge 1 — Create the Cisco Agent & find the runbook
 teaser: Stand up Cisco NOC Copilot in Agent Builder — then ask Branch 4471.
@@ -13,9 +14,9 @@ notes:
     </iframe>
 
     Fullscreen: https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html
-
 tabs:
-- title: Cisco Agent
+- id: axovfwktzopu
+  title: Cisco Agent
   type: service
   hostname: es3-api
   path: /app/agent_builder
@@ -30,7 +31,8 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- title: NOC Dashboard
+- id: w1wvgi3afbt8
+  title: NOC Dashboard
   type: service
   hostname: es3-api
   path: /app/dashboards#/view/cisco-noc-ops
@@ -62,7 +64,7 @@ NOC chat: *"Branch 4471 — Meraki AP offline, edge BGP looking ugly. Where's th
 
 Seeded for you: **Cisco NOC Command Center** dashboard + `cisco-network-kb`.
 
-**Time:** ~5 minutes with Agent Builder  
+**Time:** ~5 minutes with Agent Builder
 *Without AI/agent tooling this beat was usually 15–20 minutes.*
 
 ## Your task

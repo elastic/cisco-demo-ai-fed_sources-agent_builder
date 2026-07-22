@@ -3,7 +3,7 @@ slug: hybrid-retrieval
 id: ivke7lyuske8
 type: challenge
 title: Challenge 2 — Augment with Splunk O11Y A2A (Workflow)
-teaser: Workflow gathers Elastic context; stubbed A2A adds Splunk O11Y evidence for Branch 4471.
+teaser: "Workflow gathers Elastic context; stubbed A2A adds Splunk O11Y evidence for Branch 4471."
 tabs:
 - id: tab-wf-02
   title: A2A Workflow

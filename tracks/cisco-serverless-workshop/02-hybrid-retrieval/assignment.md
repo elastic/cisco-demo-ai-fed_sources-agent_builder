@@ -1,10 +1,13 @@
 ---
 slug: hybrid-retrieval
+id: yw4cpmnbjcsr
 type: challenge
 title: Challenge 2 — Augment with Splunk O11Y A2A (Workflow)
-teaser: Workflow gathers Elastic context; stubbed A2A adds Splunk O11Y evidence for Branch 4471.
+teaser: Workflow gathers Elastic context; stubbed A2A adds Splunk O11Y evidence for
+  Branch 4471.
 tabs:
-- title: A2A Workflow
+- id: hil9ttypa9d5
+  title: A2A Workflow
   type: service
   hostname: es3-api
   path: /app/workflows
@@ -19,7 +22,8 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- title: Cisco Agent
+- id: xdnuxlykjqqf
+  title: Cisco Agent
   type: service
   hostname: es3-api
   path: /app/agent_builder
@@ -49,7 +53,7 @@ enhanced_loading: null
 
 Meraki/BGP live in **Elastic Serverless Search**. Detectors/APM often live in **Splunk Observability**. Lab workflow **`cisco-branch-4471-splunk-o11y-a2a-rca`** stubs an A2A investigator response so you can see the pattern end-to-end.
 
-**Time:** ~10 minutes with Workflows + Agent  
+**Time:** ~10 minutes with Workflows + Agent
 *Without AI/A2A automation this beat was usually 30–40 minutes.*
 
 ## Your task

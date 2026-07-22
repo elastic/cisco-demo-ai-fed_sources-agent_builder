@@ -46,7 +46,7 @@ def front(
     return f"""slug: {slug}
 {id_line}type: challenge
 title: {title}
-teaser: {teaser}
+teaser: "{teaser}"
 tabs:
 {tabs}
 difficulty: intermediate

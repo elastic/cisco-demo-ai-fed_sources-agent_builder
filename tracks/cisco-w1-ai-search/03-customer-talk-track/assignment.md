@@ -3,7 +3,7 @@ slug: customer-talk-track
 id: dladqvekx279
 type: challenge
 title: Challenge 3 — Agent drafts the peer story
-teaser: Cisco NOC Copilot writes the Slack/email update — Find + A2A proof included.
+teaser: "Cisco NOC Copilot writes the Slack/email update — Find + A2A proof included."
 tabs:
 - id: tab-agent-03
   title: Cisco Agent

@@ -1,10 +1,13 @@
 ---
 slug: build-investigation-agent
+id: ifbyxlhihyyu
 type: challenge
 title: Challenge 8 — Harden Cisco NOC Copilot
-teaser: Tighten tools, retest Branch 4471, and make A2A workflow part of the agent story.
+teaser: Tighten tools, retest Branch 4471, and make A2A workflow part of the agent
+  story.
 tabs:
-- title: Cisco Agent
+- id: p7xfzt5fsegd
+  title: Cisco Agent
   type: service
   hostname: es3-api
   path: /app/agent_builder
@@ -19,7 +22,8 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- title: A2A Workflow
+- id: pwrqsg0kc4px
+  title: A2A Workflow
   type: service
   hostname: es3-api
   path: /app/workflows
@@ -55,7 +59,7 @@ Charter check for `Cisco NOC Copilot`:
 | **Data** | `cisco-network-events`, `cisco-meraki-events`, `cisco-network-kb`, `cisco-internal-runbooks` |
 | **Augment** | Workflow `cisco-branch-4471-splunk-o11y-a2a-rca` (stubbed Splunk O11Y A2A in lab) |
 
-**Time:** ~10–15 minutes with Agent Builder  
+**Time:** ~10–15 minutes with Agent Builder
 *Without AI this beat was usually 25–35 minutes.*
 
 ## Your task

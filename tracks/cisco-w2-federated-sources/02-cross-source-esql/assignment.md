@@ -3,7 +3,7 @@ slug: cross-source-esql
 id: xbejihaglwrz
 type: challenge
 title: Challenge 5 — Correlate event + runbook with the Agent
-teaser: Cisco NOC Copilot joins Meraki offline events with KB recovery — federation in one ask.
+teaser: "Cisco NOC Copilot joins Meraki offline events with KB recovery — federation in one ask."
 tabs:
 - id: tab-agent-05
   title: Cisco Agent

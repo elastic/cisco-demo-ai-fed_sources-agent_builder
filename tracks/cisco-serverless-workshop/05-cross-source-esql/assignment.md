@@ -1,10 +1,13 @@
 ---
 slug: cross-source-esql
+id: udulbnuntysa
 type: challenge
 title: Challenge 5 — Correlate event + runbook with the Agent
-teaser: Cisco NOC Copilot joins Meraki offline events with KB recovery — federation in one ask.
+teaser: Cisco NOC Copilot joins Meraki offline events with KB recovery — federation
+  in one ask.
 tabs:
-- title: Cisco Agent
+- id: rvcwc3tlaqoc
+  title: Cisco Agent
   type: service
   hostname: es3-api
   path: /app/agent_builder
@@ -19,7 +22,8 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- title: ES|QL
+- id: lj5rtlnk6ngu
+  title: ES|QL
   type: service
   hostname: es3-api
   path: /app/elasticsearch/query
@@ -49,7 +53,7 @@ enhanced_loading: null
 
 **Scenario:** Meraki AP **MR-AP-4471** went offline. Find the **event** and the **recovery runbook** in the same Serverless Search project — then let `Cisco NOC Copilot` explain the link.
 
-**Time:** ~5–8 minutes with the Agent  
+**Time:** ~5–8 minutes with the Agent
 *Without AI this beat was usually 25–35 minutes.*
 
 ## Your task

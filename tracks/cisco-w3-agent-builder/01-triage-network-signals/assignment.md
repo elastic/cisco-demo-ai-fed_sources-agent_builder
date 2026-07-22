@@ -3,7 +3,7 @@ slug: triage-network-signals
 id: zmj9ciywdm8k
 type: challenge
 title: Challenge 7 — Triage with Agent + A2A Workflow
-teaser: Re-run the inject — Cisco Agent for Elastic signals, Workflow A2A for Splunk O11Y.
+teaser: "Re-run the inject — Cisco Agent for Elastic signals, Workflow A2A for Splunk O11Y."
 tabs:
 - id: tab-agent-07
   title: Cisco Agent

@@ -3,7 +3,7 @@ slug: connector-story
 id: 2bbgtwukwviu
 type: challenge
 title: Challenge 6 — Plan federation with Agent + Workflows
-teaser: Connectors feed Search; the Cisco Agent + A2A workflow are the query/augment layer.
+teaser: "Connectors feed Search; the Cisco Agent + A2A workflow are the query/augment layer."
 tabs:
 - id: tab-conn-06
   title: Connectors

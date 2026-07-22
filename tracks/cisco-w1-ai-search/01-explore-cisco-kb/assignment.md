@@ -3,7 +3,7 @@ slug: explore-cisco-kb
 id: x4ssyoighgs4
 type: challenge
 title: Challenge 1 — Create the Cisco Agent & find the runbook
-teaser: Stand up Cisco NOC Copilot in Agent Builder — then ask Branch 4471.
+teaser: "Stand up Cisco NOC Copilot in Agent Builder — then ask Branch 4471."
 tabs:
 - id: tab-agent-01
   title: Cisco Agent

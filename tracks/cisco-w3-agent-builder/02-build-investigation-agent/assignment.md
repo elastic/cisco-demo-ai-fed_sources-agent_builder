@@ -3,7 +3,7 @@ slug: build-investigation-agent
 id: xkg8zu3nciav
 type: challenge
 title: Challenge 8 — Harden Cisco NOC Copilot
-teaser: Tighten tools, retest Branch 4471, and make A2A workflow part of the agent story.
+teaser: "Tighten tools, retest Branch 4471, and make A2A workflow part of the agent story."
 tabs:
 - id: tab-agent-08
   title: Cisco Agent
