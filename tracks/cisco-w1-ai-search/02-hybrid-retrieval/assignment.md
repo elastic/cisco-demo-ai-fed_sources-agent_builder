@@ -2,11 +2,11 @@
 slug: hybrid-retrieval
 id: ivke7lyuske8
 type: challenge
-title: Challenge 2 — Hybrid & Semantic Retrieval
-teaser: Compare keyword vs semantic-style queries on runbooks.
+title: Challenge 2 — Prove hybrid retrieval
+teaser: Keyword catches codes; meaning catches intent — hybrid is what NOC actually needs.
 tabs:
 - id: qnemh8auqgbo
-  title: Elastic Serverless
+  title: Elastic Serverless Search
   type: service
   hostname: es3-api
   path: /app/elasticsearch/query
@@ -26,15 +26,19 @@ timelimit: 2100
 enhanced_loading: null
 ---
 
-# Hybrid retrieval lab
+# Prove hybrid retrieval
 
-**Story:** Engineers ask vague questions (*"AP keeps going offline"*) — keyword search alone misses intent.
+> **Thesis:** Retrieval quality — not the LLM — decides whether a Cisco agent gives a useful answer. Keyword alone misses intent; meaning alone can blur exact IDs. Hybrid wins on Serverless Search.
+
+## Background
+
+Engineers don't page with perfect keywords. They say *"AP keeps going offline"* or paste a neighbor IP. Same **Serverless Search** project — better query shapes.
 
 **Time:** ~25–35 minutes
 
-## Sample ES|QL (Dev Tools or ES|QL UI)
+## Sample ES|QL
 
-Try in **ES|QL** (adjust if your UI uses **Query**):
+Run in the **ES|QL / Query** UI:
 
 ```esql
 FROM cisco-network-kb
@@ -44,18 +48,23 @@ FROM cisco-network-kb
 | LIMIT 10
 ```
 
-Then try a natural-language style query in **Search**:
+Then try a natural-language style search in **Discover** (or Search UI if available):
 
 > Meraki access point offline cloud connectivity
 
-## Tasks
+## Your task
 
-1. Run the ES|QL query above (or equivalent **Search** UI query).
-2. Find the **Meraki AP Offline Recovery** document and note **two** troubleshooting steps from the content.
-3. Optional: enable **semantic** / **AI** search features if shown in your project tier.
-4. In notes, compare **keyword** vs **natural language** result quality in 2–3 bullets.
+1. Run the ES|QL query (or an equivalent Discover query).
+2. Find the **Meraki AP Offline Recovery** document and note **two** troubleshooting steps.
+3. Optional: try any **semantic / AI** search controls shown in your Serverless project.
+4. In notes, write 2–3 bullets comparing **keyword** vs **natural-language** result quality for this incident.
+
+## Success criteria
+
+- ES|QL (or Discover) returns Meraki offline guidance
+- Two recovery steps are captured
+- Comparison bullets are written
 
 ## Verification
 
-Click **Check** after you document **Meraki offline** steps and your comparison bullets.
-
+Click **Check** when the success criteria are met.

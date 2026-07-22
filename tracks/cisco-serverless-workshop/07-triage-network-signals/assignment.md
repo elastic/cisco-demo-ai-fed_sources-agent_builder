@@ -1,21 +1,21 @@
 ---
 slug: triage-network-signals
-id: vk8dm1cckavi
+id: 5phqqs0hgenv
 type: challenge
-title: Challenge 1 — Triage Network Signals
-teaser: ES|QL triage on Search indices — BGP and Meraki signals.
+title: Challenge 7 — Triage the incident
+teaser: Injected Branch 4471 signals — BGP + Meraki — on Serverless Search only.
 notes:
 - type: text
   contents: |
-    **While the lab provisions (~3–4 min)** — use **← →** inside the deck below.
+    **While Elastic Serverless Search provisions (~3–4 min)** — use **← →** in the deck.
 
-    <iframe src="https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html?v1=1" width="100%" height="720" frameborder="0"
+    <iframe src="https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html?v2=1" width="100%" height="720" frameborder="0"
       style="border-radius:8px;border:1px solid #2a3140;display:block;min-height:560px;background:#0b0d12">
     </iframe>
 
     Fullscreen: https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html
 tabs:
-- id: vswmzb1cxyxe
+- id: ldgnkoyu3l5q
   title: Elastic Serverless Search
   type: service
   hostname: es3-api
@@ -36,15 +36,19 @@ timelimit: 1200
 enhanced_loading: null
 ---
 
-> **Module 3 — Agent Builder (Search)** · one **Serverless Search** project
+> **Module 3 — Act** · one **Elastic Serverless Search** project
 
-# Triage network signals
+# Triage the incident
 
-**Story:** Pager: *"BGP session down on edge router + Meraki AP offline at Branch 4471."*
+> **Thesis:** Before you build an agent, prove you can triage the same signals the agent will see — on **Elastic Serverless Search**.
+
+## Background
+
+**Pager:** *"BGP session down on edge router + Meraki AP offline at Branch 4471."*
+
+This is the end-to-end inject: events were seeded into your Serverless Search project at lab start. No Observability or Security projects required.
 
 **Time:** ~15–20 minutes
-
-All data lives in your **Serverless Search** project (no Observability / Security required).
 
 ## ES|QL — BGP signal
 
@@ -56,7 +60,7 @@ FROM cisco-network-events
 | LIMIT 5
 ```
 
-## ES|QL — Meraki offline (connector index)
+## ES|QL — Meraki offline
 
 ```esql
 FROM cisco-meraki-events
@@ -66,11 +70,17 @@ FROM cisco-meraki-events
 | LIMIT 5
 ```
 
-## Tasks
+## Your task
 
 1. Run both queries in **ES|QL**.
 2. Note **site** and **hostname/device** for the Branch 4471 scenario.
-3. Open **Agent Builder** in the nav — list 2 tools/skills you would wire to these indices.
+3. Open **Agent Builder** in the nav — list **two** tools/skills you would wire to these indices (you build them next).
+
+## Success criteria
+
+- Both queries return events
+- Site + device notes captured
+- Two agent tool ideas listed
 
 ## Verification
 

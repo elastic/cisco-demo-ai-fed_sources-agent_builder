@@ -250,7 +250,7 @@ SLIDES["serverless.html"] = wrap(
     <p class="sub fade-up-3">Search-only workshop for Cisco practitioners on Elastic Search Serverless.</p>
     <div class="header-divider fade-up-3"></div>
     <div class="grid2">
-      <div class="card fade-up-4"><div class="label">Speed</div><h3>~3–4 min to ready</h3><p>Single vector Search project + seeded Cisco indices — no multi-product wait.</p></div>
+      <div class="card fade-up-4"><div class="label">Speed</div><h3>~3–4 min to ready</h3><p>Single Serverless Search project + seeded Cisco indices — no multi-product wait.</p></div>
       <div class="card fade-up-4"><div class="label">Scope</div><h3>Search-only lab</h3><p>AI Search, federated indices, and Agent Builder — Observability and Security are out of scope for this workshop.</p></div>
       <div class="card fade-up-5"><div class="label">Skill</div><h3>ES|QL everywhere</h3><p>KB, connectors, and agent tools — one query language for engineers and agents.</p></div>
       <div class="card fade-up-5"><div class="label">Economics</div><h3>Serverless ops</h3><p>Per-learner Cloud projects in Instruqt; elastic scale for internal POCs.</p></div>
@@ -720,8 +720,8 @@ SLIDES["lab.html"] = wrap(
     <p class="sub fade-up-3">When Elastic Serverless Search opens, start Module 1.</p>
     <div class="header-divider fade-up-3"></div>
     <div class="steps">
-      <div class="step fade-up-4"><div class="n">1</div><p>Create <strong>Serverless Search</strong> (vector) via <code>es3-api</code></p></div>
-      <div class="step fade-up-5"><div class="n">2</div><p>Proxy Kibana on port <code>8080</code></p></div>
+      <div class="step fade-up-4"><div class="n">1</div><p>Create your <strong>Elastic Serverless Search</strong> project</p></div>
+      <div class="step fade-up-5"><div class="n">2</div><p>Open Kibana for the lab</p></div>
       <div class="step fade-up-6"><div class="n">3</div><p>Seed <code>cisco-network-kb</code>, runbooks, Meraki events, network events</p></div>
     </div>
   </div>
@@ -817,7 +817,7 @@ NOTES = {
     "future.html": "- Clear bridge today vs roadmap. Economic punch: don't pay twice for cold.",
     "architecture.html": "- Sources → federation → tiers. Takeaway: one query layer.",
     "outcomes.html": "- Unified / admin / TCO / bridge.",
-    "lab.html": "- Orient: es3-api, 8080, four seed indices.",
+    "lab.html": "- Orient: Serverless Search project + four seed indices. No infra talk.",
     "close.html": "- Five takeaways on screen for Q&A.",
     "thank-you.html": "- Point to Instruqt manage URL.",
 }

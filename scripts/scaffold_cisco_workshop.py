@@ -43,7 +43,7 @@ TRACKS = [
                 "slug": "explore-cisco-kb",
                 "title": "Challenge 1 — Explore the Cisco Knowledge Base",
                 "teaser": "Navigate Search and Discover on seeded Cisco runbooks.",
-                "path": "/app/search",
+                "path": "/app/discover",
                 "minutes": 20,
                 "body": """# Explore the Cisco knowledge base
 
@@ -54,7 +54,7 @@ TRACKS = [
 ## Tasks
 
 1. Wait for **Elastic Serverless** to finish loading (~3–4 min on first start).
-2. Open **Search** (or use global search) and confirm index **`cisco-network-kb`** is available.
+2. In **Discover**, open data view / index **`cisco-network-kb`** (use the index picker if needed).
 3. Run a **keyword** search: `BGP neighbor idle`
 4. Open **Discover** → index **`cisco-network-kb`** and filter **product: Meraki**.
 5. In notes, write one sentence on how this maps to **reducing MTTR** for Cisco ops teams.
@@ -110,7 +110,7 @@ Click **Check** after you document **Meraki offline** steps and your comparison 
                 "slug": "customer-talk-track",
                 "title": "Challenge 3 — Share the story with your peers",
                 "teaser": "Practice explaining hybrid search to a teammate in 60 seconds.",
-                "path": "/app/search",
+                "path": "/app/discover",
                 "minutes": 20,
                 "body": """# Explain it to your team
 

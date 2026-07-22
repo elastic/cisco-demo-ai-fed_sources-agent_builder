@@ -2,14 +2,14 @@
 slug: explore-cisco-kb
 id: x4ssyoighgs4
 type: challenge
-title: Challenge 1 — Explore the Cisco Knowledge Base
-teaser: Navigate Search and Discover on seeded Cisco runbooks.
+title: Challenge 1 — Find the runbook
+teaser: Branch 4471 is paging — start in Discover on your Serverless Search project.
 tabs:
 - id: yfkxkvh8vl0j
-  title: Elastic Serverless
+  title: Elastic Serverless Search
   type: service
   hostname: es3-api
-  path: /app/search
+  path: /app/discover
   port: 8080
   custom_request_headers:
   - key: Content-Security-Policy
@@ -26,21 +26,33 @@ timelimit: 1200
 enhanced_loading: null
 ---
 
-# Explore the Cisco knowledge base
+# Find the runbook
 
-**Story:** A Cisco NOC lead asks: *"Can we search Meraki, IOS-XE, and DNA Center docs in one place?"*
+> **Thesis:** On **Elastic Serverless Search**, one project can hold Meraki, IOS-XE, and DNA-style guidance — if you can find it fast enough.
+
+## Background
+
+NOC chat lights up: *"Branch 4471 — Meraki AP offline, edge BGP looking ugly. Where's the recovery runbook?"*
+
+Your lab is a single **Elastic Serverless Search** project with a seeded Cisco knowledge base. No Observability or Security projects — Search only.
 
 **Time:** ~15–20 minutes
 
-## Tasks
+## Your task
 
-1. Wait for **Elastic Serverless** to finish loading (~3–4 min on first start).
-2. Open **Search** (or use global search) and confirm index **`cisco-network-kb`** is available.
-3. Run a **keyword** search: `BGP neighbor idle`
-4. Open **Discover** → index **`cisco-network-kb`** and filter **product: Meraki**.
-5. In notes, write one sentence on how this maps to **reducing MTTR** for Cisco ops teams.
+1. Wait until **Elastic Serverless Search** finishes provisioning (~3–4 min on first start).
+2. In **Discover**, open **`cisco-network-kb`** (use the data view / index picker if needed).
+3. Run a keyword search: `BGP neighbor idle`
+4. Filter **product: Meraki** and open at least one recovery-oriented doc.
+5. In notes, write one sentence on how unified Search reduces **MTTR** for Cisco ops.
+
+## Success criteria
+
+- You can see documents in **`cisco-network-kb`**
+- Keyword search returns BGP-related hits
+- Meraki filter shows Meraki docs
+- MTTR note is written
 
 ## Verification
 
-Click **Check** when you have run at least **two** searches and viewed **Meraki** documents in Discover.
-
+Click **Check** when the success criteria are met.

@@ -1,21 +1,21 @@
 ---
 slug: map-data-silos
-id: u0wku3neso4g
+id: jqehajfrot7l
 type: challenge
-title: Challenge 1 — Map Cisco Data Silos
-teaser: Inventory federated indices and their business owner.
+title: Challenge 4 — Map Cisco data silos
+teaser: Four indices, one Serverless Search project — who owns what?
 notes:
 - type: text
   contents: |
-    **While the lab provisions (~3–4 min)** — use **← →** inside the deck below.
+    **While Elastic Serverless Search provisions (~3–4 min)** — use **← →** in the deck.
 
-    <iframe src="https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html?v1=1" width="100%" height="720" frameborder="0"
+    <iframe src="https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html?v2=1" width="100%" height="720" frameborder="0"
       style="border-radius:8px;border:1px solid #2a3140;display:block;min-height:560px;background:#0b0d12">
     </iframe>
 
     Fullscreen: https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html
 tabs:
-- id: hrtfb3vpc29c
+- id: deahgufxmvkt
   title: Elastic Serverless Search
   type: service
   hostname: es3-api
@@ -36,11 +36,15 @@ timelimit: 1200
 enhanced_loading: null
 ---
 
-> **Module 2 — Federated Data Sources** · one **Serverless Search** project
+> **Module 2 — Federate** · one **Elastic Serverless Search** project
 
 # Map data silos
 
-**Story:** Cisco IT has **Meraki Dashboard events**, **internal Confluence runbooks**, and **cisco.com KB** — three silos.
+> **Thesis:** Federation is not rip-and-replace. Authoritative systems stay; **Serverless Search** becomes the query layer.
+
+## Background
+
+Branch 4471 still needs more than a KB hit. Real Cisco environments split truth across **Meraki Dashboard events**, **internal Confluence runbooks**, and **public KB** — three (or more) silos. This lab seeds all four into **one Elastic Serverless Search** project.
 
 **Time:** ~15–20 minutes
 
@@ -51,15 +55,20 @@ enhanced_loading: null
 | `cisco-network-kb` | Public KB / docs | TAC / GSE |
 | `cisco-internal-runbooks` | Internal wiki | NOC lead |
 | `cisco-meraki-events` | Connector sync (Meraki) | NetOps |
-| `cisco-network-events` | Network telemetry (BGP/DNA-style) | NOC / automation |
+| `cisco-network-events` | Network telemetry (BGP / DNA-style) | NOC / automation |
 
-## Tasks
+## Your task
 
 1. Open **Index Management** and confirm all **four** indices exist.
 2. Open **Discover** on **`cisco-meraki-events`** — note fields `source`, `device_serial`, `event_type`.
-3. In notes, map each index to a **real** Cisco system your team uses (Meraki, internal wiki, NOC telemetry, etc.).
+3. In notes, map each index to a **real** Cisco system your team uses today.
+
+## Success criteria
+
+- All four indices confirmed
+- Meraki event fields noted
+- Real-world mapping written for each index
 
 ## Verification
 
-Click **Check** when you have documented all four indices.
-
+Click **Check** when the success criteria are met.

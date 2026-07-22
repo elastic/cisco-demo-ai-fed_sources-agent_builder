@@ -12,7 +12,7 @@ COMBINED = ROOT / "tracks" / "cisco-serverless-workshop"
 DEVELOPER = "peter.simkins@elastic.co"
 PORT = 8080
 TAB_TITLE = "Elastic Serverless Search"
-DECK_CACHE_BUST = "v1"
+DECK_CACHE_BUST = "v2"
 LOADING_PAGE = f"https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html?{DECK_CACHE_BUST}=1"
 SLIDES_PAGE = f"https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html"
 LOADING_NOTE_CHALLENGES = frozenset(
@@ -21,9 +21,9 @@ LOADING_NOTE_CHALLENGES = frozenset(
 
 # (source track, source challenge dir, dest challenge dir, deep link path)
 CHALLENGES = [
-    ("cisco-w1-ai-search", "01-explore-cisco-kb", "01-explore-cisco-kb", "/app/search"),
+    ("cisco-w1-ai-search", "01-explore-cisco-kb", "01-explore-cisco-kb", "/app/discover"),
     ("cisco-w1-ai-search", "02-hybrid-retrieval", "02-hybrid-retrieval", "/app/elasticsearch/query"),
-    ("cisco-w1-ai-search", "03-customer-talk-track", "03-customer-talk-track", "/app/search"),
+    ("cisco-w1-ai-search", "03-customer-talk-track", "03-customer-talk-track", "/app/discover"),
     (
         "cisco-w2-federated-sources",
         "01-map-data-silos",
@@ -63,15 +63,27 @@ CHALLENGES = [
 ]
 
 MODULE_BY_DEST = {
-    "01": "Module 1 — AI Search",
-    "02": "Module 1 — AI Search",
-    "03": "Module 1 — AI Search",
-    "04": "Module 2 — Federated Data Sources",
-    "05": "Module 2 — Federated Data Sources",
-    "06": "Module 2 — Federated Data Sources",
-    "07": "Module 3 — Agent Builder (Search)",
-    "08": "Module 3 — Agent Builder (Search)",
-    "09": "Module 3 — Agent Builder (Search)",
+    "01": "Module 1 — Find",
+    "02": "Module 1 — Find",
+    "03": "Module 1 — Find",
+    "04": "Module 2 — Federate",
+    "05": "Module 2 — Federate",
+    "06": "Module 2 — Federate",
+    "07": "Module 3 — Act",
+    "08": "Module 3 — Act",
+    "09": "Module 3 — Act",
+}
+
+TITLE_BY_DEST = {
+    "01-explore-cisco-kb": "Challenge 1 — Find the runbook",
+    "02-hybrid-retrieval": "Challenge 2 — Prove hybrid retrieval",
+    "03-customer-talk-track": "Challenge 3 — Share the story with your peers",
+    "04-map-data-silos": "Challenge 4 — Map Cisco data silos",
+    "05-cross-source-esql": "Challenge 5 — Correlate event + runbook",
+    "06-connector-story": "Challenge 6 — Plan the federation path",
+    "07-triage-network-signals": "Challenge 7 — Triage the incident",
+    "08-build-investigation-agent": "Challenge 8 — Build the NOC investigation agent",
+    "09-exec-demo-close": "Challenge 9 — Close the loop & next steps",
 }
 
 
@@ -80,63 +92,6 @@ def strip_instruqt_ids(text: str) -> str:
     text = re.sub(r"^- id: .+\n", "", text, flags=re.MULTILINE)
     text = re.sub(r"^tabs:\n  title:", "tabs:\n- title:", text, flags=re.MULTILINE)
     return text
-
-
-def adapt_search_only(dest_ch: str, body: str) -> str:
-    if dest_ch == "07-triage-network-signals":
-        return """# Triage network signals
-
-**Story:** Pager: *"BGP session down on edge router + Meraki AP offline at Branch 4471."*
-
-**Time:** ~15–20 minutes
-
-All data lives in your **Serverless Search** project (no Observability / Security required).
-
-## ES|QL — BGP signal
-
-```esql
-FROM cisco-network-events
-| WHERE event_type == "bgp.session_down"
-| KEEP @timestamp, host.name, cisco.site, message
-| SORT @timestamp DESC
-| LIMIT 5
-```
-
-## ES|QL — Meraki offline (connector index)
-
-```esql
-FROM cisco-meraki-events
-| WHERE event_type == "device.offline" AND device_name LIKE "*4471*"
-| KEEP @timestamp, device_name, site, detail
-| SORT @timestamp DESC
-| LIMIT 5
-```
-
-## Tasks
-
-1. Run both queries in **ES|QL**.
-2. Note **site** and **hostname/device** for the Branch 4471 scenario.
-3. Open **Agent Builder** in the nav — list 2 tools/skills you would wire to these indices.
-
-## Verification
-
-Click **Check** when both queries return events.
-"""
-    if dest_ch == "08-build-investigation-agent":
-        body = body.replace(
-            "Add capabilities that reference **logs** and **ES|QL** (or Observability AI Assistant if bundled).",
-            "Add capabilities that reference **ES|QL** over `cisco-network-events`, `cisco-meraki-events`, and `cisco-network-kb`.",
-        )
-        body = body.replace(
-            "pull correlated logs (BGP + Meraki)",
-            "correlate BGP + Meraki indices and KB runbooks",
-        )
-    if dest_ch == "09-exec-demo-close":
-        body = body.replace(
-            "3. **W3 Agent Builder** — autonomous triage on **`logs-cisco.network`**",
-            "3. **W3 Agent Builder** — agentic triage on Search indices (`cisco-network-events` + federated sources)",
-        )
-    return body
 
 
 def write(path: Path, content: str) -> None:
@@ -150,7 +105,7 @@ def inject_loading_notes(front: str, dest_ch: str) -> str:
     block = f"""notes:
 - type: text
   contents: |
-    **While the lab provisions (~3–4 min)** — use **← →** inside the deck below.
+    **While Elastic Serverless Search provisions (~3–4 min)** — use **← →** in the deck.
 
     <iframe src="{LOADING_PAGE}" width="100%" height="720" frameborder="0"
       style="border-radius:8px;border:1px solid #2a3140;display:block;min-height:560px;background:#0b0d12">
@@ -174,11 +129,17 @@ def main() -> None:
         parts = assignment.split("---", 2)
         front, body = parts[1], parts[2].lstrip()
         module = MODULE_BY_DEST[dest_ch[:2]]
-        body = adapt_search_only(dest_ch, body)
-        body = f"> **{module}** · one **Serverless Search** project\n\n{body}"
+        body = f"> **{module}** · one **Elastic Serverless Search** project\n\n{body}"
         front = re.sub(r"^  port: \d+", f"  port: {PORT}", front, flags=re.MULTILINE)
         front = re.sub(r"^  path: .+", f"  path: {kibana_path}", front, flags=re.MULTILINE)
         front = re.sub(r"^- title: Elastic Serverless.*", f"- title: {TAB_TITLE}", front, flags=re.MULTILINE)
+        front = re.sub(
+            r"^title: .+$",
+            f"title: {TITLE_BY_DEST[dest_ch]}",
+            front,
+            count=1,
+            flags=re.MULTILINE,
+        )
         front = inject_loading_notes(front, dest_ch)
         write(dest / "assignment.md", f"---{front}---\n\n{body}")
         for script in ("check-es3-api", "solve-es3-api"):
@@ -203,14 +164,14 @@ def main() -> None:
         COMBINED / "track.yml",
         f"""slug: cisco-serverless-workshop
 title: Cisco — Elastic Serverless Search Workshop
-teaser: Hands-on AI Search, federated indices, and Agent Builder for Cisco network and platform teams.
+teaser: Find → Federate → Act on one Elastic Serverless Search project — Cisco NOC incident story.
 description: |
-  Workshop for **Cisco** network, NOC, and platform engineers and architects exploring
-  **Elastic Serverless Search**. Provisions **one** per-learner vector-optimized Search
-  project on port **8080**.
+  Workshop for **Cisco** network, NOC, and platform engineers exploring
+  **Elastic Serverless Search**. Each learner gets **one** Search project (Search-only —
+  no Observability or Security projects).
 
-  Modules: AI Search → Federated Data Sources → Agent Builder (Search-native ES|QL + agents).
-  Search-only lab — no Observability or Security projects required.
+  Continuous story — Branch 4471: Meraki offline + BGP flap.
+  Modules: **Find** (AI Search) → **Federate** (indices + ES|QL) → **Act** (Agent Builder).
 
   **Duration:** ~4.5 hours (3 × ~90 min) — skipping enabled.
 

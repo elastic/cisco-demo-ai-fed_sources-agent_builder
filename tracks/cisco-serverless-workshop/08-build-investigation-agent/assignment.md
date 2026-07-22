@@ -1,11 +1,12 @@
 ---
 slug: build-investigation-agent
-id: xvuiniqlocbf
+id: wrxyo0o9ag4z
 type: challenge
-title: Challenge 2 — Build an Investigation Agent
-teaser: Configure Agent Builder for Cisco NOC workflow.
+title: Challenge 8 — Build the NOC investigation agent
+teaser: Wire Agent Builder to your Serverless Search indices — then ask about Branch
+  4471.
 tabs:
-- id: fyc9yliksoyf
+- id: qs9lbxerw2zb
   title: Elastic Serverless Search
   type: service
   hostname: es3-api
@@ -26,32 +27,43 @@ timelimit: 2100
 enhanced_loading: null
 ---
 
-> **Module 3 — Agent Builder (Search)** · one **Serverless Search** project
+> **Module 3 — Act** · one **Elastic Serverless Search** project
 
-# Build an investigation agent
+# Build the NOC investigation agent
+
+## Background
+
+You’ve found runbooks, federated indices, and triaged the inject by hand. Now give a **Serverless Search–backed** agent the same tools.
 
 **Time:** ~25–35 minutes
 
 ## Suggested agent charter
 
-**Name:** Cisco NOC Copilot
-**Goal:** Given an alert summary, correlate Search indices (BGP + Meraki) with KB runbooks, suggest steps, draft escalation note.
+| | |
+|--|--|
+| **Name** | Cisco NOC Copilot |
+| **Goal** | Given an alert summary, correlate Search indices (BGP + Meraki) with KB runbooks, suggest steps, draft an escalation note |
+| **Data** | `cisco-network-events`, `cisco-meraki-events`, `cisco-network-kb` (+ optional internal runbooks) |
 
-## Tasks
+## Your task
 
 1. Open **Agent Builder** → create or explore a **new agent** (use lab-safe read-only tools where prompted).
 2. Add capabilities that reference **ES|QL** over `cisco-network-events`, `cisco-meraki-events`, and `cisco-network-kb`.
-3. Test with prompt:
+3. Test with:
 
 > Branch 4471 reports Meraki offline and BGP flapping on `edge-dfw-01`. Summarize timeline and next steps.
 
-4. Capture **screenshot or notes** of one successful tool invocation.
+4. Capture **notes or a screenshot** of one successful tool invocation.
 
 ## Reference
 
-Download **`agent-builder-cisco-playbook.md`** from workshop assets (synced on push) for tool ideas.
+Workshop assets include **`agent-builder-cisco-playbook.md`** for tool ideas.
+
+## Success criteria
+
+- Agent exists with Search-backed capabilities
+- Test prompt returns actionable steps grounded in lab indices
 
 ## Verification
 
 Click **Check** after a test prompt returns actionable steps.
-

@@ -1,12 +1,11 @@
 ---
 slug: exec-demo-close
-id: 9gfqp7ekvor6
+id: atehxa0hjxbf
 type: challenge
-title: Challenge 3 — Workshop wrap-up & next steps
-teaser: Recap the journey — Search → Federate → Agents — and what to try next on your
-  data.
+title: Challenge 9 — Close the loop & next steps
+teaser: Find → Federate → Act on one Serverless Search project — what ships next?
 tabs:
-- id: iqexfd35r3ma
+- id: inxfbu6dlhq5
   title: Elastic Serverless Search
   type: service
   hostname: es3-api
@@ -27,23 +26,32 @@ timelimit: 1200
 enhanced_loading: null
 ---
 
-> **Module 3 — Agent Builder (Search)** · one **Serverless Search** project
+> **Module 3 — Act** · one **Elastic Serverless Search** project
 
-# Workshop wrap-up & next steps
+# Close the loop & next steps
+
+## Background
+
+You stayed on **Elastic Serverless Search** the whole workshop — easy to upgrade later (more indices, connectors, agents) without changing platform.
 
 **Time:** ~15–20 minutes
 
 ## Three-beat recap
 
-1. **Module 1 — AI Search** — find Meraki/BGP runbooks in seconds
-2. **Module 2 — Federated** — Meraki events + internal runbooks + KB in one ES|QL story
-3. **Module 3 — Agent Builder** — agentic triage on Search (`cisco-network-events` + federated indices)
+1. **Find** — Meraki / BGP runbooks in seconds (hybrid beats keyword alone)
+2. **Federate** — events + internal runbooks + KB in one ES|QL story
+3. **Act** — Agent Builder triage on the same Serverless Search indices
 
-## Tasks
+## Your task
 
-1. Write a **90-second** recap script hitting all three beats (bullets only) — practice **showing your team** what you learned.
-2. Note **one concrete outcome** from today (e.g. faster runbook lookup, cross-index ES|QL, agent tool idea).
-3. List **one next experiment** on Cisco data: index an internal wiki, try a connector POC, or extend Agent Builder tools.
+1. Write a **90-second** recap script hitting all three beats (bullets only) — for showing your team.
+2. Note **one concrete outcome** from today (faster runbook lookup, cross-index ES|QL, or agent tool).
+3. List **one next experiment** still on Serverless Search: index an internal wiki, try a connector POC, or extend Agent Builder tools.
+
+## Success criteria
+
+- Recap script covers Find → Federate → Act
+- One outcome + one next experiment written
 
 ## Verification
 

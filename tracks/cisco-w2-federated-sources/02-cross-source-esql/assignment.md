@@ -2,11 +2,11 @@
 slug: cross-source-esql
 id: xbejihaglwrz
 type: challenge
-title: Challenge 2 — Cross-Source ES|QL
-teaser: Join KB guidance with live Meraki offline events.
+title: Challenge 2 — Correlate event + runbook
+teaser: Same Serverless project — Meraki offline event meets recovery guidance in ES|QL.
 tabs:
 - id: nni0aazprxjn
-  title: Elastic Serverless
+  title: Elastic Serverless Search
   type: service
   hostname: es3-api
   path: /app/elasticsearch/query
@@ -26,9 +26,13 @@ timelimit: 2100
 enhanced_loading: null
 ---
 
-# Cross-source ES|QL
+# Correlate event + runbook
 
-**Scenario:** Meraki AP **MR-AP-4471** went offline — find the event **and** the recovery runbook.
+> **Thesis:** Cross-index ES|QL on Serverless Search turns “we have data somewhere” into “here’s the event and the next step.”
+
+## Background
+
+**Scenario:** Meraki AP **MR-AP-4471** went offline. Find the **event** and the **recovery runbook** without leaving your Serverless Search project.
 
 **Time:** ~25–35 minutes
 
@@ -51,11 +55,7 @@ FROM cisco-network-kb
 | LIMIT 5
 ```
 
-## Tasks
-
-1. Run both queries; capture **timestamp + site** for the offline event.
-2. Paste **one** runbook title that applies to recovery.
-3. Optional third query — internal runbooks:
+## Optional — Internal escalation
 
 ```esql
 FROM cisco-internal-runbooks
@@ -64,7 +64,17 @@ FROM cisco-internal-runbooks
 | LIMIT 5
 ```
 
+## Your task
+
+1. Run Query 1 and Query 2; capture **timestamp + site** for the offline event.
+2. Paste **one** runbook title that applies to recovery.
+3. Optional: run the internal runbooks query and note an escalation owner.
+
+## Success criteria
+
+- Offline event located for Branch / device 4471
+- Matching Meraki runbook title recorded
+
 ## Verification
 
-Click **Check** after both primary queries succeed.
-
+Click **Check** when both primary queries succeed.

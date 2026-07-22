@@ -2,8 +2,8 @@
 slug: triage-network-signals
 id: zmj9ciywdm8k
 type: challenge
-title: Challenge 1 — Triage Network Signals
-teaser: ES|QL triage on Search indices — BGP and Meraki signals.
+title: Challenge 1 — Triage the incident
+teaser: Injected Branch 4471 signals — BGP + Meraki — on Serverless Search only.
 tabs:
 - id: dsfxfxk9e9yy
   title: Elastic Serverless Search
@@ -26,19 +26,49 @@ timelimit: 1200
 enhanced_loading: null
 ---
 
-# Triage network signals
+# Triage the incident
 
-**Story:** Pager: *"BGP session down on edge router + Meraki AP offline at Branch 4471."*
+> **Thesis:** Before you build an agent, prove you can triage the same signals the agent will see — on **Elastic Serverless Search**.
+
+## Background
+
+**Pager:** *"BGP session down on edge router + Meraki AP offline at Branch 4471."*
+
+This is the end-to-end inject: events were seeded into your Serverless Search project at lab start. No Observability or Security projects required.
 
 **Time:** ~15–20 minutes
 
-Use **Serverless Search** only — indices were seeded at track start.
+## ES|QL — BGP signal
 
-## Tasks
+```esql
+FROM cisco-network-events
+| WHERE event_type == "bgp.session_down"
+| KEEP @timestamp, host.name, cisco.site, message
+| SORT @timestamp DESC
+| LIMIT 5
+```
 
-1. Run ES|QL on **`cisco-network-events`** for `bgp.session_down`.
-2. Run ES|QL on **`cisco-meraki-events`** for `device.offline` at Branch 4471.
-3. Skim **Agent Builder** — what Search-backed tools would you expose to a NOC agent?
+## ES|QL — Meraki offline
+
+```esql
+FROM cisco-meraki-events
+| WHERE event_type == "device.offline" AND device_name LIKE "*4471*"
+| KEEP @timestamp, device_name, site, detail
+| SORT @timestamp DESC
+| LIMIT 5
+```
+
+## Your task
+
+1. Run both queries in **ES|QL**.
+2. Note **site** and **hostname/device** for the Branch 4471 scenario.
+3. Open **Agent Builder** in the nav — list **two** tools/skills you would wire to these indices (you build them next).
+
+## Success criteria
+
+- Both queries return events
+- Site + device notes captured
+- Two agent tool ideas listed
 
 ## Verification
 
