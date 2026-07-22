@@ -254,7 +254,7 @@ virtualmachines:
   shell: /bin/bash
   environment:
     PROJECT_TYPE: elasticsearch
-    OPTIMIZED_FOR: vectors
+    OPTIMIZED_FOR: general_purpose
     REGIONS: aws-us-east-1
     WORKSHOP_SEED: seed_federated_sources.py
   memory: 4096

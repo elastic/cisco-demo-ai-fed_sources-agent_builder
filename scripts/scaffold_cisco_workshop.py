@@ -33,7 +33,7 @@ TRACKS = [
         "tags": ["cisco", "search", "ai", "serverless", "elasticsearch"],
         "config_env": {
             "PROJECT_TYPE": "elasticsearch",
-            "OPTIMIZED_FOR": "vectors",
+            "OPTIMIZED_FOR": "general_purpose",
             "REGIONS": "aws-us-east-1",
         },
         "seed_script": "seed_cisco_kb.py",

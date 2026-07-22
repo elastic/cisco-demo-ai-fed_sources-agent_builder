@@ -81,7 +81,12 @@ case "$PROJECT_TYPE" in
         --wait-for-ready
         ;;
     "elasticsearch")
+      # Cloud API enum is general_purpose|vector; es3-api.py CLI historically
+      # accepted "vectors". Prefer general_purpose (works for hybrid/ELSER labs).
       OPTIMIZED_FOR="${OPTIMIZED_FOR:-general_purpose}"
+      case "$OPTIMIZED_FOR" in
+        vector|vectors) OPTIMIZED_FOR="general_purpose" ;;
+      esac
       echo "Optimized for: $OPTIMIZED_FOR"
       python3 bin/es3-api.py \
         --operation create \

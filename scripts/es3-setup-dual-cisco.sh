@@ -41,7 +41,7 @@ create_project() {
     --api-key "${PME_CLOUD_INSTRUQT_API_KEY}" --wait-for-ready)
   case "$ptype" in
     elasticsearch)
-      args+=(--optimized-for "${1:-vectors}")
+      args+=(--optimized-for "${1:-general_purpose}")
       ;;
     observability)
       args+=(--product-tier "${1:-complete}")
@@ -121,8 +121,8 @@ NGINX
 resolve_api_key
 until [ -f /opt/instruqt/bootstrap/host-bootstrap-completed ]; do sleep 1; done
 
-echo "Creating Serverless Search project (vectors)..."
-create_project elasticsearch search vectors
+echo "Creating Serverless Search project (general_purpose)..."
+create_project elasticsearch search general_purpose
 mv /tmp/project_results.json /tmp/project_results_search.json
 IFS='|' read -r SEARCH_KIBANA SEARCH_PASSWORD SEARCH_ES SEARCH_API_KEY <<< "$(enrich_api_key /tmp/project_results_search.json)"
 SEARCH_DEPLOY_ID=$(jq -r --arg r "${REGIONS:-aws-us-east-1}" '.[$r].id' /tmp/project_results_search.json)
