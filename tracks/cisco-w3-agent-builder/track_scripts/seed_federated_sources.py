@@ -100,7 +100,38 @@ def main() -> int:
     )
 
     now = datetime.now(timezone.utc)
-    events = [
+    sites = [
+        ("Branch-4471-Dallas", "MR-AP-4471", "Q2XX-4471-ABCD"),
+        ("Branch-2201-Austin", "MR-AP-2201", "Q2XX-2201-EFGH"),
+        ("Branch-1108-Chicago", "MR-AP-1108", "Q2XX-1108-IJKL"),
+        ("Branch-3302-Seattle", "MR-AP-3302", "Q2XX-3302-MNOP"),
+        ("Branch-5504-NYC", "MR-AP-5504", "Q2XX-5504-QRST"),
+    ]
+    # Seed ~24h of Meraki connector events so dashboard timelines look alive.
+    events: list[dict] = []
+    for hour in range(24, 0, -1):
+        for idx, (site, device, serial) in enumerate(sites):
+            ts = now - timedelta(hours=hour, minutes=(idx * 7) % 50)
+            # Branch 4471 goes offline near "now"; others flap online/offline lightly.
+            if site.endswith("Dallas") and hour <= 1:
+                etype, detail = "device.offline", "AP lost cloud connectivity; last seen on switch port Gi1/0/24"
+            elif hour % 5 == idx % 5:
+                etype, detail = "device.offline", "Brief cloud disconnect; monitoring"
+            else:
+                etype, detail = "device.online", "AP healthy / reconnected"
+            events.append(
+                {
+                    "@timestamp": ts.isoformat(),
+                    "source": "meraki_connector",
+                    "device_name": device,
+                    "device_serial": serial,
+                    "site": site,
+                    "event_type": etype,
+                    "detail": detail,
+                }
+            )
+    # Anchor docs used by challenge queries
+    events.append(
         {
             "@timestamp": (now - timedelta(minutes=12)).isoformat(),
             "source": "meraki_connector",
@@ -109,17 +140,8 @@ def main() -> int:
             "site": "Branch-4471-Dallas",
             "event_type": "device.offline",
             "detail": "AP lost cloud connectivity; last seen on switch port Gi1/0/24",
-        },
-        {
-            "@timestamp": (now - timedelta(minutes=45)).isoformat(),
-            "source": "meraki_connector",
-            "device_name": "MR-AP-2201",
-            "device_serial": "Q2XX-2201-EFGH",
-            "site": "Branch-2201-Austin",
-            "event_type": "device.online",
-            "detail": "AP reconnected after PoE bounce",
-        },
-    ]
+        }
+    )
     elines: list[str] = []
     for i, ev in enumerate(events):
         elines.append(json.dumps({"index": {"_index": "cisco-meraki-events", "_id": f"ev-{i}"}}))
@@ -144,7 +166,51 @@ def main() -> int:
         },
     )
 
-    net_events = [
+    net_sites = [
+        ("Branch-4471-Dallas", "edge-dfw-01", "dist-dfw-02"),
+        ("Branch-2201-Austin", "edge-aus-01", "dist-aus-02"),
+        ("Branch-1108-Chicago", "edge-ord-01", "dist-ord-02"),
+        ("Branch-3302-Seattle", "edge-sea-01", "dist-sea-02"),
+        ("Branch-5504-NYC", "edge-nyc-01", "dist-nyc-02"),
+    ]
+    net_events: list[dict] = []
+    for hour in range(24, 0, -1):
+        for idx, (site, edge, dist) in enumerate(net_sites):
+            ts = now - timedelta(hours=hour, minutes=(idx * 11) % 45)
+            if site.endswith("Dallas") and hour <= 1:
+                net_events.append(
+                    {
+                        "@timestamp": ts.isoformat(),
+                        "message": "BGP neighbor 10.0.0.1 changed state from Established to Idle",
+                        "event_type": "bgp.session_down",
+                        "host.name": edge,
+                        "cisco.product": "IOS-XE",
+                        "cisco.site": site,
+                    }
+                )
+            elif hour % 6 == idx:
+                net_events.append(
+                    {
+                        "@timestamp": ts.isoformat(),
+                        "message": f"DNA Assurance health score dropped on switch {dist}",
+                        "event_type": "dna.assurance.alert",
+                        "host.name": dist,
+                        "cisco.product": "DNA Center",
+                        "cisco.site": site,
+                    }
+                )
+            else:
+                net_events.append(
+                    {
+                        "@timestamp": ts.isoformat(),
+                        "message": f"BGP neighbor session Established on {edge}",
+                        "event_type": "bgp.session_up",
+                        "host.name": edge,
+                        "cisco.product": "IOS-XE",
+                        "cisco.site": site,
+                    }
+                )
+    net_events.append(
         {
             "@timestamp": (now - timedelta(minutes=8)).isoformat(),
             "message": "BGP neighbor 10.0.0.1 changed state from Established to Idle",
@@ -152,16 +218,8 @@ def main() -> int:
             "host.name": "edge-dfw-01",
             "cisco.product": "IOS-XE",
             "cisco.site": "Branch-4471-Dallas",
-        },
-        {
-            "@timestamp": (now - timedelta(minutes=30)).isoformat(),
-            "message": "DNA Assurance health score dropped to 6.2 on switch dist-dfw-02",
-            "event_type": "dna.assurance.alert",
-            "host.name": "dist-dfw-02",
-            "cisco.product": "DNA Center",
-            "cisco.site": "Branch-4471-Dallas",
-        },
-    ]
+        }
+    )
     nlines: list[str] = []
     for i, ev in enumerate(net_events):
         nlines.append(json.dumps({"index": {"_index": "cisco-network-events", "_id": f"net-{i}"}}))
@@ -170,8 +228,19 @@ def main() -> int:
 
     print(
         "Search workshop indices ready: cisco-network-kb, cisco-internal-runbooks, "
-        "cisco-meraki-events, cisco-network-events"
+        f"cisco-meraki-events ({len(events)} docs), cisco-network-events ({len(net_events)} docs)"
     )
+
+    # Dashboards (best-effort — indices already seeded)
+    try:
+        import seed_cisco_dashboards  # noqa: WPS433
+
+        rc = seed_cisco_dashboards.main()
+        if rc != 0:
+            print("warn: dashboard seed returned non-zero", file=sys.stderr)
+    except Exception as exc:  # noqa: BLE001
+        print(f"warn: dashboard seed skipped: {exc}", file=sys.stderr)
+
     return 0
 
 
