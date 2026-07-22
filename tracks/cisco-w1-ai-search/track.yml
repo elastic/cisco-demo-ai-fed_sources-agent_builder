@@ -4,9 +4,9 @@ title: Cisco W1 — AI Search on Serverless
 teaser: Semantic + hybrid search over Cisco network runbooks on Elastic Serverless
   Search.
 description: |
-  Workshop 1 of 3 for Cisco sellers and SEs. Per-learner **Elastic Serverless Search**
+  Workshop 1 of 3 for Cisco practitioners. Per-learner **Elastic Serverless Search**
   (vector-optimized) with a pre-seeded Cisco knowledge base. Explore Search, Discover, and
-  hybrid retrieval patterns for NOC/engineering buyers. ~90 minutes.
+  hybrid retrieval patterns for NOC and platform engineering teams. ~90 minutes.
 icon: https://www.elastic.co/favicon.ico
 tags:
 - cisco

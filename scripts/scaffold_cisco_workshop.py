@@ -27,9 +27,9 @@ TRACKS = [
         "slug": "cisco-w1-ai-search",
         "title": "Cisco W1 — AI Search on Serverless",
         "teaser": "Semantic + hybrid search over Cisco network runbooks on Elastic Serverless Search.",
-        "description": """  Workshop 1 of 3 for Cisco sellers and SEs. Per-learner **Elastic Serverless Search**
+        "description": """  Workshop 1 of 3 for Cisco practitioners. Per-learner **Elastic Serverless Search**
   (vector-optimized) with a pre-seeded Cisco knowledge base. Explore Search, Discover, and
-  hybrid retrieval patterns for NOC/engineering buyers. ~90 minutes.""",
+  hybrid retrieval patterns for NOC and platform engineering teams. ~90 minutes.""",
         "tags": ["cisco", "search", "ai", "serverless", "elasticsearch"],
         "config_env": {
             "PROJECT_TYPE": "elasticsearch",
@@ -108,33 +108,33 @@ Click **Check** after you document **Meraki offline** steps and your comparison 
             {
                 "dir": "03-customer-talk-track",
                 "slug": "customer-talk-track",
-                "title": "Challenge 3 — Customer Talk Track",
-                "teaser": "60-second Elastic Serverless Search story for Cisco.",
+                "title": "Challenge 3 — Share the story with your peers",
+                "teaser": "Practice explaining hybrid search to a teammate in 60 seconds.",
                 "path": "/app/search",
                 "minutes": 20,
-                "body": """# Customer talk track
+                "body": """# Explain it to your team
 
 **Time:** ~15–20 minutes
 
-## Talk track template (fill in for your account)
+## Story outline (for a peer or skip-level)
 
 | Beat | Your line |
 |------|-----------|
 | Pain | Cisco teams search **Meraki, IOS-XE, DNA Center, Talos** in silos |
 | Outcome | **One Serverless Search** project — hybrid + semantic on runbooks |
 | Proof | Live query: BGP down + Meraki offline in **under 10 seconds** |
-| Elastic | Vector Search + ES|QL + connectors path (Workshop 2) |
-| Next step | Federated sources + Agent Builder (Workshops 2–3) |
+| What's new | Vector Search + ES|QL + connectors path (Module 2) |
+| Next | Federated sources + Agent Builder (Modules 2–3) |
 
 ## Tasks
 
-1. Re-run your **best** search from Challenge 2 as a **live demo** line.
-2. Record a **60-second** pitch (notes or voice memo outline).
-3. List **one** Cisco account or internal stakeholder who cares about **unified doc search**.
+1. Re-run your **best** search from Challenge 2 as a **show-and-tell** moment.
+2. Draft a **60-second** explanation (notes or voice memo outline) for a teammate.
+3. Name **one** internal team (NOC, platform, or GSE) that would benefit from **unified doc search**.
 
 ## Verification
 
-Click **Check** when your talk track table is complete.
+Click **Check** when your story outline table is complete.
 """,
             },
         ],
@@ -239,26 +239,26 @@ Click **Check** after both primary queries succeed.
             {
                 "dir": "03-connector-story",
                 "slug": "connector-story",
-                "title": "Challenge 3 — Connectors & Consolidation Story",
-                "teaser": "Position Elastic connectors vs. rip-and-replace.",
+                "title": "Challenge 3 — Connectors & federated sources",
+                "teaser": "See how connectors let you federate Meraki and internal sources without rip-and-replace.",
                 "path": "/app/enterprise_search/content/connectors",
                 "minutes": 20,
-                "body": """# Connectors talk track
+                "body": """# Federate sources with connectors
 
 **Time:** ~15–20 minutes
 
-## Federated motion (Elastic language)
+## Why federation (not rip-and-replace)
 
-- **Displace** — replace legacy search appliance
-- **Consolidate** — Meraki + DNA + ITSM into Serverless Search
-- **Federate** — leave Meraki/DNA in place; **connectors + ES|QL** unify the query layer
+- **Keep systems in place** — Meraki, DNA Center, and ITSM stay authoritative
+- **Unify the query layer** — connectors sync content and events into Serverless Search; **ES|QL** joins them at query time
+- **Add sources incrementally** — start with high-value indices (like this lab's Meraki-style events) before expanding
 
 ## Tasks
 
 1. Browse **Connectors** in Kibana (UI tour — no production connector required in lab).
-2. Pick **two** connector types relevant to Cisco (e.g. ServiceNow, SharePoint, MongoDB, GitHub).
-3. Write **3 bullets**: what stays in Cisco cloud vs. what Elastic indexes.
-4. Tie to Workshop 1 search demo and preview Workshop 3 **Agent Builder** automation.
+2. Pick **two** connector types relevant to Cisco environments (e.g. ServiceNow, SharePoint, MongoDB, GitHub).
+3. Write **3 bullets**: what stays in existing Cisco/cloud systems vs. what gets indexed for search in Elastic.
+4. Tie Module 1 search patterns to Module 3 **Agent Builder** tools on the same indices.
 
 ## Verification
 
@@ -345,29 +345,29 @@ Click **Check** after a test prompt returns actionable steps.
             {
                 "dir": "03-exec-demo-close",
                 "slug": "exec-demo-close",
-                "title": "Challenge 3 — Executive Demo Close",
-                "teaser": "W1→W2→W3 arc for Cisco leadership.",
+                "title": "Challenge 3 — Workshop wrap-up & next steps",
+                "teaser": "Recap the journey — Search → Federate → Agents — and what to try next on your data.",
                 "path": "/app/agent_builder",
                 "minutes": 20,
-                "body": """# Executive demo close
+                "body": """# Workshop wrap-up & next steps
 
 **Time:** ~15–20 minutes
 
-## Three-beat arc
+## Three-beat recap
 
-1. **W1 AI Search** — find Meraki/BGP runbooks in seconds  
-2. **W2 Federated** — Meraki events + internal runbooks + KB in one ES|QL story  
-3. **W3 Agent Builder** — autonomous triage on **`logs-cisco.network`**
+1. **Module 1 — AI Search** — find Meraki/BGP runbooks in seconds  
+2. **Module 2 — Federated** — Meraki events + internal runbooks + KB in one ES|QL story  
+3. **Module 3 — Agent Builder** — agentic triage on Search (`cisco-network-events` + federated indices)
 
 ## Tasks
 
-1. Write a **90-second** demo script hitting all three beats (bullets only).
-2. Add **one** Gartner-style proof point: unified search + agentic ops (use your own approved wording).
-3. Name **next step** for a Cisco account: POV, connector phase, or Agent Builder workshop.
+1. Write a **90-second** recap script hitting all three beats (bullets only) — practice **showing your team** what you learned.
+2. Note **one concrete outcome** from today (e.g. faster runbook lookup, cross-index ES|QL, agent tool idea).
+3. List **one next experiment** on Cisco data: index an internal wiki, try a connector POC, or extend Agent Builder tools.
 
 ## Verification
 
-Click **Check** when your demo script is complete.
+Click **Check** when your recap script is complete.
 """,
             },
         ],

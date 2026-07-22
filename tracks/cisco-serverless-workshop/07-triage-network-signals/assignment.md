@@ -1,6 +1,6 @@
 ---
 slug: triage-network-signals
-id: pqal3xpn3ccu
+id: vk8dm1cckavi
 type: challenge
 title: Challenge 1 — Triage Network Signals
 teaser: ES|QL triage on Search indices — BGP and Meraki signals.
@@ -15,7 +15,7 @@ notes:
 
     Fullscreen: https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html
 tabs:
-- id: voisvnibkam0
+- id: vswmzb1cxyxe
   title: Elastic Serverless Search
   type: service
   hostname: es3-api

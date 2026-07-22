@@ -202,14 +202,15 @@ def main() -> None:
     write(
         COMBINED / "track.yml",
         f"""slug: cisco-serverless-workshop
-title: Cisco — AI Search, Federated Sources & Agent Builder
-teaser: One Serverless Search project — AI Search, federated indices, and Agent Builder for Cisco.
+title: Cisco — Elastic Serverless Search Workshop
+teaser: Hands-on AI Search, federated indices, and Agent Builder for Cisco network and platform teams.
 description: |
-  Combined Cisco workshop for Elastic sellers and SEs. Provisions **one** per-learner
-  **Elastic Serverless Search** project (vector-optimized) on port **8080**.
+  Workshop for **Cisco** network, NOC, and platform engineers and architects exploring
+  **Elastic Serverless Search**. Provisions **one** per-learner vector-optimized Search
+  project on port **8080**.
 
   Modules: AI Search → Federated Data Sources → Agent Builder (Search-native ES|QL + agents).
-  No Observability or Security projects required.
+  Search-only lab — no Observability or Security projects required.
 
   **Duration:** ~4.5 hours (3 × ~90 min) — skipping enabled.
 

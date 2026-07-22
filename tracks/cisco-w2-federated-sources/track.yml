@@ -3,7 +3,7 @@ id: h0lybayf7l7k
 title: Cisco W2 — Federated Data Sources
 teaser: Unify Meraki-style events, internal runbooks, and KB in one ES|QL view.
 description: |
-  Workshop 2 of 3. Same **Serverless Search** pattern with **multiple indices**
+  Workshop 2 of 3 for Cisco practitioners. Same **Serverless Search** pattern with **multiple indices**
   simulating connector-fed sources (Meraki events, internal wiki, public KB). Learners
   query across sources with ES|QL and plan real **Elastic connectors**. ~90 minutes.
 icon: https://www.elastic.co/favicon.ico

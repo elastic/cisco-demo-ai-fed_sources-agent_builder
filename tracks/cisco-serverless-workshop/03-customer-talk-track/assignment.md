@@ -1,11 +1,11 @@
 ---
 slug: customer-talk-track
-id: gwjvjzrgtyoy
+id: dladqvekx279
 type: challenge
-title: Challenge 3 — Customer Talk Track
-teaser: 60-second Elastic Serverless Search story for Cisco.
+title: Challenge 3 — Share the story with your peers
+teaser: Practice explaining hybrid search to a teammate in 60 seconds.
 tabs:
-- id: yrzxmx47dshj
+- id: r4rpvjerxyza
   title: Elastic Serverless Search
   type: service
   hostname: es3-api
@@ -28,27 +28,26 @@ enhanced_loading: null
 
 > **Module 1 — AI Search** · one **Serverless Search** project
 
-# Customer talk track
+# Explain it to your team
 
 **Time:** ~15–20 minutes
 
-## Talk track template (fill in for your account)
+## Story outline (for a peer or skip-level)
 
 | Beat | Your line |
 |------|-----------|
 | Pain | Cisco teams search **Meraki, IOS-XE, DNA Center, Talos** in silos |
 | Outcome | **One Serverless Search** project — hybrid + semantic on runbooks |
 | Proof | Live query: BGP down + Meraki offline in **under 10 seconds** |
-| Elastic | Vector Search + ES|QL + connectors path (Workshop 2) |
-| Next step | Federated sources + Agent Builder (Workshops 2–3) |
+| What's new | Vector Search + ES|QL + connectors path (Module 2) |
+| Next | Federated sources + Agent Builder (Modules 2–3) |
 
 ## Tasks
 
-1. Re-run your **best** search from Challenge 2 as a **live demo** line.
-2. Record a **60-second** pitch (notes or voice memo outline).
-3. List **one** Cisco account or internal stakeholder who cares about **unified doc search**.
+1. Re-run your **best** search from Challenge 2 as a **show-and-tell** moment.
+2. Draft a **60-second** explanation (notes or voice memo outline) for a teammate.
+3. Name **one** internal team (NOC, platform, or GSE) that would benefit from **unified doc search**.
 
 ## Verification
 
-Click **Check** when your talk track table is complete.
-
+Click **Check** when your story outline table is complete.

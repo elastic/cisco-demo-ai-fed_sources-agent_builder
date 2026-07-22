@@ -2,15 +2,15 @@
 
 ## Story thread
 
-Cisco network operations teams search **Meraki, IOS-XE, DNA Center, Talos**, and internal wikis in separate tools. Elastic **Serverless Search** unifies runbooks (W1), **federated indices and connectors** unify live + internal sources (W2), and **Agent Builder on Serverless Observability** automates triage on **`logs-cisco.network`** (W3).
+Cisco network operations teams search **Meraki, IOS-XE, DNA Center, Talos**, and internal wikis in separate tools. Elastic **Serverless Search** unifies runbooks (Module 1), **federated indices and connectors** unify live + internal sources (Module 2), and **Agent Builder on Search** automates triage on the same indices (Module 3).
 
 ## Recommended delivery
 
-1. **W1 AI Search** — prove sub-10-second runbook retrieval; vector + ES|QL vocabulary.
-2. **W2 Federated** — same buyer, expand to Meraki events + internal runbooks; connectors talk track.
-3. **W3 Agent Builder** — shift from search to **agentic investigation** on correlated logs.
+1. **Module 1 — AI Search** — prove sub-10-second runbook retrieval; vector + ES|QL vocabulary.
+2. **Module 2 — Federated** — expand to Meraki events + internal runbooks; connectors without rip-and-replace.
+3. **Module 3 — Agent Builder** — shift from search to **agentic investigation** on correlated Search indices.
 
 ## Companion assets
 
-- React demo: [cisco-elastic-search-ai](https://github.com/poulsbopete/cisco-elastic-search-ai) for executive briefings outside Instruqt.
+- React demo: [cisco-elastic-search-ai](https://github.com/poulsbopete/cisco-elastic-search-ai) for walkthroughs outside Instruqt.
 - Seeded KB content lives in `assets/shared/cisco-knowledge-base.json` (synthetic Cisco-style runbooks).

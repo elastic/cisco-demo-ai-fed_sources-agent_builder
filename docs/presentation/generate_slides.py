@@ -73,7 +73,7 @@ SLIDES["cover.html"] = wrap(
     <circle cx="90" cy="168" r="18" fill="#F04E23" opacity="0.32"/>
   </svg>
   <div class="content">
-    <div class="c-eyebrow fade-up-1">Cisco × Elastic · Search briefing</div>
+    <div class="c-eyebrow fade-up-1">Cisco × Elastic · practitioner workshop</div>
     <h1 class="c-title fade-up-2"><strong>AI Search.</strong><br><em>Federated Sources.</em><br><strong>Agent Builder.</strong></h1>
     <p class="c-sub fade-up-3">One Elastic Search Serverless project. Hybrid retrieval, unified Cisco knowledge, grounded agents for the NOC — without Observability or Security.</p>
     <div class="pill-row fade-up-4">
@@ -87,7 +87,7 @@ SLIDES["cover.html"] = wrap(
     <span>The Search AI Company</span><span>·</span><span>Lab ready in ~3–4 minutes</span>
   </div>
 """,
-    bottom="This is a <strong>Search-led</strong> motion. Same indices power find → unify → act.",
+    bottom="This is a **Search-only** lab. Same indices power find → unify → act.",
 )
 
 # ── Agenda ───────────────────────────────────────────────────────────────────
@@ -112,7 +112,7 @@ SLIDES["agenda.html"] = wrap(
   <div class="slide">
     <div class="eyebrow fade-up-1">Today</div>
     <h1 class="headline fade-up-2">Three beats. <strong>One Search project.</strong></h1>
-    <p class="sub fade-up-3">Same indices end-to-end — Search consolidation on Elastic Search Serverless for Cisco.</p>
+    <p class="sub fade-up-3">Same indices end-to-end — explore AI Search, federation, and agents on Elastic Search Serverless.</p>
     <div class="header-divider fade-up-3"></div>
     <div class="flow">
       <div class="card fade-up-4">
@@ -138,7 +138,7 @@ SLIDES["agenda.html"] = wrap(
     </div>
   </div>
 """,
-    bottom="Find → unify → act. If the buyer only remembers one chain, make it this one.",
+    bottom="Find → unify → act. If your team only remembers one chain, make it this one.",
 )
 
 # ── Pain (canvas MTTR) ───────────────────────────────────────────────────────
@@ -247,13 +247,13 @@ SLIDES["serverless.html"] = wrap(
   <div class="slide">
     <div class="eyebrow fade-up-1">Platform choice</div>
     <h1 class="headline fade-up-2">One <strong>Serverless Search</strong> project — advantages</h1>
-    <p class="sub fade-up-3">Search-led motion for Cisco on Elastic Search Serverless. No Observability or Security for this workshop.</p>
+    <p class="sub fade-up-3">Search-only workshop for Cisco practitioners on Elastic Search Serverless.</p>
     <div class="header-divider fade-up-3"></div>
     <div class="grid2">
       <div class="card fade-up-4"><div class="label">Speed</div><h3>~3–4 min to ready</h3><p>Single vector Search project + seeded Cisco indices — no multi-product wait.</p></div>
-      <div class="card fade-up-4"><div class="label">GTM</div><h3>Search consolidation</h3><p>Position AI on Elastic Search Serverless — stay out of Observability and Security for this motion.</p></div>
-      <div class="card fade-up-5"><div class="label">Skill</div><h3>ES|QL everywhere</h3><p>KB, connectors, and agent tools — one query language for SEs and agents.</p></div>
-      <div class="card fade-up-5"><div class="label">Economics</div><h3>Serverless ops</h3><p>Per-learner Cloud projects in Instruqt; elastic scale for POVs.</p></div>
+      <div class="card fade-up-4"><div class="label">Scope</div><h3>Search-only lab</h3><p>AI Search, federated indices, and Agent Builder — Observability and Security are out of scope for this workshop.</p></div>
+      <div class="card fade-up-5"><div class="label">Skill</div><h3>ES|QL everywhere</h3><p>KB, connectors, and agent tools — one query language for engineers and agents.</p></div>
+      <div class="card fade-up-5"><div class="label">Economics</div><h3>Serverless ops</h3><p>Per-learner Cloud projects in Instruqt; elastic scale for internal POCs.</p></div>
     </div>
   </div>
 """,
@@ -298,7 +298,7 @@ SLIDES["ai-search.html"] = wrap(
         </ul>
       </div>
       <div class="card fade-up-5">
-        <div class="label">Why buyers care</div><h3>Shorter MTTR</h3>
+        <div class="label">Why teams care</div><h3>Shorter MTTR</h3>
         <ul>
           <li><strong>One surface</strong> instead of six portals</li>
           <li><strong>Scale</strong> via connectors in Module 2</li>
@@ -426,7 +426,7 @@ SLIDES["federated.html"] = wrap(
 })();
 </script>
 """,
-    bottom="DCOS language: displace search appliances · consolidate insight · <strong>federate sources</strong>.",
+    bottom="Federate sources in place — <strong>connectors + ES|QL</strong> unify the query layer.",
 )
 
 # ── ES|QL ────────────────────────────────────────────────────────────────────
@@ -533,7 +533,7 @@ SLIDES["agents.html"] = wrap(
 
 # ── NOC story ────────────────────────────────────────────────────────────────
 SLIDES["noc-story.html"] = wrap(
-    "Executive arc",
+    "Workshop story arc",
     """
     .beats { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 14px; }
     .beat { display: flex; gap: 18px; align-items: flex-start; }
@@ -549,9 +549,9 @@ SLIDES["noc-story.html"] = wrap(
     """,
     """
   <div class="slide">
-    <div class="eyebrow fade-up-1">Executive arc</div>
+    <div class="eyebrow fade-up-1">Workshop story arc</div>
     <h1 class="headline fade-up-2">Three beats in <strong>90 seconds</strong></h1>
-    <p class="sub fade-up-3">Branch 4471 — practice this close before Module 3.</p>
+    <p class="sub fade-up-3">Branch 4471 — practice this recap before Module 3.</p>
     <div class="header-divider fade-up-3"></div>
     <div class="beats">
       <div class="beat fade-up-4"><div class="n">1</div><div><h3>Search</h3><p>“Find Meraki offline runbook in &lt;10s.”</p></div></div>
@@ -689,7 +689,7 @@ SLIDES["outcomes.html"] = wrap(
       <div class="card fade-up-4"><div class="label">Unified</div><h3>One query, many tiers</h3><p>Managed indices and federated blob prefixes in a single ES|QL or Search request.</p></div>
       <div class="card fade-up-4"><div class="label">Admin</div><h3>Register sources in UI</h3><p>No shard math on cold storage. Federate instead of archive clusters on blob.</p></div>
       <div class="card fade-up-5"><div class="label">Economics</div><h3>Lower TCO</h3><p>Avoid paying twice for frozen/archive — blob for retention, Serverless for hot + AI.</p></div>
-      <div class="card fade-up-5"><div class="label">Bridge</div><h3>This lab proves the pattern</h3><p>Modules 2–3 preview the unified query story buyers will ask about next.</p></div>
+      <div class="card fade-up-5"><div class="label">Bridge</div><h3>This lab proves the pattern</h3><p>Modules 2–3 preview the unified query story your team can try on internal data next.</p></div>
     </div>
   </div>
 """,
@@ -750,8 +750,8 @@ SLIDES["close.html"] = wrap(
     """
   <div class="slide">
     <div class="eyebrow fade-up-1">Close</div>
-    <h1 class="headline fade-up-2">Why we win on <strong>Search</strong></h1>
-    <p class="sub fade-up-3">Five lines for your notes.</p>
+    <h1 class="headline fade-up-2">What you learned on <strong>Search</strong></h1>
+    <p class="sub fade-up-3">Five lines for your notes — share with peers after the lab.</p>
     <div class="header-divider fade-up-3"></div>
     <div class="take">
       <div class="card fade-up-4"><div class="icon">1</div><div><h3>Hybrid AI Search</h3><p>Keyword + semantic on Cisco KB — MTTR, not portal hopping.</p></div></div>
@@ -762,7 +762,7 @@ SLIDES["close.html"] = wrap(
     </div>
   </div>
 """,
-    bottom="Leave the room with <strong>Search</strong> — not a platform shopping list.",
+    bottom="Leave with three beats to try on your data: <strong>Search → Federate → Agents</strong>.",
 )
 
 SLIDES["thank-you.html"] = wrap(
@@ -803,19 +803,19 @@ SLIDES["thank-you.html"] = wrap(
 
 
 NOTES = {
-    "cover.html": "- Search-led Cisco workshop. One Serverless Search project — no O11Y/Sec.\n- Lab ready ~3–4 min while we walk the deck.",
-    "agenda.html": "- Three modules, same indices. Find → unify → act.\n- Keep GTM: Search consolidation.",
+    "cover.html": "- Search-only Cisco practitioner workshop. One Serverless Search project.\n- Lab ready ~3–4 min while we walk the deck.",
+    "agenda.html": "- Three modules, same indices. Find → unify → act.\n- Search-only scope — no O11Y/Sec.",
     "pain.html": "- Swivel-chair pain. Point at the MTTR bars as they animate.\n- Target: one Search surface.",
     "serverless.html": "- Four advantages. Explicitly: no Observability/Security required.",
-    "ai-search.html": "- Hybrid product story. Buyer quote lands the module.",
-    "foundations.html": "- THIS is the peer to O11Y's 'what are metrics' slide.\n- Walk KEYWORD → SEMANTIC → HYBRID. Pause on RRF fuse.\n- Bottom line: hybrid wins the deal; prove on cisco-network-kb.",
-    "hybrid.html": "- Lab checklist. Don't linger on UI — land the talk track.",
+    "ai-search.html": "- Hybrid product story. NOC quote lands the module.",
+    "foundations.html": "- Walk KEYWORD → SEMANTIC → HYBRID. Pause on RRF fuse.\n- Bottom line: hybrid is what you prove live on cisco-network-kb.",
+    "hybrid.html": "- Lab checklist. Don't linger on UI — land the one-surface line.",
     "federated.html": "- Animated converge. Federate don't rip-and-replace.",
     "esql.html": "- Branch 4471 thread into Module 3.",
     "agents.html": "- Grounded tools. Elastic Search Serverless only. Watch the pulse along the pipeline.",
-    "noc-story.html": "- 90-second exec close. Practice out loud.",
+    "noc-story.html": "- 90-second recap. Practice out loud with a peer.",
     "future.html": "- Clear bridge today vs roadmap. Economic punch: don't pay twice for cold.",
-    "architecture.html": "- Sources → federation → tiers. Analyst takeaway: one query layer.",
+    "architecture.html": "- Sources → federation → tiers. Takeaway: one query layer.",
     "outcomes.html": "- Unified / admin / TCO / bridge.",
     "lab.html": "- Orient: es3-api, 8080, four seed indices.",
     "close.html": "- Five takeaways on screen for Q&A.",

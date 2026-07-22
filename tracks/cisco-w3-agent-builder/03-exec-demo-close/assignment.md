@@ -2,8 +2,8 @@
 slug: exec-demo-close
 id: mymdtoqbvr6n
 type: challenge
-title: Challenge 3 — Executive Demo Close
-teaser: W1→W2→W3 arc for Cisco leadership.
+title: Challenge 3 — Workshop wrap-up & next steps
+teaser: Recap the journey — Search → Federate → Agents — and what to try next on your data.
 tabs:
 - id: ijvlkxyrfu2n
   title: Elastic Serverless
@@ -26,23 +26,22 @@ timelimit: 1200
 enhanced_loading: null
 ---
 
-# Executive demo close
+# Workshop wrap-up & next steps
 
 **Time:** ~15–20 minutes
 
-## Three-beat arc
+## Three-beat recap
 
-1. **W1 AI Search** — find Meraki/BGP runbooks in seconds
-2. **W2 Federated** — Meraki events + internal runbooks + KB in one ES|QL story
-3. **W3 Agent Builder** — agentic triage on Search (`cisco-network-events` + federated indices)
+1. **Module 1 — AI Search** — find Meraki/BGP runbooks in seconds
+2. **Module 2 — Federated** — Meraki events + internal runbooks + KB in one ES|QL story
+3. **Module 3 — Agent Builder** — agentic triage on Search (`cisco-network-events` + federated indices)
 
 ## Tasks
 
-1. Write a **90-second** demo script hitting all three beats (bullets only).
-2. Add **one** Gartner-style proof point: unified search + agentic ops (use your own approved wording).
-3. Name **next step** for a Cisco account: POV, connector phase, or Agent Builder workshop.
+1. Write a **90-second** recap script hitting all three beats (bullets only) — practice **showing your team** what you learned.
+2. Note **one concrete outcome** from today (e.g. faster runbook lookup, cross-index ES|QL, agent tool idea).
+3. List **one next experiment** on Cisco data: index an internal wiki, try a connector POC, or extend Agent Builder tools.
 
 ## Verification
 
-Click **Check** when your demo script is complete.
-
+Click **Check** when your recap script is complete.

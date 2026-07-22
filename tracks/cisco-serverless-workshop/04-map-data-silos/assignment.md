@@ -1,6 +1,6 @@
 ---
 slug: map-data-silos
-id: jmqlapysn72b
+id: u0wku3neso4g
 type: challenge
 title: Challenge 1 — Map Cisco Data Silos
 teaser: Inventory federated indices and their business owner.
@@ -15,7 +15,7 @@ notes:
 
     Fullscreen: https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html
 tabs:
-- id: mg3e2ijjyxwm
+- id: hrtfb3vpc29c
   title: Elastic Serverless Search
   type: service
   hostname: es3-api
@@ -57,7 +57,7 @@ enhanced_loading: null
 
 1. Open **Index Management** and confirm all **four** indices exist.
 2. Open **Discover** on **`cisco-meraki-events`** — note fields `source`, `device_serial`, `event_type`.
-3. In notes, map each index to a **real** Cisco system your customer uses.
+3. In notes, map each index to a **real** Cisco system your team uses (Meraki, internal wiki, NOC telemetry, etc.).
 
 ## Verification
 

@@ -1,11 +1,11 @@
 ---
 slug: build-investigation-agent
-id: q36f2uswqywb
+id: xvuiniqlocbf
 type: challenge
 title: Challenge 2 — Build an Investigation Agent
 teaser: Configure Agent Builder for Cisco NOC workflow.
 tabs:
-- id: tipuxbc6srnz
+- id: fyc9yliksoyf
   title: Elastic Serverless Search
   type: service
   hostname: es3-api

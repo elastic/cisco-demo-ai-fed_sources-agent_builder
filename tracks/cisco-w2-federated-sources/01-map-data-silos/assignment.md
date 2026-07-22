@@ -45,7 +45,7 @@ enhanced_loading: null
 
 1. Open **Index Management** and confirm all **four** indices exist.
 2. Open **Discover** on **`cisco-meraki-events`** — note fields `source`, `device_serial`, `event_type`.
-3. In notes, map each index to a **real** Cisco system your customer uses.
+3. In notes, map each index to a **real** Cisco system your team uses (Meraki, internal wiki, NOC telemetry, etc.).
 
 ## Verification
 

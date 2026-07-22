@@ -1,11 +1,11 @@
 # Facilitator guide — Cisco Serverless workshops
 
-**Audience:** Cisco-facing AEs, SEs, partners  
+**Audience:** Cisco network/NOC/platform engineers, architects, and internal enablement leads  
 **Duration:** ~90 minutes per module (~4.5 h full track)
 
 ## Environment (Search only)
 
-**Do not position Observability or Security** in this Cisco motion. All labs use **one Serverless Search** project per learner:
+This workshop stays **Search-only**. All labs use **one Serverless Search** project per learner:
 
 - VM: **`es3-api`** (`elastic/es3-api-v2`)
 - Kibana proxy: port **8080**
@@ -32,7 +32,7 @@ Tell learners: leave the tab idle >5 minutes and the lab (and Cloud project) tea
 | Track | Use when |
 |-------|----------|
 | `cisco-serverless-workshop` | Default — full story in one lab |
-| `cisco-w1-ai-search` / `w2` / `w3` | Module-only enablement |
+| `cisco-w1-ai-search` / `w2` / `w3` | Module-only sessions |
 
 ## Push after edits
 

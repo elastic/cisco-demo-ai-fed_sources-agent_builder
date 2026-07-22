@@ -1,6 +1,6 @@
 # Cisco × Elastic — AI Search, Federated Sources & Agent Builder
 
-Instruqt workshop for **Cisco** sellers and SEs on **Elastic Cloud Serverless Search** only (no Observability or Security positioning).
+Instruqt workshop for **Cisco** network, NOC, and platform practitioners on **Elastic Cloud Serverless Search** only (no Observability or Security in this lab).
 
 | Resource | Link |
 |----------|------|

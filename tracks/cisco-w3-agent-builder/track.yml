@@ -3,7 +3,7 @@ id: aympse2rvngg
 title: Cisco W3 — Agent Builder for Cisco
 teaser: Agent Builder on Serverless Search — ES|QL triage and NOC agents.
 description: |
-  Workshop 3 of 3. Same **Serverless Search** project as W1–W2. Seeded indices include
+  Workshop 3 of 3 for Cisco practitioners. Same **Serverless Search** project as Modules 1–2. Seeded indices include
   `cisco-network-events` and federated sources. Build an **Agent Builder** investigation
   story for BGP/Meraki-style incidents. ~90 minutes. No Observability or Security.
 icon: https://www.elastic.co/favicon.ico

@@ -1,11 +1,11 @@
 ---
 slug: connector-story
-id: onsxsad0xplx
+id: buau85hegypi
 type: challenge
-title: Challenge 3 — Connectors & Consolidation Story
-teaser: Position Elastic connectors vs. rip-and-replace.
+title: Challenge 3 — Connectors & federated sources
+teaser: See how connectors let you federate Meraki and internal sources without rip-and-replace.
 tabs:
-- id: y84dv2qkqyjx
+- id: nalu5qy1vqsy
   title: Elastic Serverless Search
   type: service
   hostname: es3-api
@@ -28,24 +28,23 @@ enhanced_loading: null
 
 > **Module 2 — Federated Data Sources** · one **Serverless Search** project
 
-# Connectors talk track
+# Federate sources with connectors
 
 **Time:** ~15–20 minutes
 
-## Federated motion (Elastic language)
+## Why federation (not rip-and-replace)
 
-- **Displace** — replace legacy search appliance
-- **Consolidate** — Meraki + DNA + ITSM into Serverless Search
-- **Federate** — leave Meraki/DNA in place; **connectors + ES|QL** unify the query layer
+- **Keep systems in place** — Meraki, DNA Center, and ITSM stay authoritative
+- **Unify the query layer** — connectors sync content and events into Serverless Search; **ES|QL** joins them at query time
+- **Add sources incrementally** — start with high-value indices (like this lab's Meraki-style events) before expanding
 
 ## Tasks
 
 1. Browse **Connectors** in Kibana (UI tour — no production connector required in lab).
-2. Pick **two** connector types relevant to Cisco (e.g. ServiceNow, SharePoint, MongoDB, GitHub).
-3. Write **3 bullets**: what stays in Cisco cloud vs. what Elastic indexes.
-4. Tie to Workshop 1 search demo and preview Workshop 3 **Agent Builder** automation.
+2. Pick **two** connector types relevant to Cisco environments (e.g. ServiceNow, SharePoint, MongoDB, GitHub).
+3. Write **3 bullets**: what stays in existing Cisco/cloud systems vs. what gets indexed for search in Elastic.
+4. Tie Module 1 search patterns to Module 3 **Agent Builder** tools on the same indices.
 
 ## Verification
 
 Click **Check** when connectors + federated bullets are in your notes.
-
