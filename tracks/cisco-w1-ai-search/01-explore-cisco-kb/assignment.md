@@ -3,13 +3,13 @@ slug: explore-cisco-kb
 id: x4ssyoighgs4
 type: challenge
 title: Challenge 1 — Find the runbook
-teaser: Branch 4471 is paging — paste ES|QL against cisco-network-kb on Serverless Search.
+teaser: Open the seeded NOC dashboard, then paste ES|QL to pull the recovery runbook.
 tabs:
 - id: yfkxkvh8vl0j
   title: Elastic Serverless Search
   type: service
   hostname: es3-api
-  path: /app/elasticsearch/query
+  path: /app/dashboards#/view/cisco-noc-ops
   port: 8080
   custom_request_headers:
   - key: Content-Security-Policy
@@ -34,15 +34,17 @@ enhanced_loading: null
 
 NOC chat lights up: *"Branch 4471 — Meraki AP offline, edge BGP looking ugly. Where's the recovery runbook?"*
 
-Your lab is a single **Elastic Serverless Search** project with a seeded Cisco knowledge base. No Observability or Security projects — Search only.
+Your lab is a single **Elastic Serverless Search** project. Setup seeded two dashboards:
+
+- **Cisco NOC Command Center** (`cisco-noc-ops`) — this tab
+- **Cisco Knowledge Base Library** (`cisco-kb-library`) — open from Dashboards if you want the catalog view
 
 **Time:** ~15–20 minutes
 
 ## Your task
 
-Paste each query into the **ES|QL** editor and run it.
-
-**BGP runbook**
+1. On the **Cisco NOC Command Center** dashboard, confirm **Branch-4471-Dallas** appears in the Meraki offline and/or network signal panels.
+2. Open **ES|QL** (Query / Discover) and paste:
 
 ```esql
 FROM cisco-network-kb
@@ -52,7 +54,7 @@ FROM cisco-network-kb
 | LIMIT 10
 ```
 
-**Meraki recovery**
+3. Paste the Meraki recovery query and note **two** remediation steps from the `content` field:
 
 ```esql
 FROM cisco-network-kb
@@ -61,15 +63,11 @@ FROM cisco-network-kb
 | LIMIT 10
 ```
 
-1. Confirm the BGP query returns **BGP Neighbor Down — IOS-XE Troubleshooting** (or similar).
-2. Confirm the Meraki query returns **Meraki AP Offline Recovery** and note **two** steps from `content`.
-3. In notes, write one sentence on how unified Search reduces **MTTR** for Cisco ops.
-
 ## Success criteria
 
-- BGP query returns KB hits from **`cisco-network-kb`**
-- Meraki query returns the offline recovery doc
-- MTTR note is written
+- NOC dashboard shows Branch 4471 signals
+- BGP query returns a KB hit
+- Meraki query returns **Meraki AP Offline Recovery** with two steps identified
 
 ## Verification
 

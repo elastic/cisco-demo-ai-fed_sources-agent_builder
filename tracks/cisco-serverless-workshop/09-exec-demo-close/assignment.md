@@ -1,11 +1,11 @@
 ---
 slug: exec-demo-close
-id: ldewokyqvk6x
+id: 5wk4anw2cxol
 type: challenge
 title: Challenge 9 — Close the loop & next steps
 teaser: Find → Federate → Act on one Serverless Search project — what ships next?
 tabs:
-- id: hvazpqxubyaz
+- id: i87zfkflmlu5
   title: Elastic Serverless Search
   type: service
   hostname: es3-api

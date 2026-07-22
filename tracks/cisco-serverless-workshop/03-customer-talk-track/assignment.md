@@ -1,11 +1,11 @@
 ---
 slug: customer-talk-track
-id: jm4lleffufhm
+id: 2cmeevpk2ahf
 type: challenge
 title: Challenge 3 — Share the story with your peers
 teaser: Sixty seconds — pain, Serverless Search proof, what's next.
 tabs:
-- id: ki5dykpv5n48
+- id: vllfnrfgbctc
   title: Elastic Serverless Search
   type: service
   hostname: es3-api

@@ -1,12 +1,12 @@
 ---
 slug: build-investigation-agent
-id: d8bsoakf3i7m
+id: xg1rzculpj7a
 type: challenge
 title: Challenge 8 — Build the NOC investigation agent
 teaser: Wire Agent Builder to your Serverless Search indices — then ask about Branch
   4471.
 tabs:
-- id: 6bwiz51yfxnb
+- id: 8haizxfnfqjh
   title: Elastic Serverless Search
   type: service
   hostname: es3-api

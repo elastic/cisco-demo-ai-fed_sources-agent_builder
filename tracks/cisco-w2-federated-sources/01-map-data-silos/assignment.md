@@ -49,12 +49,14 @@ Branch 4471 still needs more than a KB hit. Real Cisco environments split truth 
 
 1. Open **Index Management** and confirm all **four** indices exist.
 2. Open **Discover** on **`cisco-meraki-events`** — note fields `source`, `device_serial`, `event_type`.
-3. In notes, map each index to a **real** Cisco system your team uses today.
+3. Open Dashboards → **Cisco Knowledge Base Library** (`cisco-kb-library`) and confirm runbooks by product.
+4. Map each index to a **real** Cisco system your team uses today.
 
 ## Success criteria
 
 - All four indices confirmed
 - Meraki event fields noted
+- KB Library dashboard opened
 - Real-world mapping written for each index
 
 ## Verification

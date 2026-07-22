@@ -21,7 +21,12 @@ LOADING_NOTE_CHALLENGES = frozenset(
 
 # (source track, source challenge dir, dest challenge dir, deep link path)
 CHALLENGES = [
-    ("cisco-w1-ai-search", "01-explore-cisco-kb", "01-explore-cisco-kb", "/app/elasticsearch/query"),
+    (
+        "cisco-w1-ai-search",
+        "01-explore-cisco-kb",
+        "01-explore-cisco-kb",
+        "/app/dashboards#/view/cisco-noc-ops",
+    ),
     ("cisco-w1-ai-search", "02-hybrid-retrieval", "02-hybrid-retrieval", "/app/elasticsearch/query"),
     ("cisco-w1-ai-search", "03-customer-talk-track", "03-customer-talk-track", "/app/discover"),
     (
@@ -148,7 +153,11 @@ def main() -> None:
     kb = ROOT / "assets" / "shared" / "cisco-knowledge-base.json"
     if kb.is_file():
         write(COMBINED / "workshop-assets" / "data" / "cisco-knowledge-base.json", kb.read_text(encoding="utf-8"))
-    for name in ("seed_cisco_kb.py", "seed_federated_sources.py"):
+    dash_src = ROOT / "assets" / "shared" / "dashboards"
+    if dash_src.is_dir():
+        for df in dash_src.glob("*.json"):
+            write(COMBINED / "workshop-assets" / "dashboards" / df.name, df.read_text(encoding="utf-8"))
+    for name in ("seed_cisco_kb.py", "seed_federated_sources.py", "seed_cisco_dashboards.py"):
         src = ROOT / "scripts" / name
         if src.is_file():
             write(COMBINED / "track_scripts" / name, src.read_text(encoding="utf-8"))
