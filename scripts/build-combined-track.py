@@ -12,7 +12,7 @@ COMBINED = ROOT / "tracks" / "cisco-serverless-workshop"
 DEVELOPER = "peter.simkins@elastic.co"
 PORT = 8080
 TAB_TITLE = "Elastic Serverless Search"
-DECK_CACHE_BUST = "v2"
+DECK_CACHE_BUST = "v3"
 LOADING_PAGE = f"https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html?{DECK_CACHE_BUST}=1"
 SLIDES_PAGE = f"https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html"
 LOADING_NOTE_CHALLENGES = frozenset(

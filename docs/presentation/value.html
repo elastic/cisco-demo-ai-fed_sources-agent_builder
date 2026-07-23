@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thank you</title>
+  <title>What the lab proves</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;900&display=swap" rel="stylesheet">
   <style>
@@ -71,43 +71,54 @@ body::before {
 }
 
 
-    .thanks {
-      position: relative; z-index: 10; flex: 1; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; text-align: center; padding: 0 40px;
+    .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; flex: 1; min-height: 0; }
+    .card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px; padding: 18px 16px; display: flex; flex-direction: column; gap: 8px;
     }
-    .thanks h1 { font-size: 3.5rem; font-weight: 300; letter-spacing: -0.03em; margin: 0.6rem 0 1rem; }
-    .thanks h1 strong { font-weight: 800; }
-    .thanks p { font-size: 1.05rem; color: rgba(255,255,255,0.5); line-height: 1.55; max-width: 640px; }
-    .thanks a { color: #00BFB3; text-decoration: none; font-weight: 600; }
-    .pill-row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 1.4rem; }
-    .pill {
-      font-size: 0.68rem; padding: 5px 12px; border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.55);
+    .card .label {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: #00BFB3;
     }
-    .pill.hot { border-color: rgba(0,191,179,0.55); color: #00BFB3; }
-    .pill.future { border-color: rgba(167,139,250,0.55); color: #c4b5fd; }
+    .card h3 { font-size: 1.05rem; font-weight: 700; }
+    .card p { font-size: 0.8rem; color: rgba(255,255,255,0.52); line-height: 1.5; flex: 1; }
+    .card .mono { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #049FD9; }
     
   </style>
 </head>
 <body>
   <div class="accent-bar"></div>
 
-  <div class="thanks">
-    <div class="eyebrow fade-up-1">Cisco × Elastic</div>
-    <h1 class="fade-up-2">Thank <strong>you</strong>.</h1>
-    <p class="fade-up-3">Questions welcome.<br>
-    Lab: <a href="https://play.instruqt.com/manage/elastic/tracks/cisco-serverless-workshop">cisco-serverless-workshop</a></p>
-    <div class="pill-row fade-up-4">
-      <span class="pill hot">Cisco NOC Copilot</span>
-      <span class="pill">Workflows + A2A</span>
-      <span class="pill">Find → Federate → Act</span>
-      <span class="pill hot">Branch 4471</span>
+  <div class="slide">
+    <div class="eyebrow fade-up-1">Lab value · Instruqt</div>
+    <h1 class="headline fade-up-2">Three surfaces. <strong>One Branch 4471 story.</strong></h1>
+    <p class="sub fade-up-3">Everything you click in the workshop maps to a customer conversation.</p>
+    <div class="header-divider fade-up-3"></div>
+    <div class="grid3">
+      <div class="card fade-up-4">
+        <div class="label">Agent Builder</div>
+        <h3>Query Elastic</h3>
+        <p>Cisco NOC Copilot retrieves Meraki + BGP + KB evidence and drafts NOC-ready notes.</p>
+        <span class="mono">/app/agent_builder</span>
+      </div>
+      <div class="card fade-up-5">
+        <div class="label">Workflows + A2A</div>
+        <h3>Augment Splunk</h3>
+        <p>Stubbed Splunk O11Y investigator response — WAN/BGP first, do not RMA the AP.</p>
+        <span class="mono">…splunk-o11y-a2a-rca</span>
+      </div>
+      <div class="card fade-up-6">
+        <div class="label">Federation</div>
+        <h3>Keep systems</h3>
+        <p>Content connectors + four indices. Meraki/ITSM stay authoritative; Search is the query layer.</p>
+        <span class="mono">search_connectors</span>
+      </div>
     </div>
   </div>
 
 
   <div class="bottom-strip fade-up-9">
-    <p>elastic.co · The Search AI Company</p>
+    <p>Talk track: <strong>augment, don’t rip-and-replace</strong> — Elastic for Search/Agent, Splunk via A2A.</p>
   </div>
 
 <script>

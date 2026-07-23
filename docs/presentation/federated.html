@@ -81,16 +81,16 @@ body::before {
   <div class="accent-bar"></div>
 
   <div class="slide">
-    <div class="eyebrow fade-up-1">Module 2</div>
+    <div class="eyebrow fade-up-1">Module 2 · Challenges 4–6</div>
     <h1 class="headline fade-up-2">Federate — <strong>don’t rip-and-replace</strong></h1>
-    <p class="sub fade-up-3">Leave Meraki and DNA in place. Elastic becomes the unified query layer.</p>
+    <p class="sub fade-up-3">Four Search indices simulate connector-fed silos. Content connectors keep Meraki/ITSM authoritative.</p>
     <div class="header-divider fade-up-3"></div>
     <div class="canvas-wrap fade-up-4"><canvas id="cvFed"></canvas></div>
   </div>
 
 
   <div class="bottom-strip fade-up-9">
-    <p>Federate sources in place — <strong>connectors + ES|QL</strong> unify the query layer.</p>
+    <p>Challenge 6 talk track: connectors feed Search; <strong>Copilot + A2A</strong> query and augment.</p>
   </div>
 
 <script>
@@ -114,7 +114,7 @@ body::before {
 (function(){
   const canvas=document.getElementById('cvFed');
   const r=window.devicePixelRatio||1;
-  const sources=['cisco.com KB','Internal runbooks','Meraki events','Network signals'];
+  const sources=['KB','Runbooks','Meraki events','BGP / network'];
   let t=0;
   function draw(){
     const rect=canvas.getBoundingClientRect();
@@ -157,9 +157,9 @@ body::before {
     ctx.fillStyle='rgba(4,159,217,0.12)'; ctx.strokeStyle='#049FD9';
     ctx.beginPath(); ctx.roundRect(ex-70,ey-28,140,56,10); ctx.fill(); ctx.stroke();
     ctx.font='800 13px JetBrains Mono,monospace'; ctx.fillStyle='#049FD9'; ctx.textAlign='center';
-    ctx.fillText('One ES|QL', ex, ey-2);
+    ctx.fillText('Agent + ES|QL', ex, ey-2);
     ctx.font='500 10px Inter,sans-serif'; ctx.fillStyle='rgba(255,255,255,0.45)';
-    ctx.fillText('unified NOC view', ex, ey+16);
+    ctx.fillText('+ A2A augment', ex, ey+16);
     if(!CanvasRenderingContext2D.prototype.roundRect){
       CanvasRenderingContext2D.prototype.roundRect=function(x,y,w,h,r){
         this.moveTo(x+r,y); this.arcTo(x+w,y,x+w,y+h,r); this.arcTo(x+w,y+h,x,y+h,r);

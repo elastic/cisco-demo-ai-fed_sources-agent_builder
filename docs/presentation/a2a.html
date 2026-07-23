@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thank you</title>
+  <title>Workflows + Splunk O11Y A2A</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;900&display=swap" rel="stylesheet">
   <style>
@@ -71,43 +71,40 @@ body::before {
 }
 
 
-    .thanks {
-      position: relative; z-index: 10; flex: 1; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; text-align: center; padding: 0 40px;
+    .steps { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 10px; }
+    .step {
+      display: flex; gap: 16px; align-items: flex-start; padding: 14px 18px; border-radius: 12px;
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
     }
-    .thanks h1 { font-size: 3.5rem; font-weight: 300; letter-spacing: -0.03em; margin: 0.6rem 0 1rem; }
-    .thanks h1 strong { font-weight: 800; }
-    .thanks p { font-size: 1.05rem; color: rgba(255,255,255,0.5); line-height: 1.55; max-width: 640px; }
-    .thanks a { color: #00BFB3; text-decoration: none; font-weight: 600; }
-    .pill-row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 1.4rem; }
-    .pill {
-      font-size: 0.68rem; padding: 5px 12px; border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.55);
+    .step .n {
+      width: 36px; height: 36px; border-radius: 50%; background: rgba(0,191,179,0.15);
+      color: #00BFB3; display: flex; align-items: center; justify-content: center;
+      font-weight: 800; flex-shrink: 0; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;
     }
-    .pill.hot { border-color: rgba(0,191,179,0.55); color: #00BFB3; }
-    .pill.future { border-color: rgba(167,139,250,0.55); color: #c4b5fd; }
+    .step h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 2px; }
+    .step p { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.45; }
+    .step code { font-family: 'JetBrains Mono', monospace; color: #00BFB3; font-size: 0.85em; }
     
   </style>
 </head>
 <body>
   <div class="accent-bar"></div>
 
-  <div class="thanks">
-    <div class="eyebrow fade-up-1">Cisco × Elastic</div>
-    <h1 class="fade-up-2">Thank <strong>you</strong>.</h1>
-    <p class="fade-up-3">Questions welcome.<br>
-    Lab: <a href="https://play.instruqt.com/manage/elastic/tracks/cisco-serverless-workshop">cisco-serverless-workshop</a></p>
-    <div class="pill-row fade-up-4">
-      <span class="pill hot">Cisco NOC Copilot</span>
-      <span class="pill">Workflows + A2A</span>
-      <span class="pill">Find → Federate → Act</span>
-      <span class="pill hot">Branch 4471</span>
+  <div class="slide">
+    <div class="eyebrow fade-up-1">Module 1 · Challenge 2 · (also 7–8)</div>
+    <h1 class="headline fade-up-2">Agent answers Elastic. <strong>A2A augments Splunk.</strong></h1>
+    <p class="sub fade-up-3">Workflow gathers Meraki/BGP/KB context, then injects a stubbed Splunk O11Y investigator payload.</p>
+    <div class="header-divider fade-up-3"></div>
+    <div class="steps">
+      <div class="step fade-up-4"><div class="n">1</div><div><h3>Run the workflow</h3><p><code>Cisco Branch 4471 — Splunk O11Y A2A RCA</code> · defaults <code>site=Branch-4471-Dallas</code></p></div></div>
+      <div class="step fade-up-5"><div class="n">2</div><div><h3>Confirm stub evidence</h3><p><code>WAN_EDGE_BGP_SESSION_DOWN</code> on edge-dfw-01 · <code>MERAKI_AP_CLOUD_DISCONNECT</code> on MR-AP-4471</p></div></div>
+      <div class="step fade-up-6"><div class="n">3</div><div><h3>Feed into Cisco NOC Copilot</h3><p>Paste the A2A summary → correlated RCA: <strong>WAN/BGP first — do not RMA the AP</strong></p></div></div>
     </div>
   </div>
 
 
   <div class="bottom-strip fade-up-9">
-    <p>elastic.co · The Search AI Company</p>
+    <p>Production swap: replace the stub with <strong>http POST</strong> to your A2A bridge — lab pattern stays the same.</p>
   </div>
 
 <script>

@@ -1,12 +1,12 @@
 ---
 slug: connector-story
-id: batkqypo6nlr
+id: kdblf0gil3dc
 type: challenge
 title: Challenge 6 — Plan federation with Agent + Workflows
 teaser: Connectors feed Search; the Cisco Agent + A2A workflow are the query/augment
   layer.
 tabs:
-- id: kqflcf8fstd5
+- id: gb4r98ybrvf1
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -22,7 +22,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: hpvxj6grgxmr
+- id: sho9damvxmf0
   title: Content connectors
   type: service
   hostname: es3-api

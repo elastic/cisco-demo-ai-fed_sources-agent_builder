@@ -95,15 +95,15 @@ body::before {
 
   <div class="slide">
     <div class="eyebrow fade-up-1">Why this matters</div>
-    <h1 class="headline fade-up-2">Cisco NOC pain: <strong>knowledge in silos</strong></h1>
-    <p class="sub fade-up-3">Tab-hopping across Meraki, IOS-XE, DNA Center, and wikis while MTTR climbs.</p>
+    <h1 class="headline fade-up-2">Branch 4471 pain: <strong>swivel-chair MTTR</strong></h1>
+    <p class="sub fade-up-3">Meraki offline + BGP Idle — evidence in Elastic <em>and</em> Splunk O11Y. Today’s lab shows how to query one and augment the other.</p>
     <div class="header-divider fade-up-3"></div>
     <div class="layout">
       <div class="silos fade-up-4">
-        <div class="silo"><span class="dot"></span><div><strong>Meraki Dashboard</strong><span>Offline APs · client health</span></div></div>
-        <div class="silo"><span class="dot"></span><div><strong>IOS-XE runbooks</strong><span>TAC phrases · CLI recovery</span></div></div>
-        <div class="silo"><span class="dot"></span><div><strong>DNA Center</strong><span>Assurance · path traces</span></div></div>
-        <div class="silo"><span class="dot"></span><div><strong>Internal wiki</strong><span>Escalation · tribal knowledge</span></div></div>
+        <div class="silo"><span class="dot"></span><div><strong>Meraki events</strong><span>device.offline · Branch-4471-Dallas</span></div></div>
+        <div class="silo"><span class="dot"></span><div><strong>Network / BGP</strong><span>session_down · edge-dfw-01</span></div></div>
+        <div class="silo"><span class="dot"></span><div><strong>KB + runbooks</strong><span>TAC recovery · escalation owners</span></div></div>
+        <div class="silo"><span class="dot"></span><div><strong>Splunk Observability</strong><span>Detectors / APM — augment via A2A, don’t rip out</span></div></div>
       </div>
       <div class="chart-wrap fade-up-5"><canvas id="cvMttr"></canvas></div>
     </div>
@@ -111,7 +111,7 @@ body::before {
 
 
   <div class="bottom-strip fade-up-9">
-    <p>Elastic meets engineers <strong>where they already search</strong> — one surface, shorter MTTR.</p>
+    <p>Lab pacing: <strong>~60–90 min with Agent + Workflows</strong> vs ~3.5–4.5 hours of manual RCA write-ups.</p>
   </div>
 
 <script>
@@ -148,8 +148,8 @@ body::before {
     ctx.font='700 11px JetBrains Mono, monospace'; ctx.fillStyle='rgba(255,255,255,0.4)';
     ctx.fillText('MTTR (illustrative)', pad.l, 24);
     const bars = [
-      {label:'Today', v:0.92, color:'#049FD9'},
-      {label:'One Search', v:0.34, color:'#00BFB3'},
+      {label:'Manual write-ups', v:0.92, color:'#049FD9'},
+      {label:'Agent + A2A', v:0.28, color:'#00BFB3'},
     ];
     const bw = iw/bars.length - 36;
     bars.forEach((b,i)=>{

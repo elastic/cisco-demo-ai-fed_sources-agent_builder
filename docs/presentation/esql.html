@@ -84,23 +84,23 @@ body::before {
   <div class="accent-bar"></div>
 
   <div class="slide">
-    <div class="eyebrow fade-up-1">Module 2 · Query layer</div>
-    <h1 class="headline fade-up-2">One language: <strong>ES|QL</strong></h1>
-    <p class="sub fade-up-3">Offline Meraki event + escalation + KB — one skill for humans and agents.</p>
+    <div class="eyebrow fade-up-1">Module 2 · Challenge 5</div>
+    <h1 class="headline fade-up-2">Agent correlates. <strong>ES|QL verifies.</strong></h1>
+    <p class="sub fade-up-3">Primary path: ask Cisco NOC Copilot. Optional verify in ES|QL (time picker → <strong>Last 24 hours</strong> if empty).</p>
     <div class="header-divider fade-up-3"></div>
     <div class="code fade-up-4">
-      <span class="cm">// Branch 4471 — correlate signal with runbook steps</span><br>
-      <span class="kw">FROM</span> cisco-meraki-events, cisco-internal-runbooks, cisco-network-kb<br>
-      <span class="kw">| WHERE</span> branch.id == <span class="str">"4471"</span> <span class="kw">OR</span> topic <span class="kw">LIKE</span> <span class="str">"*offline*"</span><br>
-      <span class="kw">| KEEP</span> @timestamp, source, title, severity, next_steps<br>
+      <span class="cm">// Challenge 5 — Meraki offline for Branch 4471</span><br>
+      <span class="kw">FROM</span> cisco-meraki-events<br>
+      <span class="kw">| WHERE</span> event_type == <span class="str">"device.offline"</span> <span class="kw">AND</span> device_name <span class="kw">LIKE</span> <span class="str">"*4471*"</span><br>
+      <span class="kw">| KEEP</span> @timestamp, device_name, site, event_type, detail<br>
       <span class="kw">| SORT</span> @timestamp <span class="kw">DESC</span><br>
-      <span class="kw">| LIMIT</span> 20
+      <span class="kw">| LIMIT</span> 5
     </div>
   </div>
 
 
   <div class="bottom-strip fade-up-9">
-    <p>ES|QL is the bridge from Module 2 into Agent Builder tools — <strong>same queries, same indices</strong>.</p>
+    <p>Then ask the agent for the matching <strong>KB recovery runbook</strong> — event + runbook in one incident card.</p>
   </div>
 
 <script>

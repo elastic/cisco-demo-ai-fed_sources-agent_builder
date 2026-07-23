@@ -23,7 +23,7 @@ SLIDES = {}
 
 # ── Cover ────────────────────────────────────────────────────────────────────
 SLIDES["cover.html"] = wrap(
-    "Elastic Search — AI, Federated Sources & Agent Builder",
+    "Elastic Search — Find, Federate, Act with Agent Builder & A2A",
     """
     body { justify-content: space-between; }
     .elastic-mark {
@@ -37,21 +37,21 @@ SLIDES["cover.html"] = wrap(
     }
     .content {
       position: relative; z-index: 10; padding: 0 6vw; flex: 1;
-      display: flex; flex-direction: column; justify-content: center; max-width: 64%;
+      display: flex; flex-direction: column; justify-content: center; max-width: 68%;
     }
     .c-eyebrow {
       font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em;
       text-transform: uppercase; color: #00BFB3; margin-bottom: 1.35rem;
     }
     .c-title {
-      font-size: 3.35rem; font-weight: 300; letter-spacing: -0.03em;
+      font-size: 3.2rem; font-weight: 300; letter-spacing: -0.03em;
       line-height: 1.05; margin-bottom: 1.15rem;
     }
     .c-title strong { font-weight: 800; color: #fff; }
     .c-title em { font-style: normal; font-weight: 800; color: #00BFB3; }
     .c-sub {
       font-size: 1.05rem; color: rgba(255,255,255,0.58); line-height: 1.55;
-      max-width: 520px; margin-bottom: 1.6rem;
+      max-width: 560px; margin-bottom: 1.6rem;
     }
     .pill-row { display: flex; flex-wrap: wrap; gap: 8px; }
     .pill {
@@ -59,7 +59,7 @@ SLIDES["cover.html"] = wrap(
       border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.55);
     }
     .pill.hot { border-color: rgba(0,191,179,0.55); color: #00BFB3; }
-    .pill.future { border-color: rgba(167,139,250,0.55); color: #c4b5fd; }
+    .pill.cisco { border-color: rgba(4,159,217,0.55); color: #049FD9; }
     .cover-foot {
       position: relative; z-index: 10; padding: 0 6vw 28px;
       display: flex; gap: 12px; font-size: 0.75rem; color: rgba(255,255,255,0.32);
@@ -73,21 +73,22 @@ SLIDES["cover.html"] = wrap(
     <circle cx="90" cy="168" r="18" fill="#F04E23" opacity="0.32"/>
   </svg>
   <div class="content">
-    <div class="c-eyebrow fade-up-1">Cisco × Elastic · practitioner workshop</div>
-    <h1 class="c-title fade-up-2"><strong>AI Search.</strong><br><em>Federated Sources.</em><br><strong>Agent Builder.</strong></h1>
-    <p class="c-sub fade-up-3">One Elastic Search Serverless project. Hybrid retrieval, unified Cisco knowledge, grounded agents for the NOC — without Observability or Security.</p>
+    <div class="c-eyebrow fade-up-1">Cisco × Elastic · Serverless Search workshop</div>
+    <h1 class="c-title fade-up-2"><strong>Find.</strong> <em>Federate.</em> <strong>Act.</strong></h1>
+    <p class="c-sub fade-up-3"><strong style="color:#fff;font-weight:600">Cisco NOC Copilot</strong> on Agent Builder queries Elastic indices.
+    <strong style="color:#fff;font-weight:600">Workflows + A2A</strong> augment with Splunk Observability evidence — without rip-and-replace.</p>
     <div class="pill-row fade-up-4">
-      <span class="pill hot">Serverless Search</span>
-      <span class="pill">ES|QL</span>
-      <span class="pill">Connectors</span>
-      <span class="pill future">Blob federation roadmap</span>
+      <span class="pill hot">Cisco NOC Copilot</span>
+      <span class="pill cisco">Workflows + A2A</span>
+      <span class="pill">Branch 4471</span>
+      <span class="pill hot">~60–90 min with AI</span>
     </div>
   </div>
   <div class="cover-foot fade-up-5">
-    <span>The Search AI Company</span><span>·</span><span>Lab ready in ~3–4 minutes</span>
+    <span>One Serverless Search project</span><span>·</span><span>Lab ready in ~3–4 minutes</span>
   </div>
 """,
-    bottom="This is a **Search-only** lab. Same indices power find → unify → act.",
+    bottom="Same lab story end-to-end: **Agent Builder** for Elastic · **Workflows/A2A** for peer-platform augment.",
 )
 
 # ── Agenda ───────────────────────────────────────────────────────────────────
@@ -110,35 +111,35 @@ SLIDES["agenda.html"] = wrap(
     """,
     """
   <div class="slide">
-    <div class="eyebrow fade-up-1">Today</div>
-    <h1 class="headline fade-up-2">Three beats. <strong>One Search project.</strong></h1>
-    <p class="sub fade-up-3">Same indices end-to-end — explore AI Search, federation, and agents on Elastic Search Serverless.</p>
+    <div class="eyebrow fade-up-1">Today · matches the Instruqt lab</div>
+    <h1 class="headline fade-up-2">Find → Federate → <strong>Act</strong></h1>
+    <p class="sub fade-up-3">Nine challenges on one Serverless Search project — Agent Builder, Workflows + Splunk O11Y A2A, then federation.</p>
     <div class="header-divider fade-up-3"></div>
     <div class="flow">
       <div class="card fade-up-4">
-        <span class="num">MODULE 01</span>
-        <h3>AI Search</h3>
-        <p>Hybrid + semantic on the Cisco KB. Exact TAC phrases and natural-language questions in one ranked set.</p>
-        <span class="mono">cisco-network-kb</span>
+        <span class="num">MODULE 01 · FIND</span>
+        <h3>Cisco NOC Copilot</h3>
+        <p>Stand up the agent, pull Meraki + BGP runbooks, then augment with a stubbed Splunk O11Y A2A workflow.</p>
+        <span class="mono">Agent Builder · Workflows</span>
       </div>
       <div class="arrow fade-up-4">→</div>
       <div class="card fade-up-5">
-        <span class="num">MODULE 02</span>
-        <h3>Federated sources</h3>
-        <p>KB, runbooks, Meraki events — connectors and multi-index ES|QL without ripping systems out.</p>
-        <span class="mono">FROM * | WHERE …</span>
+        <span class="num">MODULE 02 · FEDERATE</span>
+        <h3>Map the silos</h3>
+        <p>Four Search indices + content connectors. Correlate event ↔ runbook. Plan federation without rip-and-replace.</p>
+        <span class="mono">indices · ES|QL · connectors</span>
       </div>
       <div class="arrow fade-up-5">→</div>
       <div class="card fade-up-6">
-        <span class="num">MODULE 03</span>
-        <h3>Agent Builder</h3>
-        <p>ES|QL triage + agents grounded in the same indices. Cisco NOC story on Elastic Search Serverless.</p>
-        <span class="mono">tools → indices</span>
+        <span class="num">MODULE 03 · ACT</span>
+        <h3>Triage &amp; harden</h3>
+        <p>Re-run Branch 4471 with Agent + A2A. Tighten tools. Close with a Find → Federate → Act recap.</p>
+        <span class="mono">pager card · P2 note</span>
       </div>
     </div>
   </div>
 """,
-    bottom="Find → unify → act. If your team only remembers one chain, make it this one.",
+    bottom="If the room remembers one chain: <strong>Find → Federate → Act</strong> — Agent for Elastic, A2A for peer evidence.",
 )
 
 # ── Pain (canvas MTTR) ───────────────────────────────────────────────────────
@@ -165,15 +166,15 @@ SLIDES["pain.html"] = wrap(
     """
   <div class="slide">
     <div class="eyebrow fade-up-1">Why this matters</div>
-    <h1 class="headline fade-up-2">Cisco NOC pain: <strong>knowledge in silos</strong></h1>
-    <p class="sub fade-up-3">Tab-hopping across Meraki, IOS-XE, DNA Center, and wikis while MTTR climbs.</p>
+    <h1 class="headline fade-up-2">Branch 4471 pain: <strong>swivel-chair MTTR</strong></h1>
+    <p class="sub fade-up-3">Meraki offline + BGP Idle — evidence in Elastic <em>and</em> Splunk O11Y. Today’s lab shows how to query one and augment the other.</p>
     <div class="header-divider fade-up-3"></div>
     <div class="layout">
       <div class="silos fade-up-4">
-        <div class="silo"><span class="dot"></span><div><strong>Meraki Dashboard</strong><span>Offline APs · client health</span></div></div>
-        <div class="silo"><span class="dot"></span><div><strong>IOS-XE runbooks</strong><span>TAC phrases · CLI recovery</span></div></div>
-        <div class="silo"><span class="dot"></span><div><strong>DNA Center</strong><span>Assurance · path traces</span></div></div>
-        <div class="silo"><span class="dot"></span><div><strong>Internal wiki</strong><span>Escalation · tribal knowledge</span></div></div>
+        <div class="silo"><span class="dot"></span><div><strong>Meraki events</strong><span>device.offline · Branch-4471-Dallas</span></div></div>
+        <div class="silo"><span class="dot"></span><div><strong>Network / BGP</strong><span>session_down · edge-dfw-01</span></div></div>
+        <div class="silo"><span class="dot"></span><div><strong>KB + runbooks</strong><span>TAC recovery · escalation owners</span></div></div>
+        <div class="silo"><span class="dot"></span><div><strong>Splunk Observability</strong><span>Detectors / APM — augment via A2A, don’t rip out</span></div></div>
       </div>
       <div class="chart-wrap fade-up-5"><canvas id="cvMttr"></canvas></div>
     </div>
@@ -197,8 +198,8 @@ SLIDES["pain.html"] = wrap(
     ctx.font='700 11px JetBrains Mono, monospace'; ctx.fillStyle='rgba(255,255,255,0.4)';
     ctx.fillText('MTTR (illustrative)', pad.l, 24);
     const bars = [
-      {label:'Today', v:0.92, color:'#049FD9'},
-      {label:'One Search', v:0.34, color:'#00BFB3'},
+      {label:'Manual write-ups', v:0.92, color:'#049FD9'},
+      {label:'Agent + A2A', v:0.28, color:'#00BFB3'},
     ];
     const bw = iw/bars.length - 36;
     bars.forEach((b,i)=>{
@@ -224,7 +225,7 @@ SLIDES["pain.html"] = wrap(
 })();
 </script>
 """,
-    bottom="Elastic meets engineers <strong>where they already search</strong> — one surface, shorter MTTR.",
+    bottom="Lab pacing: <strong>~60–90 min with Agent + Workflows</strong> vs ~3.5–4.5 hours of manual RCA write-ups.",
 )
 
 # ── Serverless ───────────────────────────────────────────────────────────────
@@ -246,23 +247,23 @@ SLIDES["serverless.html"] = wrap(
     """
   <div class="slide">
     <div class="eyebrow fade-up-1">Platform choice</div>
-    <h1 class="headline fade-up-2">One <strong>Serverless Search</strong> project — advantages</h1>
-    <p class="sub fade-up-3">Search-only workshop for Cisco practitioners on Elastic Search Serverless.</p>
+    <h1 class="headline fade-up-2">One <strong>Serverless Search</strong> project</h1>
+    <p class="sub fade-up-3">Search-only lab — Agent Builder, Workflows, dashboards, and four Cisco indices. No Observability or Security projects.</p>
     <div class="header-divider fade-up-3"></div>
     <div class="grid2">
-      <div class="card fade-up-4"><div class="label">Speed</div><h3>~3–4 min to ready</h3><p>Single Serverless Search project + seeded Cisco indices — no multi-product wait.</p></div>
-      <div class="card fade-up-4"><div class="label">Scope</div><h3>Search-only lab</h3><p>AI Search, federated indices, and Agent Builder — Observability and Security are out of scope for this workshop.</p></div>
-      <div class="card fade-up-5"><div class="label">Skill</div><h3>ES|QL everywhere</h3><p>KB, connectors, and agent tools — one query language for engineers and agents.</p></div>
-      <div class="card fade-up-5"><div class="label">Economics</div><h3>Serverless ops</h3><p>Per-learner Cloud projects in Instruqt; elastic scale for internal POCs.</p></div>
+      <div class="card fade-up-4"><div class="label">Seeded for you</div><h3>Cisco NOC Copilot</h3><p>Agent Builder agent <code style="color:#00BFB3">cisco-noc-copilot</code> + NOC dashboard + Branch 4471 data.</p></div>
+      <div class="card fade-up-4"><div class="label">Augment path</div><h3>A2A workflow stub</h3><p><code style="color:#00BFB3">cisco-branch-4471-splunk-o11y-a2a-rca</code> — Elastic gather → stubbed Splunk O11Y → unified RCA.</p></div>
+      <div class="card fade-up-5"><div class="label">Four indices</div><h3>Federation-ready</h3><p><code style="color:#00BFB3">cisco-network-kb</code>, runbooks, Meraki events, network/BGP events — one query surface.</p></div>
+      <div class="card fade-up-5"><div class="label">Time</div><h3>~3–4 min to ready</h3><p>Per-learner Cloud project in Instruqt. Then the nine challenges mirror Find → Federate → Act.</p></div>
     </div>
   </div>
 """,
-    bottom="If you only remember one platform call: <strong>Serverless Search</strong> — not a stack of products.",
+    bottom="Platform call: <strong>Serverless Search only</strong> — Splunk stays peer via A2A, not a second Elastic product.",
 )
 
-# ── AI Search ────────────────────────────────────────────────────────────────
+# ── Find · Cisco NOC Copilot ─────────────────────────────────────────────────
 SLIDES["ai-search.html"] = wrap(
-    "AI Search",
+    "Find — Cisco NOC Copilot",
     """
     .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; flex: 1; min-height: 0; }
     .card {
@@ -284,38 +285,119 @@ SLIDES["ai-search.html"] = wrap(
     """,
     """
   <div class="slide">
-    <div class="eyebrow fade-up-1">Module 1</div>
-    <h1 class="headline fade-up-2">AI Search — <strong>what &amp; why</strong></h1>
-    <p class="sub fade-up-3">Hybrid + semantic on <span style="font-family:JetBrains Mono,monospace;color:#00BFB3">cisco-network-kb</span> — Meraki, BGP, DNA in seconds.</p>
+    <div class="eyebrow fade-up-1">Module 1 · Find · Challenges 1 &amp; 3</div>
+    <h1 class="headline fade-up-2">Don’t start in Discover — <strong>start the agent</strong></h1>
+    <p class="sub fade-up-3"><span style="font-family:JetBrains Mono,monospace;color:#00BFB3">Cisco NOC Copilot</span> queries Serverless Search — then you reuse it for every later challenge.</p>
     <div class="header-divider fade-up-3"></div>
     <div class="grid2">
       <div class="card fade-up-4">
-        <div class="label">What</div><h3>Keyword + vector</h3>
+        <div class="label">What you build</div><h3>Cisco NOC Copilot</h3>
         <ul>
-          <li><strong>BM25</strong> for exact TAC phrases and error codes</li>
-          <li><strong>ELSER / vectors</strong> for natural-language questions</li>
-          <li><strong>RRF</strong> for one ranked result set</li>
+          <li><strong>Tools</strong> on KB, Meraki events, network/BGP events</li>
+          <li><strong>Goal</strong> — Branch 4471 investigate + draft next steps</li>
+          <li><strong>Proof</strong> — Meraki offline + BGP neighbor runbooks</li>
         </ul>
       </div>
       <div class="card fade-up-5">
-        <div class="label">Why teams care</div><h3>Shorter MTTR</h3>
+        <div class="label">Why teams care</div><h3>AI time compression</h3>
         <ul>
-          <li><strong>One surface</strong> instead of six portals</li>
-          <li><strong>Scale</strong> via connectors in Module 2</li>
-          <li><strong>Proof</strong> live in the first 20 minutes</li>
+          <li><strong>~5 min</strong> with Agent Builder vs 15–20 manual</li>
+          <li><strong>Grounded</strong> tool calls — not invented runbooks</li>
+          <li><strong>Peer story</strong> — agent drafts the Slack/email update</li>
         </ul>
       </div>
     </div>
-    <div class="quote fade-up-6">“Can we search IOS-XE and Meraki docs in one place?” — this module is the answer.</div>
+    <div class="quote fade-up-6">“Branch 4471 — Meraki AP offline, edge BGP looking ugly. Where's the recovery runbook?”</div>
   </div>
 """,
-    bottom="Next slide is the foundation — Keyword · Semantic · <strong>Hybrid</strong> with live motion.",
+    bottom="Lab tip: select <strong>Cisco NOC Copilot</strong> (not only Elastic AI Agent). Seeded at setup.",
 )
 
-# Skip hybrid — use foundations as the hero; keep a short hybrid pointer slide or remove from config
-# We'll keep hybrid.html as a thin "lab proof" slide
+# Lab value — what Instruqt proves today
+SLIDES["value.html"] = wrap(
+    "What the lab proves",
+    """
+    .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; flex: 1; min-height: 0; }
+    .card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px; padding: 18px 16px; display: flex; flex-direction: column; gap: 8px;
+    }
+    .card .label {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: #00BFB3;
+    }
+    .card h3 { font-size: 1.05rem; font-weight: 700; }
+    .card p { font-size: 0.8rem; color: rgba(255,255,255,0.52); line-height: 1.5; flex: 1; }
+    .card .mono { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #049FD9; }
+    """,
+    """
+  <div class="slide">
+    <div class="eyebrow fade-up-1">Lab value · Instruqt</div>
+    <h1 class="headline fade-up-2">Three surfaces. <strong>One Branch 4471 story.</strong></h1>
+    <p class="sub fade-up-3">Everything you click in the workshop maps to a customer conversation.</p>
+    <div class="header-divider fade-up-3"></div>
+    <div class="grid3">
+      <div class="card fade-up-4">
+        <div class="label">Agent Builder</div>
+        <h3>Query Elastic</h3>
+        <p>Cisco NOC Copilot retrieves Meraki + BGP + KB evidence and drafts NOC-ready notes.</p>
+        <span class="mono">/app/agent_builder</span>
+      </div>
+      <div class="card fade-up-5">
+        <div class="label">Workflows + A2A</div>
+        <h3>Augment Splunk</h3>
+        <p>Stubbed Splunk O11Y investigator response — WAN/BGP first, do not RMA the AP.</p>
+        <span class="mono">…splunk-o11y-a2a-rca</span>
+      </div>
+      <div class="card fade-up-6">
+        <div class="label">Federation</div>
+        <h3>Keep systems</h3>
+        <p>Content connectors + four indices. Meraki/ITSM stay authoritative; Search is the query layer.</p>
+        <span class="mono">search_connectors</span>
+      </div>
+    </div>
+  </div>
+""",
+    bottom="Talk track: <strong>augment, don’t rip-and-replace</strong> — Elastic for Search/Agent, Splunk via A2A.",
+)
+
+# A2A / Workflows (replaces old hybrid lab-proof slide in the flow)
+SLIDES["a2a.html"] = wrap(
+    "Workflows + Splunk O11Y A2A",
+    """
+    .steps { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 10px; }
+    .step {
+      display: flex; gap: 16px; align-items: flex-start; padding: 14px 18px; border-radius: 12px;
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+    }
+    .step .n {
+      width: 36px; height: 36px; border-radius: 50%; background: rgba(0,191,179,0.15);
+      color: #00BFB3; display: flex; align-items: center; justify-content: center;
+      font-weight: 800; flex-shrink: 0; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;
+    }
+    .step h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 2px; }
+    .step p { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.45; }
+    .step code { font-family: 'JetBrains Mono', monospace; color: #00BFB3; font-size: 0.85em; }
+    """,
+    """
+  <div class="slide">
+    <div class="eyebrow fade-up-1">Module 1 · Challenge 2 · (also 7–8)</div>
+    <h1 class="headline fade-up-2">Agent answers Elastic. <strong>A2A augments Splunk.</strong></h1>
+    <p class="sub fade-up-3">Workflow gathers Meraki/BGP/KB context, then injects a stubbed Splunk O11Y investigator payload.</p>
+    <div class="header-divider fade-up-3"></div>
+    <div class="steps">
+      <div class="step fade-up-4"><div class="n">1</div><div><h3>Run the workflow</h3><p><code>Cisco Branch 4471 — Splunk O11Y A2A RCA</code> · defaults <code>site=Branch-4471-Dallas</code></p></div></div>
+      <div class="step fade-up-5"><div class="n">2</div><div><h3>Confirm stub evidence</h3><p><code>WAN_EDGE_BGP_SESSION_DOWN</code> on edge-dfw-01 · <code>MERAKI_AP_CLOUD_DISCONNECT</code> on MR-AP-4471</p></div></div>
+      <div class="step fade-up-6"><div class="n">3</div><div><h3>Feed into Cisco NOC Copilot</h3><p>Paste the A2A summary → correlated RCA: <strong>WAN/BGP first — do not RMA the AP</strong></p></div></div>
+    </div>
+  </div>
+""",
+    bottom="Production swap: replace the stub with <strong>http POST</strong> to your A2A bridge — lab pattern stays the same.",
+)
+
+# Keep hybrid.html as a short foundations pointer (optional / secondary)
 SLIDES["hybrid.html"] = wrap(
-    "Lab proof — hybrid",
+    "Why Search ranks",
     """
     .steps { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
     .step {
@@ -332,18 +414,18 @@ SLIDES["hybrid.html"] = wrap(
     """,
     """
   <div class="slide">
-    <div class="eyebrow fade-up-1">Module 1 · Lab</div>
-    <h1 class="headline fade-up-2">Prove it on <strong>cisco-network-kb</strong></h1>
-    <p class="sub fade-up-3">When Kibana opens, this is the first 10 minutes.</p>
+    <div class="eyebrow fade-up-1">Search foundation · supporting</div>
+    <h1 class="headline fade-up-2">The agent is only as good as <strong>the corpus</strong></h1>
+    <p class="sub fade-up-3">Hybrid retrieval (keyword + semantic) is why Meraki + IOS-XE runbooks land in one ranked set.</p>
     <div class="header-divider fade-up-3"></div>
     <div class="steps">
-      <div class="step fade-up-4"><div class="n">1</div><p>Open Search / Discover — confirm index <code>cisco-network-kb</code></p></div>
-      <div class="step fade-up-5"><div class="n">2</div><p>Run a keyword query for a TAC-style phrase, then a natural-language offline question</p></div>
-      <div class="step fade-up-6"><div class="n">3</div><p>Call out hybrid: same corpus, better rank — set up Module 2 federation</p></div>
+      <div class="step fade-up-4"><div class="n">1</div><p>Corpus lives in <code>cisco-network-kb</code> (+ events / runbooks)</p></div>
+      <div class="step fade-up-5"><div class="n">2</div><p>Agent tools call ES|QL / search — same indices humans verify in Discover</p></div>
+      <div class="step fade-up-6"><div class="n">3</div><p>If Discover looks empty: set time to <strong>Last 24 hours</strong></p></div>
     </div>
   </div>
 """,
-    bottom="Don’t linger on UI chrome — land the <strong>one place for Meraki + IOS-XE</strong> line.",
+    bottom="Next: federate sources in place — then harden the Copilot for Act.",
 )
 
 # ── Federated ────────────────────────────────────────────────────────────────
@@ -356,9 +438,9 @@ SLIDES["federated.html"] = wrap(
     """,
     """
   <div class="slide">
-    <div class="eyebrow fade-up-1">Module 2</div>
+    <div class="eyebrow fade-up-1">Module 2 · Challenges 4–6</div>
     <h1 class="headline fade-up-2">Federate — <strong>don’t rip-and-replace</strong></h1>
-    <p class="sub fade-up-3">Leave Meraki and DNA in place. Elastic becomes the unified query layer.</p>
+    <p class="sub fade-up-3">Four Search indices simulate connector-fed silos. Content connectors keep Meraki/ITSM authoritative.</p>
     <div class="header-divider fade-up-3"></div>
     <div class="canvas-wrap fade-up-4"><canvas id="cvFed"></canvas></div>
   </div>
@@ -368,7 +450,7 @@ SLIDES["federated.html"] = wrap(
 (function(){
   const canvas=document.getElementById('cvFed');
   const r=window.devicePixelRatio||1;
-  const sources=['cisco.com KB','Internal runbooks','Meraki events','Network signals'];
+  const sources=['KB','Runbooks','Meraki events','BGP / network'];
   let t=0;
   function draw(){
     const rect=canvas.getBoundingClientRect();
@@ -411,9 +493,9 @@ SLIDES["federated.html"] = wrap(
     ctx.fillStyle='rgba(4,159,217,0.12)'; ctx.strokeStyle='#049FD9';
     ctx.beginPath(); ctx.roundRect(ex-70,ey-28,140,56,10); ctx.fill(); ctx.stroke();
     ctx.font='800 13px JetBrains Mono,monospace'; ctx.fillStyle='#049FD9'; ctx.textAlign='center';
-    ctx.fillText('One ES|QL', ex, ey-2);
+    ctx.fillText('Agent + ES|QL', ex, ey-2);
     ctx.font='500 10px Inter,sans-serif'; ctx.fillStyle='rgba(255,255,255,0.45)';
-    ctx.fillText('unified NOC view', ex, ey+16);
+    ctx.fillText('+ A2A augment', ex, ey+16);
     if(!CanvasRenderingContext2D.prototype.roundRect){
       CanvasRenderingContext2D.prototype.roundRect=function(x,y,w,h,r){
         this.moveTo(x+r,y); this.arcTo(x+w,y,x+w,y+h,r); this.arcTo(x+w,y+h,x,y+h,r);
@@ -426,7 +508,7 @@ SLIDES["federated.html"] = wrap(
 })();
 </script>
 """,
-    bottom="Federate sources in place — <strong>connectors + ES|QL</strong> unify the query layer.",
+    bottom="Challenge 6 talk track: connectors feed Search; <strong>Copilot + A2A</strong> query and augment.",
 )
 
 # ── ES|QL ────────────────────────────────────────────────────────────────────
@@ -442,21 +524,21 @@ SLIDES["esql.html"] = wrap(
     """,
     """
   <div class="slide">
-    <div class="eyebrow fade-up-1">Module 2 · Query layer</div>
-    <h1 class="headline fade-up-2">One language: <strong>ES|QL</strong></h1>
-    <p class="sub fade-up-3">Offline Meraki event + escalation + KB — one skill for humans and agents.</p>
+    <div class="eyebrow fade-up-1">Module 2 · Challenge 5</div>
+    <h1 class="headline fade-up-2">Agent correlates. <strong>ES|QL verifies.</strong></h1>
+    <p class="sub fade-up-3">Primary path: ask Cisco NOC Copilot. Optional verify in ES|QL (time picker → <strong>Last 24 hours</strong> if empty).</p>
     <div class="header-divider fade-up-3"></div>
     <div class="code fade-up-4">
-      <span class="cm">// Branch 4471 — correlate signal with runbook steps</span><br>
-      <span class="kw">FROM</span> cisco-meraki-events, cisco-internal-runbooks, cisco-network-kb<br>
-      <span class="kw">| WHERE</span> branch.id == <span class="str">"4471"</span> <span class="kw">OR</span> topic <span class="kw">LIKE</span> <span class="str">"*offline*"</span><br>
-      <span class="kw">| KEEP</span> @timestamp, source, title, severity, next_steps<br>
+      <span class="cm">// Challenge 5 — Meraki offline for Branch 4471</span><br>
+      <span class="kw">FROM</span> cisco-meraki-events<br>
+      <span class="kw">| WHERE</span> event_type == <span class="str">"device.offline"</span> <span class="kw">AND</span> device_name <span class="kw">LIKE</span> <span class="str">"*4471*"</span><br>
+      <span class="kw">| KEEP</span> @timestamp, device_name, site, event_type, detail<br>
       <span class="kw">| SORT</span> @timestamp <span class="kw">DESC</span><br>
-      <span class="kw">| LIMIT</span> 20
+      <span class="kw">| LIMIT</span> 5
     </div>
   </div>
 """,
-    bottom="ES|QL is the bridge from Module 2 into Agent Builder tools — <strong>same queries, same indices</strong>.",
+    bottom="Then ask the agent for the matching <strong>KB recovery runbook</strong> — event + runbook in one incident card.",
 )
 
 # ── Agents ───────────────────────────────────────────────────────────────────
@@ -469,9 +551,9 @@ SLIDES["agents.html"] = wrap(
     """,
     """
   <div class="slide">
-    <div class="eyebrow fade-up-1">Module 3</div>
-    <h1 class="headline fade-up-2">Agent Builder — <strong>search to action</strong></h1>
-    <p class="sub fade-up-3">Grounded tools on Search indices. No hallucinated runbooks. Elastic Search Serverless only.</p>
+    <div class="eyebrow fade-up-1">Module 3 · Challenges 7–8</div>
+    <h1 class="headline fade-up-2">Act — <strong>triage, then harden</strong></h1>
+    <p class="sub fade-up-3">Re-run Branch 4471 with Copilot + A2A. Put the Splunk workflow into agent instructions.</p>
     <div class="header-divider fade-up-3"></div>
     <div class="canvas-wrap fade-up-4"><canvas id="cvAgent"></canvas></div>
   </div>
@@ -482,11 +564,11 @@ SLIDES["agents.html"] = wrap(
   const canvas=document.getElementById('cvAgent');
   const r=window.devicePixelRatio||1;
   const stages=[
-    {label:'Signals', sub:'cisco-network-events', c:'#fff'},
-    {label:'ES|QL', sub:'triage', c:'#049FD9'},
-    {label:'Agent', sub:'grounded tools', c:'#a78bfa'},
-    {label:'KB', sub:'runbooks', c:'#00BFB3'},
-    {label:'NOC', sub:'escalate', c:'#6ee7c7'},
+    {label:'Elastic', sub:'Meraki + BGP', c:'#fff'},
+    {label:'Copilot', sub:'NOC agent', c:'#049FD9'},
+    {label:'A2A', sub:'Splunk stub', c:'#a78bfa'},
+    {label:'RCA', sub:'WAN/BGP first', c:'#00BFB3'},
+    {label:'P2', sub:'escalate', c:'#6ee7c7'},
   ];
   let t=0;
   function draw(){
@@ -528,7 +610,7 @@ SLIDES["agents.html"] = wrap(
 })();
 </script>
 """,
-    bottom="Agents don’t invent Cisco runbooks — they <strong>retrieve</strong> them from the same Search corpus.",
+    bottom="Harden instructions: summarize Elastic first · then run the <strong>A2A workflow</strong> · never invent Splunk telemetry.",
 )
 
 # ── NOC story ────────────────────────────────────────────────────────────────
@@ -549,18 +631,18 @@ SLIDES["noc-story.html"] = wrap(
     """,
     """
   <div class="slide">
-    <div class="eyebrow fade-up-1">Workshop story arc</div>
-    <h1 class="headline fade-up-2">Three beats in <strong>90 seconds</strong></h1>
-    <p class="sub fade-up-3">Branch 4471 — practice this recap before Module 3.</p>
+    <div class="eyebrow fade-up-1">Workshop story arc · Challenge 9</div>
+    <h1 class="headline fade-up-2">Find → Federate → Act in <strong>90 seconds</strong></h1>
+    <p class="sub fade-up-3">Practice this close-out out loud — same prompt the lab agent writes for you.</p>
     <div class="header-divider fade-up-3"></div>
     <div class="beats">
-      <div class="beat fade-up-4"><div class="n">1</div><div><h3>Search</h3><p>“Find Meraki offline runbook in &lt;10s.”</p></div></div>
-      <div class="beat fade-up-5"><div class="n">2</div><div><h3>Federate</h3><p>“Offline event + escalation + KB — one ES|QL query.”</p></div></div>
-      <div class="beat fade-up-6"><div class="n">3</div><div><h3>Agent</h3><p>“Copilot summarizes timeline and next steps for Branch 4471.”</p></div></div>
+      <div class="beat fade-up-4"><div class="n">1</div><div><h3>Find</h3><p>“Cisco NOC Copilot pulled Meraki + BGP runbooks from Search.”</p></div></div>
+      <div class="beat fade-up-5"><div class="n">2</div><div><h3>Federate</h3><p>“Four indices + connectors — systems stay authoritative; Search queries them.”</p></div></div>
+      <div class="beat fade-up-6"><div class="n">3</div><div><h3>Act + A2A</h3><p>“Workflow stubbed Splunk O11Y — WAN/BGP first; AP RMA is secondary.”</p></div></div>
     </div>
   </div>
 """,
-    bottom="If the room only hears one story, make it <strong>4471</strong>.",
+    bottom="If the room only hears one story, make it <strong>Branch 4471 + A2A augment</strong>.",
 )
 
 # ── Future ───────────────────────────────────────────────────────────────────
@@ -681,19 +763,19 @@ SLIDES["outcomes.html"] = wrap(
     """,
     """
   <div class="slide">
-    <div class="eyebrow fade-up-1">Outcomes</div>
-    <h1 class="headline fade-up-2">Unified search &amp; <strong>simpler admin</strong></h1>
-    <p class="sub fade-up-3">Today’s lab = hot tier + federated indices. Blob federation is the next hop on the same project.</p>
+    <div class="eyebrow fade-up-1">Outcomes · what buyers hear</div>
+    <h1 class="headline fade-up-2">What you can <strong>say after the lab</strong></h1>
+    <p class="sub fade-up-3">Mapped 1:1 to the Instruqt success criteria — not a roadmap wishlist.</p>
     <div class="header-divider fade-up-3"></div>
     <div class="grid2">
-      <div class="card fade-up-4"><div class="label">Unified</div><h3>One query, many tiers</h3><p>Managed indices and federated blob prefixes in a single ES|QL or Search request.</p></div>
-      <div class="card fade-up-4"><div class="label">Admin</div><h3>Register sources in UI</h3><p>No shard math on cold storage. Federate instead of archive clusters on blob.</p></div>
-      <div class="card fade-up-5"><div class="label">Economics</div><h3>Lower TCO</h3><p>Avoid paying twice for frozen/archive — blob for retention, Serverless for hot + AI.</p></div>
-      <div class="card fade-up-5"><div class="label">Bridge</div><h3>This lab proves the pattern</h3><p>Modules 2–3 preview the unified query story your team can try on internal data next.</p></div>
+      <div class="card fade-up-4"><div class="label">Find</div><h3>Cisco NOC Copilot</h3><p>Agent Builder grounded in Search indices — Meraki + BGP runbooks in minutes, not portal hops.</p></div>
+      <div class="card fade-up-4"><div class="label">Augment</div><h3>Workflows + A2A</h3><p>Peer-platform evidence (Splunk O11Y) without rip-and-replace — lab stub today, real bridge tomorrow.</p></div>
+      <div class="card fade-up-5"><div class="label">Federate</div><h3>Connectors + indices</h3><p>Keep Meraki/ITSM authoritative. Elastic is the query/augment layer for NOC copilots.</p></div>
+      <div class="card fade-up-5"><div class="label">Pace</div><h3>AI time compression</h3><p>~60–90 minutes with Agent + Workflows vs hours of manual RCA and peer write-ups.</p></div>
     </div>
   </div>
 """,
-    bottom="Leave them with: <strong>one query across tiers</strong>.",
+    bottom="Leave them with: <strong>Agent for Elastic · A2A for Splunk · connectors for federation</strong>.",
 )
 
 # ── Lab / Close / Thanks ─────────────────────────────────────────────────────
@@ -717,16 +799,16 @@ SLIDES["lab.html"] = wrap(
   <div class="slide">
     <div class="eyebrow fade-up-1">While you wait</div>
     <h1 class="headline fade-up-2">Lab provisioning — <strong>~3–4 minutes</strong></h1>
-    <p class="sub fade-up-3">When Elastic Serverless Search opens, start Module 1.</p>
+    <p class="sub fade-up-3">When Kibana opens, Challenge 1 starts in Agent Builder — not raw Discover.</p>
     <div class="header-divider fade-up-3"></div>
     <div class="steps">
-      <div class="step fade-up-4"><div class="n">1</div><p>Create your <strong>Elastic Serverless Search</strong> project</p></div>
-      <div class="step fade-up-5"><div class="n">2</div><p>Open Kibana for the lab</p></div>
-      <div class="step fade-up-6"><div class="n">3</div><p>Seed <code>cisco-network-kb</code>, runbooks, Meraki events, network events</p></div>
+      <div class="step fade-up-4"><div class="n">1</div><p>Serverless Search project + seeded indices / dashboard / workflow</p></div>
+      <div class="step fade-up-5"><div class="n">2</div><p>Select <strong>Cisco NOC Copilot</strong> in Agent Builder</p></div>
+      <div class="step fade-up-6"><div class="n">3</div><p>If Discover/ES|QL is empty → time picker <strong>Last 24 hours</strong></p></div>
     </div>
   </div>
 """,
-    bottom="Track: <strong>cisco-serverless-workshop</strong> · confirm the KB index first.",
+    bottom="Track: <strong>cisco-serverless-workshop</strong> · Find → Federate → Act.",
 )
 
 SLIDES["close.html"] = wrap(
@@ -749,20 +831,20 @@ SLIDES["close.html"] = wrap(
     """,
     """
   <div class="slide">
-    <div class="eyebrow fade-up-1">Close</div>
-    <h1 class="headline fade-up-2">What you learned on <strong>Search</strong></h1>
-    <p class="sub fade-up-3">Five lines for your notes — share with peers after the lab.</p>
+    <div class="eyebrow fade-up-1">Close · Challenge 9</div>
+    <h1 class="headline fade-up-2">Takeaways that match the <strong>lab</strong></h1>
+    <p class="sub fade-up-3">Same five bullets the Cisco Agent helps you write in the close-out prompt.</p>
     <div class="header-divider fade-up-3"></div>
     <div class="take">
-      <div class="card fade-up-4"><div class="icon">1</div><div><h3>Hybrid AI Search</h3><p>Keyword + semantic on Cisco KB — MTTR, not portal hopping.</p></div></div>
-      <div class="card fade-up-4"><div class="icon">2</div><div><h3>Federate sources</h3><p>Connectors + multi-index ES|QL without rip-and-replace.</p></div></div>
-      <div class="card fade-up-5"><div class="icon">3</div><div><h3>Agents on Search</h3><p>Grounded tools — NOC action on Elastic Search Serverless only.</p></div></div>
-      <div class="card fade-up-5"><div class="icon">4</div><div><h3>Serverless economics</h3><p>One Cloud project, workshop-ready in minutes.</p></div></div>
-      <div class="card fade-up-6"><div class="icon">5</div><div><h3>Roadmap: blob federation</h3><p>Same project → query S3/GCS/Azure archives in place.</p></div></div>
+      <div class="card fade-up-4"><div class="icon">1</div><div><h3>Cisco NOC Copilot</h3><p>Agent Builder on Serverless Search — grounded Meraki + BGP + KB tools.</p></div></div>
+      <div class="card fade-up-4"><div class="icon">2</div><div><h3>Workflows + A2A</h3><p>Augment Splunk O11Y evidence without rip-and-replace (stub → real bridge).</p></div></div>
+      <div class="card fade-up-5"><div class="icon">3</div><div><h3>Federate in place</h3><p>Four indices + content connectors — systems stay authoritative.</p></div></div>
+      <div class="card fade-up-5"><div class="icon">4</div><div><h3>Find → Federate → Act</h3><p>One Branch 4471 story across nine challenges.</p></div></div>
+      <div class="card fade-up-6"><div class="icon">5</div><div><h3>AI time compression</h3><p>Paste prompts beat manual RCA write-ups — hours become minutes.</p></div></div>
     </div>
   </div>
 """,
-    bottom="Leave with three beats to try on your data: <strong>Search → Federate → Agents</strong>.",
+    bottom="Next experiment: connector POC, more agent tools, or a <strong>real A2A bridge URL</strong>.",
 )
 
 SLIDES["thank-you.html"] = wrap(
@@ -791,10 +873,10 @@ SLIDES["thank-you.html"] = wrap(
     <p class="fade-up-3">Questions welcome.<br>
     Lab: <a href="https://play.instruqt.com/manage/elastic/tracks/cisco-serverless-workshop">cisco-serverless-workshop</a></p>
     <div class="pill-row fade-up-4">
-      <span class="pill hot">AI Search</span>
-      <span class="pill">Federated Sources</span>
-      <span class="pill">Agent Builder</span>
-      <span class="pill future">Blob roadmap</span>
+      <span class="pill hot">Cisco NOC Copilot</span>
+      <span class="pill">Workflows + A2A</span>
+      <span class="pill">Find → Federate → Act</span>
+      <span class="pill hot">Branch 4471</span>
     </div>
   </div>
 """,
@@ -803,23 +885,25 @@ SLIDES["thank-you.html"] = wrap(
 
 
 NOTES = {
-    "cover.html": "- Search-only Cisco practitioner workshop. One Serverless Search project.\n- Lab ready ~3–4 min while we walk the deck.",
-    "agenda.html": "- Three modules, same indices. Find → unify → act.\n- Search-only scope — no O11Y/Sec.",
-    "pain.html": "- Swivel-chair pain. Point at the MTTR bars as they animate.\n- Target: one Search surface.",
-    "serverless.html": "- Four advantages. Explicitly: no Observability/Security required.",
-    "ai-search.html": "- Hybrid product story. NOC quote lands the module.",
-    "foundations.html": "- Walk KEYWORD → SEMANTIC → HYBRID. Pause on RRF fuse.\n- Bottom line: hybrid is what you prove live on cisco-network-kb.",
-    "hybrid.html": "- Lab checklist. Don't linger on UI — land the one-surface line.",
-    "federated.html": "- Animated converge. Federate don't rip-and-replace.",
-    "esql.html": "- Branch 4471 thread into Module 3.",
-    "agents.html": "- Grounded tools. Elastic Search Serverless only. Watch the pulse along the pipeline.",
-    "noc-story.html": "- 90-second recap. Practice out loud with a peer.",
-    "future.html": "- Clear bridge today vs roadmap. Economic punch: don't pay twice for cold.",
-    "architecture.html": "- Sources → federation → tiers. Takeaway: one query layer.",
-    "outcomes.html": "- Unified / admin / TCO / bridge.",
-    "lab.html": "- Orient: Serverless Search project + four seed indices. No infra talk.",
-    "close.html": "- Five takeaways on screen for Q&A.",
-    "thank-you.html": "- Point to Instruqt manage URL.",
+    "cover.html": "- Lead with Find → Federate → Act.\n- Cisco NOC Copilot + Workflows/A2A are the lab heroes.",
+    "agenda.html": "- Three modules match Instruqt Challenges 1–9.\n- Search-only — Splunk via A2A, not a second Elastic product.",
+    "pain.html": "- Meraki + BGP + Splunk silos. Bars = manual vs Agent+A2A pace.",
+    "serverless.html": "- Seeded Copilot, A2A workflow, four indices. No O11Y/Sec projects.",
+    "value.html": "- Three surfaces buyers remember: Agent Builder, Workflows/A2A, federation.",
+    "ai-search.html": "- Challenge 1: don't start in Discover — select Cisco NOC Copilot.",
+    "a2a.html": "- Challenge 2 hero slide. WAN/BGP first — do not RMA the AP.\n- Stub today → real A2A bridge later.",
+    "foundations.html": "- Optional depth: KEYWORD → SEMANTIC → HYBRID. Supporting, not the lab hero.",
+    "hybrid.html": "- Corpus + 24h tip. Keep short — A2A is the bigger claim.",
+    "federated.html": "- Challenges 4–6. Four indices + content connectors. Federate don't rip.",
+    "esql.html": "- Challenge 5 verify query. Agent correlates; ES|QL confirms.",
+    "agents.html": "- Challenges 7–8: triage + harden instructions with A2A workflow name.",
+    "noc-story.html": "- Challenge 9 90-second close-out. Practice out loud.",
+    "outcomes.html": "- Buyer-ready outcomes mapped to lab success criteria.",
+    "lab.html": "- While provisioning: Copilot first, Last 24 hours tip.",
+    "close.html": "- Five takeaways = Challenge 9 bullets.",
+    "thank-you.html": "- Point to cisco-serverless-workshop manage URL.",
+    "future.html": "- Optional appendix: blob federation roadmap (not in lab path).",
+    "architecture.html": "- Optional appendix: tiers diagram.",
 }
 
 

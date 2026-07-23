@@ -81,16 +81,16 @@ body::before {
   <div class="accent-bar"></div>
 
   <div class="slide">
-    <div class="eyebrow fade-up-1">Module 3</div>
-    <h1 class="headline fade-up-2">Agent Builder — <strong>search to action</strong></h1>
-    <p class="sub fade-up-3">Grounded tools on Search indices. No hallucinated runbooks. Elastic Search Serverless only.</p>
+    <div class="eyebrow fade-up-1">Module 3 · Challenges 7–8</div>
+    <h1 class="headline fade-up-2">Act — <strong>triage, then harden</strong></h1>
+    <p class="sub fade-up-3">Re-run Branch 4471 with Copilot + A2A. Put the Splunk workflow into agent instructions.</p>
     <div class="header-divider fade-up-3"></div>
     <div class="canvas-wrap fade-up-4"><canvas id="cvAgent"></canvas></div>
   </div>
 
 
   <div class="bottom-strip fade-up-9">
-    <p>Agents don’t invent Cisco runbooks — they <strong>retrieve</strong> them from the same Search corpus.</p>
+    <p>Harden instructions: summarize Elastic first · then run the <strong>A2A workflow</strong> · never invent Splunk telemetry.</p>
   </div>
 
 <script>
@@ -115,11 +115,11 @@ body::before {
   const canvas=document.getElementById('cvAgent');
   const r=window.devicePixelRatio||1;
   const stages=[
-    {label:'Signals', sub:'cisco-network-events', c:'#fff'},
-    {label:'ES|QL', sub:'triage', c:'#049FD9'},
-    {label:'Agent', sub:'grounded tools', c:'#a78bfa'},
-    {label:'KB', sub:'runbooks', c:'#00BFB3'},
-    {label:'NOC', sub:'escalate', c:'#6ee7c7'},
+    {label:'Elastic', sub:'Meraki + BGP', c:'#fff'},
+    {label:'Copilot', sub:'NOC agent', c:'#049FD9'},
+    {label:'A2A', sub:'Splunk stub', c:'#a78bfa'},
+    {label:'RCA', sub:'WAN/BGP first', c:'#00BFB3'},
+    {label:'P2', sub:'escalate', c:'#6ee7c7'},
   ];
   let t=0;
   function draw(){

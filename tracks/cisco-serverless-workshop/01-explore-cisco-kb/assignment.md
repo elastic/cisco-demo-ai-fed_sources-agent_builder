@@ -1,6 +1,6 @@
 ---
 slug: explore-cisco-kb
-id: w2rmwclbgcex
+id: bhipdxqcjvwi
 type: challenge
 title: Challenge 1 — Create the Cisco Agent & find the runbook
 teaser: Stand up Cisco NOC Copilot in Agent Builder — then ask Branch 4471.
@@ -9,13 +9,13 @@ notes:
   contents: |
     **While Elastic Serverless Search provisions (~3–4 min)** — use **← →** in the deck.
 
-    <iframe src="https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html?v2=1" width="100%" height="720" frameborder="0"
+    <iframe src="https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html?v3=1" width="100%" height="720" frameborder="0"
       style="border-radius:8px;border:1px solid #2a3140;display:block;min-height:560px;background:#0b0d12">
     </iframe>
 
     Fullscreen: https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html
 tabs:
-- id: ymu0eqcqliuf
+- id: dd2hiidj42ey
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -31,7 +31,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: zh6nb9pxov9y
+- id: 23jihhpmfds0
   title: NOC Dashboard
   type: service
   hostname: es3-api
