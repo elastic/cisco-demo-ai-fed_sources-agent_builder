@@ -6,7 +6,7 @@ title: Challenge 6 — Plan federation with Agent + Workflows
 teaser: Connectors feed Search; the Cisco Agent + A2A workflow are the query/augment
   layer.
 tabs:
-- id: qgj49ldurszl
+- id: mdne21vrqrhp
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -22,7 +22,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: r3qupizb45f9
+- id: uwxpivry5lur
   title: Content connectors
   type: service
   hostname: es3-api
@@ -90,4 +90,6 @@ Copy into notes.
 ## Verification
 
 Click **Check** when the success criteria are met.
+
+> If Check says **Something went wrong while checking**, wait until Kibana is fully loaded, wait ~30 seconds, then click **Check** again. That message means the lab host was not ready — not that your work failed.
 

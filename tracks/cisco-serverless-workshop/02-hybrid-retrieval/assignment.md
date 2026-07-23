@@ -1,12 +1,12 @@
 ---
 slug: hybrid-retrieval
-id: ovwrnkxmsxyb
+id: zcbn3oxfyoad
 type: challenge
 title: Challenge 2 — Augment with Splunk O11Y A2A (Workflow)
 teaser: Workflow gathers Elastic context; stubbed A2A adds Splunk O11Y evidence for
   Branch 4471.
 tabs:
-- id: nsjwtlsqgxm7
+- id: bu7jfcntpkq6
   title: A2A Workflow
   type: service
   hostname: es3-api
@@ -22,7 +22,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: fyep1e2bvtf9
+- id: shz33wt2ctte
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -95,4 +95,6 @@ In notes: *Elastic events + stubbed Splunk A2A → same root cause (ISP-A / edge
 ## Verification
 
 Click **Check** when the success criteria are met.
+
+> If Check says **Something went wrong while checking**, wait until Kibana is fully loaded, wait ~30 seconds, then click **Check** again. That message means the lab host was not ready — not that your work failed.
 

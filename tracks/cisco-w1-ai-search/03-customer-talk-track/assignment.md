@@ -3,9 +3,9 @@ slug: customer-talk-track
 id: il4azumojimw
 type: challenge
 title: Challenge 3 — Agent drafts the peer story
-teaser: "Cisco NOC Copilot writes the Slack/email update — Find + A2A proof included."
+teaser: Cisco NOC Copilot writes the Slack/email update — Find + A2A proof included.
 tabs:
-- id: tab-agent-03
+- id: 1yzjro6krwqm
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -36,7 +36,7 @@ enhanced_loading: null
 
 You've created `Cisco NOC Copilot`, found runbooks, and augmented with stubbed Splunk O11Y A2A. Package that for a peer or skip-level.
 
-**Time:** ~1–2 minutes with the Agent  
+**Time:** ~1–2 minutes with the Agent
 *Without AI this beat was usually **15–20 minutes** of hand-written talk track.*
 
 ## Your task

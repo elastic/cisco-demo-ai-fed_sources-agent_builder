@@ -30,11 +30,13 @@ TIME_TIP = (
 
 
 def tab(title: str, path: str, tab_id: str) -> str:
+    # Quote paths so YAML treats #fragments as part of the string (Instruqt tabs).
+    path_yaml = path if path.startswith(('"', "'")) else f'"{path}"'
     return f"""- id: {tab_id}
   title: {title}
   type: service
   hostname: es3-api
-  path: {path}
+  path: {path_yaml}
   port: 8080
 {CSP}"""
 
@@ -68,18 +70,38 @@ def read_id(path: Path) -> str | None:
     return m.group(1).strip() if m else None
 
 
+CHECK_TIP = (
+    "> If Check says **Something went wrong while checking**, wait until Kibana is "
+    "fully loaded, wait ~30 seconds, then click **Check** again. That message means "
+    "the lab host was not ready — not that your work failed.\n"
+)
+
+
 def with_time_tip(body: str) -> str:
     body = body.lstrip()
-    if "Last 24 hours" in body:
+    if "Last 24 hours" not in body:
+        if "## Background" in body:
+            body = body.replace("## Background", f"{TIME_TIP}\n## Background", 1)
+        else:
+            body = f"{TIME_TIP}\n{body}"
+    return body
+
+
+def with_check_tip(body: str) -> str:
+    if "Something went wrong while checking" in body:
         return body
-    if "## Background" in body:
-        return body.replace("## Background", f"{TIME_TIP}\n## Background", 1)
-    return f"{TIME_TIP}\n{body}"
+    if "## Verification" in body:
+        return body.replace(
+            "## Verification\n\nClick **Check** when the success criteria are met.\n",
+            f"## Verification\n\nClick **Check** when the success criteria are met.\n\n{CHECK_TIP}",
+            1,
+        )
+    return body + f"\n## Verification\n\nClick **Check** when ready.\n\n{CHECK_TIP}"
 
 
 def write_assignment(path: Path, fm: str, body: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    body = with_time_tip(body)
+    body = with_check_tip(with_time_tip(body))
     path.write_text(f"---\n{fm}---\n\n{body}\n", encoding="utf-8")
     print("wrote", path.relative_to(ROOT))
 

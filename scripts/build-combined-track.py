@@ -135,7 +135,14 @@ def main() -> None:
         body = f"> **{module}** · one **Elastic Serverless Search** project\n\n{body}"
         front = re.sub(r"^  port: \d+", f"  port: {PORT}", front, flags=re.MULTILINE)
         # Only rewrite the first tab path (challenges may include a second dashboard tab).
-        front = re.sub(r"^  path: .+", f"  path: {kibana_path}", front, count=1, flags=re.MULTILINE)
+        # Quote so #fragments survive YAML (e.g. dashboards#/view/...).
+        front = re.sub(
+            r'^  path: .+',
+            f'  path: "{kibana_path}"',
+            front,
+            count=1,
+            flags=re.MULTILINE,
+        )
         front = re.sub(
             r"^- title: Elastic Serverless.*",
             f"- title: {TAB_TITLE}",

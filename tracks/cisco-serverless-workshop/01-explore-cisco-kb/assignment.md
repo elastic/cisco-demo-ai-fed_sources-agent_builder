@@ -1,6 +1,6 @@
 ---
 slug: explore-cisco-kb
-id: bhipdxqcjvwi
+id: ah7iqpx1alat
 type: challenge
 title: Challenge 1 — Create the Cisco Agent & find the runbook
 teaser: Stand up Cisco NOC Copilot in Agent Builder — then ask Branch 4471.
@@ -15,7 +15,7 @@ notes:
 
     Fullscreen: https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html
 tabs:
-- id: dd2hiidj42ey
+- id: j6yf0x5jhyga
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -31,7 +31,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: 23jihhpmfds0
+- id: 1mozb4cj7k4p
   title: NOC Dashboard
   type: service
   hostname: es3-api
@@ -107,4 +107,6 @@ Confirm tool calls hit Search indices and you get **Meraki AP Offline Recovery**
 ## Verification
 
 Click **Check** when the success criteria are met.
+
+> If Check says **Something went wrong while checking**, wait until Kibana is fully loaded, wait ~30 seconds, then click **Check** again. That message means the lab host was not ready — not that your work failed.
 

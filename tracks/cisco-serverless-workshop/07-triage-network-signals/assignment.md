@@ -1,6 +1,6 @@
 ---
 slug: triage-network-signals
-id: 4eal90osrwk5
+id: xve0afytyusv
 type: challenge
 title: Challenge 7 — Triage with Agent + A2A Workflow
 teaser: Re-run the inject — Cisco Agent for Elastic signals, Workflow A2A for Splunk
@@ -16,7 +16,7 @@ notes:
 
     Fullscreen: https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html
 tabs:
-- id: mqxdd1vuksub
+- id: n9xxzgrsrddj
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -32,7 +32,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: pc6wailyzmqh
+- id: bc3moav5xqxj
   title: A2A Workflow
   type: service
   hostname: es3-api
@@ -99,4 +99,6 @@ In notes: *Primary action = transport/ISP on edge-dfw-01; AP RMA is secondary.*
 ## Verification
 
 Click **Check** when the success criteria are met.
+
+> If Check says **Something went wrong while checking**, wait until Kibana is fully loaded, wait ~30 seconds, then click **Check** again. That message means the lab host was not ready — not that your work failed.
 

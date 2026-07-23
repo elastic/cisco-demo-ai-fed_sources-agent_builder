@@ -93,12 +93,13 @@ if [ ! -f "$SEED" ]; then
 fi
 
 echo "Running workshop seed: $WORKSHOP_SEED"
+# Soft-fail: a seed warning must not leave the Instruqt host unhealthy —
+# otherwise Challenge Check returns "Something went wrong while checking".
 if python3 "$SEED" > /tmp/workshop-seed.log 2>&1; then
   tail -30 /tmp/workshop-seed.log || true
 else
-  echo "ERROR: seed failed — /tmp/workshop-seed.log"
+  echo "WARN: seed reported errors — lab may still be usable; see /tmp/workshop-seed.log"
   tail -80 /tmp/workshop-seed.log || true
-  exit 1
 fi
 
 echo "done"

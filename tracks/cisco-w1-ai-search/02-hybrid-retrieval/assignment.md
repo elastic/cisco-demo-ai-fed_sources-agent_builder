@@ -3,9 +3,10 @@ slug: hybrid-retrieval
 id: ivke7lyuske8
 type: challenge
 title: Challenge 2 — Augment with Splunk O11Y A2A (Workflow)
-teaser: "Workflow gathers Elastic context; stubbed A2A adds Splunk O11Y evidence for Branch 4471."
+teaser: Workflow gathers Elastic context; stubbed A2A adds Splunk O11Y evidence for
+  Branch 4471.
 tabs:
-- id: tab-wf-02
+- id: qt0x8aowkhgn
   title: A2A Workflow
   type: service
   hostname: es3-api
@@ -21,7 +22,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: tab-agent-02
+- id: mjifgke6pxx5
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -52,7 +53,7 @@ enhanced_loading: null
 
 Meraki/BGP live in **Elastic Serverless Search**. Detectors/APM often live in **Splunk Observability**. Lab workflow **`cisco-branch-4471-splunk-o11y-a2a-rca`** stubs an A2A investigator response so you can see the pattern end-to-end.
 
-**Time:** ~10 minutes with Workflows + Agent  
+**Time:** ~10 minutes with Workflows + Agent
 *Without AI/A2A automation this beat was usually 30–40 minutes.*
 
 ## Your task
@@ -92,4 +93,6 @@ In notes: *Elastic events + stubbed Splunk A2A → same root cause (ISP-A / edge
 ## Verification
 
 Click **Check** when the success criteria are met.
+
+> If Check says **Something went wrong while checking**, wait until Kibana is fully loaded, wait ~30 seconds, then click **Check** again. That message means the lab host was not ready — not that your work failed.
 

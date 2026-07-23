@@ -6,7 +6,7 @@ title: Challenge 5 — Correlate event + runbook with the Agent
 teaser: Cisco NOC Copilot joins Meraki offline events with KB recovery — federation
   in one ask.
 tabs:
-- id: vnkfucd8lgyy
+- id: ypzaaudr8rwk
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -22,7 +22,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: jws8h4ymng5z
+- id: xzlhoe7g3fre
   title: ES|QL
   type: service
   hostname: es3-api
@@ -92,4 +92,6 @@ In notes: *Next we already augment this Elastic card with Splunk O11Y via workfl
 ## Verification
 
 Click **Check** when the success criteria are met.
+
+> If Check says **Something went wrong while checking**, wait until Kibana is fully loaded, wait ~30 seconds, then click **Check** again. That message means the lab host was not ready — not that your work failed.
 

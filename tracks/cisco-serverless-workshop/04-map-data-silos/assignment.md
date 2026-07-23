@@ -1,6 +1,6 @@
 ---
 slug: map-data-silos
-id: gz3biuxritlc
+id: jcxpcfhm6vvx
 type: challenge
 title: Challenge 4 — Map silos the Agent will query
 teaser: Four Search indices = four silos — inventory them, then ask the Cisco Agent
@@ -16,7 +16,7 @@ notes:
 
     Fullscreen: https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html
 tabs:
-- id: jkxucfktzf3f
+- id: xp6mndgdsxxy
   title: Indices
   type: service
   hostname: es3-api
@@ -32,7 +32,7 @@ tabs:
     value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
       style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
       ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: 4f5xmxfcc2sl
+- id: seyn83hbpcad
   title: Cisco Agent
   type: service
   hostname: es3-api
@@ -102,4 +102,6 @@ Return a compact table. End with one sentence on how Splunk O11Y A2A (workflow c
 ## Verification
 
 Click **Check** when the success criteria are met.
+
+> If Check says **Something went wrong while checking**, wait until Kibana is fully loaded, wait ~30 seconds, then click **Check** again. That message means the lab host was not ready — not that your work failed.
 
