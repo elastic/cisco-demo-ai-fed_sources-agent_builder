@@ -1,12 +1,12 @@
 ---
 slug: hybrid-retrieval
-id: l94cdzv5zqux
+id: jdekcn5fk4hw
 type: challenge
 title: Challenge 2 — Augment with Splunk O11Y A2A (Workflow)
 teaser: Workflow gathers Elastic context; stubbed A2A adds Splunk O11Y evidence for
   Branch 4471.
 tabs:
-- id: df3deppgdgyi
+- id: pztooq1fiqfz
   title: Elastic Serverless Search
   type: service
   hostname: es3-api

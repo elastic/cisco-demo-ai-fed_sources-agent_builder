@@ -1,12 +1,12 @@
 ---
 slug: build-investigation-agent
-id: gqtxru8x7dxy
+id: 6em1a6sry5bl
 type: challenge
 title: Challenge 8 — Harden Cisco NOC Copilot
 teaser: Tighten tools, retest Branch 4471, and make A2A workflow part of the agent
   story.
 tabs:
-- id: bclybezyza8b
+- id: youep0dfornl
   title: Elastic Serverless Search
   type: service
   hostname: es3-api

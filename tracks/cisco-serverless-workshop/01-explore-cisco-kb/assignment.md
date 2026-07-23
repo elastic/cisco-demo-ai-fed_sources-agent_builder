@@ -1,6 +1,6 @@
 ---
 slug: explore-cisco-kb
-id: 9ovrxzapyijq
+id: qps5ppj8lwsq
 type: challenge
 title: Challenge 1 — Create the Cisco Agent & find the runbook
 teaser: Stand up Cisco NOC Copilot in Agent Builder — then ask Branch 4471.
@@ -15,7 +15,7 @@ notes:
 
     Fullscreen: https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html
 tabs:
-- id: d4dzpnpbdojp
+- id: q8bvoojj1yum
   title: Elastic Serverless Search
   type: service
   hostname: es3-api
