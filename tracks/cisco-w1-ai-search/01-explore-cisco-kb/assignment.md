@@ -5,27 +5,11 @@ type: challenge
 title: Challenge 1 — Create the Cisco Agent & find the runbook
 teaser: Stand up Cisco NOC Copilot in Agent Builder — then ask Branch 4471.
 tabs:
-- id: nqao0sn3vl5c
-  title: Cisco Agent
+- id: 9nmqjyugcrur
+  title: Elastic Serverless Search
   type: service
   hostname: es3-api
   path: /app/agent_builder
-  port: 8080
-  custom_request_headers:
-  - key: Content-Security-Policy
-    value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
-      style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
-      ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-  custom_response_headers:
-  - key: Content-Security-Policy
-    value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
-      style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
-      ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: hzmjgg5duwmd
-  title: NOC Dashboard
-  type: service
-  hostname: es3-api
-  path: /app/dashboards#/view/cisco-noc-ops
   port: 8080
   custom_request_headers:
   - key: Content-Security-Policy
@@ -57,13 +41,15 @@ Seeded for you: **Cisco NOC Command Center** dashboard + `cisco-network-kb`.
 
 ## Your task
 
+Open [button label="Elastic Serverless Search"](tab-0) — one Kibana tab for the whole challenge; use the left nav to switch apps.
+
 ### 1 — Orient (30 seconds)
 
-Open [button label="NOC Dashboard"](tab-1). Confirm **Branch-4471-Dallas** appears in Meraki offline and/or network panels. If panels are empty, set time to **Last 24 hours**.
+Left nav → **Dashboards** → **Cisco NOC Command Center** (or open `/app/dashboards#/view/cisco-noc-ops`). Confirm **Branch-4471-Dallas** in Meraki offline and/or network panels. If panels are empty, set time to **Last 24 hours**.
 
 ### 2 — Select **Cisco NOC Copilot**
 
-Open [button label="Cisco Agent"](tab-0) → **Agent Builder**.
+Left nav → **Agents** (Agent Builder).
 
 Setup seeds **`Cisco NOC Copilot`** (`cisco-noc-copilot`). Open the agent dropdown → select **Cisco NOC Copilot** (not only *Elastic AI Agent*).
 

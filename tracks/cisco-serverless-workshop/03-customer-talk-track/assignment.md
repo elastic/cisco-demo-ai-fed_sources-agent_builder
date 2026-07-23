@@ -1,12 +1,12 @@
 ---
 slug: customer-talk-track
-id: zx3bq8rex0ve
+id: r27zapeyvw89
 type: challenge
 title: Challenge 3 — Agent drafts the peer story
 teaser: Cisco NOC Copilot writes the Slack/email update — Find + A2A proof included.
 tabs:
-- id: 9perdenm7pxf
-  title: Cisco Agent
+- id: ygyixcshln82
+  title: Elastic Serverless Search
   type: service
   hostname: es3-api
   path: /app/agent_builder
@@ -43,7 +43,7 @@ You've created `Cisco NOC Copilot`, found runbooks, and augmented with stubbed S
 
 ## Your task
 
-Open [button label="Cisco Agent"](tab-0) and paste:
+Open [button label="Elastic Serverless Search"](tab-0) → **Agents** → `Cisco NOC Copilot` and paste:
 
 ```text
 Write a peer / skip-level Slack or email update about what we proved on Elastic Serverless Search for Cisco Branch 4471.

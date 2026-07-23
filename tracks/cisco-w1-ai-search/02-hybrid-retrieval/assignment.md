@@ -6,27 +6,11 @@ title: Challenge 2 — Augment with Splunk O11Y A2A (Workflow)
 teaser: Workflow gathers Elastic context; stubbed A2A adds Splunk O11Y evidence for
   Branch 4471.
 tabs:
-- id: qt0x8aowkhgn
-  title: A2A Workflow
+- id: ojoisa4gkfx9
+  title: Elastic Serverless Search
   type: service
   hostname: es3-api
   path: /app/workflows
-  port: 8080
-  custom_request_headers:
-  - key: Content-Security-Policy
-    value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
-      style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
-      ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-  custom_response_headers:
-  - key: Content-Security-Policy
-    value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
-      style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
-      ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: mjifgke6pxx5
-  title: Cisco Agent
-  type: service
-  hostname: es3-api
-  path: /app/agent_builder
   port: 8080
   custom_request_headers:
   - key: Content-Security-Policy
@@ -58,9 +42,11 @@ Meraki/BGP live in **Elastic Serverless Search**. Detectors/APM often live in **
 
 ## Your task
 
+Open [button label="Elastic Serverless Search"](tab-0) — one Kibana tab; use the left nav for Workflows vs Agents.
+
 ### 1 — Run the A2A workflow
 
-Open [button label="A2A Workflow"](tab-0) → **Cisco Branch 4471 — Splunk O11Y A2A RCA**.
+Left nav → **Workflows** → **Cisco Branch 4471 — Splunk O11Y A2A RCA**.
 
 1. Skim steps: ES\|QL (`meraki_context`, `network_context`, `kb_runbooks`) → **stubbed A2A** (`data.parseJson`) → `unified_rca`.
 2. **Run** with defaults (`site=Branch-4471-Dallas`, `device_hint=4471`).
@@ -68,7 +54,7 @@ Open [button label="A2A Workflow"](tab-0) → **Cisco Branch 4471 — Splunk O11
 
 ### 2 — Feed A2A into the Cisco Agent
 
-Open [button label="Cisco Agent"](tab-1) → agent dropdown → select **`Cisco NOC Copilot`** (seeded at lab start; create via **+ New agent** if missing). Paste:
+Left nav → **Agents** → select **`Cisco NOC Copilot`** (seeded at lab start; create via **+ New agent** if missing). Paste:
 
 ```text
 I ran workflow cisco-branch-4471-splunk-o11y-a2a-rca. Using Elastic indices plus this Splunk O11Y A2A stub summary, produce a short RCA:

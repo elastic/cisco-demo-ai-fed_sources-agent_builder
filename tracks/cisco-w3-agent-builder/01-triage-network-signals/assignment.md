@@ -6,27 +6,11 @@ title: Challenge 7 — Triage with Agent + A2A Workflow
 teaser: Re-run the inject — Cisco Agent for Elastic signals, Workflow A2A for Splunk
   O11Y.
 tabs:
-- id: x9pthjfm8nct
-  title: Cisco Agent
+- id: ceazjgne4rf1
+  title: Elastic Serverless Search
   type: service
   hostname: es3-api
   path: /app/agent_builder
-  port: 8080
-  custom_request_headers:
-  - key: Content-Security-Policy
-    value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
-      style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
-      ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-  custom_response_headers:
-  - key: Content-Security-Policy
-    value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
-      style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
-      ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: ovulixk2jote
-  title: A2A Workflow
-  type: service
-  hostname: es3-api
-  path: /app/workflows
   port: 8080
   custom_request_headers:
   - key: Content-Security-Policy
@@ -58,9 +42,11 @@ Pager: *"BGP session down on edge router + Meraki AP offline at Branch 4471."*
 
 ## Your task
 
+Open [button label="Elastic Serverless Search"](tab-0) — one Kibana tab; switch Agents ↔ Workflows in the left nav.
+
 ### 1 — Agent triage (Elastic)
 
-Open [button label="Cisco Agent"](tab-0) and paste:
+**Agents** → `Cisco NOC Copilot` and paste:
 
 ```text
 Triage Branch 4471 now.
@@ -72,7 +58,7 @@ Return a 5-line pager update.
 
 ### 2 — A2A augment (Splunk stub)
 
-Open [button label="A2A Workflow"](tab-1) → **Cisco Branch 4471 — Splunk O11Y A2A RCA** → **Run** (defaults). Confirm stub detectors still align with the Agent's Elastic timeline (BGP before / with Meraki cloud disconnect).
+Left nav → **Workflows** → **Cisco Branch 4471 — Splunk O11Y A2A RCA** → **Run** (defaults). Confirm stub detectors still align with the Agent's Elastic timeline (BGP before / with Meraki cloud disconnect).
 
 ### 3 — One decision
 

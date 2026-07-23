@@ -1,32 +1,16 @@
 ---
 slug: cross-source-esql
-id: gl5yueeob0if
+id: sbvuw5ln5ab3
 type: challenge
 title: Challenge 5 — Correlate event + runbook with the Agent
 teaser: Cisco NOC Copilot joins Meraki offline events with KB recovery — federation
   in one ask.
 tabs:
-- id: jrkldkgtlnoi
-  title: Cisco Agent
+- id: zf1mcs8teumx
+  title: Elastic Serverless Search
   type: service
   hostname: es3-api
   path: /app/agent_builder
-  port: 8080
-  custom_request_headers:
-  - key: Content-Security-Policy
-    value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
-      style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
-      ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-  custom_response_headers:
-  - key: Content-Security-Policy
-    value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
-      style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
-      ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: mjjonxzx1bpa
-  title: ES|QL
-  type: service
-  hostname: es3-api
-  path: /app/elasticsearch/query
   port: 8080
   custom_request_headers:
   - key: Content-Security-Policy
@@ -58,9 +42,11 @@ enhanced_loading: null
 
 ## Your task
 
+Open [button label="Elastic Serverless Search"](tab-0) — one Kibana tab; use the left nav for Agents vs ES\|QL.
+
 ### 1 — Agent correlation (primary)
 
-Open [button label="Cisco Agent"](tab-0) and paste:
+**Agents** → `Cisco NOC Copilot` and paste:
 
 ```text
 MR-AP-4471 went offline. Using ES|QL:
@@ -72,7 +58,7 @@ Return a short incident card: when / where / runbook title / first two steps.
 
 ### 2 — Verify with ES|QL (optional but recommended)
 
-On [button label="ES|QL"](tab-1), skim that the agent used the right indices (or paste the Meraki offline query yourself). If you get **0 results**, set the time picker to **Last 24 hours**, then re-run:
+Left nav → **ES|QL** / query (or Discover). Skim that the agent used the right indices (or paste the Meraki offline query yourself). If you get **0 results**, set the time picker to **Last 24 hours**, then re-run:
 
 ```esql
 FROM cisco-meraki-events

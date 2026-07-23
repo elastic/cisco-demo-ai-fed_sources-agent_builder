@@ -1,13 +1,13 @@
 ---
 slug: exec-demo-close
-id: fvfsfzzavetz
+id: o6obyjxyvdpy
 type: challenge
 title: Challenge 9 — Close the loop with the Cisco Agent
 teaser: 'Agent recap: Find → Federate → Act, with Workflows/A2A called out as the
   augment path.'
 tabs:
-- id: paxaikomf6up
-  title: Cisco Agent
+- id: j402tnpfsnxb
+  title: Elastic Serverless Search
   type: service
   hostname: es3-api
   path: /app/agent_builder
@@ -44,7 +44,7 @@ You stayed on **Elastic Serverless Search**: created `Cisco NOC Copilot`, mapped
 
 ## Your task
 
-Open [button label="Cisco Agent"](tab-0) and paste:
+Open [button label="Elastic Serverless Search"](tab-0) → **Agents** → `Cisco NOC Copilot` and paste:
 
 ```text
 Write a close-out for my team after the Cisco Elastic Serverless Search workshop.

@@ -1,6 +1,6 @@
 ---
 slug: map-data-silos
-id: jcxpcfhm6vvx
+id: cs8e6813zmqc
 type: challenge
 title: Challenge 4 — Map silos the Agent will query
 teaser: Four Search indices = four silos — inventory them, then ask the Cisco Agent
@@ -16,27 +16,11 @@ notes:
 
     Fullscreen: https://elastic.github.io/cisco-demo-ai-fed_sources-agent_builder/presentation/cisco-search-ai.html
 tabs:
-- id: xp6mndgdsxxy
-  title: Indices
+- id: bnxmo0wl8mxv
+  title: Elastic Serverless Search
   type: service
   hostname: es3-api
   path: /app/management/data/index_management/indices
-  port: 8080
-  custom_request_headers:
-  - key: Content-Security-Policy
-    value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
-      style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
-      ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-  custom_response_headers:
-  - key: Content-Security-Policy
-    value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
-      style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
-      ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: seyn83hbpcad
-  title: Cisco Agent
-  type: service
-  hostname: es3-api
-  path: /app/agent_builder
   port: 8080
   custom_request_headers:
   - key: Content-Security-Policy
@@ -75,17 +59,19 @@ Branch 4471 needs more than a KB. Setup seeded four indices in **one** Serverles
 
 ## Your task
 
+Open [button label="Elastic Serverless Search"](tab-0) — one Kibana tab; use the left nav for Index Management, Discover, and Agents.
+
 ### 1 — Confirm indices
 
-Open [button label="Indices"](tab-0). Confirm all **four** indices exist.
+**Data management** (or Index Management) → confirm all **four** indices exist.
 
 ### 2 — Spot-check Meraki fields
 
-Open Discover on `cisco-meraki-events` (or ask the agent which fields matter). Set time to **Last 24 hours** if the table is empty. Note `event_type`, `device_name`, `site`.
+Left nav → **Discover** on `cisco-meraki-events` (or ask the agent which fields matter). Set time to **Last 24 hours** if the table is empty. Note `event_type`, `device_name`, `site`.
 
 ### 3 — Ask the Agent to map ownership
 
-Open [button label="Cisco Agent"](tab-1) and paste:
+Left nav → **Agents** → `Cisco NOC Copilot` and paste:
 
 ```text
 We have four indices: cisco-network-kb, cisco-internal-runbooks, cisco-meraki-events, cisco-network-events.

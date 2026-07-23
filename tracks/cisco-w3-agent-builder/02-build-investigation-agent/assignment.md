@@ -6,27 +6,11 @@ title: Challenge 8 — Harden Cisco NOC Copilot
 teaser: Tighten tools, retest Branch 4471, and make A2A workflow part of the agent
   story.
 tabs:
-- id: 6rwg52zalvqo
-  title: Cisco Agent
+- id: pn3vzrfohmim
+  title: Elastic Serverless Search
   type: service
   hostname: es3-api
   path: /app/agent_builder
-  port: 8080
-  custom_request_headers:
-  - key: Content-Security-Policy
-    value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
-      style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
-      ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-  custom_response_headers:
-  - key: Content-Security-Policy
-    value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
-      style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
-      ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: vomhtijuwdyk
-  title: A2A Workflow
-  type: service
-  hostname: es3-api
-  path: /app/workflows
   port: 8080
   custom_request_headers:
   - key: Content-Security-Policy
@@ -64,9 +48,11 @@ Charter check for `Cisco NOC Copilot`:
 
 ## Your task
 
+Open [button label="Elastic Serverless Search"](tab-0) — one Kibana tab; use left nav for Agents / Workflows.
+
 ### 1 — Harden tools
 
-Open [button label="Cisco Agent"](tab-0). Ensure ES\|QL (or search) tools cover all four indices. Add a short instruction in the agent instructions/prompt:
+**Agents** → `Cisco NOC Copilot`. Ensure ES\|QL (or search) tools cover all four indices. Add a short instruction in the agent instructions/prompt:
 
 ```text
 When Branch 4471 or Meraki+BGP incidents appear, summarize Elastic evidence first.
@@ -87,7 +73,7 @@ Capture notes or a screenshot of one successful tool invocation.
 
 ### 3 — Optional: re-run A2A workflow
 
-[button label="A2A Workflow"](tab-1) → Run once if you want a fresh stub payload for the escalation note.
+Left nav → **Workflows** → **Cisco Branch 4471 — Splunk O11Y A2A RCA** → **Run** once if you want a fresh stub payload for the escalation note.
 
 ## Reference
 

@@ -120,6 +120,41 @@ def inject_loading_notes(front: str, dest_ch: str) -> str:
     return front.rstrip() + "\n" + block
 
 
+CSP_BLOCK = """  custom_request_headers:
+  - key: Content-Security-Policy
+    value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
+      style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
+      ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
+  custom_response_headers:
+  - key: Content-Security-Policy
+    value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
+      style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
+      ''unsafe-inline'' ''self'' https://kibana.estccdn.com'"""
+
+
+def single_tab_front(front: str, kibana_path: str) -> str:
+    """Force exactly one Elastic Serverless Search tab per challenge."""
+    one_tab = f"""tabs:
+- title: {TAB_TITLE}
+  type: service
+  hostname: es3-api
+  path: "{kibana_path}"
+  port: {PORT}
+{CSP_BLOCK}
+"""
+    # Replace from tabs: through the line before difficulty:
+    if re.search(r"^tabs:\s*$", front, flags=re.MULTILINE):
+        return re.sub(
+            r"^tabs:\s*\n(?:.*\n)*?(?=^difficulty:)",
+            one_tab,
+            front,
+            count=1,
+            flags=re.MULTILINE,
+        )
+    # No tabs block — insert before difficulty
+    return re.sub(r"^difficulty:", one_tab + "difficulty:", front, count=1, flags=re.MULTILINE)
+
+
 def main() -> None:
     if COMBINED.exists():
         shutil.rmtree(COMBINED)
@@ -133,23 +168,6 @@ def main() -> None:
         front, body = parts[1], parts[2].lstrip()
         module = MODULE_BY_DEST[dest_ch[:2]]
         body = f"> **{module}** · one **Elastic Serverless Search** project\n\n{body}"
-        front = re.sub(r"^  port: \d+", f"  port: {PORT}", front, flags=re.MULTILINE)
-        # Only rewrite the first tab path (challenges may include a second dashboard tab).
-        # Quote so #fragments survive YAML (e.g. dashboards#/view/...).
-        front = re.sub(
-            r'^  path: .+',
-            f'  path: "{kibana_path}"',
-            front,
-            count=1,
-            flags=re.MULTILINE,
-        )
-        front = re.sub(
-            r"^- title: Elastic Serverless.*",
-            f"- title: {TAB_TITLE}",
-            front,
-            count=1,
-            flags=re.MULTILINE,
-        )
         front = re.sub(
             r"^title: .+$",
             f"title: {TITLE_BY_DEST[dest_ch]}",
@@ -157,6 +175,7 @@ def main() -> None:
             count=1,
             flags=re.MULTILINE,
         )
+        front = single_tab_front(front, kibana_path)
         front = inject_loading_notes(front, dest_ch)
         write(dest / "assignment.md", f"---{front}---\n\n{body}")
         check_src = ROOT / "scripts" / "instruqt-check-es3.sh"

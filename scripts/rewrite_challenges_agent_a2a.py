@@ -29,8 +29,12 @@ TIME_TIP = (
 )
 
 
-def tab(title: str, path: str, tab_id: str) -> str:
-    # Quote paths so YAML treats #fragments as part of the string (Instruqt tabs).
+TAB_TITLE = "Elastic Serverless Search"
+
+
+def tab(path: str, tab_id: str, title: str = TAB_TITLE) -> str:
+    # One Kibana tab per challenge — navigate inside the left nav for Dashboards / Workflows / etc.
+    # Quote paths so YAML treats #fragments as part of the string.
     path_yaml = path if path.startswith(('"', "'")) else f'"{path}"'
     return f"""- id: {tab_id}
   title: {title}
@@ -112,12 +116,7 @@ CHALLENGES = {
         "title": "Challenge 1 — Create the Cisco Agent & find the runbook",
         "teaser": "Stand up Cisco NOC Copilot in Agent Builder — then ask Branch 4471.",
         "timelimit": 600,
-        "tabs": "\n".join(
-            [
-                tab("Cisco Agent", "/app/agent_builder", "tab-agent-01"),
-                tab("NOC Dashboard", "/app/dashboards#/view/cisco-noc-ops", "tab-dash-01"),
-            ]
-        ),
+        "tabs": tab("/app/agent_builder", "tab-es-01"),
         "body": f"""# Create the Cisco Agent & find the runbook
 
 > **Thesis:** Don't start in raw Discover. Create a **Cisco Agent** in Agent Builder that queries Serverless Search — then use it for every later challenge.
@@ -133,13 +132,15 @@ Seeded for you: **Cisco NOC Command Center** dashboard + `cisco-network-kb`.
 
 ## Your task
 
+Open [button label="Elastic Serverless Search"](tab-0) — one Kibana tab for the whole challenge; use the left nav to switch apps.
+
 ### 1 — Orient (30 seconds)
 
-Open [button label="NOC Dashboard"](tab-1). Confirm **Branch-4471-Dallas** appears in Meraki offline and/or network panels. If panels are empty, set time to **Last 24 hours**.
+Left nav → **Dashboards** → **Cisco NOC Command Center** (or open `/app/dashboards#/view/cisco-noc-ops`). Confirm **Branch-4471-Dallas** in Meraki offline and/or network panels. If panels are empty, set time to **Last 24 hours**.
 
 ### 2 — Select **{AGENT}**
 
-Open [button label="Cisco Agent"](tab-0) → **Agent Builder**.
+Left nav → **Agents** (Agent Builder).
 
 Setup seeds **`{AGENT}`** (`cisco-noc-copilot`). Open the agent dropdown → select **{AGENT}** (not only *Elastic AI Agent*).
 
@@ -178,12 +179,7 @@ Click **Check** when the success criteria are met.
         "title": "Challenge 2 — Augment with Splunk O11Y A2A (Workflow)",
         "teaser": "Workflow gathers Elastic context; stubbed A2A adds Splunk O11Y evidence for Branch 4471.",
         "timelimit": 900,
-        "tabs": "\n".join(
-            [
-                tab("A2A Workflow", "/app/workflows", "tab-wf-02"),
-                tab("Cisco Agent", "/app/agent_builder", "tab-agent-02"),
-            ]
-        ),
+        "tabs": tab("/app/workflows", "tab-es-02"),
         "body": f"""# Augment with Splunk O11Y A2A (Workflow)
 
 > **Thesis:** Agent Builder answers from Elastic. **Workflows + A2A** augment that answer with peer-platform evidence (Splunk Observability) — without rip-and-replace.
@@ -197,9 +193,11 @@ Meraki/BGP live in **Elastic Serverless Search**. Detectors/APM often live in **
 
 ## Your task
 
+Open [button label="Elastic Serverless Search"](tab-0) — one Kibana tab; use the left nav for Workflows vs Agents.
+
 ### 1 — Run the A2A workflow
 
-Open [button label="A2A Workflow"](tab-0) → **{WF}**.
+Left nav → **Workflows** → **{WF}**.
 
 1. Skim steps: ES\\|QL (`meraki_context`, `network_context`, `kb_runbooks`) → **stubbed A2A** (`data.parseJson`) → `unified_rca`.
 2. **Run** with defaults (`site=Branch-4471-Dallas`, `device_hint=4471`).
@@ -207,7 +205,7 @@ Open [button label="A2A Workflow"](tab-0) → **{WF}**.
 
 ### 2 — Feed A2A into the Cisco Agent
 
-Open [button label="Cisco Agent"](tab-1) → agent dropdown → select **`{AGENT}`** (seeded at lab start; create via **+ New agent** if missing). Paste:
+Left nav → **Agents** → select **`{AGENT}`** (seeded at lab start; create via **+ New agent** if missing). Paste:
 
 ```text
 I ran workflow {WF_ID}. Using Elastic indices plus this Splunk O11Y A2A stub summary, produce a short RCA:
@@ -239,7 +237,7 @@ Click **Check** when the success criteria are met.
         "title": "Challenge 3 — Agent drafts the peer story",
         "teaser": "Cisco NOC Copilot writes the Slack/email update — Find + A2A proof included.",
         "timelimit": 300,
-        "tabs": tab("Cisco Agent", "/app/agent_builder", "tab-agent-03"),
+        "tabs": tab("/app/agent_builder", "tab-es-03"),
         "body": f"""# Agent drafts the peer story
 
 > **Thesis:** The Cisco Agent already saw Elastic + A2A proof — let it write the peer update. You review once and send.
@@ -253,7 +251,7 @@ You've created `{AGENT}`, found runbooks, and augmented with stubbed Splunk O11Y
 
 ## Your task
 
-Open [button label="Cisco Agent"](tab-0) and paste:
+Open [button label="Elastic Serverless Search"](tab-0) → **Agents** → `{AGENT}` and paste:
 
 ```text
 Write a peer / skip-level Slack or email update about what we proved on Elastic Serverless Search for Cisco Branch 4471.
@@ -289,16 +287,7 @@ Click **Check** when you have the write-up in notes.
         "title": "Challenge 4 — Map silos the Agent will query",
         "teaser": "Four Search indices = four silos — inventory them, then ask the Cisco Agent who owns each.",
         "timelimit": 600,
-        "tabs": "\n".join(
-            [
-                tab(
-                    "Indices",
-                    "/app/management/data/index_management/indices",
-                    "tab-idx-04",
-                ),
-                tab("Cisco Agent", "/app/agent_builder", "tab-agent-04"),
-            ]
-        ),
+        "tabs": tab("/app/management/data/index_management/indices", "tab-es-04"),
         "body": f"""# Map silos the Agent will query
 
 > **Thesis:** Federation is not rip-and-replace. `{AGENT}` only gets smarter when you map which silos feed Serverless Search.
@@ -319,17 +308,19 @@ Branch 4471 needs more than a KB. Setup seeded four indices in **one** Serverles
 
 ## Your task
 
+Open [button label="Elastic Serverless Search"](tab-0) — one Kibana tab; use the left nav for Index Management, Discover, and Agents.
+
 ### 1 — Confirm indices
 
-Open [button label="Indices"](tab-0). Confirm all **four** indices exist.
+**Data management** (or Index Management) → confirm all **four** indices exist.
 
 ### 2 — Spot-check Meraki fields
 
-Open Discover on `cisco-meraki-events` (or ask the agent which fields matter). Set time to **Last 24 hours** if the table is empty. Note `event_type`, `device_name`, `site`.
+Left nav → **Discover** on `cisco-meraki-events` (or ask the agent which fields matter). Set time to **Last 24 hours** if the table is empty. Note `event_type`, `device_name`, `site`.
 
 ### 3 — Ask the Agent to map ownership
 
-Open [button label="Cisco Agent"](tab-1) and paste:
+Left nav → **Agents** → `{AGENT}` and paste:
 
 ```text
 We have four indices: cisco-network-kb, cisco-internal-runbooks, cisco-meraki-events, cisco-network-events.
@@ -353,12 +344,7 @@ Click **Check** when the success criteria are met.
         "title": "Challenge 5 — Correlate event + runbook with the Agent",
         "teaser": "Cisco NOC Copilot joins Meraki offline events with KB recovery — federation in one ask.",
         "timelimit": 600,
-        "tabs": "\n".join(
-            [
-                tab("Cisco Agent", "/app/agent_builder", "tab-agent-05"),
-                tab("ES|QL", "/app/elasticsearch/query", "tab-esql-05"),
-            ]
-        ),
+        "tabs": tab("/app/agent_builder", "tab-es-05"),
         "body": f"""# Correlate event + runbook with the Agent
 
 > **Thesis:** Cross-index correlation is the Agent's job. You verify once with ES\\|QL; the Agent does the join narrative.
@@ -372,9 +358,11 @@ Click **Check** when the success criteria are met.
 
 ## Your task
 
+Open [button label="Elastic Serverless Search"](tab-0) — one Kibana tab; use the left nav for Agents vs ES\\|QL.
+
 ### 1 — Agent correlation (primary)
 
-Open [button label="Cisco Agent"](tab-0) and paste:
+**Agents** → `{AGENT}` and paste:
 
 ```text
 MR-AP-4471 went offline. Using ES|QL:
@@ -386,7 +374,7 @@ Return a short incident card: when / where / runbook title / first two steps.
 
 ### 2 — Verify with ES|QL (optional but recommended)
 
-On [button label="ES|QL"](tab-1), skim that the agent used the right indices (or paste the Meraki offline query yourself). If you get **0 results**, set the time picker to **Last 24 hours**, then re-run:
+Left nav → **ES|QL** / query (or Discover). Skim that the agent used the right indices (or paste the Meraki offline query yourself). If you get **0 results**, set the time picker to **Last 24 hours**, then re-run:
 
 ```esql
 FROM cisco-meraki-events
@@ -415,16 +403,7 @@ Click **Check** when the success criteria are met.
         "title": "Challenge 6 — Plan federation with Agent + Workflows",
         "teaser": "Connectors feed Search; the Cisco Agent + A2A workflow are the query/augment layer.",
         "timelimit": 480,
-        "tabs": "\n".join(
-            [
-                tab("Cisco Agent", "/app/agent_builder", "tab-agent-06"),
-                tab(
-                    "Content connectors",
-                    "/app/management/data/search_connectors/connectors",
-                    "tab-conn-06",
-                ),
-            ]
-        ),
+        "tabs": tab("/app/agent_builder", "tab-es-06"),
         "body": f"""# Plan federation with Agent + Workflows
 
 > **Thesis:** Content connectors keep Meraki/ITSM authoritative. `{AGENT}` + Workflows/A2A are how you **query and augment** — not replace — those systems.
@@ -438,13 +417,15 @@ Lab indices simulate a connector-fed world. Production uses **Elastic content co
 
 ## Your task
 
+Open [button label="Elastic Serverless Search"](tab-0) — one Kibana tab; use global search or Stack Management for connectors.
+
 ### 1 — Tour Content connectors (30 seconds)
 
-Open [button label="Content connectors"](tab-1). Skim available types — no production connector required. If you see **Application not found**, open Kibana global search and type **Content connectors** (path: Stack Management → Content connectors).
+Kibana global search → **Content connectors** (or Stack Management → Content connectors). Skim available types — no production connector required.
 
 ### 2 — Agent writes the federation plan
 
-Open [button label="Cisco Agent"](tab-0) (`{AGENT}`) and paste:
+Left nav → **Agents** → `{AGENT}` and paste:
 
 ```text
 Draft a federation plan for Cisco on Elastic Serverless Search.
@@ -477,12 +458,7 @@ Click **Check** when the success criteria are met.
         "title": "Challenge 7 — Triage with Agent + A2A Workflow",
         "teaser": "Re-run the inject — Cisco Agent for Elastic signals, Workflow A2A for Splunk O11Y.",
         "timelimit": 600,
-        "tabs": "\n".join(
-            [
-                tab("Cisco Agent", "/app/agent_builder", "tab-agent-07"),
-                tab("A2A Workflow", "/app/workflows", "tab-wf-07"),
-            ]
-        ),
+        "tabs": tab("/app/agent_builder", "tab-es-07"),
         "body": f"""# Triage with Agent + A2A Workflow
 
 > **Thesis:** Live triage = `{AGENT}` on Elastic indices **plus** Workflow A2A for Splunk O11Y — same Branch 4471 inject, two automation surfaces.
@@ -496,9 +472,11 @@ Pager: *"BGP session down on edge router + Meraki AP offline at Branch 4471."*
 
 ## Your task
 
+Open [button label="Elastic Serverless Search"](tab-0) — one Kibana tab; switch Agents ↔ Workflows in the left nav.
+
 ### 1 — Agent triage (Elastic)
 
-Open [button label="Cisco Agent"](tab-0) and paste:
+**Agents** → `{AGENT}` and paste:
 
 ```text
 Triage Branch 4471 now.
@@ -510,7 +488,7 @@ Return a 5-line pager update.
 
 ### 2 — A2A augment (Splunk stub)
 
-Open [button label="A2A Workflow"](tab-1) → **{WF}** → **Run** (defaults). Confirm stub detectors still align with the Agent's Elastic timeline (BGP before / with Meraki cloud disconnect).
+Left nav → **Workflows** → **{WF}** → **Run** (defaults). Confirm stub detectors still align with the Agent's Elastic timeline (BGP before / with Meraki cloud disconnect).
 
 ### 3 — One decision
 
@@ -532,12 +510,7 @@ Click **Check** when the success criteria are met.
         "title": "Challenge 8 — Harden Cisco NOC Copilot",
         "teaser": "Tighten tools, retest Branch 4471, and make A2A workflow part of the agent story.",
         "timelimit": 900,
-        "tabs": "\n".join(
-            [
-                tab("Cisco Agent", "/app/agent_builder", "tab-agent-08"),
-                tab("A2A Workflow", "/app/workflows", "tab-wf-08"),
-            ]
-        ),
+        "tabs": tab("/app/agent_builder", "tab-es-08"),
         "body": f"""# Harden Cisco NOC Copilot
 
 > **Thesis:** Challenge 1 created the agent. Now harden it: tools, prompts, and an explicit link to the A2A workflow for Splunk augmentation.
@@ -557,9 +530,11 @@ Charter check for `{AGENT}`:
 
 ## Your task
 
+Open [button label="Elastic Serverless Search"](tab-0) — one Kibana tab; use left nav for Agents / Workflows.
+
 ### 1 — Harden tools
 
-Open [button label="Cisco Agent"](tab-0). Ensure ES\\|QL (or search) tools cover all four indices. Add a short instruction in the agent instructions/prompt:
+**Agents** → `{AGENT}`. Ensure ES\\|QL (or search) tools cover all four indices. Add a short instruction in the agent instructions/prompt:
 
 ```text
 When Branch 4471 or Meraki+BGP incidents appear, summarize Elastic evidence first.
@@ -580,7 +555,7 @@ Capture notes or a screenshot of one successful tool invocation.
 
 ### 3 — Optional: re-run A2A workflow
 
-[button label="A2A Workflow"](tab-1) → Run once if you want a fresh stub payload for the escalation note.
+Left nav → **Workflows** → **{WF}** → **Run** once if you want a fresh stub payload for the escalation note.
 
 ## Reference
 
@@ -602,7 +577,7 @@ Click **Check** after a test prompt returns actionable steps.
         "title": "Challenge 9 — Close the loop with the Cisco Agent",
         "teaser": "Agent recap: Find → Federate → Act, with Workflows/A2A called out as the augment path.",
         "timelimit": 300,
-        "tabs": tab("Cisco Agent", "/app/agent_builder", "tab-agent-09"),
+        "tabs": tab("/app/agent_builder", "tab-es-09"),
         "body": f"""# Close the loop with the Cisco Agent
 
 > **Thesis:** Same Serverless Search project the whole way — Agent Builder for Elastic action, Workflows/A2A for peer-platform augment.
@@ -616,7 +591,7 @@ You stayed on **Elastic Serverless Search**: created `{AGENT}`, mapped silos, co
 
 ## Your task
 
-Open [button label="Cisco Agent"](tab-0) and paste:
+Open [button label="Elastic Serverless Search"](tab-0) → **Agents** → `{AGENT}` and paste:
 
 ```text
 Write a close-out for my team after the Cisco Elastic Serverless Search workshop.

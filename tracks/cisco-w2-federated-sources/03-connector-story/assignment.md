@@ -6,27 +6,11 @@ title: Challenge 6 — Plan federation with Agent + Workflows
 teaser: Connectors feed Search; the Cisco Agent + A2A workflow are the query/augment
   layer.
 tabs:
-- id: mdne21vrqrhp
-  title: Cisco Agent
+- id: brhx0iws8tdk
+  title: Elastic Serverless Search
   type: service
   hostname: es3-api
   path: /app/agent_builder
-  port: 8080
-  custom_request_headers:
-  - key: Content-Security-Policy
-    value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
-      style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
-      ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-  custom_response_headers:
-  - key: Content-Security-Policy
-    value: 'script-src ''self'' https://kibana.estccdn.com; worker-src blob: ''self'';
-      style-src ''unsafe-inline'' ''self'' https://kibana.estccdn.com; style-src-elem
-      ''unsafe-inline'' ''self'' https://kibana.estccdn.com'
-- id: uwxpivry5lur
-  title: Content connectors
-  type: service
-  hostname: es3-api
-  path: /app/management/data/search_connectors/connectors
   port: 8080
   custom_request_headers:
   - key: Content-Security-Policy
@@ -58,13 +42,15 @@ Lab indices simulate a connector-fed world. Production uses **Elastic content co
 
 ## Your task
 
+Open [button label="Elastic Serverless Search"](tab-0) — one Kibana tab; use global search or Stack Management for connectors.
+
 ### 1 — Tour Content connectors (30 seconds)
 
-Open [button label="Content connectors"](tab-1). Skim available types — no production connector required. If you see **Application not found**, open Kibana global search and type **Content connectors** (path: Stack Management → Content connectors).
+Kibana global search → **Content connectors** (or Stack Management → Content connectors). Skim available types — no production connector required.
 
 ### 2 — Agent writes the federation plan
 
-Open [button label="Cisco Agent"](tab-0) (`Cisco NOC Copilot`) and paste:
+Left nav → **Agents** → `Cisco NOC Copilot` and paste:
 
 ```text
 Draft a federation plan for Cisco on Elastic Serverless Search.
